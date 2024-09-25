@@ -12,7 +12,7 @@ function ratio_scale_mode:constructor(fill_screen)
 end
 
 function ratio_scale_mode:update_game_size(width, height)
-    local ratio = flora.config.game_size.x / flora.config.game_size.y
+    local ratio = flora.game_width / flora.game_height
     local real_ratio = width / height
 
     local scale_y = real_ratio < ratio

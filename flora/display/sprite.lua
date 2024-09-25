@@ -28,7 +28,7 @@ function sprite:constructor(x, y, texture)
     ---
     --- @type flora.assets.texture?
     ---
-    self.texture = flora.assets:get_texture(texture)
+    self.texture = flora.assets:load_texture(texture)
 
     ---
     --- The X and Y scale factor of this sprite.
@@ -66,7 +66,7 @@ function sprite:constructor(x, y, texture)
     --- @protected
     --- @type flora.utils.color 
     ---
-    self._tint = color:new():copy_from(color.white)
+    self._tint = color:new(color.white)
 end
 
 ---
@@ -75,7 +75,7 @@ end
 --- @param  texture  flora.assets.texture  The texture to load onto this sprite.
 ---
 function sprite:load_texture(texture)
-    self.texture = flora.assets:get_texture(texture)
+    self.texture = flora.assets:load_texture(texture)
 end
 
 ---
@@ -85,11 +85,21 @@ end
 ---
 function sprite:screen_center(center_axes)
     if axes.has_x(center_axes) then
-        self.x = math.floor((flora.config.game_size.x - self.width) * 0.5)
+        self.x = math.floor((flora.game_width - self.width) * 0.5)
     end
     if axes.has_y(center_axes) then
-        self.y = math.floor((flora.config.game_size.y - self.height) * 0.5)
+        self.y = math.floor((flora.game_height - self.height) * 0.5)
     end
+end
+
+function sprite:set_graphic_size(width, height)
+    if not self.texture then
+        return
+    end
+    self.scale:set(
+        width / self.texture.width,
+        height / self.texture.height
+    )
 end
 
 function sprite:draw()
@@ -110,7 +120,7 @@ function sprite:draw()
         --- @type flora.display.camera
         ---
         local cam = self.cameras[i]
-        cam:draw_pixels(
+        cam:draw_texture(
             self.texture, self.x + ox, self.y + oy,
             self.width, self.height, self.angle, otx, oty, self.tint
         )
@@ -156,7 +166,7 @@ function sprite:__set(var, val)
         end
 
     elseif var == "tint" then
-        self._tint = color:new():copy_from(val)
+        self._tint = color:new(val)
         return false
     end
     return true

@@ -1,3 +1,4 @@
+local lily = require("flora.libs.lily")
 local font = require("flora.assets.font")
 local texture = require("flora.assets.texture")
 
@@ -38,10 +39,32 @@ end
 
 ---
 --- @param  path  string
+---
+function asset_front_end:load_texture_async(path, compressed, on_complete)
+    if not path then
+        return nil
+    end
+    if type(path) == "table" and path.is and path:is(texture) then
+        return path
+    end
+    if not self._texture_cache[path] then
+        lily.newImage(path):onComplete(function(_, image)
+            local tex = texture:new(path, image)
+            self:cache_texture(path, tex)
+
+            if on_complete then
+                on_complete()
+            end
+        end)
+    end
+end
+
+---
+--- @param  path  string
 --- 
 --- @return flora.assets.texture?
 ---
-function asset_front_end:get_texture(path, compressed)
+function asset_front_end:load_texture(path, compressed)
     if not path then
         return nil
     end
@@ -71,7 +94,7 @@ end
 --- 
 --- @return flora.assets.font?
 ---
-function asset_front_end:get_font(path)
+function asset_front_end:load_font(path)
     if not path then
         return nil
     end
@@ -101,7 +124,7 @@ end
 --- 
 --- @return love.SoundData?
 ---
-function asset_front_end:get_sound(path)
+function asset_front_end:load_sound(path)
     if not path then
         return nil
     end
@@ -113,6 +136,30 @@ function asset_front_end:get_sound(path)
         self:cache_sound(path, snd)
     end
     return self._sound_cache[path]
+end
+
+---
+--- @param  path  string
+---
+function asset_front_end:load_sound_async(path, on_complete)
+    if not path then
+        return nil
+    end
+    if type(path) ~= "string" then
+        return path
+    end
+    if not self._texture_cache[path] then
+        ---
+        --- @param  snd  love.SoundData
+        ---
+        lily.newSoundData(path):onComplete(function(_, snd)
+            self:cache_sound(path, snd)
+
+            if on_complete then
+                on_complete()
+            end
+        end)
+    end
 end
 
 return asset_front_end

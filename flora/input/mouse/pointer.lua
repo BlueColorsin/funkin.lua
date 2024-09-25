@@ -140,10 +140,15 @@ function pointer:constructor()
     --- @protected
     ---
     self._vec = vector2:new()
+
+    ---
+    --- Loads default cursor
+    ---
+    self:load("flora/images/cursor.png")
 end
 
 function pointer:load(texture)
-    self.texture = flora.assets:get_texture(texture)
+    self.texture = flora.assets:load_texture(texture)
 end
 
 function pointer:update()
@@ -249,8 +254,8 @@ function pointer:get_world_position(cam, vec)
     local ww = love.graphics.getWidth()
     local wh = love.graphics.getHeight()
 
-    local gw = flora.config.game_size.x
-    local gh = flora.config.game_size.y
+    local gw = flora.config.game_width
+    local gh = flora.config.game_height
 
     local scale = math.min(ww / gw, wh / gh) * cam.zoom
     return vec:set(

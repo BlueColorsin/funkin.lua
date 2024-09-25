@@ -7,6 +7,8 @@ local font = require("flora.assets.font")
 ---
 local text = sprite:extend()
 
+-- TODO: add shadow border type
+
 ---
 --- @param  x            number   The X coordinate of this text object on-screen.
 --- @param  y            number   The Y coordinate of this text object on-screen.
@@ -18,41 +20,62 @@ function text:constructor(x, y, field_width, txt, size)
     text.super.constructor(self, x, y)
 
     ---
-    --- The font used to render this text object. (default is `assets/fonts/vcr.ttf`)
+    --- The font used to render this text object. (default is `flora/fonts/nokiafc22.ttf`)
+    --- 
+    --- @type string
     ---
     self.font = nil
 
     ---
-    --- The size of the font used to render this text object. (default: `16`)
+    --- The size of the font used to render this text object. (default: `8`)
+    --- 
+    --- @type integer
     ---
     self.size = nil
 
     ---
     --- The text displayed onto this text object. (default: `""`)
+    --- 
+    --- @type string
     ---
     self.text = nil
 
     ---
     --- The maximum width of this text object before
     --- it wraps to the next line. (in pixels, default: `0`)
+    --- 
+    --- @type number
     ---
     self.field_width = nil
 
     ---
-    --- The alignment of this text displayed on
+    --- The alignment of the text displayed onto
     --- this text object. (default: `left`)
+    --- 
+    --- @type "left"|"center"|"right"
     ---
     self.alignment = nil
 
     ---
-    --- The size of the border applied to this text. (default: `0`)
+    --- The color of the text displayed onto
+    --- this text object. (default: `color.white`)
+    --- 
+    --- This is different from `tint`, since it ONLY
+    --- affects the raw text color, nothing else!
+    --- 
+    --- @type flora.utils.color
+    ---
+    self.color = nil
+
+    ---
+    --- The size of the border applied to this text. (default: `1`)
     --- 
     --- @type number
     ---
     self.border_size = nil
 
     ---
-    --- The color of the border applied to this text. (default: `color.black`)
+    --- The color of the border applied to this text. (default: `color.transparent`)
     --- 
     --- @type flora.utils.color
     ---
@@ -66,40 +89,62 @@ function text:constructor(x, y, field_width, txt, size)
     self.border_quality = nil
 
     ---
+    --- The border style to use for this text object. (default: `outline`)
+    --- 
+    --- @type "none"|"outline"|"shadow"
+    ---
+    self.border_style = nil
+
+    ---
+    --- An offset that is applied on the shadow border style, if active.
+    --- 
+    --- The X and Y components of the offset are multiplied by `borderSize`.
+    --- 
+    --- @type flora.math.vector2
+    ---
+    self.shadow_offset = vector2:new(1, 1)
+
+    ---
     --- @protected
     --- @type flora.assets.font?
     ---
-    self._font = flora.assets:get_font("assets/fonts/vcr.ttf")
+    self._font = flora.assets:load_font("flora/fonts/nokiafc22.ttf")
 
     ---
     --- @protected
     --- @type love.Font
     ---
-    self._font_data = self._font:get_data_for_size(size and size or 16)
+    self._font_data = self._font:get_data_for_size(size and size or 8)
 
     ---
     --- @protected
     --- @type integer
     ---
-    self._size = size and size or 16
+    self._size = size and size or 8
 
     ---
     --- @protected
     --- @type number
     ---
-    self._border_size = 0
+    self._border_size = 1
 
     ---
     --- @protected
     --- @type flora.utils.color
     ---
-    self._border_color = color:new():copy_from(color.black)
+    self._border_color = color:new(color.transparent)
 
     ---
     --- @protected
     --- @type number
     ---
     self._border_quality = 1
+
+    ---
+    --- @protected
+    --- @type "none"|"outline"|"shadow"
+    ---
+    self._border_style = "none"
 
     ---
     --- @protected
@@ -127,6 +172,12 @@ function text:constructor(x, y, field_width, txt, size)
 
     ---
     --- @protected
+    --- @type flora.utils.color
+    ---
+    self._color = color:new(color.white)
+
+    ---
+    --- @protected
     --- @type love.Canvas
     ---
     self._canvas = love.graphics.newCanvas(1, 1)
@@ -143,6 +194,45 @@ function text:constructor(x, y, field_width, txt, size)
 
     self.texture = tex
     self:_regen_texture()
+end
+
+---
+--- @param  font          string                      The font used to render this text object. (default is `flora/fonts/nokiafc22.ttf`)
+--- @param  size          integer                     The size of the font used to render this text object. (default: `8`)
+--- @param  text_color    flora.utils.color           The The color of the text displayed onto this text object. This is different from `tint`, since it ONLY affects the raw text color, nothing else! (default: `color.white`)
+--- @param  alignment     "left"|"center"|"right"?    The alignment of the text displayed onto this text object. (default: `left`)
+--- @param  border_style  "none"|"outline"|"shadow"?  The border style to use for this text object. (default: `outline`)
+--- @param  border_color  flora.utils.color|integer   The color of the border applied to this text. (default: `color.black`)
+---
+function text:set_format(font, size, text_color, alignment, border_style, border_color)
+    self.font = font and font or "flora/fonts/nokiafc22.ttf"
+    self.size = size and size or 8
+    self.color = text_color and text_color or color.white
+    self.alignment = alignment and alignment or "left"
+    self.border_style = border_style and border_style or "none"
+
+    ---
+    --- @cast border_color flora.utils.color
+    ---
+    self.border_color = border_color and border_color or color.transparent
+end
+
+---
+--- @param  style    "none"|"outline"|"shadow"  The border style to use for this text object.
+--- @param  color    flora.utils.color|integer  The color of the border applied to this text. (default: `color.transparent`)
+--- @param  size     number                     The size of the border applied to this text. (default: `1`)
+--- @param  quality  number                     Controls how many iterations to use when drawing text border. (default: `1`)
+---
+function text:set_border_style(style, color, size, quality)
+    self.border_style = style
+
+    ---
+    --- @cast color flora.utils.color
+    ---
+    self.border_color = color
+
+    self.border_size = size and size or 1
+    self.border_quality = quality and quality or 1
 end
 
 ---
@@ -190,8 +280,8 @@ function text:_regen_texture()
         self._canvas:release()
     end
     self._canvas = love.graphics.newCanvas(
-        (self._text_obj:getWidth() / font.oversampling) + padding,
-        (self._text_obj:getHeight() / font.oversampling) + padding
+        (self._text_obj:getWidth() / font.oversampling) + padding + (self.border_style == "shadow" and self.shadow_offset.x or 0.0),
+        (self._text_obj:getHeight() / font.oversampling) + padding + (self.border_style == "shadow" and self.shadow_offset.y or 0.0)
     )
     local prev_canvas = love.graphics.getCanvas()
     love.graphics.setCanvas(self._canvas)
@@ -201,46 +291,60 @@ function text:_regen_texture()
 
     local tsx = 1 / font.oversampling
     local tsy = 1 / font.oversampling
+    
+    local pr, pg, pb, pa = love.graphics.getColor()
 
-    local iterations = math.round(self.border_size * self.border_quality)
-    if iterations < 1 then
-        iterations = 1
+    if self.border_size > 0 and self.border_color.a > 0 then
+        if self.border_style == "outline" then
+            local iterations = math.round(self.border_size * self.border_quality)
+            if iterations < 1 then
+                iterations = 1
+            end
+            
+            local delta = self.border_size / iterations
+            local cur_delta = delta
+        
+            love.graphics.setColor(self.border_color.r, self.border_color.g, self.border_color.b, self.border_color.a)
+        
+            for _ = 1, iterations do
+                -- upper-left
+                love.graphics.draw(self._text_obj, tx - cur_delta, ty - cur_delta, 0, tsx, tsy)
+                
+                -- upper-middle
+                love.graphics.draw(self._text_obj, tx, ty - cur_delta, 0, tsx, tsy)
+        
+                -- upper-right
+                love.graphics.draw(self._text_obj, tx + cur_delta, ty - cur_delta, 0, tsx, tsy)
+        
+                -- middle-right
+                love.graphics.draw(self._text_obj, tx + cur_delta, ty, 0, tsx, tsy)
+        
+                -- lower-right
+                love.graphics.draw(self._text_obj, tx + cur_delta, ty + cur_delta, 0, tsx, tsy)
+        
+                -- lower-middle
+                love.graphics.draw(self._text_obj, tx, ty + cur_delta, 0, tsx, tsy)
+        
+                -- lower-left
+                love.graphics.draw(self._text_obj, tx - cur_delta, ty + cur_delta, 0, tsx, tsy)
+                
+                cur_delta = cur_delta + delta
+            end
+            
+        elseif self.border_style == "shadow" then
+            love.graphics.setColor(self.border_color.r, self.border_color.g, self.border_color.b, self.border_color.a)
+            love.graphics.draw(
+                self._text_obj, 
+                tx + (self.shadow_offset.x * self.border_size), ty + (self.shadow_offset.y * self.border_size),
+                0, tsx, tsy
+            )
+        end
     end
     
-    local delta = self.border_size / iterations
-    local cur_delta = delta
-
-    local pr, pg, pb, pa = love.graphics.getColor()
-    love.graphics.setColor(self.border_color.r, self.border_color.g, self.border_color.b, self.border_color.a)
-
-    for _ = 1, iterations do
-        -- upper-left
-        love.graphics.draw(self._text_obj, tx - cur_delta, ty - cur_delta, 0, tsx, tsy)
-        
-        -- upper-middle
-        love.graphics.draw(self._text_obj, tx, ty - cur_delta, 0, tsx, tsy)
-
-        -- upper-right
-        love.graphics.draw(self._text_obj, tx + cur_delta, ty - cur_delta, 0, tsx, tsy)
-
-        -- middle-right
-        love.graphics.draw(self._text_obj, tx + cur_delta, ty, 0, tsx, tsy)
-
-        -- lower-right
-        love.graphics.draw(self._text_obj, tx + cur_delta, ty + cur_delta, 0, tsx, tsy)
-
-        -- lower-middle
-        love.graphics.draw(self._text_obj, tx, ty + cur_delta, 0, tsx, tsy)
-
-        -- lower-left
-        love.graphics.draw(self._text_obj, tx - cur_delta, ty + cur_delta, 0, tsx, tsy)
-
-        cur_delta = cur_delta + delta
-    end
-
-    love.graphics.setColor(pr, pg, pb, pa)
+    love.graphics.setColor(self.color.r, self.color.g, self.color.b, self.color.a)
     love.graphics.draw(self._text_obj, tx, ty, 0, tsx, tsy)
     
+    love.graphics.setColor(pr, pg, pb, pa)
     love.graphics.setCanvas(prev_canvas)
 
     ---
@@ -264,6 +368,9 @@ function text:__get(var)
     
     elseif var == "alignment" then
         return self._alignment
+
+    elseif var == "color" then
+        return self._color
     
     elseif var == "text" then
         return self._text
@@ -276,6 +383,9 @@ function text:__get(var)
 
     elseif var == "border_quality" then
         return self._border_quality
+
+    elseif var == "border_style" then
+        return self._border_style
 
     elseif var == "width" then
         self:_regen_texture()
@@ -296,7 +406,7 @@ function text:__set(var, val)
         if self._text_obj then
             self._text_obj:release()
         end
-        self._font = flora.assets:get_font(val)
+        self._font = flora.assets:load_font(val)
         self._font:reference()
 
         self._font_data = self._font:get_data_for_size(self._size)
@@ -322,6 +432,11 @@ function text:__set(var, val)
         self._alignment = val
         self._dirty = true
         return false
+
+    elseif var == "color" then
+        self._color = color:new(val)
+        self._dirty = true
+        return false
         
     elseif var == "text" then
         self._dirty = self._text ~= val
@@ -334,12 +449,17 @@ function text:__set(var, val)
         return false
         
     elseif var == "border_color" then
-        self._border_color = color:new():copy_from(val)
+        self._border_color = color:new(val)
         self._dirty = true
         return false
 
     elseif var == "border_quality" then
         self._border_quality = val
+        self._dirty = true
+        return false
+
+    elseif var == "border_style" then
+        self._border_style = val
         self._dirty = true
         return false
     end

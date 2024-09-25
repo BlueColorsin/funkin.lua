@@ -12,6 +12,11 @@ function sound_front_end:constructor()
     self.volume = 1.0
 
     ---
+    --- Controls whether or not ALL sounds are muted.
+    ---
+    self.muted = false
+
+    ---
     --- Built-in background music functionality, useful for
     --- menus, levels, etc.
     ---

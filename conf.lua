@@ -1,9 +1,9 @@
 function love.conf(t)
-    t.identity = "flora-framework-test"
+    t.identity = "funkin-flora"
     t.version = "12.0"
     t.console = false
 
-    t.window.title = "Flora Framework Test"
+    t.window.title = "Funkin' Flora"
     
     t.window.width = 1152
     t.window.height = 648

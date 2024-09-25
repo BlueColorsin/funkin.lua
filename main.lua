@@ -15,9 +15,12 @@ flora = require("flora")
 --------------------------------------------------
 
 flora.config.debug_mode = true
-flora.config.max_fps = 144
-flora.config.game_size:set(1280, 720)
-flora.config.initial_screen = flora.import("test"):new()
+flora.config.max_fps = 0
+
+flora.config.game_width = 1280
+flora.config.game_height = 720
+
+flora.config.initial_state = flora.import("funkin.preloader"):new()
 
 --------------------------------------
 -- Start Flora after configuring it --

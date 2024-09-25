@@ -2,11 +2,11 @@ local group = require("flora.display.group")
 
 --- 
 --- A class with functionality similar to a `group`, but
---- designed to be a primary scene/screen of sorts.
+--- designed to be a primary scene/state of sorts.
 --- 
---- @class flora.display.screen : flora.display.group
+--- @class flora.display.state : flora.display.group
 --- 
-local screen = group:extend()
+local state = group:extend()
 
 ---
 --- The function that gets called when this scene
@@ -14,7 +14,7 @@ local screen = group:extend()
 --- 
 --- Initialize your stuff here, instead of in the constructor!
 ---
-function screen:ready()
+function state:ready()
 end
 
-return screen
+return state

@@ -25,7 +25,20 @@ function camera_front_end:constructor()
     --- @protected
     --- @type flora.utils.color
     ---
-    self._bg_color = color:new():copy_from(color.black)
+    self._bg_color = color:new(color.black)
+end
+
+function camera_front_end:update(dt)
+    for i = 1, self.list.length do
+        ---
+        --- @type flora.display.camera
+        ---
+        local cam = self.list.members[i]
+
+        if cam and cam.exists and cam.active then
+            cam:update(dt)
+        end
+    end
 end
 
 function camera_front_end:reset(cam)
@@ -40,6 +53,30 @@ function camera_front_end:reset(cam)
     end
     flora.camera = cam
     self.list:add(cam)
+end
+
+function camera_front_end:add(cam)
+    if table.contains(self.list.members, cam) then
+        flora.log:warn("Camera was already added!")
+        return
+    end
+    self.list:add(cam)
+end
+
+function camera_front_end:insert(pos, cam)
+    if table.contains(self.list.members, cam) then
+        flora.log:warn("Camera was already added!")
+        return
+    end
+    self.list:insert(pos, cam)
+end
+
+function camera_front_end:remove(cam)
+    if not table.contains(self.list.members, cam) then
+        flora.log:warn("Cannot remove camera that was not yet added!")
+        return
+    end
+    self.list:remove(cam)
 end
 
 -----------------------
@@ -61,7 +98,7 @@ end
 ---
 function camera_front_end:__set(var, val)
     if var == "bg_color" then
-        self._bg_color = color:new():copy_from(val)
+        self._bg_color = color:new(val)
         return false
     end
     return true

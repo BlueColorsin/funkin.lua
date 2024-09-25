@@ -108,10 +108,10 @@ function sound:load(data, stream)
     if stream then
         self.source = love.audio.newSource(data, "stream")
     else
-        self.source = love.audio.newSource(flora.assets:get_sound(data), "static")
+        self.source = love.audio.newSource(flora.assets:load_sound(data), "static")
     end
     self.source:setLooping(false)
-    self.source:setVolume(math.clamp(self.volume * flora.sound.volume, 0.0, 1.0))
+    self.source:setVolume(math.clamp(self.volume * flora.sound.volume * (not flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
     self.source:setPitch(self.pitch)
 
     return self
@@ -148,9 +148,9 @@ function sound:seek(time)
 end
 
 function sound:update()
-    self.source:setVolume(math.clamp(self.volume * flora.sound.volume, 0.0, 1.0))
-    
     if self.source then
+        self.source:setVolume(math.clamp(self.volume * flora.sound.volume * (not flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
+        
         if self._playing and not self._paused and not self.source:isPlaying() then
             self._playing = false
             if self.on_complete then
