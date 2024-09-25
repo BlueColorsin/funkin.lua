@@ -48,28 +48,28 @@ function plugin_front_end:draw()
     end
 end
 
-function plugin_front_end:add(cam)
-    if table.contains(self.list.members, cam) then
-        flora.log:warn("Camera was already added!")
+function plugin_front_end:add(plugin)
+    if table.contains(self.list.members, plugin) then
+        flora.log:warn("Plugin was already added!")
         return
     end
-    self.list:add(cam)
+    self.list:add(plugin)
 end
 
-function plugin_front_end:insert(pos, cam)
-    if table.contains(self.list.members, cam) then
-        flora.log:warn("Camera was already added!")
+function plugin_front_end:insert(pos, plugin)
+    if table.contains(self.list.members, plugin) then
+        flora.log:warn("Plugin was already added!")
         return
     end
-    self.list:insert(pos, cam)
+    self.list:insert(pos, plugin)
 end
 
-function plugin_front_end:remove(cam)
-    if not table.contains(self.list.members, cam) then
-        flora.log:warn("Cannot remove camera that was not yet added!")
+function plugin_front_end:remove(plugin)
+    if not table.contains(self.list.members, plugin) then
+        flora.log:warn("Cannot remove plugin that was not yet added!")
         return
     end
-    self.list:remove(cam)
+    self.list:remove(plugin)
 end
 
 -----------------------

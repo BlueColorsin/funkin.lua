@@ -62,7 +62,18 @@ function preloader:ready()
     self.asset_count = 0
 
     self.finished = false
-    self:do_preload()
+
+    -- i'm currently fucking killing myself
+    -- why does making 2 timers fail
+    -- you can only make 1 timer, EVER
+    -- kms
+    timer:new():start(0.5, function(a)
+        -- self:do_preload()
+        print("a")
+        timer:new():start(0.5, function(b)
+            print("b")
+        end)
+    end)
 end
 
 function preloader:preload_texture(path, compressed)
@@ -92,16 +103,6 @@ function preloader:do_preload()
 
     self:preload_texture(paths.image("speakers", "images/game/characters/gf"))
     self:preload_texture(paths.image("woman", "images/game/characters/gf"))
-
-    -- Preload commonly used music, such as breakfast, freakyMenu, etc
-    self:preload_sound(paths.music("music", "music/breakfast"))
-    self:preload_sound(paths.music("music", "music/freakyMenu"))
-    self:preload_sound(paths.music("music", "music/girlfriendsRingtone"))
-
-    -- Preload commonly used sound effects
-    self:preload_sound(paths.sound("scroll", "sounds/menus"))
-    self:preload_sound(paths.sound("select", "sounds/menus"))
-    self:preload_sound(paths.sound("cancel", "sounds/menus"))
 end
 
 function preloader:update(dt)
@@ -110,19 +111,19 @@ function preloader:update(dt)
     self.test = self.test + (dt * 10)
     self.spinner.angle = self.spinner.angle + (dt * 150)
     
-    if self.preloaded_assets == self.asset_count then
+    if self.asset_count > 0 and self.preloaded_assets == self.asset_count then
         self.finished = true
         self.asset_count = self.asset_count + 1
     end
     if self.finished then
         self.finished = false
-
+        
         self.spinner:kill()
         self.status_txt.text = self.chosen_tip .. "\nFinished preloading, game on!"
 
         flora.sound:play(paths.sound("select", "sounds/menus"))
-        flora.camera:fade(color.black, 1.25, false, function()
-            timer:new():start(0.5, function()
+        flora.camera:fade(color.blue, 1.25, false, function()
+            timer:new():start(0.5, function(tmr)
                 local title_screen = flora.import("funkin.states.title_screen")
                 flora.switch_state(title_screen:new())
             end)

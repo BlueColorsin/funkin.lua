@@ -74,6 +74,8 @@ vertical_align = require("flora.utils.vertical_align")
 
 sound = require("flora.sound")
 
+local timer_manager = require("flora.plugins.timer_manager")
+
 ---
 --- @class flora
 ---
@@ -265,7 +267,7 @@ function flora.start()
             end
             
             if love.timer then
-                dt = love.timer.step()
+                dt = math.min(love.timer.step(), 0.1)
             end
             
             fps_timer = fps_timer + dt
@@ -331,6 +333,9 @@ function flora.start()
     flora.game_height = flora.config.game_height
 
     flora._canvas = love.graphics.newCanvas(flora.game_width, flora.game_height)
+
+    timer_manager.global = timer_manager:new()
+    flora.plugins:add(timer_manager.global)
 
     if flora.config.initial_state then
         flora._requested_state = flora.config.initial_state

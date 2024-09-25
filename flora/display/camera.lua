@@ -77,7 +77,7 @@ function camera:constructor(x, y, width, height)
     --- @protected
     --- @type function
     ---
-    self._flash_complete = nil
+    self._flash_fade_complete = nil
 
     ---
     --- @protected
@@ -107,7 +107,7 @@ function camera:constructor(x, y, width, height)
     --- @protected
     --- @type function
     ---
-    self._fade_complete = nil
+    self._fade_fx_complete = nil
 end
 
 ---
@@ -235,7 +235,7 @@ function camera:flash(flash_color, flash_duration, on_complete, force)
     self._flash_fx_color = color:new(flash_color)
     self._flash_fx_duration = flash_duration
     self._flash_fx_alpha = 0.99999
-    self._flash_complete = on_complete
+    self._flash_fade_complete = on_complete
 end
 
 function camera:fade(fade_color, fade_duration, fade_in, on_complete, force)
@@ -246,7 +246,7 @@ function camera:fade(fade_color, fade_duration, fade_in, on_complete, force)
     self._fade_fx_duration = fade_duration
     self._fade_fx_in = fade_in
     self._fade_fx_alpha = fade_in and 0.99999 or 0.00001
-    self._fade_complete = on_complete
+    self._fade_fx_complete = on_complete
 end
 
 function camera:update_flash(dt)
@@ -257,8 +257,8 @@ function camera:update_flash(dt)
             self._flash_fx_alpha = 0.0
             self._flash_fx_duration = 0.0
             
-            if self._flash_complete then
-                self._flash_complete()
+            if self._flash_fade_complete then
+                self._flash_fade_complete()
             end
         end
     end
@@ -273,8 +273,8 @@ function camera:update_fade(dt)
                 self._fade_fx_alpha = 0.0
                 self._fade_fx_duration = 0.0
                 
-                if self._fade_complete then
-                    self._fade_complete()
+                if self._fade_fx_complete then
+                    self._fade_fx_complete()
                 end
             end
     
@@ -285,8 +285,8 @@ function camera:update_fade(dt)
                 self._fade_fx_alpha = 1.0
                 self._fade_fx_duration = 0.0
     
-                if self._fade_complete then
-                    self._fade_complete()
+                if self._fade_fx_complete then
+                    self._fade_fx_complete()
                 end
             end
         end

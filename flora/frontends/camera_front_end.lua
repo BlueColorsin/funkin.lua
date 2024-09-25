@@ -29,16 +29,7 @@ function camera_front_end:constructor()
 end
 
 function camera_front_end:update(dt)
-    for i = 1, self.list.length do
-        ---
-        --- @type flora.display.camera
-        ---
-        local cam = self.list.members[i]
-
-        if cam and cam.exists and cam.active then
-            cam:update(dt)
-        end
-    end
+    self.list:update(dt)
 end
 
 function camera_front_end:reset(cam)
