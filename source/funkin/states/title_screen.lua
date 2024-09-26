@@ -8,7 +8,7 @@ function title_screen:ready()
 
     ---
     --- @type flora.display.sprite
-    ---
+    --- 
     self.placeholder = sprite:new()
     self.placeholder:load_texture("hai.png")
     self.placeholder:screen_center(axes.xy)

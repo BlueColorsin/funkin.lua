@@ -244,18 +244,29 @@ function text:draw()
 end
 
 function text:dispose()
+    text.super.dispose(self)
+
+    if flora.config.debug_mode then
+        flora.log:verbose("Unreferencing _font on text " .. tostring(self))
+    end
     if self._font then
         self._font:unreference()
     end
     self._font = nil
 
+    if flora.config.debug_mode then
+        flora.log:verbose("Disposing _canvas on text " .. tostring(self))
+    end
     self._canvas:release()
     self._canvas = nil
 
+    if flora.config.debug_mode then
+        flora.log:verbose("Disposing _text_obj on text " .. tostring(self))
+    end
     if self._text_obj then
         self._text_obj:release()
     end
-    text.super.dispose(self)
+    self._text_obj = nil
 end
 
 -----------------------

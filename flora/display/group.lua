@@ -56,7 +56,7 @@ function group:remove(obj)
     if not obj then
         flora.log:warn("Cannot remove an invalid object from a group!")
     end
-    table.remove(obj, obj.__grp_index)
+    table.remove(self.members, obj.__grp_index)
     obj.__grp_index = -1
     self.length = self.length - 1
 end
@@ -77,6 +77,22 @@ function group:draw()
             obj:draw()
         end
     end
+end
+
+function group:dispose()
+    group.super.dispose(self)
+
+    for i = 1, self.length do
+        local obj = self.members[i]
+        if obj then
+            if flora.config.debug_mode then
+                flora.log:verbose("Disposing object " .. tostring(obj))
+            end
+            obj:dispose()
+        end
+    end
+    self.members = nil
+    self.length = 0
 end
 
 ---

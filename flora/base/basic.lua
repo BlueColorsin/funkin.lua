@@ -77,6 +77,13 @@ function basic:__tostring()
     return "basic"
 end
 
+---
+--- Removes this object and it's properties from memory.
+---
+function basic:dispose()
+    self._cameras = {}
+end
+
 -----------------------
 --- [ Private API ] ---
 -----------------------

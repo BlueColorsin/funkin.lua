@@ -63,16 +63,8 @@ function preloader:ready()
 
     self.finished = false
 
-    -- i'm currently fucking killing myself
-    -- why does making 2 timers fail
-    -- you can only make 1 timer, EVER
-    -- kms
-    timer:new():start(0.5, function(a)
-        -- self:do_preload()
-        print("a")
-        timer:new():start(0.5, function(b)
-            print("b")
-        end)
+    timer:new():start(0.5, function(_)
+        self:do_preload()
     end)
 end
 
@@ -122,8 +114,8 @@ function preloader:update(dt)
         self.status_txt.text = self.chosen_tip .. "\nFinished preloading, game on!"
 
         flora.sound:play(paths.sound("select", "sounds/menus"))
-        flora.camera:fade(color.blue, 1.25, false, function()
-            timer:new():start(0.5, function(tmr)
+        flora.camera:fade(color.black, 1.25, false, function()
+            timer:new():start(0.5, function(_)
                 local title_screen = flora.import("funkin.states.title_screen")
                 flora.switch_state(title_screen:new())
             end)

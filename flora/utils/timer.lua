@@ -18,7 +18,7 @@ function timer:constructor(manager)
     ---
     --- The manager that this timer belongs to.
     ---
-    --- @type flora.plugins.timer_manager
+    --- @type flora.plugins.timer_manager?
     ---
     self.manager = manager and manager or timer_manager.global
 
@@ -112,8 +112,8 @@ function timer:stop()
     self.loops_left = 1
 
     self.on_complete = nil
-
     self.manager.list:remove(self)
+
     return self
 end
 

@@ -68,6 +68,10 @@ path = require("flora.utils.path")
 save = require("flora.utils.save")
 color = require("flora.utils.color")
 timer = require("flora.utils.timer")
+signal = require("flora.utils.signal")
+
+ease = require("flora.tweens.ease")
+tween = require("flora.tweens.tween")
 
 horizontal_align = require("flora.utils.horizontal_align")
 vertical_align = require("flora.utils.vertical_align")
@@ -75,6 +79,7 @@ vertical_align = require("flora.utils.vertical_align")
 sound = require("flora.sound")
 
 local timer_manager = require("flora.plugins.timer_manager")
+local tween_manager = require("flora.plugins.tween_manager")
 
 ---
 --- @class flora
@@ -337,6 +342,9 @@ function flora.start()
     timer_manager.global = timer_manager:new()
     flora.plugins:add(timer_manager.global)
 
+    tween_manager.global = tween_manager:new()
+    flora.plugins:add(tween_manager.global)
+
     if flora.config.initial_state then
         flora._requested_state = flora.config.initial_state
     else
@@ -398,6 +406,11 @@ function flora.resize_game(width, height)
     
     flora.game_width = width
     flora.game_height = height
+
+    if flora._canvas then
+        flora._canvas:release()
+    end
+    flora._canvas = love.graphics.newCanvas(flora.game_width, flora.game_height)
 
     local ww = love.graphics.getWidth()
     local wh = love.graphics.getHeight()

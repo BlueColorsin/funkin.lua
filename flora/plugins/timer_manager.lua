@@ -6,6 +6,11 @@
 ---
 local timer_manager = basic:extend()
 
+---
+--- @type flora.plugins.timer_manager?
+---
+timer_manager.global = nil
+
 function timer_manager:constructor()
     timer_manager.super.constructor(self)
 

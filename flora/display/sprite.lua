@@ -57,6 +57,13 @@ function sprite:constructor(x, y, texture)
     self.tint = nil
 
     ---
+    --- The alpha multiplier of this sprite.
+    --- 
+    --- @type number
+    ---
+    self.alpha = 1.0
+
+    ---
     --- Whether or not antialiasing is enabled on this sprite.
     --- If you have pixel-art loaded onto it, turn this off!
     ---
@@ -103,7 +110,7 @@ function sprite:set_graphic_size(width, height)
 end
 
 function sprite:draw()
-    if not self.texture then
+    if not self.texture or self.alpha <= 0 then
         return
     end
     local filter = self.antialiasing and "linear" or "nearest"
@@ -115,6 +122,8 @@ function sprite:draw()
     local ox = self.origin.x * self.width
     local oy = self.origin.y * self.height
 
+    self.tint.a = self.alpha
+
     for i = 1, #self.cameras do
         ---
         --- @type flora.display.camera
@@ -125,6 +134,23 @@ function sprite:draw()
             self.width, self.height, self.angle, otx, oty, self.tint
         )
     end
+end
+
+function sprite:dispose()
+    sprite.super.dispose(self)
+
+    if flora.config.debug_mode then
+        flora.log:verbose("Unreferencing texture on sprite " .. tostring(self))
+    end
+    self.texture:unreference()
+
+    if flora.config.debug_mode then
+        flora.log:verbose("Removing extra vars on sprite " .. tostring(self))
+    end
+    self.scale = nil
+    self.origin = nil
+
+    self._tint = nil
 end
 
 -----------------------

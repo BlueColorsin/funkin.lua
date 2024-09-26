@@ -336,10 +336,18 @@ end
 --- Removes this object and it's properties from memory.
 ---
 function camera:dispose()
-    self.bg_color = nil
+    camera.super.dispose(self)
+
+    self._bg_color = nil
 
     self._canvas:release()
     self._canvas = nil
+
+    self._fade_fx_color = nil
+    self._fade_fx_complete = nil
+
+    self._flash_fx_color = nil
+    self._flash_fx_complete = nil
 end
 
 ---

@@ -17,7 +17,7 @@ Xcopy ..\..\assets ..\..\export\%1\assets /E /H /C /I /Y > nul
 copy ..\..\alsoft.ini ..\..\export\%1\alsoft.ini
 
 @REM Create new Flora.love file
-echo Packaging game
+echo Packaging game (this might take a while!)
 
 7za.exe a Flora.zip ../../ -x!.vscode -x!assets -x!commands -x!export > nul
 ren Flora.zip Flora.love
