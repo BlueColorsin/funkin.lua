@@ -109,14 +109,24 @@ end
 function tween:tween_property(obj, property, final_value, duration, ease)
     self._cached_duration = nil
 
-    local tweener = property_tweener:new(self, obj, property, obj[property], final_value, duration, ease)
+    local initial_value = obj[property]
+    if type(final_value) == "table" then
+        initial_value = {}
+        
+        local prop = obj[property]
+        for key, _ in pairs(final_value) do
+            initial_value[key] = prop[key]
+        end
+    end
+    local tweener = property_tweener:new(self, obj, property, initial_value, final_value, duration, ease and ease or self.ease)
     self._tweeners:add(tweener)
 
     return tweener
 end
 
-function tween:delay(secs)
+function tween:set_delay(secs)
     self.start_delay = secs
+    return self
 end
 
 ---
@@ -171,6 +181,21 @@ function tween:update(dt)
                 self.on_complete(self)
             end
             self:dispose()
+        end
+    end
+end
+
+function tween:cancel()
+    self:stop()
+
+    for i = 1, self._tweeners.length do
+        local obj = self._tweeners.members[i]
+        if obj then
+            if flora.config.debug_mode then
+                flora.log:verbose("Disposing object " .. tostring(obj))
+            end
+            obj:dispose()
+            self._tweeners:remove(obj)
         end
     end
 end

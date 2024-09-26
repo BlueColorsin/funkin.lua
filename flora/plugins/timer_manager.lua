@@ -20,6 +20,20 @@ function timer_manager:constructor()
     --- @type flora.display.group
     ---
     self.list = group:new()
+
+    flora.signals.pre_state_create:connect(function()
+        self:reset()
+    end)
+end
+
+function timer_manager:reset()
+    for i = 1, self.list.length do
+        ---
+        --- @type flora.utils.timer
+        ---
+        local timer = self.list.members[i]
+        timer:dispose()
+    end
 end
 
 function timer_manager:update(dt)

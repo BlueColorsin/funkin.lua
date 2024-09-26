@@ -6,6 +6,11 @@ local title_screen = state:extend()
 function title_screen:ready()
     title_screen.super.ready(self)
 
+    if not flora.sound.music.playing then
+        flora.sound:play_music(paths.music("freakyMenu"), true, 0.0)
+        flora.sound.music:fade_in(4)
+    end
+
     ---
     --- @type flora.display.sprite
     --- 

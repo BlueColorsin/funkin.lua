@@ -1,11 +1,13 @@
 ---
 --- Accessed via `flora.sound`.
 ---
---- @class flora.frontends.sound_front_end
+--- @class flora.frontends.sound_front_end : flora.base.basic
 ---
-local sound_front_end = class:extend()
+local sound_front_end = basic:extend()
 
 function sound_front_end:constructor()
+    sound_front_end.super.constructor(self)
+
     ---
     --- The volume multiplier of ALL sounds. Ranges from 0 to 1. (default: `1.0`)
     ---
@@ -19,6 +21,8 @@ function sound_front_end:constructor()
     ---
     --- Built-in background music functionality, useful for
     --- menus, levels, etc.
+    --- 
+    --- @type flora.sound
     ---
     self.music = sound:new()
 
@@ -58,9 +62,10 @@ function sound_front_end:load(data, stream, volume, looping)
     end
     if not snd then
         -- no available sound was found, make a new one
-        snd = sound:new():load(data, stream)
+        snd = sound:new()
         table.insert(self.list, snd)
     end
+    snd:load(data, stream)
     snd.volume = volume and volume or 1.0
     snd.looping = looping and looping or false
     return snd
@@ -72,7 +77,7 @@ end
 --- @param  data     string|love.SoundData  The data to load onto a new sound.
 --- @param  stream   boolean?               Whether or not this sound should be streamed. This only works if `data` is a string. (default: `true`)
 --- @param  volume   number?                The volume of the sound. (default: `1.0`)
---- @param  looping  boolean?              Whether or not the sound should loop. (default: `true`)
+--- @param  looping  boolean?               Whether or not the sound should loop. (default: `false`)
 ---
 --- @return flora.sound
 ---

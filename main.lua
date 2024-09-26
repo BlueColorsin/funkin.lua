@@ -20,7 +20,7 @@ flora.config.max_fps = 0
 flora.config.game_width = 1280
 flora.config.game_height = 720
 
-flora.config.initial_state = flora.import("funkin.states.title_screen"):new()
+flora.config.initial_state = flora.import("funkin.backend.init_state"):new()
 
 --------------------------------------
 -- Start Flora after configuring it --

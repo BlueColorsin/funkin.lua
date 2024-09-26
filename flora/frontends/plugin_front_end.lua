@@ -1,11 +1,13 @@
 ---
 --- Accessed via `flora.plugins`.
 ---
---- @class flora.frontends.plugin_front_end
+--- @class flora.frontends.plugin_front_end : flora.base.basic
 ---
-local plugin_front_end = class:extend()
+local plugin_front_end = basic:extend()
 
 function plugin_front_end:constructor()
+    plugin_front_end.super.constructor(self)
+
     ---
     --- The list of all available plugins.
     --- 

@@ -39,14 +39,32 @@ function paths.suffix_ext_from_type(type, path)
     return path
 end
 
+---
+--- @param  name  string
+--- @param  dir   string?
+--- 
+--- @return string
+---
 function paths.image(name, dir)
     return paths.suffix_ext_from_type("image", paths.asset(path.join({dir and dir or "images", name})))
 end
 
+---
+--- @param  name  string
+--- @param  dir   string?
+--- 
+--- @return string
+---
 function paths.music(name, dir)
-    return paths.suffix_ext_from_type("sound", paths.asset(path.join({dir and dir or "music", name})))
+    return paths.suffix_ext_from_type("sound", paths.asset(path.join({dir and dir or "music", name, "music"})))
 end
 
+---
+--- @param  name  string
+--- @param  dir   string?
+--- 
+--- @return string
+---
 function paths.sound(name, dir)
     return paths.suffix_ext_from_type("sound", paths.asset(path.join({dir and dir or "sounds", name})))
 end

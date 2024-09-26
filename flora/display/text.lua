@@ -20,7 +20,7 @@ function text:constructor(x, y, field_width, txt, size)
     text.super.constructor(self, x, y)
 
     ---
-    --- The font used to render this text object. (default is `flora/fonts/nokiafc22.ttf`)
+    --- The font used to render this text object. (default is `flora/embed/fonts/nokiafc22.ttf`)
     --- 
     --- @type string
     ---
@@ -108,7 +108,7 @@ function text:constructor(x, y, field_width, txt, size)
     --- @protected
     --- @type flora.assets.font?
     ---
-    self._font = flora.assets:load_font("flora/fonts/nokiafc22.ttf")
+    self._font = flora.assets:load_font("flora/embed/fonts/nokiafc22.ttf")
 
     ---
     --- @protected
@@ -197,15 +197,15 @@ function text:constructor(x, y, field_width, txt, size)
 end
 
 ---
---- @param  font          string                      The font used to render this text object. (default is `flora/fonts/nokiafc22.ttf`)
+--- @param  font          string                      The font used to render this text object. (default is `flora/embed/fonts/nokiafc22.ttf`)
 --- @param  size          integer                     The size of the font used to render this text object. (default: `8`)
 --- @param  text_color    flora.utils.color           The The color of the text displayed onto this text object. This is different from `tint`, since it ONLY affects the raw text color, nothing else! (default: `color.white`)
 --- @param  alignment     "left"|"center"|"right"?    The alignment of the text displayed onto this text object. (default: `left`)
 --- @param  border_style  "none"|"outline"|"shadow"?  The border style to use for this text object. (default: `outline`)
---- @param  border_color  flora.utils.color|integer   The color of the border applied to this text. (default: `color.black`)
+--- @param  border_color  flora.utils.color|integer?  The color of the border applied to this text. (default: `color.black`)
 ---
 function text:set_format(font, size, text_color, alignment, border_style, border_color)
-    self.font = font and font or "flora/fonts/nokiafc22.ttf"
+    self.font = font and font or "flora/embed/fonts/nokiafc22.ttf"
     self.size = size and size or 8
     self.color = text_color and text_color or color.white
     self.alignment = alignment and alignment or "left"
@@ -220,8 +220,8 @@ end
 ---
 --- @param  style    "none"|"outline"|"shadow"  The border style to use for this text object.
 --- @param  color    flora.utils.color|integer  The color of the border applied to this text. (default: `color.transparent`)
---- @param  size     number                     The size of the border applied to this text. (default: `1`)
---- @param  quality  number                     Controls how many iterations to use when drawing text border. (default: `1`)
+--- @param  size     number?                    The size of the border applied to this text. (default: `1`)
+--- @param  quality  number?                    Controls how many iterations to use when drawing text border. (default: `1`)
 ---
 function text:set_border_style(style, color, size, quality)
     self.border_style = style

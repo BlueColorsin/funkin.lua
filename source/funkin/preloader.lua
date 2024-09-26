@@ -54,7 +54,7 @@ function preloader:ready()
     self.status_txt = text:new()
     self.status_txt.text = self.chosen_tip .. "\nPreloading assets..."
     self.status_txt:set_format("assets/fonts/vcr.ttf", 18, color.white, "left")
-    self.status_txt:set_border_style("outline", color.black, 4)
+    self.status_txt:set_border_style("outline", color.black, 3)
     self.status_txt:set_position(30, flora.game_height - self.status_txt.height - 30)
     self:add(self.status_txt)
 

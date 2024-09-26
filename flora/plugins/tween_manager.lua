@@ -20,6 +20,20 @@ function tween_manager:constructor()
     --- @type flora.display.group
     ---
     self.list = group:new()
+
+    flora.signals.pre_state_create:connect(function()
+        self:reset()
+    end)
+end
+
+function tween_manager:reset()
+    for i = 1, self.list.length do
+        ---
+        --- @type flora.tweens.tween
+        ---
+        local tween = self.list.members[i]
+        tween:dispose()
+    end
 end
 
 function tween_manager:update(dt)

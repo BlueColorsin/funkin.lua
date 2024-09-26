@@ -179,11 +179,26 @@ flora.sound = require("flora.frontends.sound_front_end"):new()
 flora.plugins = require("flora.frontends.plugin_front_end"):new()
 
 ---
+--- The object responsible for managing signals
+---
+--- @type flora.frontends.signal_front_end
+---
+flora.signals = require("flora.frontends.signal_front_end"):new()
+
+---
 --- The object responsible for correctly sizing the game to the window.
 ---
 --- @type flora.display.scalemodes.base_scale_mode
 ---
 flora.scale_mode = require("flora.display.scalemodes.ratio_scale_mode"):new()
+
+---
+--- The object responsible for displaying a tray
+--- for adjusting the game's volume.
+---
+--- @type flora.display.sound_tray.default_sound_tray
+---
+flora.sound_tray = require("flora.display.sound_tray.default_sound_tray"):new()
 
 ---
 --- The default save data object for flora.
@@ -296,17 +311,9 @@ function flora.start()
             if love.graphics and love.graphics.isActive() then
                 love.graphics.origin()
                 love.graphics.clear(love.graphics.getBackgroundColor())
-
-                if flora.pre_draw then
-                    flora.pre_draw()
-                end
                 
                 if love.draw then
                     love.draw()
-                end
-
-                if flora.post_draw then
-                    flora.post_draw()
                 end
 
                 love.graphics.present()
@@ -362,7 +369,17 @@ function flora.start()
     end
 end
 
+function flora.pre_update(dt)
+    if flora.sound_tray and flora.sound_tray.exists and flora.sound_tray.active then
+        flora.sound_tray:update(dt)
+    end
+end
+
 function flora.post_draw()
+    if flora.sound_tray and flora.sound_tray.exists and flora.sound_tray.visible then
+        flora.sound_tray:draw()
+    end
+
     local displayed_fps = love.timer.getFPS()
     local displayed_text = "FPS: " .. displayed_fps .. "\n" ..
         "RAM: " .. math.humanize_bytes(displayed_memory) .. " | " ..
@@ -437,42 +454,58 @@ flora._requested_state = nil
 --- @protected
 ---
 function flora._switch_state()
+    flora.signals.pre_state_switch:emit()
+    
     if flora.state then
-       flora.state:dispose() 
+        flora.state:dispose() 
     end
-    flora.state = flora._requested_state
-    flora.state:ready()
-
     flora.cameras:reset()
+
+    flora.state = flora._requested_state
+    flora._requested_state = nil
+
+    flora.signals.pre_state_create:emit(flora.state)
+    flora.state:ready()
     
     if flora.config.debug_mode then
         flora.log:success("State switched successfully")
     end
-    flora._requested_state = nil
+    flora.signals.post_state_switch:emit()
 end
 
 ---
 --- @protected
 ---
 function love.update(dt)
-    flora.sound:update()
-    
     if love.window.hasFocus() then
-        flora.mouse:update()
-
-        flora.cameras:update(dt)
-        flora.plugins:update(dt)
-
         if flora._requested_state then
             flora._switch_state()
         end
 
+        if flora.pre_update then
+            flora.pre_update(dt)
+        end
+        flora.signals.pre_update:emit()
+
+        flora.keys:update()
+        flora.mouse:update()
+        
+        flora.sound:update()
+        flora.plugins:update(dt)
+
         if flora.state then
             flora.state:update(dt)
         end
+        flora.cameras:update(dt)
 
-        flora.keys:update()
         flora.mouse:post_update()
+        
+        if flora.post_update then
+            flora.post_update(dt)
+        end
+        flora.signals.post_update:emit()
+    else
+        flora.sound:update()
     end
 end
 
@@ -486,6 +519,11 @@ function love.draw()
             cam:clear()
         end
     end
+    
+    if flora.pre_draw then
+        flora.pre_draw()
+    end
+    flora.signals.pre_draw:emit()
 
     if not flora.plugins.draw_above then
         flora.plugins:draw()
@@ -511,10 +549,14 @@ function love.draw()
         flora.scale_mode.offset.x, flora.scale_mode.offset.y, 0,
         flora.scale_mode.scale.x, flora.scale_mode.scale.y
     )
-
     if not flora.mouse.use_system_cursor and flora.mouse.visible then
         flora.mouse:draw()
     end
+
+    if flora.post_draw then
+        flora.post_draw()
+    end
+    flora.signals.post_draw:emit()
 end
 
 ---

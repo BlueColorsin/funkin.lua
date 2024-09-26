@@ -61,15 +61,41 @@ function property_tweener:constructor(parent, object, property, initial_value, f
     self._duration = duration
 end
 
-function property_tweener:delay(delay)
-    self.start_delay = delay
+function property_tweener:set_ease(ease)
+    self.ease = ease
+    return self
+end
+
+function property_tweener:set_delay(secs)
+    self.start_delay = secs
+    return self
 end
 
 function property_tweener:update(dt)
+    if self._duration <= 0.0 then
+        return
+    end
     self._elapsed_time = self._elapsed_time + dt
     if self._elapsed_time >= self.start_delay then
         local e = self.ease and self.ease or (self.parent.ease and self.parent.ease or ease.linear)
-        self.object[self.property] = math.lerp(self.initial_value, self.final_value, e(self.progress))
+        if type(self.final_value) == "table" then
+            local prop = self.object[self.property]
+            for key, value in pairs(self.final_value) do
+                if type(value) == "number" then
+                    prop[key] = math.lerp(self.initial_value[key], value, e(self.progress))
+                end
+            end
+        else
+            self.object[self.property] = math.lerp(self.initial_value, self.final_value, e(self.progress))
+        end
+        if self.progress >= 1.0 then
+            self._duration = 0.0
+            self._elapsed_time = 0.0
+
+            if self.on_complete then
+                self.on_complete(self)
+            end
+        end
     end
 end
 

@@ -5,11 +5,13 @@ local texture = require("flora.assets.texture")
 ---
 --- Accessed via `flora.assets`.
 ---
---- @class flora.frontends.asset_front_end
+--- @class flora.frontends.asset_front_end : flora.base.basic
 ---
-local asset_front_end = class:extend()
+local asset_front_end = basic:extend()
 
 function asset_front_end:constructor()
+    asset_front_end.super.constructor(self)
+
     ---
     --- @protected
     ---

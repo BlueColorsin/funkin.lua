@@ -144,7 +144,7 @@ function pointer:constructor()
     ---
     --- Loads default cursor
     ---
-    self:load("flora/images/cursor.png")
+    self:load("flora/embed/images/cursor.png")
 end
 
 function pointer:load(texture)

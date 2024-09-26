@@ -16,9 +16,9 @@ function tweener:constructor(parent)
     self.parent = parent
 
     ---
-    --- @type flora.utils.signal
+    --- @type function?
     ---
-    self.finished = signal:new()
+    self.on_complete = nil
 end
 
 return tweener

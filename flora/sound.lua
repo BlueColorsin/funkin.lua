@@ -91,6 +91,12 @@ function sound:constructor()
     --- @type boolean
     ---
     self._paused = false
+    
+    ---
+    --- @protected
+    --- @type flora.tweens.tween
+    ---
+    self._fade_tween = nil
 end
 
 ---
@@ -113,13 +119,14 @@ function sound:load(data, stream)
     self.source:setLooping(false)
     self.source:setVolume(math.clamp(self.volume * flora.sound.volume * (not flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
     self.source:setPitch(self.pitch)
-
+    
     return self
 end
 
 function sound:play()
     if self.source then
         self.source:play()
+        self.source:setVolume(math.clamp(self.volume * flora.sound.volume * (not flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
     end
     self._playing = true
     self._paused = false
@@ -145,6 +152,50 @@ function sound:seek(time)
     if self.source then
         self.source:seek(time, "seconds")
     end
+end
+
+---
+--- @param  duration     number     The duration of the fade.
+--- @param  from         number?    The volume to fade in from. (default: `0.0`)
+--- @param  to           number?    The volume to fade in towards. (default: `1.0`)
+--- @param  on_complete  function?  The function that gets called when this sound finishes fading in.
+---
+--- @return flora.sound
+---
+function sound:fade_in(duration, from, to, on_complete)
+    if not self.playing then
+        self:play()
+    end
+    self.volume = from and from or 0.0
+
+    if self._fade_tween then
+        self._fade_tween:dispose()
+    end
+    self._fade_tween = tween:new()
+    self._fade_tween:tween_property(self, "volume", to and to or 1.0, duration)
+    self._fade_tween.on_complete = on_complete
+    self._fade_tween:start()
+
+    return self
+end
+
+---
+--- @param  duration     number     The duration of the fade.
+--- @param  to           number?    The volume to fade out towards. (default: `0.0`)
+--- @param  on_complete  function?  The function that gets called when this sound finishes fading out.
+---
+--- @return flora.sound
+---
+function sound:fade_out(duration, to, on_complete)
+    if self._fade_tween then
+        self._fade_tween:dispose()
+    end
+    self._fade_tween = tween:new()
+    self._fade_tween:tween_property(self, "volume", to and to or 0.0, duration)
+    self._fade_tween.on_complete = on_complete
+    self._fade_tween:start()
+
+    return self
 end
 
 function sound:update()

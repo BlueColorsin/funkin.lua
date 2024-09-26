@@ -4,11 +4,13 @@ local camera = require("flora.display.camera")
 ---
 --- Accessed via `flora.cameras`.
 ---
---- @class flora.frontends.camera_front_end
+--- @class flora.frontends.camera_front_end : flora.base.basic
 ---
-local camera_front_end = class:extend()
+local camera_front_end = basic:extend()
 
 function camera_front_end:constructor()
+    camera_front_end.super.constructor(self)
+
     ---
     --- The list of all available cameras.
     --- 
