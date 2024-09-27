@@ -12,6 +12,10 @@ function sound_tray:constructor()
     self.box:setFilter("linear", "linear")
     
     self.alpha = 0.0
+
+    ---
+    --- @type flora.math.vector2
+    ---
     self.scale = vector2:new(0.6, 0.6)
 
     self.width = self.box:getWidth() * self.scale.x
@@ -37,12 +41,38 @@ function sound_tray:constructor()
         love.graphics.newImage(paths.image("bars_9", "images/volume")),
         love.graphics.newImage(paths.image("bars_10", "images/volume")),
     }
+    for i = 1, #self.bars do
+        ---
+        --- @type love.Image
+        ---
+        local bar = self.bars[i]
+        bar:setFilter("linear", "linear")
+    end
+    self.anims = {
+        adjust = {
+            fps = 18,
+            frames = {
+                vector2:new(0.62, 0.58),
+                vector2:new(0.6, 0.6),
+            }
+        }
+    }
+    self.cur_anim = "adjust"
+    self.cur_frame = #self.anims[self.cur_anim].frames
+
+    self._elapsed_anim_time = 0.0
 end
 
 function sound_tray:show(up)
     self.visible = true
     self._timer = 0.0
 
+    if not (up and flora.sound.volume >= 1.0) then
+        self.cur_anim = "adjust"
+        self.cur_frame = 1
+    
+        self._elapsed_anim_time = 0.0
+    end
     if up then
         if flora.sound.volume >= 1.0 then
             self._shake_mult = 1.0
@@ -57,6 +87,11 @@ function sound_tray:show(up)
 end
 
 function sound_tray:update(dt)
+    local cur_anim = self.anims[self.cur_anim]
+    self.scale:set(
+        cur_anim.frames[self.cur_frame].x,
+        cur_anim.frames[self.cur_frame].y
+    )
     self.width = self.box:getWidth() * self.scale.x
     self.height = self.box:getHeight() * self.scale.y
 
@@ -81,7 +116,12 @@ function sound_tray:update(dt)
     self.offset_y = (math.random(-2.0, 2.0) * self._shake_mult)
     
     self._shake_mult = math.max(self._shake_mult - (dt * 3), 0)
-    
+    self._elapsed_anim_time = self._elapsed_anim_time + dt
+
+    if self._elapsed_anim_time >= (1.0 / cur_anim.fps) then
+        self.cur_frame = math.min(self.cur_frame + 1, #cur_anim.frames)
+        self._elapsed_anim_time = 0.0
+    end
     sound_tray.super.update(self, dt)
 end
 
@@ -91,8 +131,8 @@ function sound_tray:draw()
     love.graphics.setColor(1, 1, 1, 1 * self.alpha)
     love.graphics.draw(self.box, self.x + self.offset_x, self.y + self.offset_y, 0, self.scale.x, self.scale.y)
 
-    local bar_x = self.x + 17 + self.offset_x
-    local bar_y = self.y + 10 + self.offset_y
+    local bar_x = self.x + (28 * self.scale.x) + self.offset_x
+    local bar_y = self.y + (16 * self.scale.y) + self.offset_y
     local bar_count = #self.bars
 
     love.graphics.setColor(1, 1, 1, 0.5 * self.alpha)
@@ -112,6 +152,13 @@ function sound_tray:dispose()
 
     if self.image then
         self.image:release()
+    end
+    for i = 1, #self.bars do
+        ---
+        --- @type love.Image
+        ---
+        local bar = self.bars[i]
+        bar:release()
     end
 end
 
