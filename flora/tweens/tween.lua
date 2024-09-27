@@ -138,16 +138,11 @@ function tween:start()
     self._elapsed_time = 0.0
 
     for i = 1, #self._tweeners do
-        ---
-        --- @type flora.tweens.tweeners.tweener
-        ---
         local tweener = self._tweeners.members[i]
-
         if tweener._elapsed_time then
             tweener._elapsed_time = 0.0
         end
     end
-
     self.manager.list:add(self)
     return self
 end

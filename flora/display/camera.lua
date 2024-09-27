@@ -38,6 +38,13 @@ function camera:constructor(x, y, width, height)
     self.angle = 0.0
 
     ---
+    --- The scroll offset of this camera.
+    --- 
+    --- @type flora.math.vector2
+    ---
+    self.scroll = vector2:new()
+
+    ---
     --- @protected
     --- @type flora.utils.color
     ---
@@ -188,6 +195,26 @@ function camera:draw_texture(texture, x, y, width, height, angle, origin_x, orig
     love.graphics.draw(
         texture.image, x, y, math.rad(angle),
         width / texture.width, height / texture.height,
+        origin_x, origin_y
+    )
+    love.graphics.setColor(pr, pg, pb, pa)
+    love.graphics.setCanvas(prev_canvas)
+
+    self:detach()
+end
+
+function camera:draw_frame(texture, frame, x, y, width, height, angle, origin_x, origin_y, tint)
+    local prev_canvas = love.graphics.getCanvas()
+    love.graphics.setCanvas(self._canvas)
+    
+    local pr, pg, pb, pa = love.graphics.getColor()
+    love.graphics.setColor(tint.r, tint.g, tint.b, tint.a)
+
+    self:attach()
+    
+    love.graphics.draw(
+        texture.image, frame.quad, x, y, math.rad(angle),
+        width / frame.width, height / frame.height,
         origin_x, origin_y
     )
     love.graphics.setColor(pr, pg, pb, pa)

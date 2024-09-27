@@ -12,6 +12,8 @@ function texture:constructor(key, image)
 
     ---
     --- The key used for this texture internally for caching.
+    --- 
+    --- @type string
     ---
     self.key = key
 

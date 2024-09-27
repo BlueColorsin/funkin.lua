@@ -46,7 +46,7 @@ function asset_front_end:load_texture_async(path, compressed, on_complete)
     if not path then
         return nil
     end
-    if type(path) == "table" and path.is and path:is(texture) then
+    if type(path) ~= "string" then
         return path
     end
     if not self._texture_cache[path] then
@@ -70,7 +70,7 @@ function asset_front_end:load_texture(path, compressed)
     if not path then
         return nil
     end
-    if type(path) == "table" and path.is and path:is(texture) then
+    if type(path) ~= "string" then
         return path
     end
     if not self._texture_cache[path] then
@@ -100,7 +100,7 @@ function asset_front_end:load_font(path)
     if not path then
         return nil
     end
-    if type(path) == "table" and path.is and path:is(font) then
+    if type(path) ~= "string" then
         return path
     end
     if not self._font_cache[path] then

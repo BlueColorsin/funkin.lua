@@ -17,7 +17,7 @@ function sound_tray:constructor()
     self.width = self.box:getWidth() * self.scale.x
     self.height = self.box:getHeight() * self.scale.y
 
-    self.y = -(self.height + 20)
+    self.y = -(self.height + 10)
 
     self.offset_x = 0.0
     self.offset_y = 0.0
@@ -63,15 +63,15 @@ function sound_tray:update(dt)
     self._timer = self._timer + dt
 
     if self._timer > 1.5 then
-        self.y = math.lerp(self.y, -(self.height + 20), dt * 10.0)
-        self.alpha = math.lerp(self.alpha, 0.0, dt * 20.0)
+        self.y = math.lerp(self.y, -(self.height + 10), dt * 15.0)
+        self.alpha = math.lerp(self.alpha, 0.0, dt * 30.0)
 
         if self.y <= -self.height then
             self.visible = false
         end
     else
-        self.y = math.lerp(self.y, 20, dt * 10.0)
-        self.alpha = math.lerp(self.alpha, 1.0, dt * 10.0)
+        self.y = math.lerp(self.y, 20, dt * 15.0)
+        self.alpha = math.lerp(self.alpha, 1.0, dt * 15.0)
     end
     
     local ww = love.graphics.getWidth()
@@ -93,15 +93,14 @@ function sound_tray:draw()
 
     local bar_x = self.x + 17 + self.offset_x
     local bar_y = self.y + 10 + self.offset_y
+    local bar_count = #self.bars
 
     love.graphics.setColor(1, 1, 1, 0.5 * self.alpha)
-    love.graphics.draw(self.bars[10], bar_x, bar_y, 0, self.scale.x, self.scale.y)
+    love.graphics.draw(self.bars[bar_count], bar_x, bar_y, 0, self.scale.x, self.scale.y)
     
     love.graphics.setColor(1, 1, 1, 1 * self.alpha)
 
     local vol = flora.sound.volume
-    local bar_count = #self.bars
-
     if vol > 0 and not flora.sound.muted then
         love.graphics.draw(self.bars[math.floor(vol * bar_count)], bar_x, bar_y, 0, self.scale.x, self.scale.y)
     end

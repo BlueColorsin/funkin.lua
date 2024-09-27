@@ -14,10 +14,30 @@ function title_screen:ready()
     ---
     --- @type flora.display.sprite
     --- 
-    self.placeholder = sprite:new()
-    self.placeholder:load_texture("hai.png")
-    self.placeholder:screen_center(axes.xy)
-    self:add(self.placeholder)
+    self.gf = sprite:new(flora.game_width * 0.4, flora.game_height * 0.07)
+    self.gf.frames = atlas_frames.from_sparrow(
+        "assets/images/menus/title/gf.png",
+        "assets/images/menus/title/gf.xml"
+    )
+    self.gf.animation:add_by_indices("danceLeft", "gfDance", {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13}, 24, false)
+    self.gf.animation:play("danceLeft")
+    self:add(self.gf)
+
+    ---
+    --- @type flora.display.sprite
+    --- 
+    self.logo = sprite:new(-150, -100)
+    self.logo.frames = atlas_frames.from_sparrow(
+        "assets/images/menus/title/logo.png",
+        "assets/images/menus/title/logo.xml"
+    )
+    self.logo.animation:add_by_prefix("idle", "logo bumpin", 24, false)
+    self.logo.animation:play("idle")
+    self:add(self.logo)
+end
+
+function title_screen:update(dt)
+    title_screen.super.update(self, dt)
 end
 
 return title_screen

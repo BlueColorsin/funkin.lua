@@ -58,6 +58,10 @@ state = require("flora.display.state")
 sprite = require("flora.display.sprite")
 text = require("flora.display.text")
 
+frame = require("flora.display.animation.frame_data")
+frame_collection = require("flora.display.animation.frame_collection")
+atlas_frames = require("flora.display.animation.atlas_frames")
+
 keycode = require("flora.input.keyboard.keycode")
 
 vector2 = require("flora.math.vector2")
@@ -65,6 +69,7 @@ vector2 = require("flora.math.vector2")
 bit = require("flora.utils.bit")
 axes = require("flora.utils.axes")
 path = require("flora.utils.path")
+file = require("flora.utils.file")
 save = require("flora.utils.save")
 color = require("flora.utils.color")
 timer = require("flora.utils.timer")
@@ -286,8 +291,13 @@ function flora.start()
                 end
             end
             
+            local focused = love.window.hasFocus()
+
+            local cap = (focused and flora.config.max_fps or 10)
+            local cap_dt = (cap > 0) and 1 / cap or 0
+
             if love.timer then
-                dt = math.min(love.timer.step(), 0.1)
+                dt = math.min(love.timer.step(), math.max(cap_dt, 0.0333333))
             end
             
             fps_timer = fps_timer + dt
@@ -298,11 +308,6 @@ function flora.start()
                 local stats = love.graphics.getStats()
                 displayed_vram = stats.texturememory
             end
-
-            local focused = love.window.hasFocus()
-
-            local cap = (focused and flora.config.max_fps or 10)
-            local cap_dt = (cap > 0) and 1 / cap or 0
 
             if love.update then
                 love.update(dt)

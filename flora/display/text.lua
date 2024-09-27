@@ -192,7 +192,10 @@ function text:constructor(x, y, field_width, txt, size)
     local tex = texture:new(key, love.graphics.newImage(love.image.newImageData(1, 1)))
     flora.assets:cache_texture(key, tex)
 
-    self.texture = tex
+    -- TODO: using normal frames property SHOULD work, but doesn't for some reason
+    self._frames = frame_collection.from_texture(tex)
+    self.frame = self._frames.frames[1]
+
     self:_regen_texture()
 end
 
@@ -365,6 +368,15 @@ function text:_regen_texture()
 
     local img = love.graphics.newImage(love.graphics.readbackTexture(self._canvas))
     tex:update_image(img)
+
+    self.frame.width = tex.width
+    self.frame.height = tex.height
+
+    ---
+    --- @type love.Quad
+    ---
+    local quad = self.frame.quad
+    quad:setViewport(0, 0, tex.width, tex.height, tex.width, tex.height)
 end
 
 function text:__get(var)
