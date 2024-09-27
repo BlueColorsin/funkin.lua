@@ -3,7 +3,10 @@
 - Timers [X]
 - Tweens [X]
 - Sound Tray [X]
-- Animated Sprites [X]
+- Sprites [-]
+    - Animation Functionality [X]
+    - Clip Rect
+
 - Make this publishable on shit other than Windows
 
 ## Funkin' Flora
