@@ -4,9 +4,9 @@
 local paths = flora.import("funkin.assets.paths")
 
 ---
---- @class funkin.preloader : flora.display.state
+--- @class funkin.preloader : funkin.states.music_beat_state
 ---
-local preloader = state:extend()
+local preloader = music_beat_state:extend()
 preloader.tips = {
     "Press 7 in the main menu to access some useful editors!",
     "Press SHIFT while a transition is on-screen to skip it!",
@@ -69,7 +69,8 @@ function preloader:ready()
 end
 
 function preloader:preload_texture(path, compressed)
-    flora.assets:load_texture_async(path, compressed, function()
+    flora.assets:load_texture_async(path, compressed, function(tex)
+        tex:reference()
         self.status_txt.text = self.chosen_tip .. "\nPreloaded " .. path .. " successfully"
         self.preloaded_assets = self.preloaded_assets + 1
     end)
@@ -77,7 +78,7 @@ function preloader:preload_texture(path, compressed)
 end
 
 function preloader:preload_sound(path)
-    flora.assets:load_sound_async(path, function()
+    flora.assets:load_sound_async(path, function(_)
         self.status_txt.text = self.chosen_tip .. "\nPreloaded " .. path .. " successfully"
         self.preloaded_assets = self.preloaded_assets + 1
     end)

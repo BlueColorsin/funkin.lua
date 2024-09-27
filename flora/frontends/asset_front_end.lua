@@ -55,7 +55,7 @@ function asset_front_end:load_texture_async(path, compressed, on_complete)
             self:cache_texture(path, tex)
 
             if on_complete then
-                on_complete()
+                on_complete(tex)
             end
         end)
     end
@@ -158,7 +158,7 @@ function asset_front_end:load_sound_async(path, on_complete)
             self:cache_sound(path, snd)
 
             if on_complete then
-                on_complete()
+                on_complete(snd)
             end
         end)
     end

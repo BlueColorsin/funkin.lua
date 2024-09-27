@@ -297,7 +297,7 @@ function flora.start()
             local cap_dt = (cap > 0) and 1 / cap or 0
 
             if love.timer then
-                dt = math.min(love.timer.step(), math.max(cap_dt, 0.0333333))
+                dt = math.min(love.timer.step(), math.max(cap_dt, 0.0416))
             end
             
             fps_timer = fps_timer + dt

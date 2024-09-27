@@ -259,8 +259,8 @@ function pointer:get_world_position(cam, vec)
 
     local scale = math.min(ww / gw, wh / gh) * cam.zoom
     return vec:set(
-        (self.screen_x - (ww - scale * gw) * 0.5) / scale,
-        (self.screen_y - (wh - scale * gh) * 0.5) / scale
+        ((self.screen_x - (ww - scale * gw) * 0.5) / scale) + cam.scroll.x,
+        ((self.screen_y - (wh - scale * gh) * 0.5) / scale) + cam.scroll.y
     )
 end
 
@@ -268,7 +268,11 @@ function pointer:overlaps(obj, cam)
     if not cam then
         cam = flora.camera
     end
-    return obj.visible and self.x >= obj.x and self.x <= obj.x + obj.width and self.y >= obj.y and self.y <= obj.y + obj.height
+    return (
+        obj.visible and
+        self.x >= obj.x and self.x <= obj.x + obj.width and
+        self.y >= obj.y and self.y <= obj.y + obj.height
+    )
 end
 
 -----------------------

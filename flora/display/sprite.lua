@@ -138,9 +138,12 @@ end
 --- Loads a given texture onto this sprite.
 --- 
 --- @param  texture  flora.assets.texture  The texture to load onto this sprite.
+--- 
+--- @return flora.display.sprite
 ---
 function sprite:load_texture(texture)
     self.frames = frame_collection.from_texture(flora.assets:load_texture(texture))
+    return self
 end
 
 ---

@@ -7,6 +7,8 @@
     - Animation Functionality [X]
     - Clip Rect
 
+- Substates
+
 - Make this publishable on shit other than Windows
 
 ## Funkin' Flora
