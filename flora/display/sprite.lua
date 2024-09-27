@@ -220,7 +220,6 @@ function sprite:dispose()
     if flora.config.debug_mode then
         flora.log:verbose("Unreferencing texture on sprite " .. tostring(self))
     end
-    self.texture:unreference()
     self.frames = nil
 
     if flora.config.debug_mode then
