@@ -7,8 +7,10 @@ local path = class:extend()
 -- https://github.com/HaxeFoundation/haxe/blob/4.3.1/std/haxe/io/Path.hx
 
 -- probs gonna be majorly untested, sorry :(
-
+    
 function path:constructor(p)
+    self._type = "path"
+
     self.dir = nil
     self.file = nil
     self.ext = nil

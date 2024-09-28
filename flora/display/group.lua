@@ -13,6 +13,8 @@ local group = basic:extend()
 function group:constructor()
     group.super.constructor(self)
 
+    self._type = "group"
+
     ---
     --- The members inside of this group.
     ---
@@ -71,10 +73,66 @@ function group:update(dt)
 end
 
 function group:draw()
+    local old_default_cameras = flora.cameras.default_cameras
+    if self._cameras then
+        flora.cameras.default_cameras = self._cameras
+    end
     for i = 1, self.length do
         local obj = self.members[i]
         if obj and obj.exists and obj.visible then
             obj:draw()
+        end
+    end
+    flora.cameras.default_cameras = old_default_cameras
+end
+
+function group:for_each(func, recurse)
+    for i = 1, self.length do
+        ---
+        --- @type flora.base.basic
+        ---
+        local basic = self.members[i]
+        if basic then
+            if recurse then
+                if basic._type == "group" or basic._type == "sprite_group" then
+                    group:for_each(func, recurse)
+                end
+            end
+            func(basic)
+        end
+    end
+end
+
+function group:for_each_alive(func, recurse)
+    for i = 1, self.length do
+        ---
+        --- @type flora.base.basic
+        ---
+        local basic = self.members[i]
+        if basic and basic.exists and basic.alive then
+            if recurse then
+                if basic._type == "group" or basic._type == "sprite_group" then
+                    group:for_each_alive(func, recurse)
+                end
+            end
+            func(basic)
+        end
+    end
+end
+
+function group:for_each_dead(func, recurse)
+    for i = 1, self.length do
+        ---
+        --- @type flora.base.basic
+        ---
+        local basic = self.members[i]
+        if basic and not basic.alive then
+            if recurse then
+                if basic._type == "group" or basic._type == "sprite_group" then
+                    group:for_each_dead(func, recurse)
+                end
+            end
+            func(basic)
         end
     end
 end

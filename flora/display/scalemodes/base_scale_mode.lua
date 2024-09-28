@@ -7,6 +7,8 @@ local vertical_align = require("flora.utils.vertical_align")
 local base_scale_mode = class:extend()
 
 function base_scale_mode:constructor()
+    self._type = "base_scale_mode"
+
     ---
     --- @type flora.math.vector2
     ---

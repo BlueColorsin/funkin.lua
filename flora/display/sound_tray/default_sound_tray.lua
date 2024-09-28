@@ -8,6 +8,8 @@ local default_sound_tray = base_sound_tray:extend()
 function default_sound_tray:constructor()
     default_sound_tray.super.constructor(self)
 
+    self._type = "default_sound_tray"
+
     self.color = color:new(color.black)
     self.color.a = 0.6
 

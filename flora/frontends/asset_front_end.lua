@@ -12,6 +12,8 @@ local asset_front_end = basic:extend()
 function asset_front_end:constructor()
     asset_front_end.super.constructor(self)
 
+    self._type = "asset_front_end"
+
     ---
     --- @protected
     ---

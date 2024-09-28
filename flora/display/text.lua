@@ -7,8 +7,6 @@ local font = require("flora.assets.font")
 ---
 local text = sprite:extend()
 
--- TODO: add shadow border type
-
 ---
 --- @param  x            number   The X coordinate of this text object on-screen.
 --- @param  y            number   The Y coordinate of this text object on-screen.
@@ -18,6 +16,8 @@ local text = sprite:extend()
 ---
 function text:constructor(x, y, field_width, txt, size)
     text.super.constructor(self, x, y)
+
+    self._type = "text"
 
     ---
     --- The font used to render this text object. (default is `flora/embed/fonts/nokiafc22.ttf`)

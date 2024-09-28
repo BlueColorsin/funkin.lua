@@ -30,6 +30,8 @@ end
 function conductor:constructor()
     conductor.super.constructor(self)
 
+    self._type = "conductor"
+
     self.visible = false
 
     ---

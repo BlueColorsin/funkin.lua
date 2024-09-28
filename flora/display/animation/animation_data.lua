@@ -10,6 +10,8 @@ local animation_data = class:extend()
 ---@param  loop    boolean
 ---
 function animation_data:constructor(name, frames, fps, loop)
+    self._type = "animation_data"
+
     self.name = name
     self.fps = fps ~= nil and fps or 30.0
     self.loop = loop

@@ -6,6 +6,8 @@ local music_beat_state = state:extend()
 function music_beat_state:constructor()
     music_beat_state.super.constructor(self)
 
+    self._type = "music_beat_state"
+
     ---
     --- @type funkin.plugins.conductor
     ---

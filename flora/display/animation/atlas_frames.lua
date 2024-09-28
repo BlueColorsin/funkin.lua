@@ -6,6 +6,12 @@ local frame_data       = require("flora.display.animation.frame_data")
 ---
 local atlas_frames = frame_collection:extend()
 
+function atlas_frames:constructor(texture, frames)
+	atlas_frames.super.constructor(self, texture, frames)
+	
+	self._type = "atlas_frames"
+end
+
 ---
 --- Returns a frame collection from a sparrow atlas.
 ---

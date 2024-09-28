@@ -14,6 +14,8 @@ tween_manager.global = nil
 function tween_manager:constructor()
     tween_manager.super.constructor(self)
 
+    self._type = "tween_manager"
+
     ---
     --- The list of all tweens attached to this manager.
     --- 

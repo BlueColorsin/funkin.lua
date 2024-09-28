@@ -8,6 +8,8 @@ local sound_front_end = basic:extend()
 function sound_front_end:constructor()
     sound_front_end.super.constructor(self)
 
+    self._type = "sound_front_end"
+
     ---
     --- The volume multiplier of ALL sounds. Ranges from 0 to 1. (default: `1.0`)
     ---

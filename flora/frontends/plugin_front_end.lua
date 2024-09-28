@@ -8,6 +8,8 @@ local plugin_front_end = basic:extend()
 function plugin_front_end:constructor()
     plugin_front_end.super.constructor(self)
 
+    self._type = "plugin_front_end"
+
     ---
     --- The list of all available plugins.
     --- 

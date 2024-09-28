@@ -8,6 +8,8 @@ local signal_front_end = basic:extend()
 function signal_front_end:constructor()
     signal_front_end.super.constructor(self)
 
+    self._type = "signal_front_end"
+
     ---
     --- @type flora.utils.signal
     ---

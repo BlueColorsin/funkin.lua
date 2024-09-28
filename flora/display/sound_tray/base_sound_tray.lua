@@ -6,6 +6,8 @@ local base_sound_tray = object2d:extend()
 function base_sound_tray:constructor()
     base_sound_tray.super.constructor(self)
 
+    self._type = "base_sound_tray"
+
     self.volume_up_keys = {keycode.equals, keycode.numpad_plus}
     self.volume_down_keys = {keycode.minus, keycode.numpad_minus}
     self.volume_mute_keys = {keycode.zero, keycode.numpad_0}

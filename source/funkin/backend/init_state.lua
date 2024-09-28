@@ -6,6 +6,8 @@ local init_state = state:extend()
 function init_state:ready()
     init_state.super.ready(self)
 
+    self._type = "init_state"
+
     ---
     --- @type funkin.assets.paths
     ---

@@ -16,6 +16,8 @@ preloader.tips = {
 function preloader:ready()
     preloader.super.ready(self)
 
+    self._type = "preloader"
+
     if not flora.save.data.volume then
         flora.sound.volume = 0.3
 

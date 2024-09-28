@@ -12,6 +12,8 @@ local basic = object:extend()
 function basic:constructor()
     basic.super.constructor(self)
 
+    self._type = "basic"
+
     ---
     --- Whether or not this object is allowed to update and draw,
     --- regardless of the `active` and `visible` flags.
@@ -94,7 +96,7 @@ end
 function basic:__get(var)
     if var == "cameras" then
         if not self._cameras then
-            return {flora.camera}
+            return flora.cameras.default_cameras
         end
         return self._cameras
     end

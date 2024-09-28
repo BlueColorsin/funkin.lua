@@ -1,4 +1,4 @@
----
+--- 
 --- @class flora.input.keyboard.keycode
 --- 
 --- All keycodes taken from the [Love2D Wiki](https://love2d.org/wiki/KeyConstant)

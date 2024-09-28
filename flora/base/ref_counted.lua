@@ -11,6 +11,8 @@ local ref_counted = object:extend()
 function ref_counted:constructor()
     ref_counted.super.constructor(self)
 
+    self._type = "ref_counted"
+
     self.references = 0
 end
 

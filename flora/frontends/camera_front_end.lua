@@ -8,8 +8,15 @@ local camera = require("flora.display.camera")
 ---
 local camera_front_end = basic:extend()
 
+---
+--- @type table
+---
+camera_front_end.default_cameras = {}
+
 function camera_front_end:constructor()
     camera_front_end.super.constructor(self)
+
+    self._type = "camera_front_end"
 
     ---
     --- The list of all available cameras.
@@ -45,21 +52,29 @@ function camera_front_end:reset(cam)
         cam = camera:new()
     end
     flora.camera = cam
+    camera_front_end.default_cameras = {cam}
+
     self.list:add(cam)
 end
 
-function camera_front_end:add(cam)
+function camera_front_end:add(cam, default)
     if table.contains(self.list.members, cam) then
         flora.log:warn("Camera was already added!")
         return
     end
+    if default then
+        table.insert(camera_front_end.default_cameras, cam)
+    end
     self.list:add(cam)
 end
 
-function camera_front_end:insert(pos, cam)
+function camera_front_end:insert(pos, cam, default)
     if table.contains(self.list.members, cam) then
         flora.log:warn("Camera was already added!")
         return
+    end
+    if default then
+        table.insert(camera_front_end.default_cameras, cam)
     end
     self.list:insert(pos, cam)
 end
@@ -68,6 +83,10 @@ function camera_front_end:remove(cam)
     if not table.contains(self.list.members, cam) then
         flora.log:warn("Cannot remove camera that was not yet added!")
         return
+    end
+    local default_idx = table.index_of(camera_front_end.default_cameras, cam)
+    if default_idx ~= 1 then
+        table.remove(camera_front_end.default_cameras, default_idx)
     end
     self.list:remove(cam)
 end

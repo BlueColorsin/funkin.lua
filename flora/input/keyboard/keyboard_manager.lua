@@ -8,6 +8,8 @@ local keycode = require("flora.input.keyboard.keycode")
 local keyboard_manager = class:extend()
 
 function keyboard_manager:constructor()
+    self._type = "keyboard_manager"
+
     ---
     --- A map of every key currently pressed.
     ---

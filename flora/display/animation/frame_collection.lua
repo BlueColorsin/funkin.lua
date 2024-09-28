@@ -11,6 +11,8 @@ local frame_collection = ref_counted:extend()
 function frame_collection:constructor(texture, frames)
     frame_collection.super.constructor(self)
 
+    self._type = "frame_collection"
+
     ---
     --- @type flora.assets.texture?
     ---
