@@ -14,7 +14,7 @@ flora = require("flora")
 -- found in conf.lua in the project root        --
 --------------------------------------------------
 
-flora.config.debug_mode = true
+-- flora.config.debug_mode = true
 flora.config.max_fps = 0
 
 flora.config.game_width = 1280

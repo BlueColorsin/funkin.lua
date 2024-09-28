@@ -367,7 +367,9 @@ function flora.start()
     if flora.config.debug_mode then
         flora.log:verbose("Requesting switch to initial state")
     end
+    flora.cameras:reset()
     flora._switch_state()
+
     flora.scale_mode:on_measure(love.graphics.getWidth(), love.graphics.getHeight())
 
     if flora.config.debug_mode then

@@ -81,7 +81,7 @@ function Class:is(T)
 	return false
 end
 
-function Class:__tostring() return self.__class end
+-- function Class:__tostring() return self.__class end
 
 function Class:new(...)
 	local obj = setmetatable({}, self)

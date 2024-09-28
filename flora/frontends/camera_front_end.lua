@@ -40,12 +40,18 @@ function camera_front_end:update(dt)
 end
 
 function camera_front_end:reset(cam)
-    for _, existing_cam in ipairs(self.list) do
-        if existing_cam ~= nil then
+    for i = 1, self.list.length do
+        ---
+        --- @type flora.display.camera
+        ---
+        local existing_cam = self.list.members[i]
+        if existing_cam then
             existing_cam:dispose()
-            self.list:remove(existing_cam)
         end
     end
+    self.list.members = {}
+    self.list.length = 0
+
     if not cam then
         cam = camera:new()
     end

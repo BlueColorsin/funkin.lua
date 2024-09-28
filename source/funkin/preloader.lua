@@ -116,6 +116,7 @@ function preloader:update(dt)
 
         flora.sound:play(paths.sound("select", "sounds/menus"))
         flora.camera:fade(color.black, 1.25, false, function()
+            -- flora.camera._fade_fx_alpha = 0.0
             timer:new():start(0.5, function(_)
                 local title_screen = flora.import("funkin.states.title_screen")
                 flora.switch_state(title_screen:new())
