@@ -20,8 +20,6 @@ sprite.default_antialiasing = false
 function sprite:constructor(x, y, texture)
     sprite.super.constructor(self, x, y)
 
-    self._type = "sprite"
-
     -- These four have to be nil for the getters to work
     self.frame_width = nil
     self.frame_height = nil

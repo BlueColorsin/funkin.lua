@@ -14,8 +14,6 @@ local frame_data = class:extend()
 --- @param  texture   flora.assets.texture  The texture to use for this frame.
 ---
 function frame_data:constructor(name, x, y, offset_x, offset_y, width, height, texture)
-    self._type = "frame_data"
-
 	self.name = name
 	self.x = x and x or 0.0
 	self.y = y and y or 0.0

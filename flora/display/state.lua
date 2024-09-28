@@ -10,8 +10,6 @@ local state = group:extend()
 
 function state:constructor()
     state.super.constructor(self)
-    
-    self._type = "state"
 
     ---
     --- Controls whether or not this state is allowed

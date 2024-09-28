@@ -13,9 +13,7 @@ timer_manager.global = nil
 
 function timer_manager:constructor()
     timer_manager.super.constructor(self)
-
-    self._type = "timer_manager"
-
+    
     ---
     --- The list of all timers attached to this manager.
     --- 

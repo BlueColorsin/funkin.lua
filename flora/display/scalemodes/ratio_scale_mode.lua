@@ -8,8 +8,6 @@ local ratio_scale_mode = base_scale_mode:extend()
 function ratio_scale_mode:constructor(fill_screen)
     ratio_scale_mode.super.constructor(self, fill_screen)
 
-    self._type = "ratio_scale_mode"
-
     self.fill_screen = fill_screen and fill_screen or false
 end
 

@@ -140,7 +140,7 @@ function sprite_group:_find_min_x_helper()
         local member = self.group.members[i]
         if member then
             local min_x = 0.0
-            if member._type == "sprite_group" then
+            if member:is(sprite_group) then
                 min_x = member:find_min_x()
             else
                 min_x = member.x
@@ -162,7 +162,7 @@ function sprite_group:_find_max_x_helper()
         local member = self.group.members[i]
         if member then
             local max_x = 0.0
-            if member._type == "sprite_group" then
+            if member:is(sprite_group) then
                 max_x = member:find_max_x()
             else
                 max_x = member.x + member.width
@@ -184,7 +184,7 @@ function sprite_group:_find_min_y_helper()
         local member = self.group.members[i]
         if member then
             local min_y = 0.0
-            if member._type == "sprite_group" then
+            if member:is(sprite_group) then
                 min_y = member:find_min_y()
             else
                 min_y = member.y
@@ -206,7 +206,7 @@ function sprite_group:_find_max_y_helper()
         local member = self.group.members[i]
         if member then
             local max_y = 0.0
-            if member._type == "sprite_group" then
+            if member:is(sprite_group) then
                 max_y = member:find_max_y()
             else
                 max_y = member.y + member.height

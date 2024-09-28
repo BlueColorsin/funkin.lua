@@ -8,8 +8,6 @@ local save = class:extend()
 save.dir = love.filesystem.getSaveDirectory()
 
 function save:constructor()
-    self._type = "save"
-
     ---
     --- The data belonging to this save data object.
     ---

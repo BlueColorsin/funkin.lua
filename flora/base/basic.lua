@@ -12,8 +12,6 @@ local basic = object:extend()
 function basic:constructor()
     basic.super.constructor(self)
 
-    self._type = "basic"
-
     ---
     --- Whether or not this object is allowed to update and draw,
     --- regardless of the `active` and `visible` flags.

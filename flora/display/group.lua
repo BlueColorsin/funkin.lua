@@ -13,8 +13,6 @@ local group = basic:extend()
 function group:constructor()
     group.super.constructor(self)
 
-    self._type = "group"
-
     ---
     --- The members inside of this group.
     ---
@@ -98,7 +96,7 @@ function group:for_each(func, recurse)
         local basic = self.members[i]
         if basic then
             if recurse then
-                if basic._type == "group" or basic._type == "sprite_group" then
+                if basic:is(group) or basic:is(sprite_group) then
                     group:for_each(func, recurse)
                 end
             end
@@ -115,7 +113,7 @@ function group:for_each_alive(func, recurse)
         local basic = self.members[i]
         if basic and basic.exists and basic.alive then
             if recurse then
-                if basic._type == "group" or basic._type == "sprite_group" then
+                if basic:is(group) or basic:is(sprite_group) then
                     group:for_each_alive(func, recurse)
                 end
             end
@@ -132,7 +130,7 @@ function group:for_each_dead(func, recurse)
         local basic = self.members[i]
         if basic and not basic.alive then
             if recurse then
-                if basic._type == "group" or basic._type == "sprite_group" then
+                if basic:is(group) or basic:is(sprite_group) then
                     group:for_each_dead(func, recurse)
                 end
             end

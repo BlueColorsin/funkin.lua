@@ -6,8 +6,6 @@ local animation_data = require("flora.display.animation.animation_data")
 local animation_controller = class:extend()
 
 function animation_controller:constructor(parent)
-    self._type = "animation_controller"
-
     ---
     --- The attached sprite that utilizes this
     --- animation player.

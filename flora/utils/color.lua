@@ -8,8 +8,6 @@ local bit = require("flora.utils.bit")
 local color = class:extend()
 
 function color:constructor(data)
-	self._type = "color"
-
 	---
 	--- The value of the red channel for this color.
 	--- Ranges from 0.0 to 1.0.

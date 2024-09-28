@@ -9,8 +9,6 @@ local path = class:extend()
 -- probs gonna be majorly untested, sorry :(
     
 function path:constructor(p)
-    self._type = "path"
-
     self.dir = nil
     self.file = nil
     self.ext = nil

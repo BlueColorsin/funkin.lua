@@ -7,8 +7,6 @@ local sound_tray = base_sound_tray:extend()
 
 function sound_tray:constructor()
     sound_tray.super.constructor(self)
-
-    self._type = "sound_tray"
     
     self.box = love.graphics.newImage(paths.image("volumebox", "images/volume"))
     self.box:setFilter("linear", "linear")

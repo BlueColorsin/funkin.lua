@@ -56,6 +56,7 @@ group = require("flora.display.group")
 object2d = require("flora.display.object2d")
 state = require("flora.display.state")
 sprite = require("flora.display.sprite")
+sprite_group = require("flora.display.sprite_group")
 text = require("flora.display.text")
 
 frame = require("flora.display.animation.frame_data")

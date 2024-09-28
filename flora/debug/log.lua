@@ -7,10 +7,6 @@ local log = class:extend()
 
 -- TODO: clean this shit up
 
-function log:constructor()
-    self._type = "log"
-end
-
 ---
 --- Logs something to the console and debugger.
 ---

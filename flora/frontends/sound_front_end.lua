@@ -8,8 +8,6 @@ local sound_front_end = basic:extend()
 function sound_front_end:constructor()
     sound_front_end.super.constructor(self)
 
-    self._type = "sound_front_end"
-
     ---
     --- The volume multiplier of ALL sounds. Ranges from 0 to 1. (default: `1.0`)
     ---
@@ -100,7 +98,9 @@ end
 --- @return flora.sound
 ---
 function sound_front_end:play_music(data, stream, volume, looping)
-    self.music:load(data, stream, volume, looping and looping or true)
+    self.music:load(data, stream)
+    self.music.volume = volume and volume or 1.0
+    self.music.looping = looping and looping or true
     self.music:play()
     return self.music
 end

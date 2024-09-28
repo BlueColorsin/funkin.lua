@@ -13,8 +13,6 @@ local timer = basic:extend()
 function timer:constructor(manager)
     timer.super.constructor(self)
 
-    self._type = "timer"
-
     self.visible = false
 
     ---

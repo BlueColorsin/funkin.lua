@@ -8,8 +8,6 @@ local sound = object:extend()
 function sound:constructor()
     sound.super.constructor(self)
 
-    self._type = "sound"
-
     ---
     --- The source used to play this sound.
     --- 

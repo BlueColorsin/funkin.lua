@@ -6,8 +6,6 @@
 local vector2 = class:extend()
 
 function vector2:constructor(x, y)
-    self._type = "vector2"
-
     self.x = x and x or 0.0
     self.y = y and y or 0.0
 end

@@ -17,8 +17,6 @@ local text = sprite:extend()
 function text:constructor(x, y, field_width, txt, size)
     text.super.constructor(self, x, y)
 
-    self._type = "text"
-
     ---
     --- The font used to render this text object. (default is `flora/embed/fonts/nokiafc22.ttf`)
     --- 

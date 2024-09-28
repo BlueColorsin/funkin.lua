@@ -11,8 +11,6 @@ local object2d = basic:extend()
 function object2d:constructor(x, y, width, height)
     object2d.super.constructor(self)
 
-    self._type = "object2d"
-
     ---
     --- The X coordinate of this object on-screen.
     ---

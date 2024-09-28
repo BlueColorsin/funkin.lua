@@ -4,8 +4,6 @@
 local signal = class:extend()
 
 function signal:constructor()
-	self._type = "signal"
-
     ---
     --- @protected
     ---

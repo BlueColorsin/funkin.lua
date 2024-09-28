@@ -9,7 +9,6 @@ local object = class:extend()
 --- Constructs a new object.
 ---
 function object:constructor()
-    self._type = "object"
 end
 
 ---

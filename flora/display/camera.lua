@@ -18,8 +18,6 @@ function camera:constructor(x, y, width, height)
         height and height or flora.config.game_height
     )
 
-    self._type = "camera"
-
     ---
     --- The background color of this camera.
     ---

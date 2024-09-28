@@ -16,8 +16,6 @@ camera_front_end.default_cameras = {}
 function camera_front_end:constructor()
     camera_front_end.super.constructor(self)
 
-    self._type = "camera_front_end"
-
     ---
     --- The list of all available cameras.
     --- 

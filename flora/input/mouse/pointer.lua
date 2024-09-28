@@ -6,8 +6,6 @@
 local pointer = class:extend()
 
 function pointer:constructor()
-    self._type = "pointer"
-
     ---
     --- The texture used to draw this mouse pointer to the screen.
     ---

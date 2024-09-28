@@ -14,8 +14,6 @@ local tween = basic:extend()
 function tween:constructor(manager)
     tween.super.constructor(self)
 
-    self._type = "tween"
-
     self.visible = false
 
     ---
