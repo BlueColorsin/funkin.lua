@@ -3,7 +3,7 @@ local animation_data = require("flora.display.animation.animation_data")
 ---
 --- @class flora.display.animation.animation_controller
 ---
-local animation_controller = class:extend()
+local animation_controller = class:extend("animation_controller", ...)
 
 function animation_controller:constructor(parent)
     ---

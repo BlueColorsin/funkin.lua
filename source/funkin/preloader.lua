@@ -6,7 +6,7 @@ local paths = flora.import("funkin.assets.paths")
 ---
 --- @class funkin.preloader : funkin.states.music_beat_state
 ---
-local preloader = music_beat_state:extend()
+local preloader = music_beat_state:extend("preloader", ...)
 preloader.tips = {
     "Press 7 in the main menu to access some useful editors!",
     "Press SHIFT while a transition is on-screen to skip it!",
@@ -54,7 +54,7 @@ function preloader:ready()
     self.status_txt = text:new()
     self.status_txt.text = self.chosen_tip .. "\nPreloading assets..."
     self.status_txt:set_format("assets/fonts/vcr.ttf", 18, color.white, "left")
-    self.status_txt:set_border_style("outline", color.black, 3)
+    self.status_txt:setBorderStyle("outline", color.black, 3)
     self.status_txt:set_position(30, flora.game_height - self.status_txt.height - 30)
     self:add(self.status_txt)
 

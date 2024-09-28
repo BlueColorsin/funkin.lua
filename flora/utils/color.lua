@@ -5,7 +5,7 @@ local bit = require("flora.utils.bit")
 ---
 --- @class flora.utils.color
 ---
-local color = class:extend()
+local color = class:extend("color", ...)
 
 function color:constructor(data)
 	---

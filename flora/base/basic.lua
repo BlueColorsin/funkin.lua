@@ -4,7 +4,7 @@
 --- A basic object class for flora, with a few flags
 --- such as: `exists`, `active`, and `visible`.
 ---
-local basic = object:extend()
+local basic = object:extend("basic", ...)
 
 ---
 --- Constructs a new basic object.
@@ -71,13 +71,6 @@ function basic:draw()
 end
 
 ---
---- Returns a string representation of this object.
----
-function basic:__tostring()
-    return "basic"
-end
-
----
 --- Removes this object and it's properties from memory.
 ---
 function basic:dispose()
@@ -91,25 +84,19 @@ end
 ---
 --- @protected
 ---
-function basic:__get(var)
-    if var == "cameras" then
-        if not self._cameras then
-            return flora.cameras.default_cameras
-        end
-        return self._cameras
+function basic:get_cameras()
+    if not self._cameras then
+        return flora.cameras.default_cameras
     end
-    return nil
+    return self._cameras
 end
 
 ---
 --- @protected
 ---
-function basic:__set(var, val)
-    if var == "cameras" then
-        self._cameras = val
-        return false
-    end
-    return true
+function basic:set_cameras(val)
+    self._cameras = val
+    return val
 end
 
 return basic

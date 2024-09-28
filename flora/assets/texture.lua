@@ -5,7 +5,7 @@
 ---
 --- @class flora.assets.texture : flora.base.ref_counted
 ---
-local texture = ref_counted:extend()
+local texture = ref_counted:extend("texture", ...)
 
 function texture:constructor(key, image)
     texture.super.constructor(self)
@@ -56,7 +56,7 @@ function texture:dispose()
 end
 
 function texture:__tostring()
-    return "texture (size: " .. self.width .. "x" .. self.height .. ", persist: " .. self.persist .. ")"
+    return "texture (size: " .. self.width .. "x" .. self.height .. ", references: " .. self.references .. ")"
 end
 
 return texture

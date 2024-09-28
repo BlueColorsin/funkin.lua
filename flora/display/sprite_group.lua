@@ -1,7 +1,7 @@
 ---
 --- @class flora.display.sprite_group : flora.display.sprite
 ---
-local sprite_group = sprite:extend()
+local sprite_group = sprite:extend("sprite_group", ...)
 
 function sprite_group:constructor(x, y)
     sprite_group.super.constructor(self, x, y)
@@ -222,111 +222,151 @@ end
 ---
 --- @protected
 ---
-function sprite_group:__get(var)
-    if var == "x" then
-        return self._x
-
-    elseif var == "y" then
-        return self._y
-
-    elseif var == "width" then
-        if self.group.length > 0 then
-            return self:_find_max_x_helper() - self:_find_min_x_helper()
-        end
-        return 0.0
-
-    elseif var == "height" then
-        if self.group.length > 0 then
-            return self:_find_max_y_helper() - self:_find_min_y_helper()
-        end
-        return 0.0
-
-    elseif var == "alpha" then
-        return self._alpha
-
-    elseif var == "members" then
-        return self.group.members
-
-    elseif var == "length" then
-        return self.group.length
-    end
-    return sprite_group.super.__get(self, var)
+function sprite_group:get_x()
+    return self._x
 end
 
 ---
 --- @protected
 ---
-function sprite_group:__set(var, val)
-    if var == "x" then
-        local old_x = self._x
-        self._x = val
+function sprite_group:get_y()
+    return self._y
+end
 
-        local delta = self._x - old_x
-        for i = 1, self.group.length do
-            ---
-            --- @type flora.display.object2d
-            ---
-            local obj = self.group.members[i]
-            if obj then
-                obj.x = obj.x + delta
-            end
-        end
-        return false
-
-    elseif var == "y" then
-        local old_y = self._y
-        self._y = val
-
-        local delta = self._y - old_y
-        for i = 1, self.group.length do
-            ---
-            --- @type flora.display.object2d
-            ---
-            local obj = self.group.members[i]
-            if obj then
-                obj.y = obj.y + delta
-            end
-        end
-        return false
-
-    elseif var == "alpha" then
-        self._alpha = val
-        for i = 1, self.group.length do
-            local obj = self.group.members[i]
-            if self.direct_alpha then
-                obj.alpha = val
-            else
-                if obj.alpha > 0 or val == 0 then
-                    obj.alpha = obj.alpha * val
-                else
-                    obj.alpha = 1 / val
-                end
-            end
-        end
-
-    elseif var == "frames" then
-        if val then -- doing this check to prevent a crash on sprite_group:dispose()
-            error("Cannot set frames on a sprite group")
-        end
-
-    elseif var == "angle" then
-        -- TODO: make this work properly
-        self._angle = val
-        for i = 1, #self.group.length do
-            local obj = self.group.members[i]
-            obj.angle = val
-        end
-        return false
-
-    elseif var == "tint" then
-        self._tint = color:new(val)
-        for i = 1, #self.group.length do
-            local obj = self.group.members[i]
-            obj.tint = color:new(val)
-        end
-        return false
+---
+--- @protected
+---
+function sprite_group:get_width()
+    if self.group.length > 0 then
+        return self:_find_max_x_helper() - self:_find_min_x_helper()
     end
-    return sprite_group.super.__set(self, var, val)
+    return 0.0
+end
+
+---
+--- @protected
+---
+function sprite_group:get_height()
+    if self.group.length > 0 then
+        return self:_find_max_y_helper() - self:_find_min_y_helper()
+    end
+    return 0.0
+end
+
+---
+--- @protected
+---
+function sprite_group:get_alpha()
+    return self._alpha
+end
+
+---
+--- @protected
+---
+function sprite_group:get_members()
+    return self.group.members
+end
+
+---
+--- @protected
+---
+function sprite_group:get_length()
+    return self.group.length
+end
+
+---
+--- @protected
+---
+function sprite_group:set_x(val)
+    local old_x = self._x
+    self._x = val
+
+    local delta = self._x - old_x
+    for i = 1, self.group.length do
+        ---
+        --- @type flora.display.object2d
+        ---
+        local obj = self.group.members[i]
+        if obj then
+            obj.x = obj.x + delta
+        end
+    end
+    return self._x
+end
+
+---
+--- @protected
+---
+function sprite_group:set_y(val)
+    local old_y = self._y
+    self._y = val
+
+    local delta = self._y - old_y
+    for i = 1, self.group.length do
+        ---
+        --- @type flora.display.object2d
+        ---
+        local obj = self.group.members[i]
+        if obj then
+            obj.y = obj.y + delta
+        end
+    end
+    return self._y
+end
+
+---
+--- @protected
+---
+function sprite_group:set_alpha(val)
+    self._alpha = val
+    for i = 1, self.group.length do
+        local obj = self.group.members[i]
+        if self.direct_alpha then
+            obj.alpha = val
+        else
+            if obj.alpha > 0 or val == 0 then
+                obj.alpha = obj.alpha * val
+            else
+                obj.alpha = 1 / val
+            end
+        end
+    end
+    return self._alpha
+end
+
+---
+--- @protected
+---
+function sprite_group:set_frames(val)
+    if val then -- doing this check to prevent a crash on sprite_group:dispose()
+        error("Cannot set frames on a sprite group")
+    end
+    return nil
+end
+
+---
+--- @protected
+---
+function sprite_group:set_angle(val)
+    -- TODO: make this work properly
+    self._angle = val
+    for i = 1, #self.group.length do
+        local obj = self.group.members[i]
+        obj.angle = val
+    end
+    return self._angle
+end
+
+---
+--- @protected
+---
+function sprite_group:set_tint(val)
+    self._tint = color:new(val)
+    for i = 1, #self.group.length do
+        local obj = self.group.members[i]
+        obj.tint = color:new(val)
+    end
+    return self._tint
 end
 
 return sprite_group

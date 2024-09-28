@@ -1,7 +1,7 @@
 ---
 --- @class flora.utils.signal 
 ---
-local signal = class:extend()
+local signal = class:extend("signal", ...)
 
 function signal:constructor()
     ---

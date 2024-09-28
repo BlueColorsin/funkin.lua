@@ -1,7 +1,7 @@
 ---
 --- @class flora.utils.path
 ---
-local path = class:extend()
+local path = class:extend("path", ...)
 
 -- sloppily ported over from haxe itself
 -- https://github.com/HaxeFoundation/haxe/blob/4.3.1/std/haxe/io/Path.hx

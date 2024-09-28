@@ -3,7 +3,7 @@
 ---
 --- A class for configuring Flora.
 ---
-local config = class:extend()
+local config = class:extend("config", ...)
 
 function config:constructor()
     self.source_folder = "source"

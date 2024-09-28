@@ -1,7 +1,7 @@
 ---
 --- @class flora.display.animation.animation_data
 ---
-local animation_data = class:extend()
+local animation_data = class:extend("animation_data", ...)
 
 ---
 ---@param  name    string

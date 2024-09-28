@@ -3,7 +3,7 @@
 ---
 --- @class flora.frontends.sound_front_end : flora.base.basic
 ---
-local sound_front_end = basic:extend()
+local sound_front_end = basic:extend("sound_front_end", ...)
 
 function sound_front_end:constructor()
     sound_front_end.super.constructor(self)

@@ -4,7 +4,7 @@
 ---
 --- @class flora.utils.save
 ---
-local save = class:extend()
+local save = class:extend("save", ...)
 save.dir = love.filesystem.getSaveDirectory()
 
 function save:constructor()

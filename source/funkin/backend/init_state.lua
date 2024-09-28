@@ -1,7 +1,7 @@
 ---
 --- @class funkin.states.init_state : flora.display.state
 ---
-local init_state = state:extend()
+local init_state = state:extend("init_state", ...)
 
 function init_state:ready()
     init_state.super.ready(self)
@@ -35,11 +35,11 @@ function init_state:ready()
     conductor.instance = conductor:new()
     flora.plugins:add(conductor.instance)
 
-    -- local preloader = flora.import("funkin.preloader")
-    -- flora.switch_state(preloader:new())
+    local preloader = flora.import("funkin.preloader")
+    flora.switch_state(preloader:new())
 
-    local title_screen = flora.import("funkin.states.title_screen")
-    flora.switch_state(title_screen:new())
+    -- local title_screen = flora.import("funkin.states.title_screen")
+    -- flora.switch_state(title_screen:new())
 end
 
 return init_state

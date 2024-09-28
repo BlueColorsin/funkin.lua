@@ -3,7 +3,7 @@ local tweener = require("flora.tweens.tweeners.tweener")
 ---
 --- @class flora.tweens.tweeners.property_tweener : flora.tweens.tweeners.tweener
 ---
-local property_tweener = tweener:extend()
+local property_tweener = tweener:extend("property_tweener", ...)
 
 function property_tweener:constructor(parent, object, property, initial_value, final_value, duration, ease)
     property_tweener.super.constructor(self, parent)
@@ -106,28 +106,26 @@ end
 ---
 --- @protected
 ---
-function property_tweener:__get(var)
-    if var == "duration" then
-        return self._duration + self.start_delay
-
-    elseif var == "progress" then
-        if self._elapsed_time <= self.start_delay then
-            return 0.0
-        end
-        return (self._elapsed_time - self.start_delay) / self._duration
-    end
-    return property_tweener.super.__get(self, var)
+function property_tweener:get_duration()
+    return self._duration + self.start_delay
 end
 
 ---
 --- @protected
 ---
-function property_tweener:__set(var, val)
-    if var == "duration" then
-        self._duration = val
-        return false
+function property_tweener:get_progress()
+    if self._elapsed_time <= self.start_delay then
+        return 0.0
     end
-    return true
+    return (self._elapsed_time - self.start_delay) / self._duration
+end
+
+---
+--- @protected
+---
+function property_tweener:set_duration(val)
+    self._duration = val
+    return self._duration
 end
 
 return property_tweener

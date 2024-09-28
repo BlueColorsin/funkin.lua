@@ -4,7 +4,7 @@
 ---
 --- @class flora.plugins.timer_manager : flora.base.basic
 ---
-local timer_manager = basic:extend()
+local timer_manager = basic:extend("timer_manager", ...)
 
 ---
 --- @type flora.plugins.timer_manager?
@@ -13,7 +13,7 @@ timer_manager.global = nil
 
 function timer_manager:constructor()
     timer_manager.super.constructor(self)
-    
+
     ---
     --- The list of all timers attached to this manager.
     --- 

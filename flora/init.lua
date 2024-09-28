@@ -94,6 +94,13 @@ local tween_manager = require("flora.plugins.tween_manager")
 ---
 flora = class:extend()
 
+--- 
+--- A helper object for configuring Flora.
+--- 
+--- @type flora.config
+--- 
+flora.config = require("flora.config"):new()
+
 ---
 --- Loads the given module, returns any value returned by the given module(`true` when `nil`).
 ---
@@ -113,13 +120,6 @@ flora = class:extend()
 flora.import = function(modname)
     return require(flora.config.source_folder .. "." .. modname)
 end
-
---- 
---- A helper object for configuring Flora.
---- 
---- @type flora.config
---- 
-flora.config = require("flora.config"):new()
 
 ---
 --- The name of the current operating system.

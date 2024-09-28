@@ -6,7 +6,7 @@ local property_tweener = require("flora.tweens.tweeners.property_tweener")
 ---
 --- @class flora.tweens.tween : flora.base.basic
 ---
-local tween = basic:extend()
+local tween = basic:extend("tween", ...)
 
 ---
 --- @param  manager  flora.plugins.tween_manager?  The manager that this tween belongs to. (default: `tween_manager.global`)
@@ -213,31 +213,32 @@ end
 ---
 --- @protected
 ---
-function tween:__get(var)
-    if var == "duration" then
-        if self._cached_duration then
-            return self._cached_duration + self.start_delay
-        end
-        local total = 0.0
-        for i = 1, self._tweeners.length do
-            ---
-            --- @type flora.tweens.tweeners.tweener
-            ---
-            local tweener = self._tweeners.members[i]
-            if tweener.duration > total then
-                total = tweener.duration
-            end
-        end
-        self._cached_duration = total
-        return total + self.start_delay
-
-    elseif var == "progress" then
-        if self._elapsed_time <= self.start_delay then
-            return 0.0
-        end
-        return (self._elapsed_time - self.start_delay) / (self.duration - self.start_delay)
+function tween:get_duration()
+    if self._cached_duration then
+        return self._cached_duration + self.start_delay
     end
-    return tween.super.__get(self, var)
+    local total = 0.0
+    for i = 1, self._tweeners.length do
+        ---
+        --- @type flora.tweens.tweeners.tweener
+        ---
+        local tweener = self._tweeners.members[i]
+        if tweener.duration > total then
+            total = tweener.duration
+        end
+    end
+    self._cached_duration = total
+    return total + self.start_delay
+end
+
+---
+--- @protected
+---
+function tween:get_progress()
+    if self._elapsed_time <= self.start_delay then
+        return 0.0
+    end
+    return (self._elapsed_time - self.start_delay) / (self.duration - self.start_delay)
 end
 
 return tween

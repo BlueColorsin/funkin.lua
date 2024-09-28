@@ -3,7 +3,7 @@
 --- 
 --- @class flora.sound : flora.base.object
 ---
-local sound = object:extend()
+local sound = object:extend("sound", ...)
 
 function sound:constructor()
     sound.super.constructor(self)
@@ -234,65 +234,92 @@ end
 ---
 --- @protected
 ---
-function sound:__get(var)
-    if var == "time" then
-        if self.source then
-            return self.source:tell("seconds")
-        end
-        return 0.0
-
-    elseif var == "length" then
-        if self.source then
-            return self.source:getDuration("seconds")
-        end
-        return 0.0
-        
-    elseif var == "volume" then
-        return self._volume
-
-    elseif var == "pitch" then  
-        return self._pitch
-
-    elseif var == "playing" then
-        return self._playing
-
-    elseif var == "looping" then
-        if self.source then
-            return self.source:isLooping()
-        end
-        return false
+function sound:get_time()
+    if self.source then
+        return self.source:tell("seconds")
     end
-    return nil
+    return 0.0
 end
 
 ---
 --- @protected
 ---
-function sound:__set(var, val)
-    if var == "time" then
-        self.source:seek(val, "seconds")
-
-    elseif var == "volume" then
-        self._volume = math.clamp(val, 0.0, 1.0)
-        if self.source then
-            self.source:setVolume(math.clamp(self.volume * flora.sound.volume, 0.0, 1.0))
-        end
-        return false
-
-    elseif var == "pitch" then
-        self._pitch = val
-        if self.source then
-            self.source:setPitch(self._pitch)
-        end
-        return false
-
-    elseif var == "looping" then
-        if self.source then
-            self.source:setLooping(val)
-        end
-        return false
+function sound:get_length()
+    if self.source then
+        return self.source:getDuration("seconds")
     end
-    return true
+    return 0.0
+end
+        
+---
+--- @protected
+---
+function sound:get_volume()
+    return self._volume
+end
+
+---
+--- @protected
+---
+function sound:get_pitch()
+    return self._pitch
+end
+
+---
+--- @protected
+---
+function sound:get_playing()
+    return self._playing
+end
+
+---
+--- @protected
+---
+function sound:get_looping()
+    if self.source then
+        return self.source:isLooping()
+    end
+    return false
+end
+
+---
+--- @protected
+---
+function sound:set_time(val)
+    self.source:seek(val, "seconds")
+    return val
+end
+
+---
+--- @protected
+---
+function sound:set_volume(val)
+    self._volume = math.clamp(val, 0.0, 1.0)
+    if self.source then
+        self.source:setVolume(math.clamp(self.volume * flora.sound.volume, 0.0, 1.0))
+    end
+    return self._volume
+end
+
+---
+--- @protected
+---
+function sound:set_pitch(val)
+    self._pitch = val
+    if self.source then
+        self.source:setPitch(self._pitch)
+    end
+    return self._pitch
+end
+
+---
+--- @protected
+---
+function sound:set_looping(val)
+    if self.source then
+        self.source:setLooping(val)
+    end
+    return val
 end
 
 return sound

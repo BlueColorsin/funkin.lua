@@ -3,7 +3,7 @@ local base_sound_tray = require("flora.display.sound_tray.base_sound_tray")
 ---
 --- @class funkin.ui.sound_tray : flora.display.sound_tray.base_sound_tray
 ---
-local sound_tray = base_sound_tray:extend()
+local sound_tray = base_sound_tray:extend("sound_tray", ...)
 
 function sound_tray:constructor()
     sound_tray.super.constructor(self)

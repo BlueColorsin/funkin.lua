@@ -3,7 +3,7 @@
 ---
 --- @class flora.tweens.tweeners.tweener : flora.base.basic
 ---
-local tweener = basic:extend()
+local tweener = basic:extend("tweener", ...)
 
 function tweener:constructor(parent)
     tweener.super.constructor(self)

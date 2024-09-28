@@ -3,7 +3,7 @@
 --- 
 --- @class flora.input.mouse.pointer
 --- 
-local pointer = class:extend()
+local pointer = class:extend("pointer", ...)
 
 function pointer:constructor()
     ---
@@ -138,8 +138,15 @@ function pointer:constructor()
 
     ---
     --- @protected
+    --- @type flora.math.vector2
     ---
     self._vec = vector2:new()
+
+    ---
+    --- @protected
+    --- @type flora.assets.texture
+    ---
+    self._texture = nil
 
     ---
     --- Loads default cursor
@@ -279,16 +286,25 @@ end
 --- [ Private API ] ---
 -----------------------
 
-function pointer:__set(var, val)
-    if var == "texture" then
-        if self.texture then
-            self.texture:unreference()
-        end
-        if val then
-            val:reference()
-        end
+---
+--- @protected
+---
+function pointer:get_texture()
+    return self._texture
+end
+
+---
+--- @protected
+---
+function pointer:set_texture(val)
+    if self._texture then
+        self._texture:unreference()
     end
-    return true
+    if val then
+        val:reference()
+    end
+    self._texture = val
+    return self._texture
 end
 
 return pointer

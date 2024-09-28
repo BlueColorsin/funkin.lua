@@ -3,7 +3,7 @@
 ---
 --- A basic class for storing a 2D vector.
 ---
-local vector2 = class:extend()
+local vector2 = class:extend("vector2", ...)
 
 function vector2:constructor(x, y)
     self.x = x and x or 0.0

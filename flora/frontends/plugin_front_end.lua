@@ -3,7 +3,7 @@
 ---
 --- @class flora.frontends.plugin_front_end : flora.base.basic
 ---
-local plugin_front_end = basic:extend()
+local plugin_front_end = basic:extend("plugin_front_end", ...)
 
 function plugin_front_end:constructor()
     plugin_front_end.super.constructor(self)

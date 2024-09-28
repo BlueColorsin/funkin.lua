@@ -5,7 +5,7 @@ local font = require("flora.assets.font")
 ---
 --- @class flora.display.text : flora.display.sprite
 ---
-local text = sprite:extend()
+local text = sprite:extend("text", ...)
 
 ---
 --- @param  x            number   The X coordinate of this text object on-screen.
@@ -224,7 +224,7 @@ end
 --- @param  size     number?                    The size of the border applied to this text. (default: `1`)
 --- @param  quality  number?                    Controls how many iterations to use when drawing text border. (default: `1`)
 ---
-function text:set_border_style(style, color, size, quality)
+function text:setBorderStyle(style, color, size, quality)
     self.border_style = style
 
     ---
@@ -377,114 +377,194 @@ function text:_regen_texture()
     quad:setViewport(0, 0, tex.width, tex.height, tex.width, tex.height)
 end
 
-function text:__get(var)
-    if var == "font" then
-        return self._font.path
-    
-    elseif var == "size" then
-        return self._size
-    
-    elseif var == "field_width" then
-        return self._field_width
-    
-    elseif var == "alignment" then
-        return self._alignment
-
-    elseif var == "color" then
-        return self._color
-    
-    elseif var == "text" then
-        return self._text
-
-    elseif var == "border_size" then
-        return self._border_size
-    
-    elseif var == "border_color" then
-        return self._border_color
-
-    elseif var == "border_quality" then
-        return self._border_quality
-
-    elseif var == "border_style" then
-        return self._border_style
-
-    elseif var == "width" then
-        self:_regen_texture()
-        return text.super.__get(self, var)
-
-    elseif var == "height" then
-        self:_regen_texture()
-        return text.super.__get(self, var)
-    end
-    return text.super.__get(self, var)
+---
+--- @protected
+---
+function text:get_font()
+    return self._font.path
 end
 
-function text:__set(var, val)
-    if var == "font" then
-        if self._font then
-            self._font:unreference()
-        end
-        if self._text_obj then
-            self._text_obj:release()
-        end
-        self._font = flora.assets:load_font(val)
-        self._font:reference()
+---
+--- @protected
+---
+function text:get_size()
+    return self._size
+end
 
-        self._font_data = self._font:get_data_for_size(self._size)
-        self._text_obj = love.graphics.newTextBatch(self._font_data)
-        
-        self._dirty = true
-        return false
-        
-    elseif var == "size" then
-        self._size = val
-        self._font_data = self._font:get_data_for_size(self._size)
+---
+--- @protected
+---
+function text:get_field_width()
+    return self._field_width
+end
 
-        self._text_obj:setFont(self._font_data)
-        self._dirty = true
-        return false
-        
-    elseif var == "field_width" then
-        self._field_width = val
-        self._dirty = true
-        return false
+---
+--- @protected
+---
+function text:get_alignment()
+    return self._alignment
+end
 
-    elseif var == "alignment" then
-        self._alignment = val
-        self._dirty = true
-        return false
+---
+--- @protected
+---
+function text:get_color()
+    return self._color
+end
 
-    elseif var == "color" then
-        self._color = color:new(val)
-        self._dirty = true
-        return false
-        
-    elseif var == "text" then
-        self._dirty = self._text ~= val
-        self._text = val
-        return false
+---
+--- @protected
+---
+function text:get_text()
+    return self._text
+end
 
-    elseif var == "border_size" then
-        self._border_size = val
-        self._dirty = true
-        return false
-        
-    elseif var == "border_color" then
-        self._border_color = color:new(val)
-        self._dirty = true
-        return false
+---
+--- @protected
+---
+function text:get_border_size()
+    return self._border_size
+end
 
-    elseif var == "border_quality" then
-        self._border_quality = val
-        self._dirty = true
-        return false
+---
+--- @protected
+---
+function text:get_border_color()
+    return self._border_color
+end
 
-    elseif var == "border_style" then
-        self._border_style = val
-        self._dirty = true
-        return false
+---
+--- @protected
+---
+function text:get_border_quality()
+    return self._border_quality
+end
+
+---
+--- @protected
+---
+function text:get_border_style()
+    return self._border_style
+end
+
+---
+--- @protected
+---
+function text:get_width()
+    self:_regen_texture()
+    return text.super.get_width(self)
+end
+
+---
+--- @protected
+---
+function text:get_height()
+    self:_regen_texture()
+    return text.super.get_height(self)
+end
+
+---
+--- @protected
+---
+function text:set_font(val)
+    if self._font then
+        self._font:unreference()
     end
-    return text.super.__set(self, var, val)
+    if self._text_obj then
+        self._text_obj:release()
+    end
+    self._font = flora.assets:load_font(val)
+    self._font:reference()
+
+    self._font_data = self._font:get_data_for_size(self._size)
+    self._text_obj = love.graphics.newTextBatch(self._font_data)
+        
+    self._dirty = true
+    return self._font.path
+end
+
+---
+--- @protected
+---
+function text:set_size(val)
+    self._size = val
+    self._font_data = self._font:get_data_for_size(self._size)
+
+    self._text_obj:setFont(self._font_data)
+    self._dirty = true
+    return self._size
+end
+
+---
+--- @protected
+---
+function text:set_field_width(val)
+    self._field_width = val
+    self._dirty = true
+    return self._field_width
+end
+
+---
+--- @protected
+---
+function text:set_alignment(val)
+    self._alignment = val
+    self._dirty = true
+    return self._alignment
+end
+
+---
+--- @protected
+---
+function text:set_color(val)
+    self._color = color:new(val)
+    self._dirty = true
+    return self._color
+end
+
+---
+--- @protected
+---
+function text:set_text(val)
+    self._dirty = self._text ~= val
+    self._text = val
+    return self._text
+end
+
+---
+--- @protected
+---
+function text:set_border_size(val)
+    self._border_size = val
+    self._dirty = true
+    return self._border_size
+end
+
+---
+--- @protected
+---
+function text:set_border_color(val)
+    self._border_color = color:new(val)
+    self._dirty = true
+    return self._border_color
+end
+
+---
+--- @protected
+---
+function text:set_border_quality(val)
+    self._border_quality = val
+    self._dirty = true
+    return self._border_quality
+end
+
+---
+--- @protected
+---
+function text:set_border_style(val)
+    self._border_style = val
+    self._dirty = true
+    return self._border_style
 end
 
 return text

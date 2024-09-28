@@ -1,7 +1,7 @@
 ---
 --- @class flora.display.animation.frame_data
 ---
-local frame_data = class:extend()
+local frame_data = class:extend("frame_data", ...)
 
 ---
 --- @param  name      string                The name of this frame.
@@ -30,8 +30,7 @@ function frame_data:constructor(name, x, y, offset_x, offset_y, width, height, t
     --- @type flora.assets.texture
     ---
     self.texture = texture
-    self.texture:reference()
-
+    
     ---
     --- @type love.Quad
     ---

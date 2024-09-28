@@ -6,7 +6,7 @@ local group = require("flora.display.group")
 --- 
 --- @class flora.display.state : flora.display.group
 --- 
-local state = group:extend()
+local state = group:extend("state", ...)
 
 function state:constructor()
     state.super.constructor(self)

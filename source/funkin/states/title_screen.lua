@@ -1,7 +1,7 @@
 ---
 --- @class funkin.states.title_screen : funkin.states.music_beat_state
 ---
-local title_screen = music_beat_state:extend()
+local title_screen = music_beat_state:extend("title_screen", ...)
 
 function title_screen:ready()
     title_screen.super.ready(self)
@@ -20,7 +20,7 @@ function title_screen:ready()
     --- @type flora.display.group
     ---
     self.title_group = group:new()
-    self.title_group.visible = false
+    -- self.title_group.visible = false
     self:add(self.title_group)
 
     ---

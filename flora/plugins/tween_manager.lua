@@ -4,7 +4,7 @@
 ---
 --- @class flora.plugins.tween_manager : flora.base.basic
 ---
-local tween_manager = basic:extend()
+local tween_manager = basic:extend("tween_manager", ...)
 
 ---
 --- @type flora.plugins.tween_manager?

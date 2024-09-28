@@ -3,7 +3,7 @@
 ---
 --- A base class for reference-counted objects.
 ---
-local ref_counted = object:extend()
+local ref_counted = object:extend("ref_counted", ...)
 
 ---
 --- Constructs a new reference-counted object.
@@ -11,7 +11,9 @@ local ref_counted = object:extend()
 function ref_counted:constructor()
     ref_counted.super.constructor(self)
 
-    self.references = 0
+    self.references = nil
+    
+    self._references = 0
 end
 
 ---
@@ -43,16 +45,25 @@ end
 --- [ Private API ] ---
 -----------------------
 
-function ref_counted:__set(var, val)
-    if var == "references" then
-        if val <= 0 then
-            self:dispose()
-            if flora.config.debug_mode then
-                flora.log:print("A ref_counted object has no references, disposing!")
-            end
+---
+--- @protected
+---
+function ref_counted:get_references()
+    return self._references
+end
+
+---
+--- @protected
+---
+function ref_counted:set_references(val)
+    self._references = val
+    if self._references <= 0 then
+        self:dispose()
+        if flora.config.debug_mode then
+            flora.log:print("A ref_counted object has no references, disposing!")
         end
     end
-    return true
+    return self._references
 end
 
 return ref_counted

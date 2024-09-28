@@ -3,7 +3,7 @@
 ---
 --- A class for logging to the console and debug menu.
 ---
-local log = class:extend()
+local log = class:extend("log", ...)
 
 -- TODO: clean this shit up
 

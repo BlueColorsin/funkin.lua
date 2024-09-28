@@ -1,7 +1,7 @@
 ---
 --- @class funkin.plugins.conductor : flora.base.basic
 ---
-local conductor = basic:extend()
+local conductor = basic:extend("conductor", ...)
 
 ---
 --- The main global instance of the conductor.
@@ -416,28 +416,30 @@ end
 ---
 --- @protected
 ---
-function conductor:__get(var)
-    if var == "time" then
-        return self.raw_time - (self.allow_song_offset and (settings.data.song_offset * 0.001) or 0.0)
-    
-    elseif var == "crotchet" then
-        return 60.0 / self.bpm
-
-    elseif var == "step_crotchet" then
-        return (60.0 / self.bpm) / self.time_signature[2]
-    end
-    return conductor.super.__get(self, var)
+function conductor:get_time()
+    return self.raw_time
 end
 
 ---
 --- @protected
 ---
-function conductor:__set(var, val)
-    if var == "time" then
-        self.raw_time = val
-        return false
-    end
-    return conductor.super.__set(self, var, val)
+function conductor:get_crotchet()
+    return 60.0 / self.bpm
+end
+
+---
+--- @protected
+---
+function conductor:get_step_crotchet()
+    return (60.0 / self.bpm) / self.time_signature[2]
+end
+
+---
+--- @protected
+---
+function conductor:set_time(val)
+    self.raw_time = val
+    return self.raw_time
 end
 
 return conductor

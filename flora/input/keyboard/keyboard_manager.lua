@@ -5,7 +5,7 @@ local keycode = require("flora.input.keyboard.keycode")
 ---
 --- @class flora.input.keyboard.keyboard_manager
 ---
-local keyboard_manager = class:extend()
+local keyboard_manager = class:extend("keyboard_manager", ...)
 
 function keyboard_manager:constructor()
     ---

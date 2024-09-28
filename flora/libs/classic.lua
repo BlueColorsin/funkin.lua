@@ -1,7 +1,5 @@
----
----@diagnostic disable: inject-field
----
-
+--
+-- https://github.com/rxi/classic
 --
 -- classic
 --
@@ -10,90 +8,87 @@
 -- This module is free software; you can redistribute it and/or modify it under
 -- the terms of the MIT license. See LICENSE for details.
 --
+-- Modified for FNF-Aster purposes, ralty
+-- Modified syntax slightly, swordcube
+--
 
 ---
 --- @class flora.libs.class
 ---
-local class = {}
-class.__index = class
+local Class = {__class = "Class"}
 
-function class:constructor(...)
+function Class:constructor(...) end
+
+function Class:__index(k)
+	local cls = getmetatable(self)
+	local getterName = "get_" .. k
+	if k ~= getterName and cls[getterName] then
+		return cls[getterName](self)
+	end
+	return cls[k]
 end
 
-function class:__get(var)
-    return nil
+function Class:__newindex(k, v)
+	if self.__initializing then
+		rawset(self, k, v)
+		return
+	end
+	local cls = getmetatable(self)
+	local setterName = "set_" .. k
+	if cls[setterName] then
+		return cls[setterName](self, v)
+	end
+	return rawset(self, k, v)
 end
 
-function class:__set(var, val)
-    return true
+function Class:extend(type, path)
+	local cls = {}
+
+	for k, v in pairs(self) do
+		if k:sub(1, 2) == "__" then cls[k] = v end
+	end
+
+	cls.__class = type or ("Unknown(" .. self.__class .. ")")
+	cls.__path = path
+	cls.super = self
+	setmetatable(cls, self)
+
+	return cls
 end
 
-function class:extend()
-    local cls = {}
-    for k, v in pairs(self) do
-        if k:find("__") == 1 then
-            cls[k] = v
-        end
-    end
-    cls.__index = cls
-    cls.super = self
-    setmetatable(cls, self)
-    return cls
+function Class:implement(...)
+	for _, cls in pairs({...}) do
+		for k, v in pairs(cls) do
+			if self[k] == nil and type(v) == "function" and k ~= "constructor" and k ~= "new" and k:sub(1, 2) ~= "__" then
+				self[k] = v
+			end
+		end
+	end
 end
 
-function class:implement(...)
-    for _, cls in pairs({ ... }) do
-        for k, v in pairs(cls) do
-            if self[k] == nil and type(v) == "function" then
-                self[k] = v
-            end
-        end
-    end
+function Class:exclude(...)
+	for i = 1, select("#", ...) do
+		self[select(i, ...)] = nil
+	end
 end
 
-function class:is(T)
-    local mt = getmetatable(self)
-    while mt do
-        if mt == T then
-            return true
-        end
-        mt = getmetatable(mt)
-    end
-    return false
+function Class:is(T)
+	local mt = self
+	repeat
+		mt = getmetatable(mt)
+		if mt == T then return true end
+	until mt == nil
+	return false
 end
 
-function class:__tostring()
-    return "class"
+function Class:__tostring() return self.__class end
+
+function Class:new(...)
+	local obj = setmetatable({}, self)
+	obj.__initializing = true
+	obj:constructor(...)
+	obj.__initializing = false
+	return obj
 end
 
-function class:new(...)
-    local obj = setmetatable({}, self)
-    local og = getmetatable(obj)
-    setmetatable(obj, {
-        __index = function(object, property)
-            if property ~= "__get" then
-                local pain = object:__get(property)
-                if pain ~= nil then
-                    return pain
-                end
-            end
-            return og[property]
-        end,
-        __newindex = function(object, property, value)
-            if object.__initializing then
-                rawset(object, property, value)
-                return
-            end
-            local doRawSet = object:__set(property, value)
-            if doRawSet then
-                rawset(object, property, value)
-            end
-        end
-    })
-    obj.__initializing = true
-    obj:constructor(...)
-    obj.__initializing = false
-    return obj
-end
-
-return class
+return Class

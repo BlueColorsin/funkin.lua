@@ -5,7 +5,7 @@
 --- 
 --- @class flora.display.group : flora.base.basic
 --- 
-local group = basic:extend()
+local group = basic:extend("group", ...)
 
 ---
 --- Constructs a new group.

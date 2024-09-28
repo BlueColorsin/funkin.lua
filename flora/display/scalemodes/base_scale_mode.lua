@@ -4,7 +4,7 @@ local vertical_align = require("flora.utils.vertical_align")
 ---
 --- @class flora.display.scalemodes.base_scale_mode
 ---
-local base_scale_mode = class:extend()
+local base_scale_mode = class:extend("base_scale_mode", ...)
 
 function base_scale_mode:constructor()
     ---

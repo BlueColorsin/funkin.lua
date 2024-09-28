@@ -5,7 +5,7 @@
 ---
 --- @class flora.assets.font : flora.base.ref_counted
 ---
-local font = ref_counted:extend()
+local font = ref_counted:extend("font", ...)
 font.oversampling = 2
 
 function font:constructor(path)

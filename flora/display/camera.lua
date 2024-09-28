@@ -6,7 +6,7 @@ local object2d = require("flora.display.object2d")
 --- 
 --- @class flora.display.camera : flora.display.object2d
 --- 
-local camera = object2d:extend()
+local camera = object2d:extend("camera", ...)
 
 ---
 --- Constructs a new camera.
@@ -243,8 +243,8 @@ function camera:draw_rect(x, y, width, height, angle, origin_x, origin_y, color)
     love.graphics.setColor(color.r, color.g, color.b, color.a)
 
     love.graphics.push()
-    love.graphics.rotate(math.rad(angle))
     love.graphics.translate(-origin_x, -origin_y)
+    love.graphics.rotate(math.rad(angle))
 
     self:attach(false)
     love.graphics.rectangle("fill", x, y, width, height)
@@ -391,29 +391,31 @@ end
 ---
 --- @protected
 ---
-function camera:__get(var)
-    if var == "bg_color" then
-        return self._bg_color
-
-    elseif var == "zoom" then
-        return self._zoom
-    end
-    return camera.super.__get(self, var)
+function camera:get_bg_color()
+    return self._bg_color
 end
 
 ---
 --- @protected
 ---
-function camera:__set(var, val)
-    if var == "bg_color" then
-        self._bg_color = color:new(val)
-        return false
-        
-    elseif var == "zoom" then
-        self._zoom = val
-        return false
-    end
-    return true
+function camera:get_zoom()
+    return self._zoom
+end
+
+---
+--- @protected
+---
+function camera:set_bg_color(val)
+    self._bg_color = color:new(val)
+    return self._bg_color
+end
+
+---
+--- @protected
+---
+function camera:set_zoom(val)
+    self._zoom = val
+    return self._zoom
 end
 
 return camera

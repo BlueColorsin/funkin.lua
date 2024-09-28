@@ -5,7 +5,7 @@ local timer_manager = require("flora.plugins.timer_manager")
 ---
 --- @class flora.utils.timer : flora.base.basic
 ---
-local timer = basic:extend()
+local timer = basic:extend("timer", ...)
 
 ---
 --- @param  manager  flora.plugins.timer_manager?  The manager that this timer belongs to. (default: `timer_manager.global`)

@@ -3,7 +3,7 @@
 ---
 --- @class flora.frontends.signal_front_end : flora.base.basic
 ---
-local signal_front_end = basic:extend()
+local signal_front_end = basic:extend("signal_front_end", ...)
 
 function signal_front_end:constructor()
     signal_front_end.super.constructor(self)

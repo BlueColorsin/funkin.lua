@@ -7,7 +7,7 @@ local animation_controller = require("flora.display.animation.animation_controll
 --- 
 --- @class flora.display.sprite : flora.display.object2d
 --- 
-local sprite = object2d:extend()
+local sprite = object2d:extend("sprite", ...)
 sprite.default_antialiasing = false
 
 ---
@@ -241,74 +241,104 @@ end
 ---
 --- @protected
 ---
-function sprite:__get(var)
-    if var == "frames" then
-        return self._frames
-    
-    elseif var == "texture" then
-        if self._frames then
-            return self._frames.texture
-        end
-        return nil
-
-    elseif var == "angle" then
-        return self._angle
-
-    elseif var == "frame_width" then
-        if self.animation.cur_anim then
-            local first_frame = self.animation.cur_anim.frames[1]
-            return first_frame.width
-        end
-        return self.frame and self.frame.width or 0.0
-    
-    elseif var == "width" then
-        return self.frame_width * math.abs(self.scale.x)
-
-    elseif var == "frame_height" then
-        if self.animation.cur_anim then
-            local first_frame = self.animation.cur_anim.frames[1]
-            return first_frame.height
-        end
-        return self.frame and self.frame.height or 0.0
-    
-    elseif var == "height" then
-        return self.frame_height * math.abs(self.scale.y)
-
-    elseif var == "tint" then
-        return self._tint
-    end
-    return sprite.super.__get(self, var)
+function sprite:get_frames()
+    return self._frames
 end
 
 ---
 --- @protected
 ---
-function sprite:__set(var, val)
-    if var == "frames" then
-        if self._frames then
-            self._frames:unreference()
-        end
-        self._frames = val
-        if self._frames then
-            self._frames:reference()
-            self.frame = self._frames.frames[1]
-        end
-        return false
-
-    elseif var == "angle" then
-        self._angle = val
-
-        local radian_angle = math.rad(val)
-        self._cos_angle = math.cos(radian_angle)
-        self._sin_angle = math.sin(radian_angle)
-
-        return false
-
-    elseif var == "tint" then
-        self._tint = color:new(val)
-        return false
+function sprite:get_texture()
+    if self._frames then
+        return self._frames.texture
     end
-    return true
+    return nil
+end
+
+---
+--- @protected
+---
+function sprite:get_angle()
+    return self._angle
+end
+
+---
+--- @protected
+---
+function sprite:get_frame_width()
+    if self.animation.cur_anim then
+        local first_frame = self.animation.cur_anim.frames[1]
+        return first_frame.width
+    end
+    return self.frame and self.frame.width or 0.0
+end
+    
+---
+--- @protected
+---
+function sprite:get_width()
+    return self.frame_width * math.abs(self.scale.x)
+end
+
+---
+--- @protected
+---
+function sprite:get_frame_height()
+    if self.animation.cur_anim then
+        local first_frame = self.animation.cur_anim.frames[1]
+        return first_frame.height
+    end
+    return self.frame and self.frame.height or 0.0
+end
+    
+---
+--- @protected
+---
+function sprite:get_height()
+    return self.frame_height * math.abs(self.scale.y)
+end
+
+---
+--- @protected
+---
+function sprite:get_tint()
+    return self._tint
+end
+
+---
+--- @protected
+---
+function sprite:set_frames(val)
+    if self._frames then
+        self._frames:unreference()
+    end
+    if val then
+        val:reference()
+        self.frame = val.frames[1]
+    end
+    self._frames = val
+    return self._frames
+end
+
+---
+--- @protected
+---
+function sprite:set_angle(val)
+    self._angle = val
+
+    local radian_angle = math.rad(val)
+    self._cos_angle = math.cos(radian_angle)
+    self._sin_angle = math.sin(radian_angle)
+
+    return self._angle
+end
+
+---
+--- @protected
+---
+function sprite:set_tint(val)
+    self._tint = color:new(val)
+    return self._tint
 end
 
 return sprite

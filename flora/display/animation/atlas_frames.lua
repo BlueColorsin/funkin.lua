@@ -4,7 +4,7 @@ local frame_data       = require("flora.display.animation.frame_data")
 ---
 --- @class flora.display.animation.atlas_frames : flora.display.animation.frame_collection
 ---
-local atlas_frames = frame_collection:extend()
+local atlas_frames = frame_collection:extend("atlas_frames", ...)
 
 ---
 --- Returns a frame collection from a sparrow atlas.

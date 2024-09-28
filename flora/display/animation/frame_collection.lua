@@ -3,7 +3,7 @@ local frame_data = require("flora.display.animation.frame_data")
 ---
 --- @class flora.display.animation.frame_collection : flora.base.ref_counted
 ---
-local frame_collection = ref_counted:extend()
+local frame_collection = ref_counted:extend("frame_collection", ...)
 
 ---
 --- @param  frames  table<flora.display.animation.frame_data>?

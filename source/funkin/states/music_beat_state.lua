@@ -1,7 +1,7 @@
 ---
 --- @class funkin.states.music_beat_state : flora.display.state
 ---
-local music_beat_state = state:extend()
+local music_beat_state = state:extend("music_beat_state", ...)
 
 function music_beat_state:constructor()
     music_beat_state.super.constructor(self)

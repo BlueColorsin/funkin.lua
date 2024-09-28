@@ -7,7 +7,7 @@ local texture = require("flora.assets.texture")
 ---
 --- @class flora.frontends.asset_front_end : flora.base.basic
 ---
-local asset_front_end = basic:extend()
+local asset_front_end = basic:extend("asset_front_end", ...)
 
 function asset_front_end:constructor()
     asset_front_end.super.constructor(self)

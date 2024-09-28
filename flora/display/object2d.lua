@@ -3,7 +3,7 @@
 --- 
 --- @class flora.display.object2d : flora.base.basic
 --- 
-local object2d = basic:extend()
+local object2d = basic:extend("object2d", ...)
 
 ---
 --- Constructs a new object2d.

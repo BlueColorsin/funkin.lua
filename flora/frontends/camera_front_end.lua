@@ -6,7 +6,7 @@ local camera = require("flora.display.camera")
 ---
 --- @class flora.frontends.camera_front_end : flora.base.basic
 ---
-local camera_front_end = basic:extend()
+local camera_front_end = basic:extend("camera_front_end", ...)
 
 ---
 --- @type table
@@ -32,7 +32,7 @@ function camera_front_end:constructor()
     --- @protected
     --- @type flora.utils.color
     ---
-    self._bg_color = color:new(color.black)
+    self._bg_color = color:new(color.blue)
 end
 
 function camera_front_end:update(dt)
@@ -96,22 +96,16 @@ end
 ---
 --- @protected
 ---
-function camera_front_end:__get(var)
-    if var == "bg_color" then
-        return self._bg_color
-    end
-    return nil
+function camera_front_end:get_bg_color()
+    return self._bg_color
 end
 
 ---
 --- @protected
 ---
-function camera_front_end:__set(var, val)
-    if var == "bg_color" then
-        self._bg_color = color:new(val)
-        return false
-    end
-    return true
+function camera_front_end:set_bg_color(var, val)
+    self._bg_color = color:new(val)
+    return self._bg_color
 end
 
 return camera_front_end

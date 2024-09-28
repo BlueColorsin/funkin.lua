@@ -3,7 +3,7 @@ local base_sound_tray = require("flora.display.sound_tray.base_sound_tray")
 ---
 --- @class flora.display.sound_tray.default_sound_tray : flora.display.sound_tray.base_sound_tray
 ---
-local default_sound_tray = base_sound_tray:extend()
+local default_sound_tray = base_sound_tray:extend("default_sound_tray", ...)
 
 function default_sound_tray:constructor()
     default_sound_tray.super.constructor(self)

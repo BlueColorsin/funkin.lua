@@ -3,7 +3,7 @@ local base_scale_mode = require("flora.display.scalemodes.base_scale_mode")
 ---
 --- @class flora.display.scalemodes.ratio_scale_mode : flora.display.scalemodes.base_scale_mode
 ---
-local ratio_scale_mode = base_scale_mode:extend()
+local ratio_scale_mode = base_scale_mode:extend("ratio_scale_mode", ...)
 
 function ratio_scale_mode:constructor(fill_screen)
     ratio_scale_mode.super.constructor(self, fill_screen)

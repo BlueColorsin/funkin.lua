@@ -3,7 +3,7 @@
 ---
 --- A base object class for flora.
 ---
-local object = class:extend()
+local object = class:extend("object", ...)
 
 ---
 --- Constructs a new object.
@@ -15,13 +15,6 @@ end
 --- Removes this object and it's properties from memory.
 ---
 function object:dispose()
-end
-
----
---- Returns a string representation of this object.
----
-function object:__tostring()
-    return "object"
 end
 
 return object

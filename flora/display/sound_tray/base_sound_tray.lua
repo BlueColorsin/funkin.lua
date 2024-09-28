@@ -1,7 +1,7 @@
 ---
 --- @class flora.display.sound_tray.base_sound_tray : flora.display.object2d
 ---
-local base_sound_tray = object2d:extend()
+local base_sound_tray = object2d:extend("base_sound_tray", ...)
 
 function base_sound_tray:constructor()
     base_sound_tray.super.constructor(self)
