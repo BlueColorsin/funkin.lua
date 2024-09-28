@@ -8,11 +8,6 @@ local camera = require("flora.display.camera")
 ---
 local camera_front_end = basic:extend("camera_front_end", ...)
 
----
---- @type table
----
-camera_front_end.default_cameras = {}
-
 function camera_front_end:constructor()
     camera_front_end.super.constructor(self)
 
@@ -29,10 +24,15 @@ function camera_front_end:constructor()
     self.bg_color = nil
 
     ---
+    --- @type table
+    ---
+    self.default_cameras = {}
+
+    ---
     --- @protected
     --- @type flora.utils.color
     ---
-    self._bg_color = color:new(color.blue)
+    self._bg_color = color:new(color.black)
 end
 
 function camera_front_end:update(dt)
@@ -56,8 +56,8 @@ function camera_front_end:reset(cam)
         cam = camera:new()
     end
     flora.camera = cam
-    camera_front_end.default_cameras = {cam}
-
+    self.default_cameras = {cam}
+    
     self.list:add(cam)
 end
 
@@ -67,7 +67,7 @@ function camera_front_end:add(cam, default)
         return
     end
     if default then
-        table.insert(camera_front_end.default_cameras, cam)
+        table.insert(self.default_cameras, cam)
     end
     self.list:add(cam)
 end
@@ -78,7 +78,7 @@ function camera_front_end:insert(pos, cam, default)
         return
     end
     if default then
-        table.insert(camera_front_end.default_cameras, cam)
+        table.insert(self.default_cameras, cam)
     end
     self.list:insert(pos, cam)
 end
@@ -88,9 +88,9 @@ function camera_front_end:remove(cam)
         flora.log:warn("Cannot remove camera that was not yet added!")
         return
     end
-    local default_idx = table.index_of(camera_front_end.default_cameras, cam)
+    local default_idx = table.index_of(self.default_cameras, cam)
     if default_idx ~= 1 then
-        table.remove(camera_front_end.default_cameras, default_idx)
+        table.remove(self.default_cameras, default_idx)
     end
     self.list:remove(cam)
 end
