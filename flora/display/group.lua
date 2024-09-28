@@ -63,6 +63,10 @@ function group:remove(obj)
     self.length = self.length - 1
 end
 
+function group:contains(obj)
+    return table.contains(self.members, obj)
+end
+
 function group:update(dt)
     for i = 1, self.length do
         local obj = self.members[i]

@@ -22,7 +22,7 @@ function sprite:constructor(x, y, texture)
 
     self._type = "sprite"
 
-    -- These have to be nil for the getters to work
+    -- These four have to be nil for the getters to work
     self.frame_width = nil
     self.frame_height = nil
 

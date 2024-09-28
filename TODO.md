@@ -8,8 +8,9 @@
     - Clip Rect
 
 - Substates
+- Ensure everything is documented
 
-- Make this publishable on shit other than Windows
+- Make this publishable on platforms other than Windows
 
 ## Funkin' Flora
 - Conductor
