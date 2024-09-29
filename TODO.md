@@ -1,4 +1,8 @@
 # TODO
+## Both
+- Move away from snake case, to be more consistent with Love2D
+    - Make the class AND file names camel case
+
 ## Flora Framework
 - Timers [X]
 - Tweens [X]
@@ -29,5 +33,8 @@
     - HUD System
     - Stages
     - Characters
+
+- UI
+    - Alphabet [X]
 
 - Modding Support

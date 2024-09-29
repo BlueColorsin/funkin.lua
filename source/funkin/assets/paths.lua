@@ -69,4 +69,18 @@ function paths.sound(name, dir)
     return paths.suffix_ext_from_type("sound", paths.asset(path.join({dir and dir or "sounds", name})))
 end
 
+---
+--- @param  name  string
+--- @param  dir   string?
+--- 
+--- @return flora.display.animation.atlas_frames
+---
+function paths.get_sparrow_atlas(name, dir)
+    local img = paths.image(name, dir)
+    local xml = path.without_extension(img) .. ".xml"
+    
+    -- TODO: cache that shit
+    return atlas_frames.from_sparrow(img, xml)
+end
+
 return paths

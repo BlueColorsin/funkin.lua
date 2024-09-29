@@ -25,41 +25,63 @@ function group:constructor()
 end
 
 ---
---- @param  obj  flora.base.object  The object to add to this group.
+--- @param  obj  flora.base.basic  The object to add to this group.
+--- 
+--- @return flora.base.basic
 ---
 function group:add(obj)
     if not obj then
         flora.log:warn("Cannot add an invalid object to a group!")
+        return obj
     end
     table.insert(self.members, obj)
     self.length = self.length + 1
+    return obj
 end
 
 ---
---- @param  pos  integer            The position to add the given object at.
---- @param  obj  flora.base.object  The object to add to this group.
+--- @param  pos  integer           The position to add the given object at.
+--- @param  obj  flora.base.basic  The object to add to this group.
+--- 
+--- @return flora.base.basic
 ---
 function group:insert(pos, obj)
     if not obj then
         flora.log:warn("Cannot add an invalid object to a group!")
+        return obj
     end
     table.insert(self.members, pos, obj)
     self.length = self.length + 1
+    return obj
 end
 
 ---
---- @param  obj  flora.base.object  The object to remove from this group.
+--- @param  obj  flora.base.basic  The object to remove from this group.
+--- 
+--- @return flora.base.basic
 ---
 function group:remove(obj)
     if not obj then
         flora.log:warn("Cannot remove an invalid object from a group!")
+        return obj
     end
     table.remove_item(self.members, obj)
     self.length = self.length - 1
+    return obj
 end
 
+---
+--- @param  obj  flora.base.basic
+---
+--- @return boolean
+---
 function group:contains(obj)
     return table.contains(self.members, obj)
+end
+
+function group:clear()
+    self.members = {}
+    self.length = 0
 end
 
 function group:update(dt)
@@ -85,6 +107,10 @@ function group:draw()
     flora.cameras.default_cameras = old_default_cameras
 end
 
+---
+--- @param  func      function
+--- @param  recurse?  boolean
+---
 function group:for_each(func, recurse)
     for i = 1, self.length do
         ---
@@ -102,6 +128,10 @@ function group:for_each(func, recurse)
     end
 end
 
+---
+--- @param  func      function
+--- @param  recurse?  boolean
+---
 function group:for_each_alive(func, recurse)
     for i = 1, self.length do
         ---
@@ -119,6 +149,10 @@ function group:for_each_alive(func, recurse)
     end
 end
 
+---
+--- @param  func      function
+--- @param  recurse?  boolean
+---
 function group:for_each_dead(func, recurse)
     for i = 1, self.length do
         ---

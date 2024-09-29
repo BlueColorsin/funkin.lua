@@ -17,5 +17,6 @@
         "undefined-field",
         "undefined-doc-param",
         "param-type-mismatch"
-    ]
+    ],
+    "Lua.runtime.unicodeName": true
 }

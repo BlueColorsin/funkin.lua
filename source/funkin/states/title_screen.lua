@@ -2,7 +2,6 @@
 --- @class funkin.states.title_screen : funkin.states.music_beat_state
 ---
 local title_screen = music_beat_state:extend("title_screen", ...)
-local alphabet = flora.import("funkin.ui.alphabet")
 
 function title_screen:ready()
     title_screen.super.ready(self)
@@ -49,8 +48,10 @@ function title_screen:ready()
     self.gf.animation:play("danceRight")
     self.title_group:add(self.gf)
 
-    self.test = alphabet:new(32.0, 720.0 - 32.0 + 4.0, "hey little swordcube\nhey big 80085")
-    self.test.y = self.test.y - self.test.height
+    ---
+    --- @type funkin.ui.alphabet.alphabet
+    ---
+    self.test = alphabet:new(102, 102, "qwertyuiopasdfghjklzxcvbnm\n[];:'\",./<>?", "bold", "left", 0.5)
     self:add(self.test)
 end
 

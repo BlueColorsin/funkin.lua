@@ -138,10 +138,10 @@ end
 ---
 --- Adds a new animation to the sprite.
 ---
---- @param name   string   What this animation should be called (e.g. `"run"`).
---- @param prefix string   Common beginning of image names in atlas (e.g. `"tiles-"`).
---- @param fps    number   The speed in frames per second that the animation should play at (e.g. `30` fps).
---- @param loop   boolean  Whether or not the animation is looped or just plays once.
+--- @param name   string    What this animation should be called (e.g. `"run"`).
+--- @param prefix string    Common beginning of image names in atlas (e.g. `"tiles-"`).
+--- @param fps    number    The speed in frames per second that the animation should play at (e.g. `30` fps).
+--- @param loop   boolean?  Whether or not the animation is looped or just plays once.
 ---
 function animation_controller:add_by_prefix(name, prefix, fps, loop)
     local atlas = self.parent.frames
@@ -149,13 +149,16 @@ function animation_controller:add_by_prefix(name, prefix, fps, loop)
         return
     end
     local __frames = {}
-
     for _, data in ipairs(atlas.frames) do
         if string.starts_with(data.name, prefix) then
             table.insert(__frames, data)
         end
     end
-    local anim = animation_data:new(name, __frames, fps, loop)
+    if #__frames == 0 then
+        flora.log:warn("Failed to add animation called " .. name .. " since no frames were found")
+        return
+    end
+    local anim = animation_data:new(name, __frames, fps, loop and loop or true)
     self.animations[name] = anim
 end
 
@@ -174,17 +177,19 @@ function animation_controller:add_by_indices(name, prefix, indices, fps, loop)
         return
     end
     local __frames = {}
-
     for _, data in ipairs(atlas.frames) do
         if string.starts_with(data.name, prefix) then
             table.insert(__frames, data)
         end
     end
+    if #__frames == 0 then
+        flora.log:warn("Failed to add animation called " .. name .. " since no frames were found")
+        return
+    end
     local datas = {}
     for _, num in ipairs(indices) do
         table.insert(datas, __frames[num])
     end
-
     local anim = animation_data:new(name, datas, fps, loop)
     self.animations[name] = anim
 end

@@ -25,6 +25,17 @@ function vector2:floor()
 end
 
 ---
+--- Copies the components of the given vector to this vector.
+--- 
+--- @param  vec  flora.math.vector2  The vector to copy.
+---
+function vector2:copy_from(vec)
+    self.x = vec.x
+    self.y = vec.y
+    return self
+end
+
+---
 --- Sets the components of this vector to given values.
 --- 
 --- @param  x  number  The new value for the X component

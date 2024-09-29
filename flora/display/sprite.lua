@@ -249,8 +249,8 @@ end
 --- @protected
 ---
 function sprite:get_texture()
-    if self._frames then
-        return self._frames.texture
+    if self.frames then
+        return self.frames.texture
     end
     return nil
 end

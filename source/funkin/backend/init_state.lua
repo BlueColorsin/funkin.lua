@@ -27,6 +27,11 @@ function init_state:ready()
     settings = flora.import("funkin.data.settings")
     settings.init()
 
+    ---
+    --- @type funkin.ui.alphabet.alphabet
+    ---
+    alphabet = flora.import("funkin.ui.alphabet.alphabet")
+
     if flora.sound_tray then
         flora.sound_tray:dispose()
     end
@@ -35,11 +40,11 @@ function init_state:ready()
     conductor.instance = conductor:new()
     flora.plugins:add(conductor.instance)
 
-    local preloader = flora.import("funkin.preloader")
-    flora.switch_state(preloader:new())
+    -- local preloader = flora.import("funkin.preloader")
+    -- flora.switch_state(preloader:new())
 
-    -- local title_screen = flora.import("funkin.states.title_screen")
-    -- flora.switch_state(title_screen:new())
+    local title_screen = flora.import("funkin.states.title_screen")
+    flora.switch_state(title_screen:new())
 end
 
 return init_state

@@ -1,5 +1,6 @@
 ---
 --- @class flora.display.sprite_group : flora.display.sprite
+--- @diagnostic disable: return-type-mismatch
 ---
 local sprite_group = sprite:extend("sprite_group", ...)
 
@@ -26,13 +27,13 @@ function sprite_group:constructor(x, y)
     --- @protected
     --- @type number
     ---
-    self._x = x
+    self._x = x and x or 0.0
 
     ---
     --- @protected
     --- @type number
     ---
-    self._y = y
+    self._y = y and y or 0.0
 
     ---
     --- @protected
@@ -56,14 +57,22 @@ function sprite_group:draw()
     self.group:draw()
 end
 
+--- 
+--- @param  obj  flora.display.sprite
+---
 function sprite_group:pre_add(obj)
     obj.x = obj.x + self._x
     obj.y = obj.y + self._y
     obj.alpha = obj.alpha * self.alpha
-    obj.scroll_factor:set(self.scroll_factor.x, self.scroll_factor.y)
+    obj.scroll_factor:copy_from(self.scroll_factor)
     obj.cameras = self._cameras
 end
 
+--- 
+--- @param  obj  flora.display.sprite
+--- 
+--- @return flora.display.sprite
+---
 function sprite_group:add(obj)
     if not self.group:contains(obj) then
         self:pre_add(obj)
@@ -71,6 +80,10 @@ function sprite_group:add(obj)
     return self.group:add(obj)
 end
 
+---
+--- @param  pos  integer 
+--- @param  obj  flora.display.sprite
+---
 function sprite_group:insert(pos, obj)
     if not self.group:contains(obj) then
         self:pre_add(obj)
@@ -78,6 +91,9 @@ function sprite_group:insert(pos, obj)
     return self.group:insert(pos, obj)
 end
 
+--- 
+--- @param  obj  flora.display.sprite
+---
 function sprite_group:remove(obj)
     obj.x = obj.x - self._x
     obj.y = obj.y - self._y
@@ -85,18 +101,47 @@ function sprite_group:remove(obj)
     return self.group:remove(obj)
 end
 
+--- 
+--- @param  obj  flora.display.sprite
+--- 
+--- @return boolean
+---
+function sprite_group:contains(obj)
+    return self.group:contains(obj)
+end
+
+function sprite_group:clear()
+    self.group:clear()
+end
+
+---
+--- @param  func     function
+--- @param  recurse  boolean?
+---
 function sprite_group:for_each(func, recurse)
     self.group:for_each(func, recurse)
 end
 
+---
+--- @param  func     function
+--- @param  recurse  boolean?
+---
 function sprite_group:for_each_alive(func, recurse)
     self.group:for_each_alive(func, recurse)
 end
 
+---
+--- @param  func     function
+--- @param  recurse  boolean?
+---
 function sprite_group:for_each_dead(func, recurse)
     self.group:for_each_dead(func, recurse)
 end
 
+---
+--- @param  func     function
+--- @param  recurse  boolean
+---
 function sprite_group:find_min_x()
     return self.group.length == 0 and self._x or self:_find_min_x_helper()
 end
@@ -350,7 +395,7 @@ end
 function sprite_group:set_angle(val)
     -- TODO: make this work properly
     self._angle = val
-    for i = 1, #self.group.length do
+    for i = 1, self.group.length do
         local obj = self.group.members[i]
         obj.angle = val
     end
@@ -362,7 +407,7 @@ end
 ---
 function sprite_group:set_tint(val)
     self._tint = color:new(val)
-    for i = 1, #self.group.length do
+    for i = 1, self.group.length do
         local obj = self.group.members[i]
         obj.tint = color:new(val)
     end

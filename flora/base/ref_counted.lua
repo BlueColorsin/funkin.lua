@@ -38,7 +38,7 @@ end
 --- Returns a string representation of this object.
 ---
 function ref_counted:__tostring()
-    return "ref_counted (refs: " .. self.references .. ")"
+    return self.__class .. " (refs: " .. self.references .. ")"
 end
 
 -----------------------

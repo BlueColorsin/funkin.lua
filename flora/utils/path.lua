@@ -24,12 +24,12 @@ function path:constructor(p)
     local c2 = string.last_index_of(p, "\\")
 
     if c1 < c2 then
-        self.dir = string.sub(p, 1, c2)
-        self.path = string.sub(p, c2 + 1)
+        self.dir = string.sub(p, 1, c2 - 1)
+        p = string.sub(p, c2 + 1)
         self.backslash = true
     elseif c2 < c1 then
-        self.dir = string.sub(p, 1, c1)
-        self.path = string.sub(p, c1 + 1)
+        self.dir = string.sub(p, 1, c1 - 1)
+        p = string.sub(p, c1 + 1)
     else
         self.dir = nil
     end
