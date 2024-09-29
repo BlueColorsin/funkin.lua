@@ -70,7 +70,7 @@ function sound_tray:show(up)
     if not (up and flora.sound.volume >= 1.0) then
         self.cur_anim = "adjust"
         self.cur_frame = 1
-    
+
         self._elapsed_anim_time = 0.0
     end
     if up then

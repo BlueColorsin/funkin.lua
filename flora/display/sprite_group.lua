@@ -60,7 +60,7 @@ function sprite_group:pre_add(obj)
     obj.x = obj.x + self._x
     obj.y = obj.y + self._y
     obj.alpha = obj.alpha * self.alpha
-    obj.scroll_factor:copy_from(self.scroll_factor)
+    obj.scroll_factor:set(self.scroll_factor.x, self.scroll_factor.y)
     obj.cameras = self._cameras
 end
 
