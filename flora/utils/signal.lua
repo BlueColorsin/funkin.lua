@@ -1,9 +1,9 @@
 ---
---- @class flora.utils.signal 
+--- @class flora.utils.Signal 
 ---
-local signal = class:extend("signal", ...)
+local Signal = Class:extend("Signal", ...)
 
-function signal:constructor()
+function Signal:constructor()
     ---
     --- @protected
     ---
@@ -11,7 +11,7 @@ function signal:constructor()
 end
 
 -- This function is syntax sugar.
-function signal:type(...)
+function Signal:type(...)
 	return self
 end
 
@@ -20,7 +20,7 @@ end
 ---
 --- @param listener  function  The listener to connect to this signal.
 ---
-function signal:connect(listener)
+function Signal:connect(listener)
 	if type(listener) ~= "function" or table.contains(self.__connected, listener) then
 		return
 	end
@@ -32,7 +32,7 @@ end
 ---
 --- @param listener  function  The listener to disconnect from this signal.
 ---
-function signal:disconnect(listener)
+function Signal:disconnect(listener)
 	if type(listener) ~= "function" or not table.contains(self.__connected, listener) then
 		return
 	end
@@ -45,7 +45,7 @@ end
 ---
 --- @param ...  vararg  The parameters to call on each function.
 ---
-function signal:emit(...)
+function Signal:emit(...)
 	for i = 1, #self.__connected do
 		self.__connected[i](...)
 	end
@@ -54,8 +54,8 @@ end
 ---
 --- Removes all listener functions from this signal.
 ---
-function signal:reset()
+function Signal:reset()
 	self.__connected = {}
 end
 
-return signal
+return Signal

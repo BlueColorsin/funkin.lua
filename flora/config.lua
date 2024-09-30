@@ -1,23 +1,23 @@
 ---
---- @class flora.config
+--- @class flora.Config
 ---
 --- A class for configuring Flora.
 ---
-local config = class:extend("config", ...)
+local Config = Class:extend("Config", ...)
 
-function config:constructor()
-    self.source_folder = "source"
-    self.debug_mode = false
+function Config:constructor()
+    self.sourceFolder = "source"
+    self.debugMode = false
     
-    self.game_width = 0.0
-    self.game_height = 0.0
+    self.gameWidth = 0.0
+    self.gameHeight = 0.0
 
-    self.max_fps = 60
+    self.maxFPS = 60
 
     ---
-    --- @type flora.display.state
+    --- @type flora.display.State
     ---
-    self.initial_state = nil
+    self.initialState = nil
 end
 
-return config
+return Config

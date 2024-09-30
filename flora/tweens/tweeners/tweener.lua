@@ -1,12 +1,12 @@
 ---
 --- A basic tween class.
 ---
---- @class flora.tweens.tweeners.tweener : flora.base.basic
+--- @class flora.tweens.tweeners.Tweener : flora.base.Basic
 ---
-local tweener = basic:extend("tweener", ...)
+local Tweener = Basic:extend("Tweener", ...)
 
-function tweener:constructor(parent)
-    tweener.super.constructor(self)
+function Tweener:constructor(parent)
+    Tweener.super.constructor(self)
 
     self.visible = false
 
@@ -18,7 +18,7 @@ function tweener:constructor(parent)
     ---
     --- @type function?
     ---
-    self.on_complete = nil
+    self.onComplete = nil
 end
 
-return tweener
+return Tweener

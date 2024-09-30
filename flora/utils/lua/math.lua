@@ -46,7 +46,7 @@ end
 ---
 --- @param  x  number  The numeric value (in bytes) that you want to convert into a human-readable string.
 ---
-function math.humanize_bytes(x)
+function math.humanizeBytes(x)
     local intervals = {'b', 'kb', 'mb', 'gb', 'tb', 'pb'}
     local i = 1
     while x >= 1024 and i < #intervals do

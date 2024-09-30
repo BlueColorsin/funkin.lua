@@ -1,15 +1,13 @@
-local group = require("flora.display.group")
-
 --- 
---- A class with functionality similar to a `group`, but
+--- A class with functionality similar to a `Group`, but
 --- designed to be a primary scene/state of sorts.
 --- 
---- @class flora.display.state : flora.display.group
+--- @class flora.display.State : flora.display.Group
 --- 
-local state = group:extend("state", ...)
+local State = Group:extend("state", ...)
 
-function state:constructor()
-    state.super.constructor(self)
+function State:constructor()
+    State.super.constructor(self)
 
     ---
     --- Controls whether or not this state is allowed
@@ -17,7 +15,7 @@ function state:constructor()
     --- 
     --- @type boolean
     ---
-    self.persistent_update = false
+    self.persistentUpdate = false
 
     ---
     --- Controls whether or not this state is allowed
@@ -25,7 +23,7 @@ function state:constructor()
     --- 
     --- @type boolean
     ---
-    self.persistent_draw = true
+    self.persistentDraw = true
 end
 
 ---
@@ -34,7 +32,7 @@ end
 --- 
 --- Initialize your stuff here, instead of in the constructor!
 ---
-function state:ready()
+function State:ready()
 end
 
-return state
+return State

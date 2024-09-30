@@ -13,7 +13,7 @@
 --
 
 ---
---- @class flora.libs.class
+--- @class flora.libs.Class
 ---
 local Class = {__class = "Class"}
 

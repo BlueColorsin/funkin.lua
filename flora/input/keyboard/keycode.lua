@@ -3,7 +3,7 @@
 --- 
 --- All keycodes taken from the [Love2D Wiki](https://love2d.org/wiki/KeyConstant)
 ---
-local keycode = {
+local KeyCode = {
     a = "a",
     b = "b",
     c = "c",
@@ -163,4 +163,4 @@ local keycode = {
     currency_unit = "currencyunit",
     undo = "undo",
 }
-return keycode
+return KeyCode

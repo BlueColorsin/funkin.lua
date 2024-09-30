@@ -1,12 +1,12 @@
 ---
 --- A basic object used for playing sounds.
 --- 
---- @class flora.sound : flora.base.object
+--- @class flora.Sound : flora.base.Object
 ---
-local sound = object:extend("sound", ...)
+local Sound = Object:extend("Sound", ...)
 
-function sound:constructor()
-    sound.super.constructor(self)
+function Sound:constructor()
+    Sound.super.constructor(self)
 
     ---
     --- The source used to play this sound.
@@ -66,7 +66,7 @@ function sound:constructor()
     --- 
     --- @type function?
     --- 
-    self.on_complete = nil
+    self.onComplete = nil
 
     ---
     --- @protected
@@ -94,18 +94,18 @@ function sound:constructor()
     
     ---
     --- @protected
-    --- @type flora.tweens.tween
+    --- @type flora.tweens.Tween
     ---
-    self._fade_tween = nil
+    self._fadeTween = nil
 end
 
 ---
 --- @param  data    string|love.SoundData  The data to load onto this sound object.
 --- @param  stream  boolean?               Whether or not this sound should be streamed. This only works if `data` is a string. (default: `true`)
 --- 
---- @return flora.sound
+--- @return flora.Sound
 ---
-function sound:load(data, stream)
+function Sound:load(data, stream)
     stream = stream and stream or true
 
     if self.source then
@@ -123,7 +123,7 @@ function sound:load(data, stream)
     return self
 end
 
-function sound:play()
+function Sound:play()
     if self.source then
         self.source:play()
         self.source:setVolume(math.clamp(self.volume * flora.sound.volume * (not flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
@@ -132,7 +132,7 @@ function sound:play()
     self._paused = false
 end
 
-function sound:pause()
+function Sound:pause()
     if self.source then
         self.source:pause()
     end
@@ -140,7 +140,7 @@ function sound:pause()
     self._paused = true
 end
 
-function sound:stop()
+function Sound:stop()
     if self.source then
         self.source:stop()
     end
@@ -148,7 +148,7 @@ function sound:stop()
     self._paused = false
 end
 
-function sound:seek(time)
+function Sound:seek(time)
     if self.source then
         self.source:seek(time, "seconds")
     end
@@ -158,23 +158,23 @@ end
 --- @param  duration     number     The duration of the fade.
 --- @param  from         number?    The volume to fade in from. (default: `0.0`)
 --- @param  to           number?    The volume to fade in towards. (default: `1.0`)
---- @param  on_complete  function?  The function that gets called when this sound finishes fading in.
+--- @param  onComplete  function?  The function that gets called when this sound finishes fading in.
 ---
---- @return flora.sound
+--- @return flora.Sound
 ---
-function sound:fade_in(duration, from, to, on_complete)
+function Sound:fadeIn(duration, from, to, onComplete)
     if not self.playing then
         self:play()
     end
     self.volume = from and from or 0.0
 
-    if self._fade_tween then
-        self._fade_tween:dispose()
+    if self._fadeTween then
+        self._fadeTween:dispose()
     end
-    self._fade_tween = tween:new()
-    self._fade_tween:tween_property(self, "volume", to and to or 1.0, duration)
-    self._fade_tween.on_complete = on_complete
-    self._fade_tween:start()
+    self._fadeTween = Tween:new()
+    self._fadeTween:tweenProperty(self, "volume", to and to or 1.0, duration)
+    self._fadeTween.onComplete = onComplete
+    self._fadeTween:start()
 
     return self
 end
@@ -182,30 +182,30 @@ end
 ---
 --- @param  duration     number     The duration of the fade.
 --- @param  to           number?    The volume to fade out towards. (default: `0.0`)
---- @param  on_complete  function?  The function that gets called when this sound finishes fading out.
+--- @param  onComplete  function?  The function that gets called when this sound finishes fading out.
 ---
---- @return flora.sound
+--- @return flora.Sound
 ---
-function sound:fade_out(duration, to, on_complete)
-    if self._fade_tween then
-        self._fade_tween:dispose()
+function Sound:fade_out(duration, to, onComplete)
+    if self._fadeTween then
+        self._fadeTween:dispose()
     end
-    self._fade_tween = tween:new()
-    self._fade_tween:tween_property(self, "volume", to and to or 0.0, duration)
-    self._fade_tween.on_complete = on_complete
-    self._fade_tween:start()
+    self._fadeTween = Tween:new()
+    self._fadeTween:tweenProperty(self, "volume", to and to or 0.0, duration)
+    self._fadeTween.onComplete = onComplete
+    self._fadeTween:start()
 
     return self
 end
 
-function sound:update()
+function Sound:update()
     if self.source then
         self.source:setVolume(math.clamp(self.volume * flora.sound.volume * (not flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
         
         if self._playing and not self._paused and not self.source:isPlaying() then
             self._playing = false
-            if self.on_complete then
-                self.on_complete()
+            if self.onComplete then
+                self.onComplete()
             end
         end
         if self._playing then
@@ -220,7 +220,7 @@ function sound:update()
     end
 end
 
-function sound:dispose()
+function Sound:dispose()
     if self.source then
         self.source:release()
     end
@@ -234,7 +234,7 @@ end
 ---
 --- @protected
 ---
-function sound:get_time()
+function Sound:get_time()
     if self.source then
         return self.source:tell("seconds")
     end
@@ -244,7 +244,7 @@ end
 ---
 --- @protected
 ---
-function sound:get_length()
+function Sound:get_length()
     if self.source then
         return self.source:getDuration("seconds")
     end
@@ -254,28 +254,28 @@ end
 ---
 --- @protected
 ---
-function sound:get_volume()
+function Sound:get_volume()
     return self._volume
 end
 
 ---
 --- @protected
 ---
-function sound:get_pitch()
+function Sound:get_pitch()
     return self._pitch
 end
 
 ---
 --- @protected
 ---
-function sound:get_playing()
+function Sound:get_playing()
     return self._playing
 end
 
 ---
 --- @protected
 ---
-function sound:get_looping()
+function Sound:get_looping()
     if self.source then
         return self.source:isLooping()
     end
@@ -285,7 +285,7 @@ end
 ---
 --- @protected
 ---
-function sound:set_time(val)
+function Sound:set_time(val)
     self.source:seek(val, "seconds")
     return val
 end
@@ -293,7 +293,7 @@ end
 ---
 --- @protected
 ---
-function sound:set_volume(val)
+function Sound:set_volume(val)
     self._volume = math.clamp(val, 0.0, 1.0)
     if self.source then
         self.source:setVolume(math.clamp(self.volume * flora.sound.volume, 0.0, 1.0))
@@ -304,7 +304,7 @@ end
 ---
 --- @protected
 ---
-function sound:set_pitch(val)
+function Sound:set_pitch(val)
     self._pitch = val
     if self.source then
         self.source:setPitch(self._pitch)
@@ -315,11 +315,11 @@ end
 ---
 --- @protected
 ---
-function sound:set_looping(val)
+function Sound:set_looping(val)
     if self.source then
         self.source:setLooping(val)
     end
     return val
 end
 
-return sound
+return Sound

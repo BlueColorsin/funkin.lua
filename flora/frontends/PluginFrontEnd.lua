@@ -1,19 +1,19 @@
 ---
 --- Accessed via `flora.plugins`.
 ---
---- @class flora.frontends.plugin_front_end : flora.base.basic
+--- @class flora.frontends.PluginFrontEnd : flora.base.Basic
 ---
-local plugin_front_end = basic:extend("plugin_front_end", ...)
+local PluginFrontEnd = Basic:extend("PluginFrontEnd", ...)
 
-function plugin_front_end:constructor()
-    plugin_front_end.super.constructor(self)
+function PluginFrontEnd:constructor()
+    PluginFrontEnd.super.constructor(self)
 
     ---
     --- The list of all available plugins.
     --- 
-    --- @type flora.display.group
+    --- @type flora.display.Group
     ---
-    self.list = group:new()
+    self.list = Group:new()
 
     ---
     --- Controls whether or not plugins draw above
@@ -21,13 +21,13 @@ function plugin_front_end:constructor()
     --- 
     --- @type boolean
     ---
-    self.draw_above = false
+    self.drawAbove = false
 end
 
-function plugin_front_end:update(dt)
+function PluginFrontEnd:update(dt)
     for i = 1, self.list.length do
         ---
-        --- @type flora.base.basic
+        --- @type flora.base.Basic
         ---
         local plugin = self.list.members[i]
 
@@ -37,10 +37,10 @@ function plugin_front_end:update(dt)
     end
 end
 
-function plugin_front_end:draw()
+function PluginFrontEnd:draw()
     for i = 1, self.list.length do
         ---
-        --- @type flora.base.basic
+        --- @type flora.base.Basic
         ---
         local plugin = self.list.members[i]
 
@@ -50,7 +50,7 @@ function plugin_front_end:draw()
     end
 end
 
-function plugin_front_end:add(plugin)
+function PluginFrontEnd:add(plugin)
     if table.contains(self.list.members, plugin) then
         flora.log:warn("Plugin was already added!")
         return
@@ -58,7 +58,7 @@ function plugin_front_end:add(plugin)
     self.list:add(plugin)
 end
 
-function plugin_front_end:insert(pos, plugin)
+function PluginFrontEnd:insert(pos, plugin)
     if table.contains(self.list.members, plugin) then
         flora.log:warn("Plugin was already added!")
         return
@@ -66,7 +66,7 @@ function plugin_front_end:insert(pos, plugin)
     self.list:insert(pos, plugin)
 end
 
-function plugin_front_end:remove(plugin)
+function PluginFrontEnd:remove(plugin)
     if not table.contains(self.list.members, plugin) then
         flora.log:warn("Cannot remove plugin that was not yet added!")
         return
@@ -78,4 +78,4 @@ end
 --- [ Private API ] ---
 -----------------------
 
-return plugin_front_end
+return PluginFrontEnd

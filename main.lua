@@ -14,13 +14,13 @@ flora = require("flora")
 -- found in conf.lua in the project root        --
 --------------------------------------------------
 
--- flora.config.debug_mode = true
-flora.config.max_fps = 0
+-- flora.config.debugMode = true
+flora.config.maxFPS = 0
 
-flora.config.game_width = 1280
-flora.config.game_height = 720
+flora.config.gameWidth = 1280
+flora.config.gameHeight = 720
 
-flora.config.initial_state = flora.import("funkin.backend.init_state"):new()
+flora.config.initialState = flora.import("funkin.backend.InitState"):new()
 
 --------------------------------------
 -- Start Flora after configuring it --

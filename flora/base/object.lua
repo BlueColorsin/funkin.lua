@@ -1,20 +1,20 @@
 ---
---- @class flora.base.object
+--- @class flora.base.Object
 ---
 --- A base object class for flora.
 ---
-local object = class:extend("object", ...)
+local Object = Class:extend("Object", ...)
 
 ---
 --- Constructs a new object.
 ---
-function object:constructor()
+function Object:constructor()
 end
 
 ---
 --- Removes this object and it's properties from memory.
 ---
-function object:dispose()
+function Object:dispose()
 end
 
-return object
+return Object

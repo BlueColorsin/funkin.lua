@@ -1,17 +1,17 @@
 ---
---- @class flora.utils.bit
+--- @class flora.utils.Bit
 ---
-local bit = class:extend()
+local Bit = Class:extend()
 
-function bit.lshift(x, by)
+function Bit.lshift(x, by)
     return x * 2 ^ by
 end
 
-function bit.rshift(x, by)
+function Bit.rshift(x, by)
     return math.floor(x / 2 ^ by)
 end
 
-function bit.band(x, y)
+function Bit.band(x, y)
     local p = 1
     local result = 0
     while x > 0 and y > 0 do
@@ -27,7 +27,7 @@ function bit.band(x, y)
     return result
 end
 
-function bit.bor(x, y)
+function Bit.bor(x, y)
     local p = 1
     local result = 0
     while x > 0 or y > 0 do
@@ -43,7 +43,7 @@ function bit.bor(x, y)
     return result
 end
 
-function bit.to_hex(num)
+function Bit.to_hex(num)
     local hexstr = '0123456789abcdef'
     local s = ''
     while num > 0 do
@@ -55,12 +55,12 @@ function bit.to_hex(num)
     return s
 end
 
-function bit.to_bit(num)
-    num = bit.band(num, 0xffffffff)
+function Bit.to_Bit(num)
+    num = Bit.band(num, 0xffffffff)
     if num >= 0x80000000 then
       num = num - 0x100000000
     end
     return num
 end
 
-return bit
+return Bit

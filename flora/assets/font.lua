@@ -3,13 +3,13 @@
 --- A basic font class, used for storing fonts to
 --- render onto text.
 ---
---- @class flora.assets.font : flora.base.ref_counted
+--- @class flora.assets.Font : flora.base.RefCounted
 ---
-local font = ref_counted:extend("font", ...)
-font.oversampling = 2
+local Font = RefCounted:extend("Font", ...)
+Font.oversampling = 2
 
-function font:constructor(path)
-    font.super.constructor(self)
+function Font:constructor(path)
+    Font.super.constructor(self)
 
     ---
     --- The file path used for this font internally.
@@ -28,9 +28,9 @@ end
 --- @param  size  integer
 --- @return love.Font
 ---
-function font:get_data_for_size(size)
+function Font:getDataForSize(size)
     if not self.data[size] then
-        local fnt = love.graphics.newFont(self.path, size * font.oversampling)
+        local fnt = love.graphics.newFont(self.path, size * Font.oversampling)
         fnt:setFilter("linear", "linear", 4)
         self.data[size] = fnt
     end
@@ -40,16 +40,16 @@ end
 ---
 --- Removes this font from memory.
 ---
-function font:dispose()
+function Font:dispose()
     for _, fnt in pairs(self.data) do
         fnt:release()
     end
     self.data = nil
-    flora.assets._font_cache[self.path] = nil
+    flora.assets._fontCache[self.path] = nil
 end
 
-function font:__tostring()
+function Font:__tostring()
     return "font (" .. #self.data .. " cached size" .. (#self.data ~= 1 and "s" or "") .. ")"
 end
 
-return font
+return Font

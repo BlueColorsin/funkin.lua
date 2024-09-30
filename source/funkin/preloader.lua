@@ -1,20 +1,20 @@
 ---
---- @type funkin.assets.paths
+--- @type funkin.assets.Paths
 ---
-local paths = flora.import("funkin.assets.paths")
+local Paths = flora.import("funkin.assets.Paths")
 
 ---
---- @class funkin.preloader : funkin.states.music_beat_state
+--- @class funkin.Preloader : funkin.states.MusicBeatState
 ---
-local preloader = music_beat_state:extend("preloader", ...)
-preloader.tips = {
+local Preloader = MusicBeatState:extend("Preloader", ...)
+Preloader.tips = {
     "Press 7 in the main menu to access some useful editors!",
     "Press SHIFT while a transition is on-screen to skip it!",
     "Press F5 to instantly reload the current state!"
 }
 
-function preloader:ready()
-    preloader.super.ready(self)
+function Preloader:ready()
+    Preloader.super.ready(self)
 
     if not flora.save.data.volume then
         flora.sound.volume = 0.3
@@ -23,7 +23,7 @@ function preloader:ready()
         flora.save:flush()
     end
 
-    self.chosen_tip = preloader.tips[love.math.random(1, #preloader.tips)]
+    self.chosen_tip = Preloader.tips[love.math.random(1, #Preloader.tips)]
     self.test = 0.0
 
     ---
@@ -53,8 +53,8 @@ function preloader:ready()
     ---
     self.status_txt = text:new()
     self.status_txt.text = self.chosen_tip .. "\nPreloading assets..."
-    self.status_txt:set_format("assets/fonts/vcr.ttf", 18, color.white, "left")
-    self.status_txt:setBorderStyle("outline", color.black, 3)
+    self.status_txt:set_format("assets/fonts/vcr.ttf", 18, Color.WHITE, "left")
+    self.status_txt:setBorderStyle("outline", Color.BLACK, 3)
     self.status_txt:set_position(30, flora.game_height - self.status_txt.height - 30)
     self:add(self.status_txt)
 
@@ -68,7 +68,7 @@ function preloader:ready()
     end)
 end
 
-function preloader:preload_texture(path, compressed)
+function Preloader:preload_texture(path, compressed)
     flora.assets:load_texture_async(path, compressed, function(tex)
         tex:reference()
         self.status_txt.text = self.chosen_tip .. "\nPreloaded " .. path .. " successfully"
@@ -77,7 +77,7 @@ function preloader:preload_texture(path, compressed)
     self.asset_count = self.asset_count + 1
 end
 
-function preloader:preload_sound(path)
+function Preloader:preload_sound(path)
     flora.assets:load_sound_async(path, function(_)
         self.status_txt.text = self.chosen_tip .. "\nPreloaded " .. path .. " successfully"
         self.preloaded_assets = self.preloaded_assets + 1
@@ -85,21 +85,21 @@ function preloader:preload_sound(path)
     self.asset_count = self.asset_count + 1
 end
 
-function preloader:do_preload()
+function Preloader:do_preload()
     -- Preload menu bgs since they're commonly used
-    self:preload_texture(paths.image("desat", "images/menus"))
-    self:preload_texture(paths.image("yellow", "images/menus"))
+    self:preload_texture(Paths.image("desat", "images/menus"))
+    self:preload_texture(Paths.image("yellow", "images/menus"))
 
     -- Preload commonly used characters
-    self:preload_texture(paths.image("normal", "images/game/characters/bf"))
-    self:preload_texture(paths.image("dead", "images/game/characters/bf"))
+    self:preload_texture(Paths.image("normal", "images/game/characters/bf"))
+    self:preload_texture(Paths.image("dead", "images/game/characters/bf"))
 
-    self:preload_texture(paths.image("speakers", "images/game/characters/gf"))
-    self:preload_texture(paths.image("woman", "images/game/characters/gf"))
+    self:preload_texture(Paths.image("speakers", "images/game/characters/gf"))
+    self:preload_texture(Paths.image("woman", "images/game/characters/gf"))
 end
 
-function preloader:update(dt)
-    preloader.super.update(self, dt)
+function Preloader:update(dt)
+    Preloader.super.update(self, dt)
 
     self.test = self.test + (dt * 10)
     self.spinner.angle = self.spinner.angle + (dt * 150)
@@ -114,15 +114,15 @@ function preloader:update(dt)
         self.spinner:kill()
         self.status_txt.text = self.chosen_tip .. "\nFinished preloading, game on!"
 
-        flora.sound:play(paths.sound("select", "sounds/menus"))
+        flora.sound:play(Paths.sound("select", "sounds/menus"))
         flora.camera:fade(color.black, 1.25, false, function()
             -- flora.camera._fade_fx_alpha = 0.0
             timer:new():start(0.5, function(_)
-                local title_screen = flora.import("funkin.states.title_screen")
-                flora.switch_state(title_screen:new())
+                local TitleScreen = flora.import("funkin.states.TitleScreen")
+                flora.switch_state(TitleScreen:new())
             end)
         end)
     end
 end
 
-return preloader
+return Preloader

@@ -1,9 +1,9 @@
 ---
---- @class flora.debug.log
+--- @class flora.debug.Log
 ---
 --- A class for logging to the console and debug menu.
 ---
-local log = class:extend("log", ...)
+local Log = Class:extend("Log", ...)
 
 -- TODO: clean this shit up
 
@@ -12,15 +12,15 @@ local log = class:extend("log", ...)
 ---
 --- @param  output  any  What you want to log.
 ---
-function log:print(output, cur_file, cur_line)
-    cur_file = cur_file and cur_file or debug.getinfo(2, "S").source:sub(2)
-    cur_line = cur_line and cur_line or debug.getinfo(2, "l").currentline
-    flora.native.set_console_colors(flora.native.console_color.cyan)
+function Log:print(output, curFile, curLine)
+    curFile = curFile and curFile or debug.getinfo(2, "S").source:sub(2)
+    curLine = curLine and curLine or debug.getinfo(2, "l").currentline
+    flora.native.setConsoleColors(flora.native.consoleColor.cyan)
     
-    io.stdout:write("[  PRINT  | " .. cur_file .. ":" .. cur_line .. " ] ")
+    io.stdout:write("[  PRINT  | " .. curFile .. ":" .. curLine .. " ] ")
     io.stdout:flush()
 
-    flora.native.set_console_colors()
+    flora.native.setConsoleColors()
 
     io.stdout:write(tostring(output) .. "\n")
     io.stdout:flush()
@@ -31,15 +31,15 @@ end
 ---
 --- @param  output  any  What you want to log.
 ---
-function log:warn(output, cur_file, cur_line)
-    cur_file = cur_file and cur_file or debug.getinfo(2, "S").source:sub(2)
-    cur_line = cur_line and cur_line or debug.getinfo(2, "l").currentline
-    flora.native.set_console_colors(flora.native.console_color.yellow)
+function Log:warn(output, curFile, curLine)
+    curFile = curFile and curFile or debug.getinfo(2, "S").source:sub(2)
+    curLine = curLine and curLine or debug.getinfo(2, "l").currentline
+    flora.native.setConsoleColors(flora.native.consoleColor.yellow)
     
-    io.stdout:write("[ WARNING | " .. cur_file .. ":" .. cur_line .. " ] ")
+    io.stdout:write("[ WARNING | " .. curFile .. ":" .. curLine .. " ] ")
     io.stdout:flush()
 
-    flora.native.set_console_colors()
+    flora.native.setConsoleColors()
 
     io.stdout:write(tostring(output) .. "\n")
     io.stdout:flush()
@@ -50,15 +50,15 @@ end
 ---
 --- @param  output  any  What you want to log.
 ---
-function log:error(output, cur_file, cur_line)
-    cur_file = cur_file and cur_file or debug.getinfo(2, "S").source:sub(2)
-    cur_line = cur_line and cur_line or debug.getinfo(2, "l").currentline
-    flora.native.set_console_colors(flora.native.console_color.dark_red)
+function Log:error(output, curFile, curLine)
+    curFile = curFile and curFile or debug.getinfo(2, "S").source:sub(2)
+    curLine = curLine and curLine or debug.getinfo(2, "l").currentline
+    flora.native.setConsoleColors(flora.native.consoleColor.dark_red)
     
-    io.stdout:write("[  ERROR  | " .. cur_file .. ":" .. cur_line .. " ] ")
+    io.stdout:write("[  ERROR  | " .. curFile .. ":" .. curLine .. " ] ")
     io.stdout:flush()
 
-    flora.native.set_console_colors()
+    flora.native.setConsoleColors()
 
     io.stdout:write(tostring(output) .. "\n")
     io.stdout:flush()
@@ -69,15 +69,15 @@ end
 ---
 --- @param  output  any  What you want to log.
 ---
-function log:success(output, cur_file, cur_line)
-    cur_file = cur_file and cur_file or debug.getinfo(2, "S").source:sub(2)
-    cur_line = cur_line and cur_line or debug.getinfo(2, "l").currentline
-    flora.native.set_console_colors(flora.native.console_color.green)
+function Log:success(output, curFile, curLine)
+    curFile = curFile and curFile or debug.getinfo(2, "S").source:sub(2)
+    curLine = curLine and curLine or debug.getinfo(2, "l").currentline
+    flora.native.setConsoleColors(flora.native.consoleColor.green)
     
-    io.stdout:write("[ SUCCESS | " .. cur_file .. ":" .. cur_line .. " ] ")
+    io.stdout:write("[ SUCCESS | " .. curFile .. ":" .. curLine .. " ] ")
     io.stdout:flush()
 
-    flora.native.set_console_colors()
+    flora.native.setConsoleColors()
 
     io.stdout:write(tostring(output) .. "\n")
     io.stdout:flush()
@@ -88,15 +88,15 @@ end
 ---
 --- @param  output  any  What you want to log.
 ---
-function log:verbose(output, cur_file, cur_line)
-    cur_file = cur_file and cur_file or debug.getinfo(2, "S").source:sub(2)
-    cur_line = cur_line and cur_line or debug.getinfo(2, "l").currentline
-    flora.native.set_console_colors(flora.native.console_color.magenta)
+function Log:verbose(output, curFile, curLine)
+    curFile = curFile and curFile or debug.getinfo(2, "S").source:sub(2)
+    curLine = curLine and curLine or debug.getinfo(2, "l").currentline
+    flora.native.setConsoleColors(flora.native.consoleColor.magenta)
     
-    io.stdout:write("[ VERBOSE | " .. cur_file .. ":" .. cur_line .. " ] ")
+    io.stdout:write("[ VERBOSE | " .. curFile .. ":" .. curLine .. " ] ")
     io.stdout:flush()
 
-    flora.native.set_console_colors()
+    flora.native.setConsoleColors()
 
     io.stdout:write(tostring(output) .. "\n")
     io.stdout:flush()
@@ -105,8 +105,8 @@ end
 ---
 --- Returns a string representation of this object.
 ---
-function log:__tostring()
+function Log:__tostring()
     return "log"
 end
 
-return log
+return Log

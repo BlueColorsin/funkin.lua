@@ -1,58 +1,59 @@
 ---
 --- A list of easing functions for tweening.
 ---
---- @class flora.tweens.ease
+--- @class flora.tweens.Ease
 --- @see   flixel.tweens.FlxEase  https://github.com/HaxeFlixel/flixel/blob/master/flixel/tweens/FlxEase.hx
 ---
-local ease = class:extend()
+local Ease = Class:extend()
 
-local pi2 = math.pi / 2
-local b1 = 1 / 2.75
-local b2 = 2 / 2.75
-local b3 = 1.5 / 2.75
-local b4 = 2.5 / 2.75
-local b5 = 2.25 / 2.75
-local b6 = 2.625 / 2.75
-local elastic_amplitude = 1
-local elastic_period = .4
+local PI2 = math.pi / 2
+local EL = 2 * math.pi / .45
+local B1 = 1 / 2.75
+local B2 = 2 / 2.75
+local B3 = 1.5 / 2.75
+local B4 = 2.5 / 2.75
+local B5 = 2.25 / 2.75
+local B6 = 2.625 / 2.75
+local ELASTIC_AMPLITUDE = 1
+local ELASTIC_PERIOD = .4
 
-function ease.linear(t)
+function Ease.linear(t)
 	return t
 end
 
-function ease.quad_in(t)
+function Ease.quadIn(t)
 	return t * t
 end
 
-function ease.quad_out(t)
+function Ease.quadOut(t)
 	return -t * (t - 2)
 end
 
-function ease.quad_in_out(t)
+function Ease.quadInOut(t)
 	return t <= 0.5 and t * t * 2 or 1 - (-t) * t * 2
 end
 
-function ease.cube_in(t)
+function Ease.cubeIn(t)
 	return t * t * t
 end
 
-function ease.cube_out(t)
+function Ease.cubeOut(t)
 	return 1 + (-t) * t * t
 end
 
-function ease.cube_in_out(t)
+function Ease.cubeInOut(t)
 	return t <= 0.5 and t * t * t * 4 or 1 + (-t) * t * t * 4
 end
 
-function ease.quart_in(t)
+function Ease.quartIn(t)
 	return t * t * t * t
 end
 
-function ease.quart_out(t)
+function Ease.quartOut(t)
 	return 1 - (t - 1) * t * t * t
 end
 
-function ease.quart_in_out(t)
+function Ease.quartInOut(t)
 	if t <= 0.5 then
 		return t * t * t * t * 8
 	else
@@ -60,107 +61,107 @@ function ease.quart_in_out(t)
 	end
 end
 
-function ease.quint_in(t)
+function Ease.quintIn(t)
 	return t * t * t * t * t
 end
 
-function ease.quint_out(t)
+function Ease.quintOut(t)
 	return (t - t - 1) * t * t * t * t + 1
 end
 
-function ease.quint_in_out(t)
+function Ease.quintInOut(t)
 	return t < 0.5 and t * t * t * t * t * 2 or (t - t * 2 - 2) * t * t * t * t + 2 / 2
 end
 
-function ease.smooth_step_in(t)
-	return 2 * ease.smooth_step_in_out(t / 2)
+function Ease.smoothStepIn(t)
+	return 2 * Ease.smoothStepInOut(t / 2)
 end
 
-function ease.smooth_step_out(t)
-	return 2 * ease.smooth_step_in_out(t / 2 + 0.5) - 1
+function Ease.smoothStepOut(t)
+	return 2 * Ease.smoothStepInOut(t / 2 + 0.5) - 1
 end
 
-function ease.smooth_step_in_out(t)
+function Ease.smoothStepInOut(t)
 	return t * t * (t * -2 + 3)
 end
 
-function ease.smoother_step_in(t)
-	return 2 * ease.smoother_step_in_out(t / 2)
+function Ease.smootherStepIn(t)
+	return 2 * Ease.smootherStepInOut(t / 2)
 end
 
-function ease.smoother_step_out(t)
-	return 2 * ease.smoother_step_in_out(t / 2 + 0.5) - 1
+function Ease.smootherStepOut(t)
+	return 2 * Ease.smootherStepInOut(t / 2 + 0.5) - 1
 end
 
-function ease.smoother_step_in_out(t)
+function Ease.smootherStepInOut(t)
 	return t * t * t * (t * (t * 6 - 15) + 10)
 end
 
-function ease.sine_in(t)
-	return -math.cos(pi2 * t) + 1
+function Ease.sineIn(t)
+	return -math.cos(PI2 * t) + 1
 end
 
-function ease.sine_out(t)
-	return math.sin(pi2 * t)
+function Ease.sineOut(t)
+	return math.sin(PI2 * t)
 end
 
-function ease.sine_in_out(t)
+function Ease.sineInOut(t)
 	return -math.cos(math.pi * t) / 2 + 0.5
 end
 
-function ease.bounce_in(t)
-	return 1 - ease.bounce_out(1 - t)
+function Ease.bounceIn(t)
+	return 1 - Ease.bounceOut(1 - t)
 end
 
-function ease.bounce_out(t)
-	if t < b1 then
+function Ease.bounceOut(t)
+	if t < B1 then
 		return 7.5625 * t * t
-	elseif t < b2 then
-		return 7.5625 * (t - b3) * (t - b3) + 0.75
-	elseif t < b4 then
-		return 7.5625 * (t - b5) * (t - b5) + 0.9375
+	elseif t < B2 then
+		return 7.5625 * (t - B3) * (t - B3) + 0.75
+	elseif t < B4 then
+		return 7.5625 * (t - B5) * (t - B5) + 0.9375
 	else
-		return 7.5625 * (t - b6) * (t - b6) + 0.984375
+		return 7.5625 * (t - B6) * (t - B6) + 0.984375
 	end
 end
 
-function ease.bounce_in_out(t)
-	return t < 0.5 and (1 - ease.bounce_out(1 - 2 * t)) / 2 or (1 + ease.bounce_out(2 * t - 1)) / 2
+function Ease.bounceInOut(t)
+	return t < 0.5 and (1 - Ease.bounceOut(1 - 2 * t)) / 2 or (1 + Ease.bounceOut(2 * t - 1)) / 2
 end
 
-function ease.circ_in(t)
+function Ease.circIn(t)
 	return -(math.sqrt(1 - t * t) - 1)
 end
 
-function ease.circ_out(t)
+function Ease.circOut(t)
 	return math.sqrt(1 - (t - 1) * (t - 1))
 end
 
-function ease.circ_in_out(t)
+function Ease.circInOut(t)
 	return t <= 0.5 and (math.sqrt(1 - t * t * 4) - 1) / -2 or (math.sqrt(1 - (t * 2 - 2) * (t * 2 - 2)) + 1) / 2
 end
 
-function ease.expo_in(t)
+function Ease.expoIn(t)
 	return 2 ^ (10 * (t - 1))
 end
 
-function ease.expo_out(t)
+function Ease.expoOut(t)
 	return -2 ^ (-10 * t) + 1
 end
 
-function ease.expo_in_out(t)
+function Ease.expoInOut(t)
 	return t < 0.5 and 2 ^ (10 * (t * 2 - 1)) / 2 or (-2 ^ (-10 * (t * 2 - 1)) + 2) / 2
 end
 
-function ease.back_in(t)
+function Ease.backIn(t)
 	return t * t * (2.70158 * t - 1.70158)
 end
 
-function ease.back_out(t)
+function Ease.backOut(t)
 	return 1 - (-t) * (t) * (-2.70158 * t - 1.70158)
 end
 
-function ease.back_in_out(t)
+function Ease.backInOut(t)
 	t = t * 2
 	if t < 1 then
 		return t * t * (2.70158 * t - 1.70158) / 2
@@ -170,20 +171,20 @@ function ease.back_in_out(t)
 	end
 end
 
-function ease.elastic_in(t)
-	return -(elastic_amplitude * 2 ^ (10 * (t - 1)) * math.sin((t - (elastic_period / (2 * math.pi) * math.asin(1 / elastic_amplitude))) * (2 * math.pi) / elastic_period))
+function Ease.elasticIn(t)
+	return -(ELASTIC_AMPLITUDE * 2 ^ (10 * (t - 1)) * math.sin((t - (ELASTIC_PERIOD / (2 * math.pi) * math.asin(1 / ELASTIC_AMPLITUDE))) * (2 * math.pi) / ELASTIC_PERIOD))
 end
 
-function ease.elastic_out(t)
-	return (elastic_amplitude * 2 ^ (-10 * t) * math.sin((t - (elastic_period / (2 * math.pi) * math.asin(1 / elastic_amplitude))) * (2 * math.pi) / elastic_period)) + 1
+function Ease.elasticOut(t)
+	return (ELASTIC_AMPLITUDE * 2 ^ (-10 * t) * math.sin((t - (ELASTIC_PERIOD / (2 * math.pi) * math.asin(1 / ELASTIC_AMPLITUDE))) * (2 * math.pi) / ELASTIC_PERIOD)) + 1
 end
 
-function ease.elastic_in_out(t)
+function Ease.elasticInOut(t)
 	if t < 0.5 then
-		return -0.5 * (2 ^ (10 * (t - 0.5)) * math.sin((t - (elastic_period / 4)) * (2 * math.pi) / elastic_period))
+		return -0.5 * (2 ^ (10 * (t - 0.5)) * math.sin((t - (ELASTIC_PERIOD / 4)) * (2 * math.pi) / ELASTIC_PERIOD))
 	else
-		return 2 ^ (-10 * (t - 0.5)) * math.sin((t - (elastic_period / 4)) * (2 * math.pi) / elastic_period) * 0.5 + 1
+		return 2 ^ (-10 * (t - 0.5)) * math.sin((t - (ELASTIC_PERIOD / 4)) * (2 * math.pi) / ELASTIC_PERIOD) * 0.5 + 1
 	end
 end
 
-return ease
+return Ease

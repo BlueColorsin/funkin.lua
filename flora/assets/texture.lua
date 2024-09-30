@@ -3,12 +3,12 @@
 --- A basic texture class, used for caching and rendering
 --- textures to sprites.
 ---
---- @class flora.assets.texture : flora.base.ref_counted
+--- @class flora.assets.Texture : flora.base.RefCounted
 ---
-local texture = ref_counted:extend("texture", ...)
+local Texture = RefCounted:extend("Texture", ...)
 
-function texture:constructor(key, image)
-    texture.super.constructor(self)
+function Texture:constructor(key, image)
+    Texture.super.constructor(self)
 
     ---
     --- The key used for this texture internally for caching.
@@ -38,7 +38,7 @@ end
 ---
 --- @param  image  love.Image
 ---
-function texture:update_image(image)
+function Texture:updateImage(image)
     if self.image then
         self.image:release()
     end
@@ -50,13 +50,13 @@ end
 ---
 --- Removes this texture from memory.
 ---
-function texture:dispose()
+function Texture:dispose()
     self.image:release()
-    flora.assets._texture_cache[self.key] = nil
+    flora.assets._textureCache[self.key] = nil
 end
 
-function texture:__tostring()
-    return "texture (size: " .. self.width .. "x" .. self.height .. ", references: " .. self.references .. ")"
+function Texture:__tostring()
+    return "Texture (size: " .. self.width .. "x" .. self.height .. ", references: " .. self.references .. ")"
 end
 
-return texture
+return Texture

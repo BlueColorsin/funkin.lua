@@ -4,7 +4,7 @@
 --- A class for easily accessing native system functionality.
 ---
 local native = {}
-native.console_color = {
+native.consoleColor = {
 	black = 0,
 	dark_blue = 1,
 	dark_green = 2,
@@ -24,15 +24,15 @@ native.console_color = {
 	none = -1
 }
 
-function native.ask_open_file(title, file_types)
+function native.askOpenFile(title, file_types)
 	return ""
 end
-function native.ask_save_as_file(title, file_types, initial_file)
+function native.askSaveAsFile(title, file_types, initial_file)
 	return ""
 end
-function native.set_cursor(type) end
-function native.set_dark_mode(enable) end
-function native.set_console_colors(fg_color, bg_color) end
+function native.setCursor(type) end
+function native.setDarkMode(enable) end
+function native.setConsoleColors(fg_color, bg_color) end
 
 -----------------------------------------
 -- Don't worry about the stuff below!! --
@@ -45,7 +45,7 @@ if os == "Windows" then
 	os_native = require((...) .. ".windows")
 end
 
-local ret_native = class:extend()
+local ret_native = Class:extend()
 for key, value in pairs(native) do
 	if os_native[key] then
 		ret_native[key] = os_native[key]

@@ -1,14 +1,14 @@
 ---
---- @class funkin.utils.tools
+--- @class funkin.utils.Tools
 ---
-local tools = class:extend()
+local Tools = Class:extend()
 
 ---
 --- @param  csv  string
 ---
 --- @return table
 ---
-function tools.parse_csv(csv)
+function Tools.parseCSV(csv)
     local list = {}
     local split_csv = csv:trim():replace("\r", ""):split("\n")
     for i = 1, #split_csv do
@@ -21,4 +21,4 @@ function tools.parse_csv(csv)
     return list
 end
 
-return tools
+return Tools

@@ -1,28 +1,26 @@
-local axes = require("flora.utils.axes")
-local color = require("flora.utils.color")
-local animation_controller = require("flora.display.animation.animation_controller")
+local AnimationController = require("flora.display.animation.AnimationController")
 
 --- 
 --- A basic 2D object that can render a texture.
 --- 
---- @class flora.display.sprite : flora.display.object2d
+--- @class flora.display.Sprite : flora.display.Object2D
 --- 
-local sprite = object2d:extend("sprite", ...)
-sprite.default_antialiasing = false
+local Sprite = Object2D:extend("Sprite", ...)
+Sprite.default_antialiasing = false
 
 ---
 --- Constructs a new sprite.
 --- 
 --- @param  x        number                The X coordinate of this sprite on-screen.
 --- @param  y        number                The Y coordinate of this sprite on-screen.
---- @param  texture  flora.assets.texture  The texture used to render this sprite.
+--- @param  texture  flora.assets.Texture  The texture used to render this sprite.
 ---
-function sprite:constructor(x, y, texture)
-    sprite.super.constructor(self, x, y)
+function Sprite:constructor(x, y, texture)
+    Sprite.super.constructor(self, x, y)
 
     -- These four have to be nil for the getters to work
-    self.frame_width = nil
-    self.frame_height = nil
+    self.frameWidth = nil
+    self.frameHeight = nil
 
     self.width = nil
     self.height = nil
@@ -30,44 +28,44 @@ function sprite:constructor(x, y, texture)
     ---
     --- The frame collection to used to render this sprite.
     ---
-    --- @type flora.display.animation.frame_collection?
+    --- @type flora.display.animation.FrameCollection?
     ---
     self.frames = nil
 
     ---
     --- The texture attached to this sprite's frame collection.
     ---
-    --- @type flora.assets.texture?
+    --- @type flora.assets.Texture?
     ---
     self.texture = nil
 
     ---
     --- The current frame to used to render this sprite.
     ---
-    --- @type flora.display.animation.frame_data?
+    --- @type flora.display.animation.FrameData?
     ---
     self.frame = nil
 
     ---
     --- The X and Y scale factor of this sprite.
     ---
-    --- @type flora.math.vector2
+    --- @type flora.math.Vector2
     ---
-    self.scale = vector2:new(1, 1)
+    self.scale = Vector2:new(1, 1)
 
     ---
     --- The X and Y rotation origin of this sprite. (from 0 to 1)
     ---
-    --- @type flora.math.vector2
+    --- @type flora.math.Vector2
     ---
-    self.origin = vector2:new(0.5, 0.5)
+    self.origin = Vector2:new(0.5, 0.5)
 
     ---
     --- Controls how much this sprite can scroll on a camera.
     ---
-    --- @type flora.math.vector2
+    --- @type flora.math.Vector2
     ---
-    self.scroll_factor = vector2:new(1, 1)
+    self.scrollFactor = Vector2:new(1, 1)
 
     ---
     --- The rotation of this sprite. (in degrees)
@@ -79,7 +77,7 @@ function sprite:constructor(x, y, texture)
     ---
     --- The tint of this sprite.
     --- 
-    --- @type flora.utils.color
+    --- @type flora.utils.Color
     ---
     self.tint = nil
 
@@ -94,20 +92,20 @@ function sprite:constructor(x, y, texture)
     --- Whether or not antialiasing is enabled on this sprite.
     --- If you have pixel-art loaded onto it, turn this off!
     ---
-    self.antialiasing = sprite.default_antialiasing
+    self.antialiasing = Sprite.default_antialiasing
 
     ---
     --- The object responsible for controlling this sprite's animation.
     --- 
-    --- @type flora.display.animation.animation_controller
+    --- @type flora.display.animation.AnimationController
     ---
-    self.animation = animation_controller:new(self)
+    self.animation = AnimationController:new(self)
 
     ---
     --- @protected
-    --- @type flora.utils.color 
+    --- @type flora.utils.Color 
     ---
-    self._tint = color:new(color.white)
+    self._tint = Color:new(Color.WHITE)
 
     ---
     --- @protected
@@ -119,67 +117,67 @@ function sprite:constructor(x, y, texture)
     --- @protected
     --- @type number
     ---
-    self._cos_angle = 1.0
+    self._cosAngle = 1.0
 
     ---
     --- @protected
     --- @type number
     ---
-    self._sin_angle = 0.0
+    self._sinAngle = 0.0
 
     ---
     --- @protected
-    --- @type flora.display.animation.frame_collection?
+    --- @type flora.display.animation.FrameCollection?
     ---
-    self._frames = texture and frame_collection.from_texture(flora.assets:load_texture(texture)) or nil
+    self._frames = texture and FrameCollection.fromTexture(flora.assets:loadTexture(texture)) or nil
 end
 
 ---
 --- Loads a given texture onto this sprite.
 --- 
---- @param  texture  flora.assets.texture  The texture to load onto this sprite.
+--- @param  texture  flora.assets.Texture  The texture to load onto this sprite.
 --- 
---- @return flora.display.sprite
+--- @return flora.display.Sprite
 ---
-function sprite:load_texture(texture)
-    self.frames = frame_collection.from_texture(flora.assets:load_texture(texture))
+function Sprite:loadTexture(texture)
+    self.frames = FrameCollection.fromTexture(flora.assets:loadTexture(texture))
     return self
 end
 
 ---
 --- Centers this sprite to the middle of the screen.
 ---
---- @param  center_axes  integer  The axes to center this sprite on. (`X`, `Y`, or `XY`)
+--- @param  axes  integer  The axes to center this sprite on. (`X`, `Y`, or `XY`)
 ---
-function sprite:screen_center(center_axes)
-    if axes.has_x(center_axes) then
-        self.x = math.floor((flora.game_width - self.width) * 0.5)
+function Sprite:screenCenter(axes)
+    if Axes.hasX(axes) then
+        self.x = math.floor((flora.gameWidth - self.width) * 0.5)
     end
-    if axes.has_y(center_axes) then
-        self.y = math.floor((flora.game_height - self.height) * 0.5)
+    if Axes.hasY(axes) then
+        self.y = math.floor((flora.gameHeight - self.height) * 0.5)
     end
 end
 
-function sprite:set_graphic_size(width, height)
+function Sprite:setGraphicSize(width, height)
     self.scale:set(
-        width / self.frame_width,
-        height / self.frame_height
+        width / self.frameWidth,
+        height / self.frameHeight
     )
 end
 
-function sprite:update(dt)
+function Sprite:update(dt)
     self.animation:update(dt)
 end
 
-function sprite:draw()
+function Sprite:draw()
     if not self.frames or not self.frame or self.alpha <= 0 then
         return
     end
     local filter = self.antialiasing and "linear" or "nearest"
     self.texture.image:setFilter(filter, filter)
 
-    local otx = self.origin.x * self.frame_width
-    local oty = self.origin.y * self.frame_height
+    local otx = self.origin.x * self.frameWidth
+    local oty = self.origin.y * self.frameHeight
 
     local ox = self.origin.x * self.width
     local oy = self.origin.y * self.height
@@ -188,28 +186,28 @@ function sprite:draw()
 
     for i = 1, #self.cameras do
         ---
-        --- @type flora.display.camera
+        --- @type flora.display.Camera
         ---
         local cam = self.cameras[i]
 
-        local cur_anim = self.animation.cur_anim
+        local curAnim = self.animation.curAnim
 
         local rx = self.x + ox
         local ry = self.y + oy
 
-        local offx = cur_anim and cur_anim.offset.x or 0.0
-        local offy = cur_anim and cur_anim.offset.y or 0.0
+        local offx = curAnim and curAnim.offset.x or 0.0
+        local offy = curAnim and curAnim.offset.y or 0.0
 
         offx = offx - (self.frame.offset.x * (self.scale.x < 0 and -1 or 1))
         offy = offy - (self.frame.offset.y * (self.scale.y < 0 and -1 or 1))
 
-        offx = offx - (cam.scroll.x * self.scroll_factor.x)
-        offy = offy - (cam.scroll.y * self.scroll_factor.y)
+        offx = offx - (cam.scroll.x * self.scrollFactor.x)
+        offy = offy - (cam.scroll.y * self.scrollFactor.y)
 
-        rx = rx + (offx * math.abs(self.scale.x)) * self._cos_angle + (offy * math.abs(self.scale.y)) * -self._sin_angle
-	    ry = ry + (offx * math.abs(self.scale.x)) * self._sin_angle + (offy * math.abs(self.scale.y)) * self._cos_angle
+        rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
+	    ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
 
-        cam:draw_frame(
+        cam:drawFrame(
             self.texture, self.frame, rx, ry,
             self.frame.width * self.scale.x, self.frame.height * self.scale.y,
             self.angle, otx, oty, self.tint
@@ -217,8 +215,8 @@ function sprite:draw()
     end
 end
 
-function sprite:dispose()
-    sprite.super.dispose(self)
+function Sprite:dispose()
+    Sprite.super.dispose(self)
 
     if flora.config.debug_mode then
         flora.log:verbose("Unreferencing texture on sprite " .. tostring(self))
@@ -241,14 +239,14 @@ end
 ---
 --- @protected
 ---
-function sprite:get_frames()
+function Sprite:get_frames()
     return self._frames
 end
 
 ---
 --- @protected
 ---
-function sprite:get_texture()
+function Sprite:get_texture()
     if self.frames then
         return self.frames.texture
     end
@@ -258,17 +256,17 @@ end
 ---
 --- @protected
 ---
-function sprite:get_angle()
+function Sprite:get_angle()
     return self._angle
 end
 
 ---
 --- @protected
 ---
-function sprite:get_frame_width()
-    if self.animation.cur_anim then
-        local first_frame = self.animation.cur_anim.frames[1]
-        return first_frame.width
+function Sprite:get_frameWidth()
+    if self.animation.curAnim then
+        local firstFrame = self.animation.curAnim.frames[1]
+        return firstFrame.width
     end
     return self.frame and self.frame.width or 0.0
 end
@@ -276,17 +274,17 @@ end
 ---
 --- @protected
 ---
-function sprite:get_width()
-    return self.frame_width * math.abs(self.scale.x)
+function Sprite:get_width()
+    return self.frameWidth * math.abs(self.scale.x)
 end
 
 ---
 --- @protected
 ---
-function sprite:get_frame_height()
-    if self.animation.cur_anim then
-        local first_frame = self.animation.cur_anim.frames[1]
-        return first_frame.height
+function Sprite:get_frameHeight()
+    if self.animation.curAnim then
+        local firstFrame = self.animation.curAnim.frames[1]
+        return firstFrame.height
     end
     return self.frame and self.frame.height or 0.0
 end
@@ -294,21 +292,21 @@ end
 ---
 --- @protected
 ---
-function sprite:get_height()
-    return self.frame_height * math.abs(self.scale.y)
+function Sprite:get_height()
+    return self.frameHeight * math.abs(self.scale.y)
 end
 
 ---
 --- @protected
 ---
-function sprite:get_tint()
+function Sprite:get_tint()
     return self._tint
 end
 
 ---
 --- @protected
 ---
-function sprite:set_frames(val)
+function Sprite:set_frames(val)
     if self._frames then
         self._frames:unreference()
     end
@@ -323,12 +321,12 @@ end
 ---
 --- @protected
 ---
-function sprite:set_angle(val)
+function Sprite:set_angle(val)
     self._angle = val
 
-    local radian_angle = math.rad(val)
-    self._cos_angle = math.cos(radian_angle)
-    self._sin_angle = math.sin(radian_angle)
+    local radianAngle = math.rad(val)
+    self._cosAngle = math.cos(radianAngle)
+    self._sinAngle = math.sin(radianAngle)
 
     return self._angle
 end
@@ -336,9 +334,9 @@ end
 ---
 --- @protected
 ---
-function sprite:set_tint(val)
-    self._tint = color:new(val)
+function Sprite:set_tint(val)
+    self._tint = Color:new(val)
     return self._tint
 end
 
-return sprite
+return Sprite

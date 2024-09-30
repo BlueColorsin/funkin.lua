@@ -1,12 +1,12 @@
 ---
---- @type funkin.ui.alphabet.alphabet_glyph
+--- @type funkin.ui.alphabet.AlphabetGlyph
 ---
-local alphabet_glyph = flora.import("funkin.ui.alphabet.alphabet_glyph")
+local AlphabetGlyph = flora.import("funkin.ui.alphabet.AlphabetGlyph")
 
 ---
---- @class funkin.ui.alphabet.alphabet : flora.display.sprite_group
+--- @class funkin.ui.alphabet.Alphabet : flora.display.SpriteGroup
 ---
-local alphabet = sprite_group:extend("alphabet", ...)
+local Alphabet = SpriteGroup:extend("Alphabet", ...)
 
 ---
 ---@param  x     number?
@@ -15,8 +15,8 @@ local alphabet = sprite_group:extend("alphabet", ...)
 ---@param  type  "bold"|"normal"?
 ---@param  size  number
 ---
-function alphabet:constructor(x, y, text, type, alignment, size)
-    alphabet.super.constructor(self, x, y)
+function Alphabet:constructor(x, y, text, type, alignment, size)
+    Alphabet.super.constructor(self, x, y)
 
     ---
     --- @type string
@@ -50,22 +50,22 @@ function alphabet:constructor(x, y, text, type, alignment, size)
     ---
     --- The index of this text when displayed in a list.
     ---
-    self.target_y = 0
+    self.targetY = 0
 
     ---
     --- Whether this object displays in a list like format.
     ---
-    self.is_menu_item = false
+    self.isMenuItem = false
 
     ---
     --- The spacing between items in menus like freeplay or options.
     ---
-    self.menu_spacing = vector2:new(20, 120)
+    self.menuSpacing = Vector2:new(20, 120)
 
     ---
     --- The positional offset of this text.
     ---
-    self.text_offset = vector2:new(0, 0)
+    self.textOffset = Vector2:new(0, 0)
 
     ---
     --- @protected
@@ -91,17 +91,72 @@ function alphabet:constructor(x, y, text, type, alignment, size)
     ---
     self._size = size and size or 1.0
     
-    self:update_text(self._text, true)
-    self:update_size(self._size)
+    ---
+    --- @protected
+    --- @type love.SpriteBatch
+    ---
+    self._batch = love.graphics.newSpriteBatch(Paths.getSparrowAtlas(self._type, "images/menus/fonts").texture.image, 1, "stream")
+
+    self:set_type(self._type)
 end
 
-function alphabet:update(dt)
-    if self.is_menu_item then
-        local scaledY = self.target_y * 1.3
-        x = math.lerp(x, self.text_offset.x + (self.target_y * self.menu_spacing.x) + 90, dt * 9.6);
-        y = math.lerp(y, self.text_offset.y + (scaledY * self.menu_spacing.y) + (flora.game_height * 0.45), dt * 9.6);
+function Alphabet:update(dt)
+    if self.isMenuItem then
+        local scaledY = self.targetY * 1.3
+        x = math.lerp(x, self.textOffset.x + (self.targetY * self.menuSpacing.x) + 90, dt * 9.6);
+        y = math.lerp(y, self.textOffset.y + (scaledY * self.menuSpacing.y) + (flora.game_height * 0.45), dt * 9.6);
     end
-    alphabet.super.update(self, dt)
+    Alphabet.super.update(self, dt)
+end
+
+function Alphabet:draw()
+    for i = 1, self.length do
+        local glyph = self.members[i]
+        glyph:draw()
+    end
+    local oldDefaultCameras = flora.cameras.defaultCameras
+    if self._cameras then
+        flora.cameras.defaultCameras = self._cameras
+    end
+    local batchTex = self._batch:getTexture()
+    for i = 1, #flora.cameras.defaultCameras do
+        ---
+        --- @type flora.display.Camera
+        ---
+        local cam = flora.cameras.defaultCameras[i]
+
+        local otx = self.origin.x * (self.width / math.abs(self.scale.x))
+        local oty = self.origin.y * (self.height / math.abs(self.scale.y))
+
+        local ox = self.origin.x * self.width
+        local oy = self.origin.y * self.height
+
+        local rx = self.x + ox
+        local ry = self.y + oy
+
+        local offx = 0.0
+        local offy = 0.0
+
+        offx = offx - (cam.scroll.x * self.scrollFactor.x)
+        offy = offy - (cam.scroll.y * self.scrollFactor.y)
+
+        rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
+	    ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
+
+        cam:drawSpriteBatch(
+            self._batch, rx, ry,
+            batchTex:getWidth() * self.scale.x, batchTex:getHeight() * self.scale.y,
+            self.angle, otx, oty, Color.WHITE
+        )
+    end
+    flora.cameras.defaultCameras = oldDefaultCameras
+end
+
+function Alphabet:dispose()
+    Alphabet.super.dispose(self)
+
+    self._batch:release()
+    self._batch = nil
 end
 
 -----------------------
@@ -111,11 +166,11 @@ end
 ---
 --- @protected
 --- 
---- @param  new_text  string
---- @param  force     boolean?
+--- @param  newText  string
+--- @param  force    boolean?
 ---
-function alphabet:update_text(new_text, force)
-    if self._text == new_text and not force then
+function Alphabet:updateText(newText, force)
+    if self._text == newText and not force then
         return
     end
     for i = 1, self.length do
@@ -124,36 +179,36 @@ function alphabet:update_text(new_text, force)
     end
     self:clear()
 
-    local glyph_pos = vector2:new()
+    local glyphPos = Vector2:new()
     local rows = 0
 
-    local line = sprite_group:new()
+    local line = SpriteGroup:new()
 
-    for i = 1, #new_text do
-        local char = new_text:char_at(i)
+    for i = 1, #newText do
+        local char = newText:charAt(i)
         if char == "\n" then
             rows = rows + 1
-            glyph_pos.x = 0
-            glyph_pos.y = rows * alphabet_glyph.y_per_row
+            glyphPos.x = 0
+            glyphPos.y = rows * AlphabetGlyph.Y_PER_POW
 
             self:add(line)
-            line = sprite_group:new()
+            line = SpriteGroup:new()
         else
-            local space_char = char == " "
-            if space_char then
-                glyph_pos.x = glyph_pos.x + 28
+            local spaceChar = char == " "
+            if spaceChar then
+                glyphPos.x = glyphPos.x + 28
             
-            elseif table.contains(alphabet_glyph.all_glyphs, char:lower()) then
+            elseif table.contains(AlphabetGlyph.ALL_GLYPHS, char:lower()) then
                 ---
-                --- @type funkin.ui.alphabet.alphabet_glyph
+                --- @type funkin.ui.alphabet.AlphabetGlyph
                 ---
-                local glyph = alphabet_glyph:new(glyph_pos.x, glyph_pos.y, char, self._type)
+                local glyph = AlphabetGlyph:new(self, glyphPos.x, glyphPos.y, char, self._type)
                 glyph.row = rows
-                glyph.tint = color:new(self._tint)
-                glyph.spawn_pos:copy_from(glyph_pos)
+                glyph.tint = Color:new(self._tint)
+                glyph.spawnPos:copyFrom(glyphPos)
                 line:add(glyph)
 
-                glyph_pos.x = glyph_pos.x + glyph.width
+                glyphPos.x = glyphPos.x + glyph.width
             end
         end
     end
@@ -167,21 +222,21 @@ end
 --- 
 --- @param  align  "left"|"center"|"right"
 ---
-function alphabet:update_alignment(align)
-    local total_width = self.width
+function Alphabet:updateAlignment(align)
+    local totalWidth = self.width
     for i = 1, self.length do
         ---
-        --- @type flora.display.sprite_group
+        --- @type flora.display.SpriteGroup
         ---
         local line = self.members[i]
         if align == "left" then
             line.x = self._x
             
         elseif align == "center" then
-            line.x = self._x + ((total_width - line.width) * 0.5)
+            line.x = self._x + ((totalWidth - line.width) * 0.5)
         
         elseif align == "right" then
-            line.x = self._x + (total_width - line.width)
+            line.x = self._x + (totalWidth - line.width)
         end
     end
 end
@@ -191,59 +246,94 @@ end
 --- 
 --- @param  size  integer
 ---
-function alphabet:update_size(size)
+function Alphabet:updateSize(size)
     for i = 1, self.length do
         ---
-        --- @type flora.display.sprite_group
+        --- @type flora.display.SpriteGroup
         ---
         local line = self.members[i]
-        line:for_each(function(glyph)
+        line:forEach(function(glyph)
             glyph.scale:set(self._size, self._size)
-            glyph:set_position(
-                line.x + (glyph.spawn_pos.x * self._size),
-                line.y + (glyph.spawn_pos.y * self._size)
+            glyph:setPosition(
+                line.x + (glyph.spawnPos.x * self._size),
+                line.y + (glyph.spawnPos.y * self._size)
             )
         end)
     end
-    self:update_alignment(self._alignment)
+    self:updateAlignment(self._alignment)
 end
 
 ---
 --- @protected
 ---
-function alphabet:set_type(val)
+function Alphabet:set_type(val)
     self._type = val
-    self:update_text(self._text, true)
-    self:update_size(self._size)
+    self._batch:setTexture(Paths.getSparrowAtlas(self._type, "images/menus/fonts").texture.image)
+
+    self:updateText(self._text, true)
+    self:updateSize(self._size)
     return self._type
 end
 
 ---
 --- @protected
 ---
-function alphabet:set_text(val)
+function Alphabet:set_text(val)
     self._text = val
-    self:update_text(self._text)
-    self:update_size(self._size)
+    self:updateText(self._text)
+    self:updateSize(self._size)
     return self._text
 end
 
 ---
 --- @protected
 ---
-function alphabet:set_alignment(val)
+function Alphabet:set_alignment(val)
     self._alignment = val
-    self:update_size(self._size)
+    self:updateSize(self._size)
     return self._alignment
 end
 
 ---
 --- @protected
 ---
-function alphabet:set_size(val)
+function Alphabet:set_size(val)
     self._size = val
-    self:update_size(self._size)
+    self:updateSize(self._size)
     return self._size
 end
 
-return alphabet
+---
+--- @protected
+---
+function Alphabet:set_angle(val)
+    self._angle = val
+
+    local radianAngle = math.rad(val)
+    self._cosAngle = math.cos(radianAngle)
+    self._sinAngle = math.sin(radianAngle)
+
+    return self._angle
+end
+
+---
+--- @protected
+---
+function Alphabet:get_width()
+    if self.group.length > 0 then
+        return (self:_find_max_x_helper() - self:_find_min_x_helper()) * self.scale.x
+    end
+    return 0.0
+end
+
+---
+--- @protected
+---
+function Alphabet:get_height()
+    if self.group.length > 0 then
+        return (self:_find_max_y_helper() - self:_find_min_y_helper()) * self.scale.y
+    end
+    return 0.0
+end
+
+return Alphabet

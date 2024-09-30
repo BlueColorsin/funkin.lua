@@ -1,49 +1,49 @@
 ---
---- @class funkin.data.settings
+--- @class funkin.data.Settings
 ---
-local settings = class:extend()
+local Settings = Class:extend()
 
 ---
 --- @protected
---- @type flora.utils.save
+--- @type flora.utils.Save
 ---
-settings._save = nil
+Settings._save = nil
 
-settings.data = {
+Settings.data = {
     ---
     --- @type number
     ---
-    hit_window = 180.0,
+    hitWindow = 180.0,
 
     ---
     --- @type number
     ---
-    song_offset = 50.0
+    songOffset = 50.0
 }
 
-function settings.init()
-    settings._save = save:new()
-    settings._save:bind("settings")
+function Settings.init()
+    Settings._save = Save:new()
+    Settings._save:bind("settings")
 
     local do_flush = false
-    for key, value in pairs(settings.data) do
-        if not settings._save.data[key] then
-            settings._save.data[key] = value
+    for key, value in pairs(Settings.data) do
+        if not Settings._save.data[key] then
+            Settings._save.data[key] = value
             do_flush = true
         else
-            settings.data[key] = settings._save.data[key]
+            Settings.data[key] = Settings._save.data[key]
         end
     end
     if do_flush then
-        settings._save:flush()
+        Settings._save:flush()
     end
 end
 
-function settings.save()
-    for key, value in pairs(settings.data) do
-        settings._save.data[key] = value
+function Settings.save()
+    for key, value in pairs(Settings.data) do
+        Settings._save.data[key] = value
     end
-    settings._save:flush()
+    Settings._save:flush()
 end
 
-return settings
+return Settings

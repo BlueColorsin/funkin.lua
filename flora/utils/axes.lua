@@ -1,18 +1,18 @@
 ---
---- @class flora.utils.axes
+--- @class flora.utils.Axes
 ---
-local axes = {
-    x = 0,
-    y = 1,
-    xy = 2
+local Axes = {
+    X = 0,
+    Y = 1,
+    XY = 2
 }
 
-function axes.has_x(a)
-    return a == axes.x or a == axes.xy
+function Axes.hasX(a)
+    return a == Axes.X or a == Axes.XY
 end
 
-function axes.has_y(a)
-    return a == axes.y or a == axes.xy
+function Axes.hasY(a)
+    return a == Axes.Y or a == Axes.XY
 end
 
-return axes
+return Axes

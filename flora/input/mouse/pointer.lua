@@ -1,15 +1,15 @@
 --- 
 --- A simple graphical mouse pointer.
 --- 
---- @class flora.input.mouse.pointer
+--- @class flora.input.mouse.Pointer
 --- 
-local pointer = class:extend("pointer", ...)
+local Pointer = Class:extend("Pointer", ...)
 
-function pointer:constructor()
+function Pointer:constructor()
     ---
     --- The texture used to draw this mouse pointer to the screen.
     ---
-    --- @type flora.assets.texture?
+    --- @type flora.assets.Texture?
     ---
     self.texture = nil
 
@@ -22,7 +22,7 @@ function pointer:constructor()
     --- Whether or not to use the system mouse cursor
     --- instead of Flora's software cursor.
     ---
-    self.use_system_cursor = false
+    self.useSystemCursor = false
 
     ---
     --- The mouse pointer's X position. (in pixels, world space)
@@ -37,47 +37,47 @@ function pointer:constructor()
     ---
     --- The mouse pointer's X position. (in pixels, screen space)
     ---
-    self.screen_x = 0.0
+    self.screenX = 0.0
 
     ---
     --- The mouse pointer's Y position. (in pixels, screen space)
     ---
-    self.screen_y = 0.0
+    self.screenY = 0.0
 
     ---
     --- The X amount that the cursor has moved since last frame. (in pixels, world space)
     ---
-    self.delta_x = 0.0
+    self.deltaX = 0.0
 
     ---
     --- The Y amount that the cursor has moved since last frame. (in pixels, world space)
     ---
-    self.delta_y = 0.0
+    self.deltaY = 0.0
 
     ---
     --- The X amount that the cursor has moved since last frame. (in pixels, screen space)
     ---
-    self.delta_screen_x = 0.0
+    self.deltaScreenX = 0.0
 
     ---
     --- The Y amount that the cursor has moved since last frame. (in pixels, screen space)
     ---
-    self.delta_screen_y = 0.0
+    self.deltaScreenY = 0.0
 
     ---
     --- Whether or not the left mouse button has just been pressed.
     ---
-    self.just_pressed = false
+    self.justPressed = false
 
     ---
     --- Whether or not the middle mouse button has just been pressed.
     ---
-    self.just_pressed_middle = false
+    self.justPressedMiddle = false
 
     ---
     --- Whether or not the right mouse button has just been pressed.
     ---
-    self.just_pressed_right = false
+    self.justPressedRight = false
 
     ---
     --- Whether or not the left mouse button is pressed.
@@ -87,12 +87,12 @@ function pointer:constructor()
     ---
     --- Whether or not the middle mouse button is pressed.
     ---
-    self.pressed_middle = false
+    self.pressedMiddle = false
 
     ---
     --- Whether or not the right mouse button is pressed.
     ---
-    self.pressed_right = false
+    self.pressedRight = false
 
     ---
     --- Whether or not the left mouse button is released.
@@ -102,27 +102,27 @@ function pointer:constructor()
     ---
     --- Whether or not the middle mouse button is released.
     ---
-    self.released_middle = true
+    self.releasedMiddle = true
 
     ---
     --- Whether or not the right mouse button is released.
     ---
-    self.released_right = true
+    self.releasedRight = true
 
     ---
     --- Whether or not the left mouse button has just been released.
     ---
-    self.just_released = false
+    self.justReleased = false
 
     ---
     --- Whether or not the middle mouse button has just been released.
     ---
-    self.just_released_middle = false
+    self.justReleasedMiddle = false
 
     ---
     --- Whether or not the right mouse button has just been released.
     ---
-    self.just_released_right = false
+    self.justReleasedRight = false
 
     ---
     --- Whether or not antialiasing is enabled on the cursor.
@@ -132,19 +132,19 @@ function pointer:constructor()
     ---
     --- The X and Y scale factor of this sprite.
     ---
-    --- @type flora.math.vector2
+    --- @type flora.math.Vector2
     ---
-    self.scale = vector2:new(1, 1)
+    self.scale = Vector2:new(1, 1)
 
     ---
     --- @protected
-    --- @type flora.math.vector2
+    --- @type flora.math.Vector2
     ---
-    self._vec = vector2:new()
+    self._vec = Vector2:new()
 
     ---
     --- @protected
-    --- @type flora.assets.texture
+    --- @type flora.assets.Texture
     ---
     self._texture = nil
 
@@ -154,124 +154,124 @@ function pointer:constructor()
     self:load("flora/embed/images/cursor.png")
 end
 
-function pointer:load(texture)
-    self.texture = flora.assets:load_texture(texture)
+function Pointer:load(texture)
+    self.texture = flora.assets:loadTexture(texture)
 end
 
-function pointer:update()
+function Pointer:update()
     local prevX = self.x
     local prevY = self.y
 
-    local pos = self:get_world_position(nil, self._vec)
+    local pos = self:getWorldPosition(nil, self._vec)
     self.x = pos.x
     self.y = pos.y
 
-    self.delta_x = self.x - prevX
-    self.delta_y = self.y - prevY
+    self.deltaX = self.x - prevX
+    self.deltaY = self.y - prevY
 end
 
-function pointer:post_update()
-    self.delta_x = 0.0
-    self.delta_y = 0.0
+function Pointer:postUpdate()
+    self.deltaX = 0.0
+    self.deltaY = 0.0
 
-    self.delta_screen_x = 0.0
-    self.delta_screen_y = 0.0
+    self.deltaScreenX = 0.0
+    self.deltaScreenY = 0.0
 
-    self.just_pressed = false
-    self.just_pressed_middle = false
-    self.just_pressed_right = false
+    self.justPressed = false
+    self.justPressedMiddle = false
+    self.justPressedRight = false
 
-    self.just_released = false
-    self.just_released_middle = false
-    self.just_released_right = false
+    self.justReleased = false
+    self.justReleasedMiddle = false
+    self.justReleasedRight = false
 
-    love.mouse.setVisible(self.use_system_cursor and self.visible)
+    love.mouse.setVisible(self.useSystemCursor and self.visible)
 end
 
-function pointer:draw()
+function Pointer:draw()
     if not self.texture then
         return
     end
     local filter = self.antialiasing and "linear" or "nearest"
     self.texture.image:setFilter(filter, filter)
 
-    love.graphics.draw(self.texture.image, self.screen_x, self.screen_y, 0, self.scale.x, self.scale.y)
+    love.graphics.draw(self.texture.image, self.screenX, self.screenY, 0, self.scale.x, self.scale.y)
 end
 
-function pointer:on_moved(screen_x, screen_y)
-    local prev_screen_x = self.screen_x
-    local prev_screen_y = self.screen_y
+function Pointer:onMoved(screenX, screenY)
+    local prevScreenX = self.screenX
+    local prevScreenY = self.screenY
     
-    self.screen_x = screen_x
-    self.screen_y = screen_y
+    self.screenX = screenX
+    self.screenY = screenY
 
-    self.delta_screen_x = self.screen_x - prev_screen_x
-    self.delta_screen_y = self.screen_y - prev_screen_y
+    self.deltaScreenX = self.screenX - prevScreenX
+    self.deltaScreenY = self.screenY - prevScreenY
 end
 
-function pointer:on_pressed(button)
+function Pointer:onPressed(button)
     if button == 1 then
-        self.just_pressed = true
+        self.justPressed = true
         self.pressed = true
         self.released = false
         
     elseif button == 2 then
-        self.just_pressed_right = true
-        self.pressed_right = true
-        self.released_right = false
+        self.justPressedRight = true
+        self.pressedRight = true
+        self.releasedRight = false
         
     elseif button == 3 then
-        self.just_pressed_middle = true
-        self.pressed_middle = true
-        self.released_middle = false
+        self.justPressedMiddle = true
+        self.pressedMiddle = true
+        self.releasedMiddle = false
     end
 end
 
-function pointer:on_released(button)
+function Pointer:onReleased(button)
     if button == 1 then
-        self.just_released = true
+        self.justReleased = true
         self.pressed = false
         self.released = true
         
     elseif button == 2 then
-        self.just_released_right = true
-        self.pressed_right = false
-        self.released_right = true
+        self.justReleasedRight = true
+        self.pressedRight = false
+        self.releasedRight = true
         
     elseif button == 3 then
-        self.just_released_middle = true
-        self.pressed_middle = false
-        self.released_middle = true
+        self.justReleasedMiddle = true
+        self.pressedMiddle = false
+        self.releasedMiddle = true
     end
 end
 
 ---
---- @param  cam  flora.display.camera
---- @param  vec  flora.math.vector2
+--- @param  cam  flora.display.Camera
+--- @param  vec  flora.math.Vector2
 --- 
---- @return flora.math.vector2
+--- @return flora.math.Vector2
 ---
-function pointer:get_world_position(cam, vec)
+function Pointer:getWorldPosition(cam, vec)
     if not cam then
         cam = flora.camera
     end
     if not vec then
-        vec = vector2:new()
+        vec = Vector2:new()
     end
     local ww = love.graphics.getWidth()
     local wh = love.graphics.getHeight()
 
-    local gw = flora.config.game_width
-    local gh = flora.config.game_height
+    local gw = flora.gameWidth
+    local gh = flora.gameHeight
 
     local scale = math.min(ww / gw, wh / gh) * cam.zoom
     return vec:set(
-        ((self.screen_x - (ww - scale * gw) * 0.5) / scale) + cam.scroll.x,
-        ((self.screen_y - (wh - scale * gh) * 0.5) / scale) + cam.scroll.y
+        ((self.screenX - (ww - scale * gw) * 0.5) / scale) + cam.scroll.x,
+        ((self.screenY - (wh - scale * gh) * 0.5) / scale) + cam.scroll.y
     )
 end
 
-function pointer:overlaps(obj, cam)
+function Pointer:overlaps(obj, cam)
     if not cam then
         cam = flora.camera
     end
@@ -289,14 +289,14 @@ end
 ---
 --- @protected
 ---
-function pointer:get_texture()
+function Pointer:get_texture()
     return self._texture
 end
 
 ---
 --- @protected
 ---
-function pointer:set_texture(val)
+function Pointer:set_texture(val)
     if self._texture then
         self._texture:unreference()
     end
@@ -307,4 +307,4 @@ function pointer:set_texture(val)
     return self._texture
 end
 
-return pointer
+return Pointer

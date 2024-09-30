@@ -1,12 +1,12 @@
 ---
---- Accessed via `flora.sound`.
+--- Accessed via `flora.Sound`.
 ---
---- @class flora.frontends.sound_front_end : flora.base.basic
+--- @class flora.frontends.SoundFrontEnd : flora.base.Basic
 ---
-local sound_front_end = basic:extend("sound_front_end", ...)
+local SoundFrontEnd = Basic:extend("SoundFrontEnd", ...)
 
-function sound_front_end:constructor()
-    sound_front_end.super.constructor(self)
+function SoundFrontEnd:constructor()
+    SoundFrontEnd.super.constructor(self)
 
     ---
     --- The volume multiplier of ALL sounds. Ranges from 0 to 1. (default: `1.0`)
@@ -22,9 +22,9 @@ function sound_front_end:constructor()
     --- Built-in background music functionality, useful for
     --- menus, levels, etc.
     --- 
-    --- @type flora.sound
+    --- @type flora.Sound
     ---
-    self.music = sound:new()
+    self.music = Sound:new()
 
     ---
     --- A list containing every sound that has been loaded.
@@ -43,16 +43,16 @@ end
 --- @param  volume   number?                The volume of the sound. (default: `1.0`)
 --- @param  looping  boolean?               Whether or not the sound should loop. (default: `false`)
 ---
---- @return flora.sound
+--- @return flora.Sound
 ---
-function sound_front_end:load(data, stream, volume, looping)
+function SoundFrontEnd:load(data, stream, volume, looping)
     ---
-    --- @type flora.sound
+    --- @type flora.Sound
     ---
     local snd = nil
     for i = 1, #self.list do
         ---
-        --- @type flora.sound
+        --- @type flora.Sound
         ---
         local s = self.list[i]
         if s and not s.playing then
@@ -62,7 +62,7 @@ function sound_front_end:load(data, stream, volume, looping)
     end
     if not snd then
         -- no available sound was found, make a new one
-        snd = sound:new()
+        snd = Sound:new()
         table.insert(self.list, snd)
     end
     snd:load(data, stream)
@@ -79,9 +79,9 @@ end
 --- @param  volume   number?                The volume of the sound. (default: `1.0`)
 --- @param  looping  boolean?               Whether or not the sound should loop. (default: `false`)
 ---
---- @return flora.sound
+--- @return flora.Sound
 ---
-function sound_front_end:play(data, stream, volume, looping)
+function SoundFrontEnd:play(data, stream, volume, looping)
     local snd = self:load(data, stream, volume, looping)
     snd:play()
     return snd
@@ -95,9 +95,9 @@ end
 --- @param  volume   number?                The volume of the music. (default: `1.0`)
 --- @param  looping  boolean?               Whether or not the music should loop. (default: `true`)
 ---
---- @return flora.sound
+--- @return flora.Sound
 ---
-function sound_front_end:play_music(data, stream, volume, looping)
+function SoundFrontEnd:playMusic(data, stream, volume, looping)
     self.music:load(data, stream)
     self.music.volume = volume and volume or 1.0
     self.music.looping = looping and looping or true
@@ -105,12 +105,12 @@ function sound_front_end:play_music(data, stream, volume, looping)
     return self.music
 end
 
-function sound_front_end:update()
+function SoundFrontEnd:update()
     self.music:update()
 
     for i = 1, #self.list do
         ---
-        --- @type flora.sound
+        --- @type flora.Sound
         ---
         local snd = self.list[i]
         if snd and snd.playing then
@@ -119,4 +119,4 @@ function sound_front_end:update()
     end
 end
 
-return sound_front_end
+return SoundFrontEnd

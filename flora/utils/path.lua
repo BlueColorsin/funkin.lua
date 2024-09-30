@@ -1,14 +1,14 @@
 ---
---- @class flora.utils.path
+--- @class flora.utils.Path
 ---
-local path = class:extend("path", ...)
+local Path = Class:extend("Path", ...)
 
 -- sloppily ported over from haxe itself
 -- https://github.com/HaxeFoundation/haxe/blob/4.3.1/std/haxe/io/Path.hx
 
 -- probs gonna be majorly untested, sorry :(
     
-function path:constructor(p)
+function Path:constructor(p)
     self.dir = nil
     self.file = nil
     self.ext = nil
@@ -20,8 +20,8 @@ function path:constructor(p)
         return
     end
 
-    local c1 = string.last_index_of(p, "/")
-    local c2 = string.last_index_of(p, "\\")
+    local c1 = string.lastIndexOf(p, "/")
+    local c2 = string.lastIndexOf(p, "\\")
 
     if c1 < c2 then
         self.dir = string.sub(p, 1, c2 - 1)
@@ -34,7 +34,7 @@ function path:constructor(p)
         self.dir = nil
     end
 
-    local cp = string.last_index_of(p, ".")
+    local cp = string.lastIndexOf(p, ".")
     if cp ~= -1 then
         self.ext = string.sub(p, cp + 1)
         self.file = string.sub(p, 1, cp - 1)
@@ -44,7 +44,7 @@ function path:constructor(p)
     end
 end
 
-function path:__tostring()
+function Path:__tostring()
     local final = (self.dir == nil) and "" or self.dir .. (self.backslash and "\\" or "/")
     final = final .. self.file
     if self.ext ~= nil then
@@ -53,48 +53,48 @@ function path:__tostring()
     return final
 end
 
-function path.without_extension(p)
-    local s = path:new(p)
+function Path.withoutExtension(p)
+    local s = Path:new(p)
     s.ext = nil
     return s:__tostring()
 end
 
-function path.without_directory(p)
-    local s = path:new(p)
+function Path.withoutDirectory(p)
+    local s = Path:new(p)
     s.dir = nil
     return s:__tostring()
 end
 
-function path.directory(p)
-    local s = path:new(p)
+function Path.directory(p)
+    local s = Path:new(p)
     return s.dir ~= nil and s.dir or ""
 end
 
-function path.extension(p)
-    local s = path:new(p)
+function Path.extension(p)
+    local s = Path:new(p)
     return s.ext ~= nil and s.ext or ""
 end
 
-function path.with_extension(p, ext)
-    local s = path:new(p)
+function Path.withExtension(p, ext)
+    local s = Path:new(p)
     s.ext = ext
     return s:__tostring()
 end
 
-function path.join(_paths)
+function Path.join(_paths)
     local paths = table.filter(_paths, function(s) return s ~= nil and s ~= "" end)
     if #paths < 1 then
         return ""
     end
     local p = paths[1]
     for i = 2, #paths do
-        p = path.add_trailing_slash(p)
+        p = Path.addTrailingSlash(p)
         p = p .. paths[i]
     end
-    return path.normalize(p)
+    return Path.normalize(p)
 end
 
-function path.normalize(p)
+function Path.normalize(p)
     local slash = "/"
     p = table.join(string.split(p, "\\"), slash)
     if p == slash then
@@ -108,7 +108,7 @@ function path.normalize(p)
         if token == '..' and #target > 0 and target[#target] ~= ".." then
             table.remove(target, #target)
         elseif token == "" then
-            if #target > 0 or string.char_code_at(p, 0) == slashCode then
+            if #target > 0 or string.charCodeAt(p, 0) == slashCode then
                 table.insert(target, token)
             end
         elseif token ~= "." then
@@ -122,7 +122,7 @@ function path.normalize(p)
     local slashes = false
     
     for i = 1, #tmp do
-        local char = string.char_at(tmp, i)
+        local char = string.charAt(tmp, i)
         local code = string.byte(char)
 
         if code == string.byte(":") then
@@ -146,13 +146,13 @@ function path.normalize(p)
     return acc
 end
 
-function path.add_trailing_slash(p)
+function Path.addTrailingSlash(p)
     if #p < 1 then
         return "/"
     end
 
-    local c1 = string.last_index_of(p, "/")
-    local c2 = string.last_index_of(p, "\\")
+    local c1 = string.lastIndexOf(p, "/")
+    local c2 = string.lastIndexOf(p, "\\")
 
     local final = p
 
@@ -169,11 +169,11 @@ function path.add_trailing_slash(p)
     return final
 end
 
-function path.remove_trailing_slashes(path)
+function Path.removeTrailingSlashes(path)
     local slashCode = string.byte("/")
     local backSlashCode = string.byte("\\")
     while true do
-        local code = string.char_code_at(path, #path)
+        local code = string.charCodeAt(path, #path)
         if code == slashCode or code == backSlashCode then
             path = string.sub(path, 1, #path - 1)
         else
@@ -183,17 +183,17 @@ function path.remove_trailing_slashes(path)
     return path
 end
 
-function path.is_absolute(p)
-    if string.starts_with(p, "/") then
+function Path.isAbsolute(p)
+    if string.startsWith(p, "/") then
         return true
     end
-    if string.char_at(p, 0) == ":" then
+    if string.charAt(p, 0) == ":" then
         return true
     end
-    if string.starts_with(p, "\\\\") then
+    if string.startsWith(p, "\\\\") then
         return true
     end
     return false
 end
 
-return path
+return Path

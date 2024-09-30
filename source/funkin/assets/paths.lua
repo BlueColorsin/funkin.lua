@@ -1,9 +1,9 @@
 ---
---- @class funkin.assets.paths
+--- @class funkin.assets.Paths
 ---
-local paths = class:extend()
+local Paths = Class:extend()
 
-function paths.asset(name)
+function Paths.asset(name)
     return "assets/" .. name
 end
 
@@ -12,7 +12,7 @@ end
 --- 
 --- @return table
 ---
-function paths.get_exts_for_type(type)
+function Paths.getExtsForType(type)
     if type == "image" then
         return {".png", ".tga", ".exr"}
 
@@ -28,8 +28,8 @@ end
 --- 
 --- @return string
 ---
-function paths.suffix_ext_from_type(type, path)
-    local exts = paths.get_exts_for_type(type)
+function Paths.suffixExtFromType(type, path)
+    local exts = Paths.getExtsForType(type)
     for i = 1, #exts do
         local ppath = path .. exts[i]
         if love.filesystem.getInfo(ppath, "file") then
@@ -45,8 +45,8 @@ end
 --- 
 --- @return string
 ---
-function paths.image(name, dir)
-    return paths.suffix_ext_from_type("image", paths.asset(path.join({dir and dir or "images", name})))
+function Paths.image(name, dir)
+    return Paths.suffixExtFromType("image", Paths.asset(Path.join({dir and dir or "images", name})))
 end
 
 ---
@@ -55,8 +55,8 @@ end
 --- 
 --- @return string
 ---
-function paths.music(name, dir)
-    return paths.suffix_ext_from_type("sound", paths.asset(path.join({dir and dir or "music", name, "music"})))
+function Paths.music(name, dir)
+    return Paths.suffixExtFromType("sound", Paths.asset(Path.join({dir and dir or "music", name, "music"})))
 end
 
 ---
@@ -65,22 +65,22 @@ end
 --- 
 --- @return string
 ---
-function paths.sound(name, dir)
-    return paths.suffix_ext_from_type("sound", paths.asset(path.join({dir and dir or "sounds", name})))
+function Paths.sound(name, dir)
+    return Paths.suffixExtFromType("sound", Paths.asset(Path.join({dir and dir or "sounds", name})))
 end
 
 ---
 --- @param  name  string
 --- @param  dir   string?
 --- 
---- @return flora.display.animation.atlas_frames
+--- @return flora.display.animation.AtlasFrames
 ---
-function paths.get_sparrow_atlas(name, dir)
-    local img = paths.image(name, dir)
-    local xml = path.without_extension(img) .. ".xml"
+function Paths.getSparrowAtlas(name, dir)
+    local img = Paths.image(name, dir)
+    local xml = Path.withoutExtension(img) .. ".xml"
     
     -- TODO: cache that shit
-    return atlas_frames.from_sparrow(img, xml)
+    return AtlasFrames.fromSparrow(img, xml)
 end
 
-return paths
+return Paths

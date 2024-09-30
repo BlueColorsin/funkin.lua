@@ -134,8 +134,8 @@ local function openDialogue(title, fileTypes, initialFile)
 	return ofn
 end
 
-Native.default_cursor_type = "ARROW"
-Native.cursor_type = {
+Native.default_cursorType = "ARROW"
+Native.cursorType = {
 	ARROW = 32512,
 	IBEAM = 32513,
 	WAIT = 32514,
@@ -153,7 +153,7 @@ Native.cursor_type = {
 	PIN = 32671,
 	PERSON = 32672
 }
-Native.console_color = {
+Native.consoleColor = {
 	black = 0,
 	dark_blue = 1,
 	dark_green = 2,
@@ -177,24 +177,24 @@ Native.STD_OUTPUT_HANDLE = ffi.cast("DWORD", -11)
 Native.STD_ERROR_HANDLE = ffi.cast("DWORD", -12)
 Native.INVALID_HANDLE_VALUE = ffi.cast("HANDLE", -1)
 
-function Native.ask_open_file(title, file_types)
+function Native.askOpenFile(title, file_types)
 	local dialogue = openDialogue(title or "Open File", file_types)
 	if comdlg32.GetOpenFileNameA(dialogue) == 1 then return ffi.string(dialogue.lpstrFile) end
 end
 
-function Native.ask_save_as_file(title, file_types, initial_file)
+function Native.askSaveAsFile(title, file_types, initial_file)
 	local dialogue = openDialogue(title or "Save As", file_types, "")
 	if comdlg32.GetSaveFileNameA(dialogue) == 1 then return ffi.string(dialogue.lpstrFile) end
 end
 
-function Native.set_cursor(type)
-	local cursor_type = Native.cursor_type[type:upper()]
-	if cursor_type then
-		ffi.C.SetCursor(ffi.C.LoadCursorA(nil, ffi.cast("const char*", cursor_type)))
+function Native.setCursor(type)
+	local cursorType = Native.cursorType[type:upper()]
+	if cursorType then
+		ffi.C.SetCursor(ffi.C.LoadCursorA(nil, ffi.cast("const char*", cursorType)))
 	end
 end
 
-function Native.set_dark_mode(enable)
+function Native.setDarkMode(enable)
 	local window = getActiveWindow()
 	local darkMode = ffi.new("int[1]", toInt(enable))
 
@@ -203,12 +203,12 @@ function Native.set_dark_mode(enable)
 	end
 end
 
-function Native.set_console_colors(fg_color, bg_color)
-	if fg_color == nil or fg_color == Native.console_color.none then
-		fg_color = Native.console_color.light_gray
+function Native.setConsoleColors(fg_color, bg_color)
+	if fg_color == nil or fg_color == Native.consoleColor.none then
+		fg_color = Native.consoleColor.light_gray
 	end
-	if bg_color == nil or bg_color == Native.console_color.none then
-		bg_color = Native.console_color.black
+	if bg_color == nil or bg_color == Native.consoleColor.none then
+		bg_color = Native.consoleColor.black
 	end
 	local console = ffi.C.GetStdHandle(Native.STD_OUTPUT_HANDLE)
 	ffi.C.SetConsoleTextAttribute(console, (bg_color * 16) + fg_color)

@@ -6,16 +6,16 @@ end
 
 io.stdout:setvbuf("no")
 
-require("flora.utils.lua.math")
-require("flora.utils.lua.string")
-require("flora.utils.lua.table")
+require("flora.utils.lua.Math")
+require("flora.utils.lua.String")
+require("flora.utils.lua.Table")
 
 local lily = require("flora.libs.lily")
 
-local displayed_memory = 0.0
-local displayed_vram = 0.0
+local displayedMemory = 0.0
+local displayedVRAM = 0.0
 
-local function busy_sleep(time) -- uses more cpu BUT results in more accurate fps
+local function busySleep(time) -- uses more cpu BUT results in more accurate fps
     if time <= 0 then
         return
     end
@@ -41,65 +41,65 @@ function love.system.getDevice()
 	return "Unknown"
 end
 
-xml = require("flora.libs.xml")
-json = require("flora.libs.json")
-class = require("flora.libs.classic")
+Xml = require("flora.libs.Xml")
+Json = require("flora.libs.Json")
+Class = require("flora.libs.Classic")
 
-object = require("flora.base.object")
-ref_counted = require("flora.base.ref_counted")
-basic = require("flora.base.basic")
+Object = require("flora.base.Object")
+RefCounted = require("flora.base.RefCounted")
+Basic = require("flora.base.Basic")
 
-texture = require("flora.assets.texture")
+Texture = require("flora.assets.Texture")
 
-camera = require("flora.display.camera")
-group = require("flora.display.group")
-object2d = require("flora.display.object2d")
-state = require("flora.display.state")
-sprite = require("flora.display.sprite")
-sprite_group = require("flora.display.sprite_group")
-text = require("flora.display.text")
+Camera = require("flora.display.Camera")
+Group = require("flora.display.Group")
+Object2D = require("flora.display.Object2D")
+State = require("flora.display.State")
+Sprite = require("flora.display.Sprite")
+SpriteGroup = require("flora.display.SpriteGroup")
+Text = require("flora.display.Text")
 
-frame = require("flora.display.animation.frame_data")
-frame_collection = require("flora.display.animation.frame_collection")
-atlas_frames = require("flora.display.animation.atlas_frames")
+Frame = require("flora.display.animation.FrameData")
+FrameCollection = require("flora.display.animation.FrameCollection")
+AtlasFrames = require("flora.display.animation.AtlasFrames")
 
-keycode = require("flora.input.keyboard.keycode")
+KeyCode = require("flora.input.keyboard.KeyCode")
 
-vector2 = require("flora.math.vector2")
+Vector2 = require("flora.math.Vector2")
 
-bit = require("flora.utils.bit")
-axes = require("flora.utils.axes")
-path = require("flora.utils.path")
-file = require("flora.utils.file")
-save = require("flora.utils.save")
-color = require("flora.utils.color")
-timer = require("flora.utils.timer")
-signal = require("flora.utils.signal")
+Bit = require("flora.utils.Bit")
+Axes = require("flora.utils.Axes")
+Path = require("flora.utils.Path")
+File = require("flora.utils.File")
+Save = require("flora.utils.Save")
+Color = require("flora.utils.Color")
+Timer = require("flora.utils.Timer")
+Signal = require("flora.utils.Signal")
 
-ease = require("flora.tweens.ease")
-tween = require("flora.tweens.tween")
+Ease = require("flora.Tweens.Ease")
+Tween = require("flora.Tweens.Tween")
 
-horizontal_align = require("flora.utils.horizontal_align")
-vertical_align = require("flora.utils.vertical_align")
+HorizontalAlign = require("flora.utils.HorizontalAlign")
+VerticalAlign = require("flora.utils.VerticalAlign")
 
-sound = require("flora.sound")
+Sound = require("flora.Sound")
 
-local timer_manager = require("flora.plugins.timer_manager")
-local tween_manager = require("flora.plugins.tween_manager")
+local TimerManager = require("flora.plugins.TimerManager")
+local TweenManager = require("flora.plugins.TweenManager")
 
 ---
 --- @class flora
 ---
 --- The main class used to initialize Flora
 ---
-flora = class:extend()
+flora = Class:extend()
 
 --- 
 --- A helper object for configuring Flora.
 --- 
---- @type flora.config
+--- @type flora.Config
 --- 
-flora.config = require("flora.config"):new()
+flora.config = require("flora.Config"):new()
 
 ---
 --- Loads the given module, returns any value returned by the given module(`true` when `nil`).
@@ -118,7 +118,7 @@ flora.config = require("flora.config"):new()
 --- @return unknown
 ---
 flora.import = function(modname)
-    return require(flora.config.source_folder .. "." .. modname)
+    return require(flora.config.sourceFolder .. "." .. modname)
 end
 
 ---
@@ -138,80 +138,80 @@ flora.native = require("flora.native")
 ---
 --- The logging system for Flora.
 ---
---- @type flora.debug.log
+--- @type flora.debug.Log
 ---
-flora.log = require("flora.debug.log"):new()
+flora.log = require("flora.debug.Log"):new()
 
 ---
 --- The object responsible for managing assets.
 ---
---- @type flora.frontends.asset_front_end
+--- @type flora.frontends.AssetFrontEnd
 ---
-flora.assets = require("flora.frontends.asset_front_end"):new()
+flora.assets = require("flora.frontends.AssetFrontEnd"):new()
 
 ---
 --- The object responsible for managing cameras.
 ---
---- @type flora.frontends.camera_front_end
+--- @type flora.frontends.CameraFrontEnd
 ---
-flora.cameras = require("flora.frontends.camera_front_end"):new()
+flora.cameras = require("flora.frontends.CameraFrontEnd"):new()
 
 ---
 --- The object responsible for managing keyboard input.
 ---
---- @type flora.input.keyboard.keyboard_manager
+--- @type flora.input.keyboard.KeyboardManager
 ---
-flora.keys = require("flora.input.keyboard.keyboard_manager"):new()
+flora.keys = require("flora.input.keyboard.KeyboardManager"):new()
 
 ---
 --- The object responsible for managing mouse input.
 ---
---- @type flora.input.mouse.pointer
+--- @type flora.input.mouse.Pointer
 ---
-flora.mouse = require("flora.input.mouse.pointer"):new()
+flora.mouse = require("flora.input.mouse.Pointer"):new()
 
 ---
 --- The object responsible for managing sound playback.
 ---
---- @type flora.frontends.sound_front_end
+--- @type flora.frontends.SoundFrontEnd
 ---
-flora.sound = require("flora.frontends.sound_front_end"):new()
+flora.sound = require("flora.frontends.SoundFrontEnd"):new()
 
 ---
 --- The object responsible for managing plugins.
 ---
---- @type flora.frontends.plugin_front_end
+--- @type flora.frontends.PluginFrontEnd
 ---
-flora.plugins = require("flora.frontends.plugin_front_end"):new()
+flora.plugins = require("flora.frontends.PluginFrontEnd"):new()
 
 ---
---- The object responsible for managing signals
+--- The object responsible for managing signals.
 ---
---- @type flora.frontends.signal_front_end
+--- @type flora.frontends.SignalFrontEnd
 ---
-flora.signals = require("flora.frontends.signal_front_end"):new()
+flora.signals = require("flora.frontends.SignalFrontEnd"):new()
 
 ---
 --- The object responsible for correctly sizing the game to the window.
 ---
---- @type flora.display.scalemodes.base_scale_mode
+--- @type flora.display.scalemodes.BaseScaleMode
 ---
-flora.scale_mode = require("flora.display.scalemodes.ratio_scale_mode"):new()
+flora.scaleMode = require("flora.display.scalemodes.RatioScaleMode"):new()
 
 ---
 --- The object responsible for displaying a tray
 --- for adjusting the game's volume.
 ---
---- @type flora.display.sound_tray.default_sound_tray
+--- @type flora.display.soundtray.DefaultSoundTray
 ---
-flora.sound_tray = require("flora.display.sound_tray.default_sound_tray"):new()
+flora.soundTray = require("flora.display.soundtray.DefaultSoundTray"):new()
 
 ---
---- The default save data object for flora.
+--- The default Save data object for flora.
 --- 
 --- Contains `volume` and `muted`.
 --- 
---- @type flora.utils.save
+--- @type flora.utils.Save
 ---
 flora.save = nil
 
@@ -219,14 +219,14 @@ flora.save = nil
 --- The first available camera, usually set
 --- after `flora.cameras` gets reset.
 --- 
---- @type flora.display.camera
+--- @type flora.display.Camera
 ---
 flora.camera = nil
 
 ---
---- An instance of the currently loaded state.
+--- An instance of the currently loaded State.
 ---
---- @type flora.display.state
+--- @type flora.display.State
 ---
 flora.state = nil
 
@@ -234,28 +234,28 @@ flora.state = nil
 --- The width of the game area. (in pixels)
 --- 
 --- If you want to change the game width AFTER initializing
---- flora, please use `flora.resize_game()`!
+--- flora, plEase use `flora.resizeGame()`!
 ---
-flora.game_width = 640
+flora.gameWidth = 640
 
 ---
 --- The height of the game area. (in pixels)
 --- 
 --- If you want to change the game height AFTER initializing
---- flora, please use `flora.resize_game()`!
+--- flora, plEase use `flora.resizeGame()`!
 ---
-flora.game_height = 640
+flora.gameHeight = 640
 
 ---
 --- Starts the Flora engine after it has been
 --- successfully configured.
 ---
 function flora.start()
-    flora.native.set_dark_mode(true)
-    if flora.config.debug_mode then
+    flora.native.setDarkMode(true)
+    if flora.config.debugMode then
         flora.log:verbose("Starting engine")
     end
-    flora.save = save:new()
+    flora.save = Save:new()
     flora.save:bind("flora")
 
     if flora.save.data.volume then
@@ -277,7 +277,7 @@ function flora.start()
         end
     
         local dt = 0.0
-        local fps_timer = 0.0
+        local fpsTimer = 0.0
 
         return function()
             if love.event then
@@ -294,20 +294,20 @@ function flora.start()
             
             local focused = love.window.hasFocus()
 
-            local cap = (focused and flora.config.max_fps or 10)
-            local cap_dt = (cap > 0) and 1 / cap or 0
+            local cap = (focused and flora.config.maxFPS or 10)
+            local capDt = (cap > 0) and 1 / cap or 0
 
             if love.timer then
-                dt = math.min(love.timer.step(), math.max(cap_dt, 0.0416))
+                dt = math.min(love.timer.step(), math.max(capDt, 0.0416))
             end
             
-            fps_timer = fps_timer + dt
-            if fps_timer >= 0.5 then
-                fps_timer = 0.0
-                displayed_memory = collectgarbage("count") * 1024
+            fpsTimer = fpsTimer + dt
+            if fpsTimer >= 0.5 then
+                fpsTimer = 0.0
+                displayedMemory = collectgarbage("count") * 1024
 
                 local stats = love.graphics.getStats()
-                displayed_vram = stats.texturememory
+                displayedVRAM = stats.texturememory
             end
 
             if love.update then
@@ -324,7 +324,7 @@ function flora.start()
 
                 love.graphics.present()
             end
-            busy_sleep(cap_dt)
+            busySleep(capDt)
             
             if focused then
                 collectgarbage("step")
@@ -347,99 +347,99 @@ function flora.start()
         local cur_line = debug.getinfo(2, "l").currentline
         flora.log:print(str, cur_file, cur_line)
     end
-    flora.game_width = flora.config.game_width
-    flora.game_height = flora.config.game_height
+    flora.gameWidth = flora.config.gameWidth
+    flora.gameHeight = flora.config.gameHeight
 
-    flora._canvas = love.graphics.newCanvas(flora.game_width, flora.game_height)
+    flora._canvas = love.graphics.newCanvas(flora.gameWidth, flora.gameHeight)
 
-    timer_manager.global = timer_manager:new()
-    flora.plugins:add(timer_manager.global)
+    TimerManager.global = TimerManager:new()
+    flora.plugins:add(TimerManager.global)
 
-    tween_manager.global = tween_manager:new()
-    flora.plugins:add(tween_manager.global)
+    TweenManager.global = TweenManager:new()
+    flora.plugins:add(TweenManager.global)
 
-    if flora.config.initial_state then
-        flora._requested_state = flora.config.initial_state
+    if flora.config.initialState then
+        flora._requestedState = flora.config.initialState
     else
-        flora._requested_state = require("flora.display.state"):new()
+        flora._requestedState = require("flora.display.State"):new()
     end
 
-    if flora.config.debug_mode then
-        flora.log:verbose("Requesting switch to initial state")
+    if flora.config.debugMode then
+        flora.log:verbose("Requesting switch to initial State")
     end
     flora.cameras:reset()
-    flora._switch_state()
+    flora._switchState()
 
-    flora.scale_mode:on_measure(love.graphics.getWidth(), love.graphics.getHeight())
+    flora.scaleMode:onMeasure(love.graphics.getWidth(), love.graphics.getHeight())
 
-    if flora.config.debug_mode then
+    if flora.config.debugMode then
         flora.log:success("Started engine successfully")
     end
 end
 
-function flora.pre_update(dt)
-    if flora.sound_tray and flora.sound_tray.exists and flora.sound_tray.active then
-        flora.sound_tray:update(dt)
+function flora.preUpdate(dt)
+    if flora.soundTray and flora.soundTray.exists and flora.soundTray.active then
+        flora.soundTray:update(dt)
     end
 end
 
-function flora.post_draw()
-    if flora.sound_tray and flora.sound_tray.exists and flora.sound_tray.visible then
-        flora.sound_tray:draw()
+function flora.postDraw()
+    if flora.soundTray and flora.soundTray.exists and flora.soundTray.visible then
+        flora.soundTray:draw()
     end
 
-    local displayed_fps = love.timer.getFPS()
-    local displayed_text = "FPS: " .. displayed_fps .. "\n" ..
-        "RAM: " .. math.humanize_bytes(displayed_memory) .. " | " ..
-        "VRAM: " .. math.humanize_bytes(displayed_vram)
+    local displayedFPS = love.timer.getFPS()
+    local displayedText = "FPS: " .. displayedFPS .. "\n" ..
+        "RAM: " .. math.humanizeBytes(displayedMemory) .. " | " ..
+        "VRAM: " .. math.humanizeBytes(displayedVRAM)
 
     love.graphics.setColor(0, 0, 0, 1)
-    love.graphics.print(displayed_text, 10.5, 3.5, 0)
-    love.graphics.print(displayed_text, 11, 4, 0)
-    love.graphics.print(displayed_text, 11.5, 4.5, 0)
-    love.graphics.print(displayed_text, 12, 5, 0)
+    love.graphics.print(displayedText, 10.5, 3.5, 0)
+    love.graphics.print(displayedText, 11, 4, 0)
+    love.graphics.print(displayedText, 11.5, 4.5, 0)
+    love.graphics.print(displayedText, 12, 5, 0)
     
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.print(displayed_text, 10, 3, 0)
+    love.graphics.print(displayedText, 10, 3, 0)
 end
 
 ---
---- Switches to a given state, and disposes of the old one.
+--- Switches to a given State, and disposes of the old one.
 --- 
---- @param  new_state  flora.display.state  The new state to switch to.
+--- @param  new_State  flora.display.State  The new State to switch to.
 ---
-function flora.switch_state(new_state)
-    if flora.config.debug_mode then
-        flora.log:verbose("Requesting state switch")
+function flora.switchState(new_State)
+    if flora.config.debugMode then
+        flora.log:verbose("Requesting State switch")
     end
-    flora._requested_state = new_state
+    flora._requestedState = new_State
 end
 
-function flora.resize_game(width, height)
-    local old_width = flora.game_width
-    local old_height = flora.game_height
+function flora.resizeGame(width, height)
+    local oldWidth = flora.gameWidth
+    local oldHeight = flora.gameHeight
 
     for i = 1, flora.cameras.list.length do
         ---
-        --- @type flora.display.camera
+        --- @type flora.display.Camera
         ---
         local cam = flora.cameras.list[i]
-        if cam and cam.width == old_width and cam.height == old_height then
+        if cam and cam.width == oldWidth and cam.height == oldHeight then
             cam:resize(width, height)
         end
     end
     
-    flora.game_width = width
-    flora.game_height = height
+    flora.gameWidth = width
+    flora.gameHeight = height
 
     if flora._canvas then
         flora._canvas:release()
     end
-    flora._canvas = love.graphics.newCanvas(flora.game_width, flora.game_height)
+    flora._canvas = love.graphics.newCanvas(flora.gameWidth, flora.gameHeight)
 
     local ww = love.graphics.getWidth()
     local wh = love.graphics.getHeight()
-    flora.scale_mode:on_measure(ww, wh)
+    flora.scaleMode:onMeasure(ww, wh)
 end
 
 -----------------------
@@ -454,31 +454,31 @@ flora._canvas = nil
 
 ---
 --- @protected
---- @type flora.display.state
+--- @type flora.display.State
 ---
-flora._requested_state = nil
+flora._requestedState = nil
 
 ---
 --- @protected
 ---
-function flora._switch_state()
-    flora.signals.pre_state_switch:emit()
+function flora._switchState()
+    flora.signals.preStateSwitch:emit()
     
     if flora.state then
         flora.state:dispose() 
     end
     flora.cameras:reset()
 
-    flora.state = flora._requested_state
-    flora._requested_state = nil
+    flora.state = flora._requestedState
+    flora._requestedState = nil
 
-    flora.signals.pre_state_create:emit(flora.state)
+    flora.signals.preStateCreate:emit(flora.state)
     flora.state:ready()
     
-    if flora.config.debug_mode then
+    if flora.config.debugMode then
         flora.log:success("State switched successfully")
     end
-    flora.signals.post_state_switch:emit()
+    flora.signals.postStateSwitch:emit()
 end
 
 ---
@@ -486,14 +486,14 @@ end
 ---
 function love.update(dt)
     if love.window.hasFocus() then
-        if flora._requested_state then
-            flora._switch_state()
+        if flora._requestedState then
+            flora._switchState()
         end
 
-        if flora.pre_update then
-            flora.pre_update(dt)
+        if flora.preUpdate then
+            flora.preUpdate(dt)
         end
-        flora.signals.pre_update:emit()
+        flora.signals.preUpdate:emit()
 
         flora.keys:update()
         flora.mouse:update()
@@ -506,12 +506,12 @@ function love.update(dt)
         end
         flora.cameras:update(dt)
 
-        flora.mouse:post_update()
+        flora.mouse:postUpdate()
         
-        if flora.post_update then
-            flora.post_update(dt)
+        if flora.postUpdate then
+            flora.postUpdate(dt)
         end
-        flora.signals.post_update:emit()
+        flora.signals.postUpdate:emit()
     else
         flora.sound:update()
     end
@@ -528,12 +528,12 @@ function love.draw()
         end
     end
     
-    if flora.pre_draw then
-        flora.pre_draw()
+    if flora.preDraw then
+        flora.preDraw()
     end
-    flora.signals.pre_draw:emit()
+    flora.signals.preDraw:emit()
 
-    if not flora.plugins.draw_above then
+    if not flora.plugins.drawAbove then
         flora.plugins:draw()
     end
     if flora.state then
@@ -547,56 +547,56 @@ function love.draw()
             cam:draw()
         end
     end
-    if flora.plugins.draw_above then
+    if flora.plugins.drawAbove then
         flora.plugins:draw()
     end
 
     love.graphics.setCanvas()
     love.graphics.draw(
         flora._canvas,
-        flora.scale_mode.offset.x, flora.scale_mode.offset.y, 0,
-        flora.scale_mode.scale.x, flora.scale_mode.scale.y
+        flora.scaleMode.offset.x, flora.scaleMode.offset.y, 0,
+        flora.scaleMode.scale.x, flora.scaleMode.scale.y
     )
-    if not flora.mouse.use_system_cursor and flora.mouse.visible then
+    if not flora.mouse.useSystemCursor and flora.mouse.visible then
         flora.mouse:draw()
     end
 
-    if flora.post_draw then
-        flora.post_draw()
+    if flora.postDraw then
+        flora.postDraw()
     end
-    flora.signals.post_draw:emit()
+    flora.signals.postDraw:emit()
 end
 
 ---
 --- @protected
 ---
 function love.resize(width, height)
-    flora.scale_mode:on_measure(width, height)
+    flora.scaleMode:onMeasure(width, height)
 end
 
 function love.keypressed(key, scancode, isrepeat)
-    flora.keys:key_pressed(key, scancode, isrepeat)
+    flora.keys:keyPressed(key, scancode, isrepeat)
 end
 
 function love.keyreleased(key, scancode, isrepeat)
-    flora.keys:key_released(key, scancode, isrepeat)
+    flora.keys:keyReleased(key, scancode, isrepeat)
 end
 
 function love.mousemoved(x, y, _, _, _)
     if love.window.hasFocus() then
-        flora.mouse:on_moved(x, y)
+        flora.mouse:onMoved(x, y)
     end
 end
 
 function love.mousepressed(_, _, button, _, _)
     if love.window.hasFocus() then
-        flora.mouse:on_pressed(button)
+        flora.mouse:onPressed(button)
     end
 end
 
-function love.mousereleased(_, _, button, _, _)
+function love.mouserelEased(_, _, button, _, _)
     if love.window.hasFocus() then
-        flora.mouse:on_released(button)
+        flora.mouse:onReleased(button)
     end
 end
 

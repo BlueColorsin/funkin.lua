@@ -1,59 +1,59 @@
-local tween_manager = require("flora.plugins.tween_manager")
-local property_tweener = require("flora.tweens.tweeners.property_tweener")
+local TweenManager = require("flora.plugins.TweenManager")
+local PropertyTweener = require("flora.tweens.tweeners.PropertyTweener")
 
 ---
 --- A basic tween class.
 ---
---- @class flora.tweens.tween : flora.base.basic
+--- @class flora.tweens.Tween : flora.base.Basic
 ---
-local tween = basic:extend("tween", ...)
+local Tween = Basic:extend("Tween", ...)
 
 ---
---- @param  manager  flora.plugins.tween_manager?  The manager that this tween belongs to. (default: `tween_manager.global`)
+--- @param  manager  flora.plugins.TweenManager?  The manager that this tween belongs to. (default: `TweenManager.global`)
 ---
-function tween:constructor(manager)
-    tween.super.constructor(self)
+function Tween:constructor(manager)
+    Tween.super.constructor(self)
 
     self.visible = false
 
     ---
     --- The manager that this tween belongs to.
     ---
-    --- @type flora.plugins.tween_manager?
+    --- @type flora.plugins.TweenManager?
     ---
-    self.manager = manager and manager or tween_manager.global
+    self.manager = manager and manager or TweenManager.global
 
     ---
     --- The default easing used for tweeners
-    --- belonging to this tween.
+    --- belonging to this Tween.
     ---
     --- @type function
     ---
-    self.ease = ease.linear
+    self.ease = Ease.linear
 
     ---
-    --- The total duration of this tween. (in seconds)
+    --- The total duration of this Tween. (in seconds)
     --- 
     --- @type number
     ---
     self.duration = nil
 
     ---
-    --- The start delay of this tween. (in seconds)
+    --- The start delay of this Tween. (in seconds)
     ---
     --- @type number
     ---
-    self.start_delay = 0.0
+    self.startDelay = 0.0
 
     ---
     --- The function to call when this tween completes.
     --- 
     --- @type function?
     ---
-    self.on_complete = nil
+    self.onComplete = nil
 
     ---
-    --- The progress percentage of this tween. Ranges from 0 to 1.
+    --- The progress percentage of this Tween. Ranges from 0 to 1.
     --- 
     --- @type number
     ---
@@ -61,32 +61,32 @@ function tween:constructor(manager)
 
     ---
     --- @protected
-    --- @type flora.display.group
+    --- @type flora.display.Group
     ---
-    self._tweeners = group:new()
+    self._tweeners = Group:new()
 
     ---
     --- @protected
     --- @type number
     ---
-    self._elapsed_time = nil
+    self._elapsedTime = nil
 
     ---
     --- @protected
     --- @type number
     ---
-    self._cached_duration = nil
+    self._cachedDuration = nil
 end
 
 ---
 --- Sets the default easing of this tween to
 --- a given easing function.
 ---
---- @param  ease  function  The easing function to provide to this tween.
+--- @param  ease  function  The easing function to provide to this Tween.
 --- 
---- @return flora.tweens.tween
+--- @return flora.tweens.Tween
 ---
-function tween:set_ease(ease)
+function Tween:setEase(ease)
     self.ease = ease
     return self
 end
@@ -99,15 +99,15 @@ end
 --- on just one tween, thus avoiding tween spamming.
 ---
 --- @param  obj          table         The object to tween a property on.
---- @param  property     string        The name of the property to tween.
+--- @param  property     string        The name of the property to Tween.
 --- @param  final_value  number|table  The value that the property should tween towards.
---- @param  duration     number        The duration of the property tween.
+--- @param  duration     number        The duration of the property Tween.
 --- @param  ease         function?     The easing function to use on the property tween (default: `ease.linear`)
 ---
---- @return flora.tweens.tweeners.property_tweener
+--- @return flora.tweens.tweeners.PropertyTweener
 ---
-function tween:tween_property(obj, property, final_value, duration, ease)
-    self._cached_duration = nil
+function Tween:tweenProperty(obj, property, final_value, duration, ease)
+    self._cachedDuration = nil
 
     local initial_value = obj[property]
     if type(final_value) == "table" then
@@ -118,29 +118,29 @@ function tween:tween_property(obj, property, final_value, duration, ease)
             initial_value[key] = prop[key]
         end
     end
-    local tweener = property_tweener:new(self, obj, property, initial_value, final_value, duration, ease and ease or self.ease)
+    local tweener = PropertyTweener:new(self, obj, property, initial_value, final_value, duration, ease and ease or self.ease)
     self._tweeners:add(tweener)
 
     return tweener
 end
 
-function tween:set_delay(secs)
-    self.start_delay = secs
+function Tween:setDelay(secs)
+    self.startDelay = secs
     return self
 end
 
 ---
---- Starts this tween.
+--- Starts this Tween.
 --- 
---- @return flora.tweens.tween
+--- @return flora.tweens.Tween
 ---
-function tween:start()
-    self._elapsed_time = 0.0
+function Tween:start()
+    self._elapsedTime = 0.0
 
     for i = 1, #self._tweeners do
         local tweener = self._tweeners.members[i]
-        if tweener._elapsed_time then
-            tweener._elapsed_time = 0.0
+        if tweener._elapsedTime then
+            tweener._elapsedTime = 0.0
         end
     end
     self.manager.list:add(self)
@@ -148,39 +148,39 @@ function tween:start()
 end
 
 ---
---- Stops this tween.
+--- Stops this Tween.
 --- 
---- @return flora.tweens.tween
+--- @return flora.tweens.Tween
 ---
-function tween:stop()
-    self._elapsed_time = 0.0
-    self._cached_duration = nil
+function Tween:stop()
+    self._elapsedTime = 0.0
+    self._cachedDuration = nil
 
-    self.start_delay = 0.0
+    self.startDelay = 0.0
     self.manager.list:remove(self)
 
     return self
 end
 
 ---
---- Updates this tween.
+--- Updates this Tween.
 --- This function is automatically called by the tween manager.
 ---
-function tween:update(dt)
-    self._elapsed_time = self._elapsed_time + dt
-    if self._elapsed_time >= self.start_delay then
+function Tween:update(dt)
+    self._elapsedTime = self._elapsedTime + dt
+    if self._elapsedTime >= self.startDelay then
         self._tweeners:update(dt)
 
         if self.progress >= 1.0 then
-            if self.on_complete then
-                self.on_complete(self)
+            if self.onComplete then
+                self.onComplete(self)
             end
             self:dispose()
         end
     end
 end
 
-function tween:cancel()
+function Tween:cancel()
     self:stop()
 
     for i = 1, self._tweeners.length do
@@ -195,8 +195,8 @@ function tween:cancel()
     end
 end
 
-function tween:dispose()
-    tween.super.dispose(self)
+function Tween:dispose()
+    Tween.super.dispose(self)
     self:stop()
 
     if flora.config.debug_mode then
@@ -213,32 +213,32 @@ end
 ---
 --- @protected
 ---
-function tween:get_duration()
-    if self._cached_duration then
-        return self._cached_duration + self.start_delay
+function Tween:get_duration()
+    if self._cachedDuration then
+        return self._cachedDuration + self.startDelay
     end
     local total = 0.0
     for i = 1, self._tweeners.length do
         ---
-        --- @type flora.tweens.tweeners.tweener
+        --- @type flora.tweens.tweeners.Tweener
         ---
         local tweener = self._tweeners.members[i]
         if tweener.duration > total then
             total = tweener.duration
         end
     end
-    self._cached_duration = total
-    return total + self.start_delay
+    self._cachedDuration = total
+    return total + self.startDelay
 end
 
 ---
 --- @protected
 ---
-function tween:get_progress()
-    if self._elapsed_time <= self.start_delay then
+function Tween:get_progress()
+    if self._elapsedTime <= self.startDelay then
         return 0.0
     end
-    return (self._elapsed_time - self.start_delay) / (self.duration - self.start_delay)
+    return (self._elapsedTime - self.startDelay) / (self.duration - self.startDelay)
 end
 
-return tween
+return Tween

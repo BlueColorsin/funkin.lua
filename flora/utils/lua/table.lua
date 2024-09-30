@@ -29,7 +29,7 @@ end
 ---
 --- @return integer
 ---
-function table.index_of(table, element)
+function table.indexOf(table, element)
     for index, elem in ipairs(table) do
         if elem == element then
             return index
@@ -119,8 +119,8 @@ end
 --- @param t     table  The table to remove the item from.
 --- @param item  any    The item to remove from the table.
 ---
-function table.remove_item(t, item)
-	table.remove(t, table.index_of(t, item))
+function table.removeItem(t, item)
+	table.remove(t, table.indexOf(t, item))
 end
 
 return {}

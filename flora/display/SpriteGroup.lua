@@ -1,11 +1,11 @@
 ---
---- @class flora.display.sprite_group : flora.display.sprite
+--- @class flora.display.SpriteGroup : flora.display.Sprite
 --- @diagnostic disable: return-type-mismatch
 ---
-local sprite_group = sprite:extend("sprite_group", ...)
+local SpriteGroup = Sprite:extend("SpriteGroup", ...)
 
-function sprite_group:constructor(x, y)
-    sprite_group.super.constructor(self, x, y)
+function SpriteGroup:constructor(x, y)
+    SpriteGroup.super.constructor(self, x, y)
 
     -- These five have to be nil for the getters to work
     self.x = nil
@@ -42,59 +42,59 @@ function sprite_group:constructor(x, y)
     self._alpha = 1.0
 end
 
-function sprite_group:init_group()
+function SpriteGroup:init_group()
     ---
-    --- @type flora.display.group
+    --- @type flora.display.Group
     ---
-    self.group = group:new()
+    self.group = Group:new()
 end
 
-function sprite_group:update(dt)
+function SpriteGroup:update(dt)
     self.group:update(dt)
 end
 
-function sprite_group:draw()
+function SpriteGroup:draw()
     self.group:draw()
 end
 
 --- 
---- @param  obj  flora.display.sprite
+--- @param  obj  flora.display.Sprite
 ---
-function sprite_group:pre_add(obj)
+function SpriteGroup:preAdd(obj)
     obj.x = obj.x + self._x
     obj.y = obj.y + self._y
     obj.alpha = obj.alpha * self.alpha
-    obj.scroll_factor:copy_from(self.scroll_factor)
+    obj.scrollFactor:copyFrom(self.scrollFactor)
     obj.cameras = self._cameras
 end
 
 --- 
---- @param  obj  flora.display.sprite
+--- @param  obj  flora.display.Sprite
 --- 
---- @return flora.display.sprite
+--- @return flora.display.Sprite
 ---
-function sprite_group:add(obj)
+function SpriteGroup:add(obj)
     if not self.group:contains(obj) then
-        self:pre_add(obj)
+        self:preAdd(obj)
     end
     return self.group:add(obj)
 end
 
 ---
 --- @param  pos  integer 
---- @param  obj  flora.display.sprite
+--- @param  obj  flora.display.Sprite
 ---
-function sprite_group:insert(pos, obj)
+function SpriteGroup:insert(pos, obj)
     if not self.group:contains(obj) then
-        self:pre_add(obj)
+        self:preAdd(obj)
     end
     return self.group:insert(pos, obj)
 end
 
 --- 
---- @param  obj  flora.display.sprite
+--- @param  obj  flora.display.Sprite
 ---
-function sprite_group:remove(obj)
+function SpriteGroup:remove(obj)
     obj.x = obj.x - self._x
     obj.y = obj.y - self._y
     obj.cameras = nil
@@ -102,15 +102,15 @@ function sprite_group:remove(obj)
 end
 
 --- 
---- @param  obj  flora.display.sprite
+--- @param  obj  flora.display.Sprite
 --- 
 --- @return boolean
 ---
-function sprite_group:contains(obj)
+function SpriteGroup:contains(obj)
     return self.group:contains(obj)
 end
 
-function sprite_group:clear()
+function SpriteGroup:clear()
     self.group:clear()
 end
 
@@ -118,48 +118,48 @@ end
 --- @param  func     function
 --- @param  recurse  boolean?
 ---
-function sprite_group:for_each(func, recurse)
-    self.group:for_each(func, recurse)
+function SpriteGroup:forEach(func, recurse)
+    self.group:forEach(func, recurse)
 end
 
 ---
 --- @param  func     function
 --- @param  recurse  boolean?
 ---
-function sprite_group:for_each_alive(func, recurse)
-    self.group:for_each_alive(func, recurse)
+function SpriteGroup:forEachAlive(func, recurse)
+    self.group:forEachAlive(func, recurse)
 end
 
 ---
 --- @param  func     function
 --- @param  recurse  boolean?
 ---
-function sprite_group:for_each_dead(func, recurse)
-    self.group:for_each_dead(func, recurse)
+function SpriteGroup:forEachDead(func, recurse)
+    self.group:forEachDead(func, recurse)
 end
 
 ---
 --- @param  func     function
 --- @param  recurse  boolean
 ---
-function sprite_group:find_min_x()
+function SpriteGroup:find_min_x()
     return self.group.length == 0 and self._x or self:_find_min_x_helper()
 end
 
-function sprite_group:find_max_x()
+function SpriteGroup:find_max_x()
     return self.group.length == 0 and self._x or self:_find_max_x_helper()
 end
 
-function sprite_group:find_min_y()
+function SpriteGroup:find_min_y()
     return self.group.length == 0 and self._y or self:_find_min_y_helper()
 end
 
-function sprite_group:find_max_y()
+function SpriteGroup:find_max_y()
     return self.group.length == 0 and self._y or self:_find_max_y_helper()
 end
 
-function sprite_group:dispose()
-    sprite_group.super.dispose(self)
+function SpriteGroup:dispose()
+    SpriteGroup.super.dispose(self)
 
     self.group:dispose()
     self.group = nil
@@ -168,8 +168,8 @@ end
 ---
 --- Returns a string representation of this object.
 ---
-function sprite_group:__tostring()
-    return "sprite_group (length: " .. self.length .. ")"
+function SpriteGroup:__tostring()
+    return "SpriteGroup (length: " .. self.length .. ")"
 end
 
 -----------------------
@@ -179,13 +179,13 @@ end
 ---
 --- @protected
 ---
-function sprite_group:_find_min_x_helper()
+function SpriteGroup:_find_min_x_helper()
     local value = math.huge
     for i = 1, self.group.length do
         local member = self.group.members[i]
         if member then
             local min_x = 0.0
-            if member:is(sprite_group) then
+            if member:is(SpriteGroup) then
                 min_x = member:find_min_x()
             else
                 min_x = member.x
@@ -201,13 +201,13 @@ end
 ---
 --- @protected
 ---
-function sprite_group:_find_max_x_helper()
+function SpriteGroup:_find_max_x_helper()
     local value = -math.huge
     for i = 1, self.group.length do
         local member = self.group.members[i]
         if member then
             local max_x = 0.0
-            if member:is(sprite_group) then
+            if member:is(SpriteGroup) then
                 max_x = member:find_max_x()
             else
                 max_x = member.x + member.width
@@ -223,13 +223,13 @@ end
 ---
 --- @protected
 ---
-function sprite_group:_find_min_y_helper()
+function SpriteGroup:_find_min_y_helper()
     local value = math.huge
     for i = 1, self.group.length do
         local member = self.group.members[i]
         if member then
             local min_y = 0.0
-            if member:is(sprite_group) then
+            if member:is(SpriteGroup) then
                 min_y = member:find_min_y()
             else
                 min_y = member.y
@@ -245,13 +245,13 @@ end
 ---
 --- @protected
 ---
-function sprite_group:_find_max_y_helper()
+function SpriteGroup:_find_max_y_helper()
     local value = -math.huge
     for i = 1, self.group.length do
         local member = self.group.members[i]
         if member then
             local max_y = 0.0
-            if member:is(sprite_group) then
+            if member:is(SpriteGroup) then
                 max_y = member:find_max_y()
             else
                 max_y = member.y + member.height
@@ -267,21 +267,21 @@ end
 ---
 --- @protected
 ---
-function sprite_group:get_x()
+function SpriteGroup:get_x()
     return self._x
 end
 
 ---
 --- @protected
 ---
-function sprite_group:get_y()
+function SpriteGroup:get_y()
     return self._y
 end
 
 ---
 --- @protected
 ---
-function sprite_group:get_width()
+function SpriteGroup:get_width()
     if self.group.length > 0 then
         return self:_find_max_x_helper() - self:_find_min_x_helper()
     end
@@ -291,7 +291,7 @@ end
 ---
 --- @protected
 ---
-function sprite_group:get_height()
+function SpriteGroup:get_height()
     if self.group.length > 0 then
         return self:_find_max_y_helper() - self:_find_min_y_helper()
     end
@@ -301,35 +301,35 @@ end
 ---
 --- @protected
 ---
-function sprite_group:get_alpha()
+function SpriteGroup:get_alpha()
     return self._alpha
 end
 
 ---
 --- @protected
 ---
-function sprite_group:get_members()
+function SpriteGroup:get_members()
     return self.group.members
 end
 
 ---
 --- @protected
 ---
-function sprite_group:get_length()
+function SpriteGroup:get_length()
     return self.group.length
 end
 
 ---
 --- @protected
 ---
-function sprite_group:set_x(val)
+function SpriteGroup:set_x(val)
     local old_x = self._x
     self._x = val
 
     local delta = self._x - old_x
     for i = 1, self.group.length do
         ---
-        --- @type flora.display.object2d
+        --- @type flora.display.Object2D
         ---
         local obj = self.group.members[i]
         if obj then
@@ -342,14 +342,14 @@ end
 ---
 --- @protected
 ---
-function sprite_group:set_y(val)
+function SpriteGroup:set_y(val)
     local old_y = self._y
     self._y = val
 
     local delta = self._y - old_y
     for i = 1, self.group.length do
         ---
-        --- @type flora.display.object2d
+        --- @type flora.display.Object2D
         ---
         local obj = self.group.members[i]
         if obj then
@@ -362,7 +362,7 @@ end
 ---
 --- @protected
 ---
-function sprite_group:set_alpha(val)
+function SpriteGroup:set_alpha(val)
     self._alpha = val
     for i = 1, self.group.length do
         local obj = self.group.members[i]
@@ -382,8 +382,8 @@ end
 ---
 --- @protected
 ---
-function sprite_group:set_frames(val)
-    if val then -- doing this check to prevent a crash on sprite_group:dispose()
+function SpriteGroup:set_frames(val)
+    if val then -- doing this check to prevent a crash on SpriteGroup:dispose()
         error("Cannot set frames on a sprite group")
     end
     return nil
@@ -392,9 +392,14 @@ end
 ---
 --- @protected
 ---
-function sprite_group:set_angle(val)
+function SpriteGroup:set_angle(val)
     -- TODO: make this work properly
     self._angle = val
+
+    local radianAngle = math.rad(val)
+    self._cosAngle = math.cos(radianAngle)
+    self._sinAngle = math.sin(radianAngle)
+
     for i = 1, self.group.length do
         local obj = self.group.members[i]
         obj.angle = val
@@ -405,13 +410,13 @@ end
 ---
 --- @protected
 ---
-function sprite_group:set_tint(val)
-    self._tint = color:new(val)
+function SpriteGroup:set_tint(val)
+    self._tint = Color:new(val)
     for i = 1, self.group.length do
         local obj = self.group.members[i]
-        obj.tint = color:new(val)
+        obj.tint = Color:new(val)
     end
     return self._tint
 end
 
-return sprite_group
+return SpriteGroup

@@ -1,16 +1,16 @@
 ---
---- @class flora.base.basic : flora.base.object
+--- @class flora.base.Basic : flora.base.Object
 ---
 --- A basic object class for flora, with a few flags
 --- such as: `exists`, `active`, and `visible`.
 ---
-local basic = object:extend("basic", ...)
+local Basic = Object:extend("Basic", ...)
 
 ---
 --- Constructs a new basic object.
 ---
-function basic:constructor()
-    basic.super.constructor(self)
+function Basic:constructor()
+    Basic.super.constructor(self)
 
     ---
     --- Whether or not this object is allowed to update and draw,
@@ -46,7 +46,7 @@ end
 --- Prevents this object from updating and drawing entirely,
 --- regardless of the `active` and `visible` flags.
 ---
-function basic:kill()
+function Basic:kill()
     self.exists = false
 end
 
@@ -54,26 +54,26 @@ end
 --- Allows this object to update and draw again, if
 --- said flags are set to `true`.
 ---
-function basic:revive()
+function Basic:revive()
     self.exists = true
 end
 
 ---
 --- Updates this object's properties and fields.
 ---
-function basic:update(dt)
+function Basic:update(dt)
 end
 
 ---
 --- Draws this object to the screen.
 ---
-function basic:draw()
+function Basic:draw()
 end
 
 ---
 --- Removes this object and it's properties from memory.
 ---
-function basic:dispose()
+function Basic:dispose()
     self._cameras = nil
 end
 
@@ -84,9 +84,9 @@ end
 ---
 --- @protected
 ---
-function basic:get_cameras()
+function Basic:get_cameras()
     if not self._cameras then
-        return flora.cameras.default_cameras
+        return flora.cameras.defaultCameras
     end
     return self._cameras
 end
@@ -94,9 +94,9 @@ end
 ---
 --- @protected
 ---
-function basic:set_cameras(val)
+function Basic:set_cameras(val)
     self._cameras = val
     return val
 end
 
-return basic
+return Basic

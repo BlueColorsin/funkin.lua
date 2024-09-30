@@ -1,59 +1,59 @@
 ---
---- @class funkin.plugins.conductor : flora.base.basic
+--- @class funkin.plugins.Conductor : flora.base.Basic
 ---
-local conductor = basic:extend("conductor", ...)
+local Conductor = Basic:extend("Conductor", ...)
 
 ---
---- The main global instance of the conductor.
+--- The main global instance of the Conductor.
 ---
---- @type funkin.plugins.conductor
+--- @type funkin.plugins.Conductor
 ---
-conductor.instance = nil
+Conductor.instance = nil
 
-conductor.judge_scales = {
-    j1 = 1.5,
-    j2 = 1.33,
-    j3 = 1.16,
-    j4 = 1.0,
-    j5 = 0.84,
-    j6 = 0.66,
-    j7 = 0.5,
-    j8 = 0.33,
-    justice = 0.2,
+Conductor.judgeScales = {
+    J1 = 1.5,
+    J2 = 1.33,
+    J3 = 1.16,
+    J4 = 1.0,
+    J5 = 0.84,
+    J6 = 0.66,
+    J7 = 0.5,
+    J8 = 0.33,
+    JUSTICE = 0.2,
 }
 
-function conductor.time_signature_from_string(str)
+function Conductor.timeSignatureFromString(str)
     local split = string.split(str, "/")
     return {tonumber(split[1]), tonumber(split[2])}
 end
 
-function conductor:constructor()
-    conductor.super.constructor(self)
+function Conductor:constructor()
+    Conductor.super.constructor(self)
 
     self.visible = false
 
     ---
-    --- @type flora.utils.signal
+    --- @type flora.utils.Signal
     ---
-    self.step_hit = signal:new():type("number", "void")
+    self.stepHit = Signal:new():type("number", "void")
 
     ---
-    --- @type flora.utils.signal
+    --- @type flora.utils.Signal
     ---
-    self.beat_hit = signal:new():type("number", "void")
+    self.beatHit = Signal:new():type("number", "void")
 
     ---
-    --- @type flora.utils.signal
+    --- @type flora.utils.Signal
     ---
-    self.measure_hit = signal:new():type("number", "void")
+    self.measureHit = Signal:new():type("number", "void")
 
     ---
     --- @type boolean
     ---
-    self.has_metronome = false
+    self.hasMetronome = false
 
     ---
-    --- @type flora.sound?
+    --- @type flora.Sound?
     ---
     self.music = nil
 
@@ -65,7 +65,7 @@ function conductor:constructor()
     ---
     --- @type table
     ---
-    self.bpm_changes = {
+    self.bpmChanges = {
         {
             step = 0,
             time = 0.0,
@@ -76,7 +76,7 @@ function conductor:constructor()
     ---
     --- @type table<number>
     ---
-    self.time_signature = {4, 4}
+    self.timeSignature = {4, 4}
     -- ^^ - 1st num is beats per measure, 2nd num is steps per beat
 
     ---
@@ -87,22 +87,22 @@ function conductor:constructor()
     ---
     --- @type number
     ---
-    self.step_crotchet = nil
+    self.stepCrotchet = nil
 
     ---
     --- @type number
     ---
-    self.safe_zone_offset = settings.data.hit_window / 1000.0
+    self.safeZoneOffset = Settings.data.hitWindow / 1000.0
 
     ---
     --- @type boolean
     ---
-    self.allow_song_offset = true
+    self.allowSongOffset = true
 
     ---
     --- @type number
     ---
-    self.raw_time = 0.0
+    self.rawTime = 0.0
 
     ---
     --- @type number
@@ -112,17 +112,17 @@ function conductor:constructor()
     ---
     --- @type integer
     ---
-    self.last_step = 0
+    self.lastStep = 0
 
     ---
     --- @type integer
     ---
-    self.last_beat = 0
+    self.lastBeat = 0
 
     ---
     --- @type integer
     ---
-    self.last_measure = 0
+    self.lastMeasure = 0
 
     ---
     --- @type number
@@ -158,10 +158,10 @@ function conductor:constructor()
     --- @protected
     --- @type table
     ---
-    self._last_bpm_change = self.bpm_changes[1]
+    self._lastBPMChange = self.bpmChanges[1]
 end
 
-function conductor:reset(bpm)
+function Conductor:reset(bpm)
     self.time = 0.0
 
     self.measuref = 0.0
@@ -173,8 +173,8 @@ function conductor:reset(bpm)
     self.stepf = 0.0
     self.step = 0
 
-    self.time_signature = {4, 4}
-    self.bpm_changes = {
+    self.timeSignature = {4, 4}
+    self.bpmChanges = {
         {
             step = 0,
             time = 0.0,
@@ -184,16 +184,16 @@ function conductor:reset(bpm)
     self.bpm = bpm
 end
 
-function conductor:setup_from_map(map)
+function Conductor:setupFromMap(map)
     self:reset()
-    self.time_signature = conductor.time_signature_from_string(map.meta.timeSignature)
+    self.timeSignature = Conductor.timeSignatureFromString(map.meta.timeSignature)
 
     self.bpm = map.meta.bpm
-    self:setup_bpm_changes(map)
+    self:setupBPMChanges(map)
 end
 
-function conductor:setup_bpm_changes(map)
-    self.bpm_changes = {
+function Conductor:setupBPMChanges(map)
+    self.bpmChanges = {
         {
             time = 0.0,
             step = 0,
@@ -203,158 +203,158 @@ function conductor:setup_bpm_changes(map)
     if not map.events or #map.events == 0 then
         return
     end
-    local time_sig = conductor.time_signature_from_string(map.meta.timeSignature)
+    local timeSig = Conductor.timeSignatureFromString(map.meta.timeSignature)
 
-    local cur_bpm = 0.0
+    local curBPM = 0.0
     local time = 0.0
-    local last_step = 0.0
+    local lastStep = 0.0
 
     for i = 1, #map.events do
         local event = map.events[i]
         if event.type == "BPM Change" and event.params and type(event.params.bpm) == "number" then
-            local event_bpm = event.params.bpm
-            if event_bpm ~= cur_bpm then
-                time = time + (event.step - last_step) * ((60 / cur_bpm) / time_sig[2])
-                cur_bpm = event_bpm
+            local eventBPM = event.params.bpm
+            if eventBPM ~= curBPM then
+                time = time + (event.step - lastStep) * ((60 / curBPM) / timeSig[2])
+                curBPM = eventBPM
 
-                table.insert(self.bpm_changes, {
+                table.insert(self.bpmChanges, {
                     time = time,
                     step = event.step,
-                    bpm = cur_bpm
+                    bpm = curBPM
                 })
-                last_step = event.step
+                lastStep = event.step
             end
         end
     end
 end
 
-function conductor:step_to_time(step)
-    local last_change = self.bpm_changes[1]
+function Conductor:stepToTime(step)
+    local lastChange = self.bpmChanges[1]
 
-    for i = 2, #self.bpm_changes do
-        local change = self.bpm_changes[i]
+    for i = 2, #self.bpmChanges do
+        local change = self.bpmChanges[i]
 
-        if self.raw_time >= change.time then
-            last_change = change
+        if self.rawTime >= change.time then
+            lastChange = change
         end
     end
 
-    return last_change.time + ((step - last_change.time) * ((60 / last_change.bpm) * self.time_signature[2]))
+    return lastChange.time + ((step - lastChange.time) * ((60 / lastChange.bpm) * self.timeSignature[2]))
 end
 
-function conductor:beat_to_time(beat)
-    return self:step_to_time(beat * self.time_signature[2])
+function Conductor:beatToTime(beat)
+    return self:stepToTime(beat * self.timeSignature[2])
 end
 
-function conductor:measure_to_time(measure)
-    return self:beat_to_time(measure * self.time_signature[1])
+function Conductor:measureToTime(measure)
+    return self:beatToTime(measure * self.timeSignature[1])
 end
 
-function conductor:time_to_step(time)
-    local last_change = self.bpm_changes[1]
+function Conductor:timeToStep(time)
+    local lastChange = self.bpmChanges[1]
 
-    for i = 2, #self.bpm_changes do
-        local change = self.bpm_changes[i]
+    for i = 2, #self.bpmChanges do
+        local change = self.bpmChanges[i]
 
         if time >= change.time then
-            last_change = change
+            lastChange = change
         end
     end
 
-    return last_change.step + ((time - last_change.time) / ((60 / last_change.bpm) * self.time_signature[2]))
+    return lastChange.step + ((time - lastChange.time) / ((60 / lastChange.bpm) * self.timeSignature[2]))
 end
 
-function conductor:time_to_beat(time)
-    return self:time_to_step(time) / self.time_signature[2]
+function Conductor:timeToBeat(time)
+    return self:timeToStep(time) / self.timeSignature[2]
 end
 
-function conductor:time_to_measure(time)
-    return self:time_to_beat(time) / self.time_signature[1]
+function Conductor:timeToMeasure(time)
+    return self:timeToBeat(time) / self.timeSignature[1]
 end
 
-function conductor:update(dt)
+function Conductor:update(dt)
     if self.music and self.music.playing then
-        if math.abs(self.raw_time - self.music.time) > 0.02 then
-            self.raw_time = self.music.time 
+        if math.abs(self.rawTime - self.music.time) > 0.02 then
+            self.rawTime = self.music.time 
         end
     end
-    self._last_bpm_change = self.bpm_changes[1]
-    for i = 2, #self.bpm_changes do
-        local change = self.bpm_changes[i]
+    self._lastBPMChange = self.bpmChanges[1]
+    for i = 2, #self.bpmChanges do
+        local change = self.bpmChanges[i]
 
         if self.time >= change.time then
-            last_change = change
+            lastChange = change
         end
     end
-    if self._last_bpm_change.bpm > 0 and self.bpm ~= self._last_bpm_change.bpm then
-        self.bpm = self._last_bpm_change.bpm
+    if self._lastBPMChange.bpm > 0 and self.bpm ~= self._lastBPMChange.bpm then
+        self.bpm = self._lastBPMChange.bpm
     end
 
-    local run_step = self:_update_step(((self.time - self._last_bpm_change.time) / self.step_crotchet) + self._last_bpm_change.step)
-    if run_step then
-        if math.abs(self.last_step - self.step) > 1 then
-            for i = self.last_step, self.step do
-                self.step_hit:emit(i + 1)
+    local runStep = self:_updateStep(((self.time - self._lastBPMChange.time) / self.stepCrotchet) + self._lastBPMChange.step)
+    if runStep then
+        if math.abs(self.lastStep - self.step) > 1 then
+            for i = self.lastStep, self.step do
+                self.stepHit:emit(i + 1)
             end
         else
-            self.step_hit:emit(self.step)
+            self.stepHit:emit(self.step)
         end
     end
-    local run_beat = self:_update_beat(self.stepf / self.time_signature[2])
-    if run_beat then
-        if math.abs(self.last_beat - self.beat) > 1 then
-            for i = self.last_beat, self.beat do
-                self.beat_hit:emit(i + 1)
+    local runBeat = self:_updateBeat(self.stepf / self.timeSignature[2])
+    if runStep and runBeat then
+        if math.abs(self.lastBeat - self.beat) > 1 then
+            for i = self.lastBeat, self.beat do
+                self.beatHit:emit(i + 1)
             end
         else
-            self.beat_hit:emit(self.beat)
+            self.beatHit:emit(self.beat)
         end
-        if self.has_metronome then
-            flora.sound:play(paths.sound("metronome"))
+        if self.hasMetronome then
+            flora.sound:play(Paths.sound("metronome"))
         end
     end
-    local run_measure = self:_update_measure(self.beatf / self.time_signature[1])
-    if run_measure then
-        if math.abs(self.last_measure - self.measure) > 1 then
-            for i = self.last_measure, self.measure do
-                self.measure_hit:emit(i + 1)
+    local runMeasure = self:_updateMeasure(self.beatf / self.timeSignature[1])
+    if runStep and runMeasure then
+        if math.abs(self.lastMeasure - self.measure) > 1 then
+            for i = self.lastMeasure, self.measure do
+                self.measureHit:emit(i + 1)
             end
         else
-            self.measure_hit:emit(self.measure)
+            self.measureHit:emit(self.measure)
         end
     end
     local state = flora.state
     while state do
-        if not state.sub_state or state.persistent_update then
-            if run_step and state.step_hit then
-                if math.abs(self.last_step - self.step) > 1 then
-                    for i = self.last_step, self.step do
-                        state:step_hit(i + 1)
+        if not state.subState or state.persistentUpdate then
+            if runStep and state.stepHit then
+                if math.abs(self.lastStep - self.step) > 1 then
+                    for i = self.lastStep, self.step do
+                        state:stepHit(i + 1)
                     end
                 else
-                    state:step_hit(self.step)
+                    state:stepHit(self.step)
                 end
             end
-            if run_beat and state.beat_hit then
-                if math.abs(self.last_beat - self.beat) > 1 then
-                    for i = self.last_beat, self.beat do
-                        state:beat_hit(i + 1)
+            if runStep and runBeat and state.beatHit then
+                if math.abs(self.lastBeat - self.beat) > 1 then
+                    for i = self.lastBeat, self.beat do
+                        state:beatHit(i + 1)
                     end
                 else
-                    state:beat_hit(self.beat)
+                    state:beatHit(self.beat)
                 end
             end
-            if run_measure and state.measure_hit then
-                if math.abs(self.last_measure - self.measure) > 1 then
-                    for i = self.last_measure, self.measure do
-                        state:measure_hit(i + 1)
+            if runStep and runMeasure and state.measureHit then
+                if math.abs(self.lastMeasure - self.measure) > 1 then
+                    for i = self.lastMeasure, self.measure do
+                        state:measureHit(i + 1)
                     end
                 else
-                    state:measure_hit(self.measure)
+                    state:measureHit(self.measure)
                 end
             end
         end
-        state = state.sub_state
+        state = state.subState
     end
 end
 
@@ -365,81 +365,81 @@ end
 ---
 --- @protected
 ---
-function conductor:_update_step(new_step)
+function Conductor:_updateStep(newStep)
     local updated = false
-    local new_step_floored = math.floor(new_step)
+    local newStepFloored = math.floor(newStep)
 
-    if self.step ~= new_step_floored then
-        self.last_step = self.step
-        self.step = new_step_floored
-        updated = not (new_step_floored < self.last_step and self.last_step - new_step_floored < 2)
+    if self.step ~= newStepFloored then
+        self.lastStep = self.step
+        self.step = newStepFloored
+        updated = not (newStepFloored < self.lastStep and self.lastStep - newStepFloored < 2)
     end
 
-    self.stepf = new_step
+    self.stepf = newStep
     return updated
 end
 
 ---
 --- @protected
 ---
-function conductor:_update_beat(new_beat)
+function Conductor:_updateBeat(newBeat)
     local updated = false
-    local new_beat_floored = math.floor(new_beat)
+    local newBeatFloored = math.floor(newBeat)
 
-    if self.beat ~= new_beat_floored then
-        self.last_beat = self.beat
-        self.beat = new_beat_floored
+    if self.beat ~= newBeatFloored then
+        self.lastBeat = self.beat
+        self.beat = newBeatFloored
         updated = true
     end
     
-    self.beatf = new_beat
+    self.beatf = newBeat
     return updated
 end
 
 ---
 --- @protected
 ---
-function conductor:_update_measure(new_measure)
+function Conductor:_updateMeasure(newMeasure)
     local updated = false
-    local new_measure_floored = math.floor(new_measure)
+    local newMeasureFloored = math.floor(newMeasure)
 
-    if self.measure ~= new_measure_floored then
-        self.last_measure = self.measure
-        self.measure = new_measure_floored
+    if self.measure ~= newMeasureFloored then
+        self.lastMeasure = self.measure
+        self.measure = newMeasureFloored
         updated = true
     end
     
-    self.measuref = new_measure
+    self.measuref = newMeasure
     return updated
 end
 
 ---
 --- @protected
 ---
-function conductor:get_time()
-    return self.raw_time
+function Conductor:get_time()
+    return self.rawTime - (self.allowSongOffset and Settings.data.songOffset or 0.0)
 end
 
 ---
 --- @protected
 ---
-function conductor:get_crotchet()
+function Conductor:get_crotchet()
     return 60.0 / self.bpm
 end
 
 ---
 --- @protected
 ---
-function conductor:get_step_crotchet()
-    return (60.0 / self.bpm) / self.time_signature[2]
+function Conductor:get_stepCrotchet()
+    return (60.0 / self.bpm) / self.timeSignature[2]
 end
 
 ---
 --- @protected
 ---
-function conductor:set_time(val)
-    self.raw_time = val
-    return self.raw_time
+function Conductor:set_time(val)
+    self.rawTime = val
+    return self.rawTime
 end
 
-return conductor
+return Conductor

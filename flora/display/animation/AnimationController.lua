@@ -1,16 +1,16 @@
-local animation_data = require("flora.display.animation.animation_data")
+local AnimationData = require("flora.display.animation.AnimationData")
 
 ---
---- @class flora.display.animation.animation_controller
+--- @class flora.display.animation.AnimationController
 ---
-local animation_controller = class:extend("animation_controller", ...)
+local AnimationController = Class:extend("AnimationController", ...)
 
-function animation_controller:constructor(parent)
+function AnimationController:constructor(parent)
     ---
     --- The attached sprite that utilizes this
     --- animation player.
     --- 
-    --- @type flora.display.sprite
+    --- @type flora.display.Sprite
     ---
     self.parent = parent
     
@@ -33,9 +33,9 @@ function animation_controller:constructor(parent)
     ---
     --- ⚠️ **WARNING**: This can be `nil`!
     --- 
-    --- @type flora.display.animation.animation_data
+    --- @type flora.display.animation.AnimationData
     ---
-    self.cur_anim = nil
+    self.curAnim = nil
     
     ---
     --- The function that gets ran when
@@ -43,7 +43,7 @@ function animation_controller:constructor(parent)
     --- 
     --- @type function?
     ---
-    self.on_complete = nil
+    self.onComplete = nil
     
     ---
     --- Whether or not the currently playing
@@ -61,17 +61,17 @@ function animation_controller:constructor(parent)
     --- @protected
     --- @type number
     ---
-    self._elapsed_time = 0.0
+    self._elapsedTime = 0.0
 end
 
 ---
 --- Resets this animation player and
 --- destroys & removes all previously added animations.
 ---
-function animation_controller:reset()
+function AnimationController:reset()
     self.animations = {}
-    self.cur_anim = nil
-    self.on_complete = nil
+    self.curAnim = nil
+    self.onComplete = nil
     self.reversed = false
     self.finished = false
     self.name = nil
@@ -85,31 +85,31 @@ end
 ---
 --- @param delta number  The time between the last and current frame.
 ---
-function animation_controller:update(delta)
-    if self.finished or self.cur_anim == nil then
+function AnimationController:update(delta)
+    if self.finished or self.curAnim == nil then
         return
     end
 
-    self._elapsed_time = self._elapsed_time + delta
+    self._elapsedTime = self._elapsedTime + delta
 
-    if self._elapsed_time < (1 / self.cur_anim.fps) then
+    if self._elapsedTime < (1 / self.curAnim.fps) then
         return
     end
-    self._elapsed_time = 0
+    self._elapsedTime = 0
 
-    if self.cur_anim.cur_frame < self.cur_anim.frame_count - 1 then
-        self.cur_anim.cur_frame = self.cur_anim.cur_frame + 1
-        self.parent.frame = self.cur_anim.frames[self.cur_anim.cur_frame]
+    if self.curAnim.curFrame < self.curAnim.frameCount - 1 then
+        self.curAnim.curFrame = self.curAnim.curFrame + 1
+        self.parent.frame = self.curAnim.frames[self.curAnim.curFrame]
         return
     end
 
-    if self.cur_anim.loop then
-        self.cur_anim.cur_frame = 1
-        self.parent.frame = self.cur_anim.frames[self.cur_anim.cur_frame]
+    if self.curAnim.loop then
+        self.curAnim.curFrame = 1
+        self.parent.frame = self.curAnim.frames[self.curAnim.curFrame]
     else
         self.finished = true
-        if self.on_complete then
-            self.on_complete(self.name)
+        if self.onComplete then
+            self.onComplete(self.name)
         end
     end
 end
@@ -122,7 +122,7 @@ end
 --- @param fps    number   The speed in frames per second that the animation should play at (e.g. `30` fps).
 --- @param loop   boolean  Whether or not the animation is looped or just plays once.
 ---
-function animation_controller:add(name, frames, fps, loop)
+function AnimationController:add(name, frames, fps, loop)
     local atlas = self.parent.frames
     if atlas == nil then
         return
@@ -131,7 +131,7 @@ function animation_controller:add(name, frames, fps, loop)
     for _, num in ipairs(frames) do
         table.insert(datas, atlas.frames[num])
     end
-    local anim = animation_data:new(name, datas, fps, loop)
+    local anim = AnimationData:new(name, datas, fps, loop)
     self.animations[name] = anim
 end
 
@@ -143,14 +143,14 @@ end
 --- @param fps    number    The speed in frames per second that the animation should play at (e.g. `30` fps).
 --- @param loop   boolean?  Whether or not the animation is looped or just plays once.
 ---
-function animation_controller:add_by_prefix(name, prefix, fps, loop)
+function AnimationController:addByPrefix(name, prefix, fps, loop)
     local atlas = self.parent.frames
     if atlas == nil then
         return
     end
     local __frames = {}
     for _, data in ipairs(atlas.frames) do
-        if string.starts_with(data.name, prefix) then
+        if string.startsWith(data.name, prefix) then
             table.insert(__frames, data)
         end
     end
@@ -158,7 +158,7 @@ function animation_controller:add_by_prefix(name, prefix, fps, loop)
         flora.log:warn("Failed to add animation called " .. name .. " since no frames were found")
         return
     end
-    local anim = animation_data:new(name, __frames, fps, loop and loop or true)
+    local anim = AnimationData:new(name, __frames, fps, loop and loop or true)
     self.animations[name] = anim
 end
 
@@ -171,14 +171,14 @@ end
 --- @param fps     number   The speed in frames per second that the animation should play at (e.g. `30` fps).
 --- @param loop    boolean  Whether or not the animation is looped or just plays once.
 ---
-function animation_controller:add_by_indices(name, prefix, indices, fps, loop)
+function AnimationController:addByIndices(name, prefix, indices, fps, loop)
     local atlas = self.parent.frames
     if atlas == nil then
         return
     end
     local __frames = {}
     for _, data in ipairs(atlas.frames) do
-        if string.starts_with(data.name, prefix) then
+        if string.startsWith(data.name, prefix) then
             table.insert(__frames, data)
         end
     end
@@ -190,7 +190,7 @@ function animation_controller:add_by_indices(name, prefix, indices, fps, loop)
     for _, num in ipairs(indices) do
         table.insert(datas, __frames[num])
     end
-    local anim = animation_data:new(name, datas, fps, loop)
+    local anim = AnimationData:new(name, datas, fps, loop)
     self.animations[name] = anim
 end
 
@@ -199,7 +199,7 @@ end
 ---
 --- @param name string  The name of the animation to check.
 ---
-function animation_controller:exists(name)
+function AnimationController:exists(name)
     return self.animations[name] ~= nil
 end
 
@@ -208,7 +208,7 @@ end
 ---
 --- @param name string  The name of the animation to get the data of.
 ---
-function animation_controller:get_by_name(name)
+function AnimationController:getByName(name)
     return self.animations[name]
 end
 
@@ -217,7 +217,7 @@ end
 ---
 --- @param name string  The name of the animation to remove.
 ---
-function animation_controller:remove(name)
+function AnimationController:remove(name)
     local anim = self.animations[name]
     if anim == nil then
         return
@@ -239,7 +239,7 @@ end
 ---
 --- @return boolean
 ---
-function animation_controller:play(name, force, reversed, frame)
+function AnimationController:play(name, force, reversed, frame)
     if not self:exists(name) then
         flora.log:warn("Animation called "..name.." doesn't exist!")
         return false
@@ -251,21 +251,16 @@ function animation_controller:play(name, force, reversed, frame)
     self.name = name
     self.reversed = reversed and reversed or false
     self.finished = false
-    self._elapsed_time = 0
+    self._elapsedTime = 0
 
-    self.cur_anim = self.animations[name]
-    self.cur_anim.cur_frame = frame and frame or 1
+    self.curAnim = self.animations[name]
+    self.curAnim.curFrame = frame and frame or 1
     
-    self.parent.frame = self.cur_anim.frames[self.cur_anim.cur_frame]
+    self.parent.frame = self.curAnim.frames[self.curAnim.curFrame]
 
-    if self.parent == nil or self.cur_anim == nil or self.cur_anim.frames == nil or self.cur_anim.frames[1] == nil then
+    if self.parent == nil or self.curAnim == nil or self.curAnim.frames == nil or self.curAnim.frames[1] == nil then
         return false
     end
-
-    local first_frame = self.cur_anim.frames[1]
-    self.parent.frame_width = first_frame.width
-    self.parent.frame_height = first_frame.height
-    
     return true
 end
 
@@ -279,7 +274,7 @@ end
 --- @param x    number  The X offset to set on the animation.
 --- @param y    number  The Y offset to set on the animation.
 ---
-function animation_controller:set_offset(name, x, y)
+function AnimationController:setOffset(name, x, y)
     local anim = self.animations[name]
     if anim == nil then
         return
@@ -287,14 +282,4 @@ function animation_controller:set_offset(name, x, y)
     anim.offset:set(x, y)
 end
 
----
---- Destroys this animation player and stops it from working.
----
-function animation_controller:destroy()
-    for _, data in pairs(self.animations) do
-        data:destroy()
-    end
-    self.animations = nil
-end
-
-return animation_controller
+return AnimationController

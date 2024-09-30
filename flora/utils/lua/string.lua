@@ -37,7 +37,7 @@ end
 --- @param string string  The string to check.
 --- @param start  string  What `string` should start with.
 ---
-function string.starts_with(string, start)
+function string.startsWith(string, start)
     return string:sub(1, #start) == start
 end
 
@@ -47,7 +47,7 @@ end
 --- @param string string  The string to check.
 --- @param ending string  What `string` should end with.
 ---
-function string.ends_with(string, ending)
+function string.endsWith(string, ending)
     return ending == "" or string:sub(-#ending) == ending
 end
 
@@ -58,7 +58,7 @@ end
 ---@param str string  The main string in which you want to find the last index of the `sub`.
 ---@param sub string  The substring for which you want to find the last index in the `str`.
 ---
-function string.last_index_of(str, sub)
+function string.lastIndexOf(str, sub)
     local subStringLength = #sub
     local lastIndex = -1
 
@@ -80,18 +80,18 @@ end
 --- @param to     string  The content to replace `from` with.
 ---
 function string.replace(string, from, to)
-    local search_start_idx = 1
+    local searchStartIdx = 1
 
     while true do
-        local start_idx, end_idx = string:find(from, search_start_idx, true)
-        if (not start_idx) then
+        local startIdx, endIdx = string:find(from, searchStartIdx, true)
+        if (not startIdx) then
             break
         end
 
-        local postfix = string:sub(end_idx + 1)
-        string = string:sub(1, (start_idx - 1)) .. to .. postfix
+        local postfix = string:sub(endIdx + 1)
+        string = string:sub(1, (startIdx - 1)) .. to .. postfix
 
-        search_start_idx = -1 * postfix:len()
+        searchStartIdx = -1 * postfix:len()
     end
 
     return string
@@ -115,7 +115,7 @@ end
 ---@param str string   The string to get this character from.
 ---@param pos integer  The position of the character to get.
 ---
-function string.char_at(str, pos)
+function string.charAt(str, pos)
     return string.sub(str, pos, pos)
 end
 
@@ -126,8 +126,8 @@ end
 ---@param str string   The string to get this character code from.
 ---@param pos integer  The position of the character code to get.
 ---
-function string.char_code_at(str, pos)
-    return string.byte(string.char_at(str, pos))
+function string.charCodeAt(str, pos)
+    return string.byte(string.charAt(str, pos))
 end
 
 return {}

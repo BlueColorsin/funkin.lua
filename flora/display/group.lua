@@ -3,15 +3,15 @@
 --- 
 --- An object that can hold several more game objects.
 --- 
---- @class flora.display.group : flora.base.basic
+--- @class flora.display.Group : flora.base.Basic
 --- 
-local group = basic:extend("group", ...)
+local Group = Basic:extend("Group", ...)
 
 ---
 --- Constructs a new group.
 ---
-function group:constructor()
-    group.super.constructor(self)
+function Group:constructor()
+    Group.super.constructor(self)
 
     ---
     --- The members inside of this group.
@@ -25,11 +25,11 @@ function group:constructor()
 end
 
 ---
---- @param  obj  flora.base.basic  The object to add to this group.
+--- @param  obj  flora.base.Basic  The object to add to this group.
 --- 
---- @return flora.base.basic
+--- @return flora.base.Basic
 ---
-function group:add(obj)
+function Group:add(obj)
     if not obj then
         flora.log:warn("Cannot add an invalid object to a group!")
         return obj
@@ -41,11 +41,11 @@ end
 
 ---
 --- @param  pos  integer           The position to add the given object at.
---- @param  obj  flora.base.basic  The object to add to this group.
+--- @param  obj  flora.base.Basic  The object to add to this group.
 --- 
---- @return flora.base.basic
+--- @return flora.base.Basic
 ---
-function group:insert(pos, obj)
+function Group:insert(pos, obj)
     if not obj then
         flora.log:warn("Cannot add an invalid object to a group!")
         return obj
@@ -56,35 +56,35 @@ function group:insert(pos, obj)
 end
 
 ---
---- @param  obj  flora.base.basic  The object to remove from this group.
+--- @param  obj  flora.base.Basic  The object to remove from this group.
 --- 
---- @return flora.base.basic
+--- @return flora.base.Basic
 ---
-function group:remove(obj)
+function Group:remove(obj)
     if not obj then
         flora.log:warn("Cannot remove an invalid object from a group!")
         return obj
     end
-    table.remove_item(self.members, obj)
+    table.removeItem(self.members, obj)
     self.length = self.length - 1
     return obj
 end
 
 ---
---- @param  obj  flora.base.basic
+--- @param  obj  flora.base.Basic
 ---
 --- @return boolean
 ---
-function group:contains(obj)
+function Group:contains(obj)
     return table.contains(self.members, obj)
 end
 
-function group:clear()
+function Group:clear()
     self.members = {}
     self.length = 0
 end
 
-function group:update(dt)
+function Group:update(dt)
     for i = 1, self.length do
         local obj = self.members[i]
         if obj and obj.exists and obj.active then
@@ -93,10 +93,10 @@ function group:update(dt)
     end
 end
 
-function group:draw()
-    local old_default_cameras = flora.cameras.default_cameras
+function Group:draw()
+    local oldDefaultCameras = flora.cameras.defaultCameras
     if self._cameras then
-        flora.cameras.default_cameras = self._cameras
+        flora.cameras.defaultCameras = self._cameras
     end
     for i = 1, self.length do
         local obj = self.members[i]
@@ -104,23 +104,23 @@ function group:draw()
             obj:draw()
         end
     end
-    flora.cameras.default_cameras = old_default_cameras
+    flora.cameras.defaultCameras = oldDefaultCameras
 end
 
 ---
 --- @param  func      function
 --- @param  recurse?  boolean
 ---
-function group:for_each(func, recurse)
+function Group:forEach(func, recurse)
     for i = 1, self.length do
         ---
-        --- @type flora.base.basic
+        --- @type flora.base.Basic
         ---
         local basic = self.members[i]
         if basic then
             if recurse then
-                if basic:is(group) or basic:is(sprite_group) then
-                    group:for_each(func, recurse)
+                if basic:is(Group) or basic:is(SpriteGroup) then
+                    Group:forEach(func, recurse)
                 end
             end
             func(basic)
@@ -132,16 +132,16 @@ end
 --- @param  func      function
 --- @param  recurse?  boolean
 ---
-function group:for_each_alive(func, recurse)
+function Group:forEachAlive(func, recurse)
     for i = 1, self.length do
         ---
-        --- @type flora.base.basic
+        --- @type flora.base.Basic
         ---
         local basic = self.members[i]
         if basic and basic.exists and basic.alive then
             if recurse then
-                if basic:is(group) or basic:is(sprite_group) then
-                    group:for_each_alive(func, recurse)
+                if basic:is(Group) or basic:is(SpriteGroup) then
+                    Group:forEachAlive(func, recurse)
                 end
             end
             func(basic)
@@ -153,16 +153,16 @@ end
 --- @param  func      function
 --- @param  recurse?  boolean
 ---
-function group:for_each_dead(func, recurse)
+function Group:forEachDead(func, recurse)
     for i = 1, self.length do
         ---
-        --- @type flora.base.basic
+        --- @type flora.base.Basic
         ---
         local basic = self.members[i]
         if basic and not basic.alive then
             if recurse then
-                if basic:is(group) or basic:is(sprite_group) then
-                    group:for_each_dead(func, recurse)
+                if basic:is(Group) or basic:is(SpriteGroup) then
+                    Group:forEachDead(func, recurse)
                 end
             end
             func(basic)
@@ -170,8 +170,8 @@ function group:for_each_dead(func, recurse)
     end
 end
 
-function group:dispose()
-    group.super.dispose(self)
+function Group:dispose()
+    Group.super.dispose(self)
 
     for i = 1, self.length do
         local obj = self.members[i]
@@ -189,8 +189,8 @@ end
 ---
 --- Returns a string representation of this object.
 ---
-function group:__tostring()
-    return "group (length: " .. self.length .. ")"
+function Group:__tostring()
+    return "Group (length: " .. self.length .. ")"
 end
 
-return group
+return Group

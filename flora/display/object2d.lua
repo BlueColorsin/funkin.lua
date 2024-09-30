@@ -1,15 +1,15 @@
 --- 
 --- A basic object with 2D positional and sizing data.
 --- 
---- @class flora.display.object2d : flora.base.basic
+--- @class flora.display.Object2D : flora.base.Basic
 --- 
-local object2d = basic:extend("object2d", ...)
+local Object2D = Basic:extend("Object2D", ...)
 
 ---
---- Constructs a new object2d.
+--- Constructs a new Object2D.
 ---
-function object2d:constructor(x, y, width, height)
-    object2d.super.constructor(self)
+function Object2D:constructor(x, y, width, height)
+    Object2D.super.constructor(self)
 
     ---
     --- The X coordinate of this object on-screen.
@@ -32,7 +32,7 @@ function object2d:constructor(x, y, width, height)
     self.height = height and height or 0.0
 end
 
-function object2d:set_position(x, y)
+function Object2D:setPosition(x, y)
     self.x = x and x or 0.0
     self.y = y and y or 0.0
 end
@@ -40,8 +40,8 @@ end
 ---
 --- Returns a string representation of this object.
 ---
-function object2d:__tostring()
-    return "object2d (x: " .. self.x .. ", y: " .. self.y .. ")"
+function Object2D:__tostring()
+    return "Object2D (x: " .. self.x .. ", y: " .. self.y .. ")"
 end
 
-return object2d
+return Object2D

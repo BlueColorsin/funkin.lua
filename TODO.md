@@ -1,7 +1,7 @@
 # TODO
 ## Both
-- Move away from snake case, to be more consistent with Love2D
-    - Make the class AND file names camel case
+- Move away from snake case, to be more consistent with Love2D [X]
+    - Make the class AND file names camel case [X]
 
 ## Flora Framework
 - Timers [X]
@@ -10,6 +10,7 @@
 - Sprites [-]
     - Animation Functionality [X]
     - Clip Rect
+    - Flip X and Flip Y
 
 - Substates
 - Ensure everything is documented
