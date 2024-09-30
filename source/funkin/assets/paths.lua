@@ -3,6 +3,11 @@
 ---
 local Paths = Class:extend()
 
+---
+--- @protected
+---
+Paths._atlasCache = {}
+
 function Paths.asset(name)
     return "assets/" .. name
 end
@@ -79,8 +84,20 @@ function Paths.getSparrowAtlas(name, dir)
     local img = Paths.image(name, dir)
     local xml = Path.withoutExtension(img) .. ".xml"
     
-    -- TODO: cache that shit
-    return AtlasFrames.fromSparrow(img, xml)
+    local key = "#_SPARROW_" .. img .. xml
+    if not Paths._atlasCache[key] then
+        local atlas = AtlasFrames.fromSparrow(img, xml)
+        atlas:reference() -- prevent automatic destruction
+        Paths._atlasCache[key] = atlas
+    end
+    return Paths._atlasCache[key]
+end
+
+function Paths.clearCache()
+    for _, value in pairs(Paths._atlasCache) do
+        value:unreference()
+    end
+    Paths._atlasCache = {}
 end
 
 return Paths

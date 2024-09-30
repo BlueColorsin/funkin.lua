@@ -294,7 +294,7 @@ function Conductor:update(dt)
     if runStep then
         if math.abs(self.lastStep - self.step) > 1 then
             for i = self.lastStep, self.step do
-                self.stepHit:emit(i + 1)
+                self.stepHit:emit(i)
             end
         else
             self.stepHit:emit(self.step)
@@ -304,7 +304,7 @@ function Conductor:update(dt)
     if runStep and runBeat then
         if math.abs(self.lastBeat - self.beat) > 1 then
             for i = self.lastBeat, self.beat do
-                self.beatHit:emit(i + 1)
+                self.beatHit:emit(i)
             end
         else
             self.beatHit:emit(self.beat)
@@ -317,7 +317,7 @@ function Conductor:update(dt)
     if runStep and runMeasure then
         if math.abs(self.lastMeasure - self.measure) > 1 then
             for i = self.lastMeasure, self.measure do
-                self.measureHit:emit(i + 1)
+                self.measureHit:emit(i)
             end
         else
             self.measureHit:emit(self.measure)
@@ -329,7 +329,7 @@ function Conductor:update(dt)
             if runStep and state.stepHit then
                 if math.abs(self.lastStep - self.step) > 1 then
                     for i = self.lastStep, self.step do
-                        state:stepHit(i + 1)
+                        state:stepHit(i)
                     end
                 else
                     state:stepHit(self.step)
@@ -338,7 +338,7 @@ function Conductor:update(dt)
             if runStep and runBeat and state.beatHit then
                 if math.abs(self.lastBeat - self.beat) > 1 then
                     for i = self.lastBeat, self.beat do
-                        state:beatHit(i + 1)
+                        state:beatHit(i)
                     end
                 else
                     state:beatHit(self.beat)
@@ -347,7 +347,7 @@ function Conductor:update(dt)
             if runStep and runMeasure and state.measureHit then
                 if math.abs(self.lastMeasure - self.measure) > 1 then
                     for i = self.lastMeasure, self.measure do
-                        state:measureHit(i + 1)
+                        state:measureHit(i)
                     end
                 else
                     state:measureHit(self.measure)
@@ -417,7 +417,7 @@ end
 --- @protected
 ---
 function Conductor:get_time()
-    return self.rawTime - (self.allowSongOffset and Settings.data.songOffset or 0.0)
+    return self.rawTime - (self.allowSongOffset and Settings.data.songOffset * 0.001 or 0.0)
 end
 
 ---

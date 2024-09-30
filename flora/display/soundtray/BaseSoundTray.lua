@@ -6,9 +6,9 @@ local BaseSoundTray = Object2D:extend("BaseSoundTray", ...)
 function BaseSoundTray:constructor()
     BaseSoundTray.super.constructor(self)
 
-    self.volumeUpKeys = {KeyCode.equals, KeyCode.numpad_plus}
-    self.volumeDownKeys = {KeyCode.minus, KeyCode.numpad_minus}
-    self.volumeMuteKeys = {KeyCode.zero, KeyCode.numpad_0}
+    self.volumeUpKeys = {KeyCode.EQUALS, KeyCode.NUMPAD_PLUS}
+    self.volumeDownKeys = {KeyCode.MINUS, KeyCode.NUMPAD_MINUS}
+    self.volumeMuteKeys = {KeyCode.ZERO, KeyCode.NUMPAD_0}
 end
 
 function BaseSoundTray:show(up)

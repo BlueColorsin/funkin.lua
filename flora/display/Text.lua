@@ -3,7 +3,7 @@ local Font = require("flora.assets.Font")
 ---
 --- A sprite that can render text to the screen.
 ---
---- @class flora.display.text : flora.display.Sprite
+--- @class flora.display.Text : flora.display.Sprite
 ---
 local Text = Sprite:extend("Text", ...)
 
@@ -106,7 +106,7 @@ function Text:constructor(x, y, fieldWidth, txt, size)
     --- @protected
     --- @type flora.assets.Font?
     ---
-    self._font = flora.assets:load_font("flora/embed/fonts/nokiafc22.ttf")
+    self._font = flora.assets:loadFont("flora/embed/fonts/nokiafc22.ttf")
 
     ---
     --- @protected
@@ -188,7 +188,7 @@ function Text:constructor(x, y, fieldWidth, txt, size)
 
     local key = tostring(self)
     local tex = Texture:new(key, love.graphics.newImage(love.image.newImageData(1, 1)))
-    flora.assets:cache_texture(key, tex)
+    flora.assets:cacheTexture(key, tex)
 
     -- TODO: using normal frames property SHOULD work, but doesn't for some reason
     self._frames = FrameCollection.fromTexture(tex)
@@ -480,7 +480,7 @@ function Text:set_font(val)
     self._textObj = love.graphics.newTextBatch(self._fontData)
         
     self._dirty = true
-    return self._Font.path
+    return self._font.path
 end
 
 ---

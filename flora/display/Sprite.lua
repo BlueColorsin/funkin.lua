@@ -130,6 +130,12 @@ function Sprite:constructor(x, y, texture)
     --- @type flora.display.animation.FrameCollection?
     ---
     self._frames = texture and FrameCollection.fromTexture(flora.assets:loadTexture(texture)) or nil
+
+    ---
+    --- @protected
+    --- @type flora.display.animation.FrameData?
+    ---
+    self._frame = nil
 end
 
 ---
@@ -301,6 +307,21 @@ end
 ---
 function Sprite:get_tint()
     return self._tint
+end
+
+---
+--- @protected
+---
+function Sprite:get_frame()
+    return self._frame
+end
+
+---
+--- @protected
+---
+function Sprite:set_frame(val)
+    self._frame = val
+    return self._frame
 end
 
 ---

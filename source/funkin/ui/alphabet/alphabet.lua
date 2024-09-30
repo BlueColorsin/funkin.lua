@@ -109,48 +109,48 @@ function Alphabet:update(dt)
     Alphabet.super.update(self, dt)
 end
 
-function Alphabet:draw()
-    for i = 1, self.length do
-        local glyph = self.members[i]
-        glyph:draw()
-    end
-    local oldDefaultCameras = flora.cameras.defaultCameras
-    if self._cameras then
-        flora.cameras.defaultCameras = self._cameras
-    end
-    local batchTex = self._batch:getTexture()
-    for i = 1, #flora.cameras.defaultCameras do
-        ---
-        --- @type flora.display.Camera
-        ---
-        local cam = flora.cameras.defaultCameras[i]
+-- function Alphabet:draw()
+--     for i = 1, self.length do
+--         local glyph = self.members[i]
+--         glyph:draw()
+--     end
+--     local oldDefaultCameras = flora.cameras.defaultCameras
+--     if self._cameras then
+--         flora.cameras.defaultCameras = self._cameras
+--     end
+--     local batchTex = self._batch:getTexture()
+--     for i = 1, #flora.cameras.defaultCameras do
+--         ---
+--         --- @type flora.display.Camera
+--         ---
+--         local cam = flora.cameras.defaultCameras[i]
 
-        local otx = self.origin.x * (self.width / math.abs(self.scale.x))
-        local oty = self.origin.y * (self.height / math.abs(self.scale.y))
+--         local otx = self.origin.x * (self.width / math.abs(self.scale.x))
+--         local oty = self.origin.y * (self.height / math.abs(self.scale.y))
 
-        local ox = self.origin.x * self.width
-        local oy = self.origin.y * self.height
+--         local ox = self.origin.x * self.width
+--         local oy = self.origin.y * self.height
 
-        local rx = self.x + ox
-        local ry = self.y + oy
+--         local rx = self.x + ox
+--         local ry = self.y + oy
 
-        local offx = 0.0
-        local offy = 0.0
+--         local offx = 0.0
+--         local offy = 0.0
 
-        offx = offx - (cam.scroll.x * self.scrollFactor.x)
-        offy = offy - (cam.scroll.y * self.scrollFactor.y)
+--         offx = offx - (cam.scroll.x * self.scrollFactor.x)
+--         offy = offy - (cam.scroll.y * self.scrollFactor.y)
 
-        rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
-	    ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
+--         rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
+-- 	    ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
 
-        cam:drawSpriteBatch(
-            self._batch, rx, ry,
-            batchTex:getWidth() * self.scale.x, batchTex:getHeight() * self.scale.y,
-            self.angle, otx, oty, Color.WHITE
-        )
-    end
-    flora.cameras.defaultCameras = oldDefaultCameras
-end
+--         cam:drawSpriteBatch(
+--             self._batch, rx, ry,
+--             batchTex:getWidth() * self.scale.x, batchTex:getHeight() * self.scale.y,
+--             self.angle, otx, oty, Color.WHITE
+--         )
+--     end
+--     flora.cameras.defaultCameras = oldDefaultCameras
+-- end
 
 function Alphabet:dispose()
     Alphabet.super.dispose(self)
@@ -173,6 +173,9 @@ function Alphabet:updateText(newText, force)
     if self._text == newText and not force then
         return
     end
+    -- self._batch:clear()
+    -- self._batch:flush()
+
     for i = 1, self.length do
         local line = self.members[i]
         line:dispose()
@@ -279,9 +282,9 @@ end
 --- @protected
 ---
 function Alphabet:set_text(val)
-    self._text = val
-    self:updateText(self._text)
+    self:updateText(val)
     self:updateSize(self._size)
+    self._text = val
     return self._text
 end
 

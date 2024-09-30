@@ -3,6 +3,8 @@
 ---
 local InitState = State:extend("InitState", ...)
 
+InitState._lastState = ""
+
 function InitState:ready()
     InitState.super.ready(self)
 
@@ -36,6 +38,15 @@ function InitState:ready()
         flora.soundTray:dispose()
     end
     flora.soundTray = flora.import("funkin.ui.SoundTray"):new()
+
+    flora.signals.preStateSwitch:connect(function()
+        if flora.state.__class ~= InitState._lastState then
+            Paths.clearCache()
+        end
+    end)
+    flora.signals.postStateSwitch:connect(function()
+        InitState._lastState = flora.state.__class
+    end)
 
     Conductor.instance = Conductor:new()
     flora.plugins:add(Conductor.instance)

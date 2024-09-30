@@ -1,7 +1,7 @@
 -- XML parser made by Stilic for FNF LÖVE
 ---
 -- Originally based off https://github.com/Cluain/Lua-Simple-XML-Parser
--- Taken from https://github.com/Stilic/FNF-LOVE/blob/main/lib/xmlParser.lua
+-- Taken from https://github.com/Stilic/FNF-LOVE/blob/main/loxel/lib/xml.lua
 
 local function trim(str) return string.match(str, "^%s*(.-)%s*$") end
 

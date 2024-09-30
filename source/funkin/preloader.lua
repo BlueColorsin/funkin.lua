@@ -23,79 +23,79 @@ function Preloader:ready()
         flora.save:flush()
     end
 
-    self.chosen_tip = Preloader.tips[love.math.random(1, #Preloader.tips)]
+    self.chosenTip = Preloader.tips[love.math.random(1, #Preloader.tips)]
     self.test = 0.0
 
     ---
-    --- @type flora.display.sprite
+    --- @type flora.display.Sprite
     ---
-    self.preloader_art = sprite:new()
-    self.preloader_art:load_texture("assets/images/preloaderArt.png")
-    self.preloader_art.scale:set(0.3, 0.3)
-    self.preloader_art:screen_center(axes.xy)
-    self.preloader_art.y = self.preloader_art.y - 30
-    self:add(self.preloader_art)
+    self.preloaderArt = Sprite:new()
+    self.preloaderArt:loadTexture("assets/images/preloaderArt.png")
+    self.preloaderArt.scale:set(0.3, 0.3)
+    self.preloaderArt:screenCenter(Axes.XY)
+    self.preloaderArt.y = self.preloaderArt.y - 30
+    self:add(self.preloaderArt)
 
     ---
-    --- @type flora.display.sprite
+    --- @type flora.display.Sprite
     ---
-    self.spinner = sprite:new()
-    self.spinner:load_texture("assets/images/spinner.png")
-    self.spinner:set_graphic_size(48, 48)
-    self.spinner:set_position(
-        flora.game_width - self.spinner.width - 30,
-        flora.game_height - self.spinner.height - 30
+    self.spinner = Sprite:new()
+    self.spinner:loadTexture("assets/images/spinner.png")
+    self.spinner:setGraphicSize(48, 48)
+    self.spinner:setPosition(
+        flora.gameWidth - self.spinner.width - 30,
+        flora.gameHeight - self.spinner.height - 30
     )
     self:add(self.spinner)
 
     ---
-    --- @type flora.display.text
+    --- @type flora.display.Text
     ---
-    self.status_txt = text:new()
-    self.status_txt.text = self.chosen_tip .. "\nPreloading assets..."
-    self.status_txt:set_format("assets/fonts/vcr.ttf", 18, Color.WHITE, "left")
-    self.status_txt:setBorderStyle("outline", Color.BLACK, 3)
-    self.status_txt:set_position(30, flora.game_height - self.status_txt.height - 30)
-    self:add(self.status_txt)
+    self.statusTxt = Text:new()
+    self.statusTxt.text = self.chosenTip .. "\nPreloading assets..."
+    self.statusTxt:setFormat("assets/fonts/vcr.ttf", 18, Color.WHITE, "left")
+    self.statusTxt:setBorderStyle("outline", Color.BLACK, 3)
+    self.statusTxt:setPosition(30, flora.gameHeight - self.statusTxt.height - 30)
+    self:add(self.statusTxt)
 
-    self.preloaded_assets = 0
-    self.asset_count = 0
+    self.preloadedAssets = 0
+    self.assetCount = 0
 
     self.finished = false
 
-    timer:new():start(0.5, function(_)
-        self:do_preload()
+    Timer:new():start(0.5, function(_)
+        self:doPreload()
     end)
 end
 
-function Preloader:preload_texture(path, compressed)
-    flora.assets:load_texture_async(path, compressed, function(tex)
+function Preloader:preloadTexture(path, compressed)
+    flora.assets:loadTextureASync(path, compressed, function(tex)
         tex:reference()
-        self.status_txt.text = self.chosen_tip .. "\nPreloaded " .. path .. " successfully"
-        self.preloaded_assets = self.preloaded_assets + 1
+        self.statusTxt.text = self.chosenTip .. "\nPreloaded " .. path .. " successfully"
+        self.preloadedAssets = self.preloadedAssets + 1
     end)
-    self.asset_count = self.asset_count + 1
+    self.assetCount = self.assetCount + 1
 end
 
-function Preloader:preload_sound(path)
-    flora.assets:load_sound_async(path, function(_)
-        self.status_txt.text = self.chosen_tip .. "\nPreloaded " .. path .. " successfully"
-        self.preloaded_assets = self.preloaded_assets + 1
+function Preloader:preloadSound(path)
+    flora.assets:loadSoundASync(path, function(_)
+        self.statusTxt.text = self.chosenTip .. "\nPreloaded " .. path .. " successfully"
+        self.preloadedAssets = self.preloadedAssets + 1
     end)
-    self.asset_count = self.asset_count + 1
+    self.assetCount = self.assetCount + 1
 end
 
-function Preloader:do_preload()
+function Preloader:doPreload()
     -- Preload menu bgs since they're commonly used
-    self:preload_texture(Paths.image("desat", "images/menus"))
-    self:preload_texture(Paths.image("yellow", "images/menus"))
+    self:preloadTexture(Paths.image("desat", "images/menus"))
+    self:preloadTexture(Paths.image("yellow", "images/menus"))
 
     -- Preload commonly used characters
-    self:preload_texture(Paths.image("normal", "images/game/characters/bf"))
-    self:preload_texture(Paths.image("dead", "images/game/characters/bf"))
+    self:preloadTexture(Paths.image("normal", "images/game/characters/bf"))
+    self:preloadTexture(Paths.image("dead", "images/game/characters/bf"))
 
-    self:preload_texture(Paths.image("speakers", "images/game/characters/gf"))
-    self:preload_texture(Paths.image("woman", "images/game/characters/gf"))
+    self:preloadTexture(Paths.image("speakers", "images/game/characters/gf"))
+    self:preloadTexture(Paths.image("woman", "images/game/characters/gf"))
 end
 
 function Preloader:update(dt)
@@ -104,22 +104,22 @@ function Preloader:update(dt)
     self.test = self.test + (dt * 10)
     self.spinner.angle = self.spinner.angle + (dt * 150)
     
-    if self.asset_count > 0 and self.preloaded_assets == self.asset_count then
+    if self.assetCount > 0 and self.preloadedAssets == self.assetCount then
         self.finished = true
-        self.asset_count = self.asset_count + 1
+        self.assetCount = self.assetCount + 1
     end
     if self.finished then
         self.finished = false
         
         self.spinner:kill()
-        self.status_txt.text = self.chosen_tip .. "\nFinished preloading, game on!"
+        self.statusTxt.text = self.chosenTip .. "\nFinished preloading, game on!"
 
         flora.sound:play(Paths.sound("select", "sounds/menus"))
-        flora.camera:fade(color.black, 1.25, false, function()
+        flora.camera:fade(Color.BLACK, 1.25, false, function()
             -- flora.camera._fade_fx_alpha = 0.0
-            timer:new():start(0.5, function(_)
+            Timer:new():start(0.5, function(_)
                 local TitleScreen = flora.import("funkin.states.TitleScreen")
-                flora.switch_state(TitleScreen:new())
+                flora.switchState(TitleScreen:new())
             end)
         end)
     end

@@ -88,48 +88,58 @@ function AlphabetGlyph.convert(char)
     return converted and converted or char
 end
 
-function AlphabetGlyph:draw()
-    if not self.frames or not self.frame or self.alpha <= 0 then
-        return
-    end
-    local batch = self.parent and self.parent._batch
-	if not batch then
-        return    
-    end
-    batch:setColor(self.tint.r, self.tint.g, self.tint.b, self.alpha)
+-- function AlphabetGlyph:draw()
+--     if not self.frames or not self.frame or self.alpha <= 0 then
+--         return
+--     end
+--     local batch = self.parent and self.parent._batch
+-- 	if not batch then
+--         return    
+--     end
+--     batch:setColor(self.tint.r, self.tint.g, self.tint.b, self.alpha)
 
-    local filter = self.antialiasing and "linear" or "nearest"
-    self.texture.image:setFilter(filter, filter)
+--     local filter = self.antialiasing and "linear" or "nearest"
+--     self.texture.image:setFilter(filter, filter)
 
-    local otx = self.origin.x * self.frameWidth
-    local oty = self.origin.y * self.frameHeight
+--     local otx = self.origin.x * self.frameWidth
+--     local oty = self.origin.y * self.frameHeight
 
-    local ox = self.origin.x * self.width
-    local oy = self.origin.y * self.height
+--     local ox = self.origin.x * self.width
+--     local oy = self.origin.y * self.height
     
-    local curAnim = self.animation.curAnim
+--     local curAnim = self.animation.curAnim
 
-    local rx = (self.x - self.parent.x) + ox
-    local ry = (self.y - self.parent.y) + oy
+--     local rx = (self.x - self.parent.x) + ox
+--     local ry = (self.y - self.parent.y) + oy
 
-    local offx = curAnim and curAnim.offset.x or 0.0
-    local offy = curAnim and curAnim.offset.y or 0.0
+--     local offx = curAnim and curAnim.offset.x or 0.0
+--     local offy = curAnim and curAnim.offset.y or 0.0
 
-    offx = offx - (self.frame.offset.x * (self.scale.x < 0 and -1 or 1))
-    offy = offy - (self.frame.offset.y * (self.scale.y < 0 and -1 or 1))
+--     offx = offx - (self.frame.offset.x * (self.scale.x < 0 and -1 or 1))
+--     offy = offy - (self.frame.offset.y * (self.scale.y < 0 and -1 or 1))
 
-    rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
-    ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
+--     rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
+--     ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
 
-    local a = math.rad(self.angle)
-    local sx = self.scale.x
-    local sy = self.scale.y
+--     local a = math.rad(self.angle)
+--     local sx = self.scale.x
+--     local sy = self.scale.y
 
-    if self._batchIdx == -1 then
-        self._batchIdx = batch:add(self.frame.quad, rx, ry, a, sx, sy, otx, oty)
-    else
-        batch:set(self._batchIdx, self.frame.quad, rx, ry, a, sx, sy, otx, oty)
+--     if self._batchIdx == -1 then
+--         self._batchIdx = batch:add(self.frame.quad, rx, ry, a, sx, sy, otx, oty)
+--     else
+--         batch:set(self._batchIdx, self.frame.quad, rx, ry, a, sx, sy, otx, oty)
+--     end
+-- end
+
+function AlphabetGlyph:dispose()
+    local batch = self.parent and self.parent._batch
+	if batch then
+        batch:clear()
+        batch:flush()
     end
+    self._batchIdx = -1
+    AlphabetGlyph.super.dispose(self)
 end
 
 -----------------------

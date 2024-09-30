@@ -495,7 +495,6 @@ function love.update(dt)
         end
         flora.signals.preUpdate:emit()
 
-        flora.keys:update()
         flora.mouse:update()
         
         flora.sound:update()
@@ -506,6 +505,7 @@ function love.update(dt)
         end
         flora.cameras:update(dt)
 
+        flora.keys:update()
         flora.mouse:postUpdate()
         
         if flora.postUpdate then
