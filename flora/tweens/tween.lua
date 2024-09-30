@@ -186,7 +186,7 @@ function Tween:cancel()
     for i = 1, self._tweeners.length do
         local obj = self._tweeners.members[i]
         if obj then
-            if flora.config.debug_mode then
+            if flora.config.debugMode then
                 flora.log:verbose("Disposing object " .. tostring(obj))
             end
             obj:dispose()
@@ -199,7 +199,7 @@ function Tween:dispose()
     Tween.super.dispose(self)
     self:stop()
 
-    if flora.config.debug_mode then
+    if flora.config.debugMode then
         flora.log:verbose("Disposing tweener " .. tostring(self._tweeners))
     end
     self._tweeners:dispose()

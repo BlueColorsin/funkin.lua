@@ -176,7 +176,7 @@ function Group:dispose()
     for i = 1, self.length do
         local obj = self.members[i]
         if obj then
-            if flora.config.debug_mode then
+            if flora.config.debugMode then
                 flora.log:verbose("Disposing object " .. tostring(obj))
             end
             obj:dispose()

@@ -218,12 +218,12 @@ end
 function Sprite:dispose()
     Sprite.super.dispose(self)
 
-    if flora.config.debug_mode then
+    if flora.config.debugMode then
         flora.log:verbose("Unreferencing texture on sprite " .. tostring(self))
     end
     self.frames = nil
 
-    if flora.config.debug_mode then
+    if flora.config.debugMode then
         flora.log:verbose("Removing extra vars on sprite " .. tostring(self))
     end
     self.scale = nil
