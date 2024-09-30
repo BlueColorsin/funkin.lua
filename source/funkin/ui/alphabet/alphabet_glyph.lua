@@ -107,10 +107,6 @@ function alphabet_glyph:update_bold_offset()
         {
             chars = {"_"},
             offset = vector2:new(0, self.frame_height * 0.6)
-        },
-        {
-            chars = {"u", "i"},
-            offset = vector2:new(0, self.frame_height * -0.1)
         }
     }
     for i = 1, #char_sets do

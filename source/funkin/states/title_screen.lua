@@ -51,7 +51,8 @@ function title_screen:ready()
     ---
     --- @type funkin.ui.alphabet.alphabet
     ---
-    self.test = alphabet:new(102, 102, "qwertyuiopasdfghjklzxcvbnm\n[];:'\",./<>?", "bold", "left", 0.5)
+    self.test = alphabet:new(0, 200, "did you know?\ncheenis", "bold", "center", 1)
+    self.test:screen_center(axes.x)
     self:add(self.test)
 end
 
