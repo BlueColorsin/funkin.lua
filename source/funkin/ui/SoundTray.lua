@@ -67,21 +67,21 @@ function SoundTray:show(up)
     self.visible = true
     self._timer = 0.0
 
-    if not (up and flora.sound.volume >= 1.0) then
+    if not (up and Flora.sound.volume >= 1.0) then
         self.curAnim = "adjust"
         self.curFrame = 1
 
         self._elapsedAnimTime = 0.0
     end
     if up then
-        if flora.sound.volume >= 1.0 then
+        if Flora.sound.volume >= 1.0 then
             self._shakeMult = 1.0
-            flora.sound:play("assets/sounds/volume/max.ogg")
+            Flora.sound:play("assets/sounds/volume/max.ogg")
         else
-            flora.sound:play("assets/sounds/volume/up.ogg")
+            Flora.sound:play("assets/sounds/volume/up.ogg")
         end
     else
-        flora.sound:play("assets/sounds/volume/down.ogg")
+        Flora.sound:play("assets/sounds/volume/down.ogg")
     end
     SoundTray.super.show(self, up)
 end
@@ -140,8 +140,8 @@ function SoundTray:draw()
     
     love.graphics.setColor(1, 1, 1, 1 * self.alpha)
 
-    local vol = flora.sound.volume
-    if vol > 0 and not flora.sound.muted then
+    local vol = Flora.sound.volume
+    if vol > 0 and not Flora.sound.muted then
         love.graphics.draw(self.bars[math.floor(vol * bar_count)], bar_x, bar_y, 0, self.scale.x, self.scale.y)
     end
     love.graphics.setColor(pr, pg, pb, pa)

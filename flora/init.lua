@@ -1,7 +1,7 @@
 
-if flora then
+if Flora then
     print("Flora was already initialized!")
-    return flora
+    return Flora
 end
 
 io.stdout:setvbuf("no")
@@ -61,6 +61,8 @@ Text = require("flora.display.Text")
 
 Frame = require("flora.display.animation.FrameData")
 FrameCollection = require("flora.display.animation.FrameCollection")
+
+TileFrames = require("flora.display.animation.TileFrames")
 AtlasFrames = require("flora.display.animation.AtlasFrames")
 
 KeyCode = require("flora.input.keyboard.KeyCode")
@@ -88,18 +90,18 @@ local TimerManager = require("flora.plugins.TimerManager")
 local TweenManager = require("flora.plugins.TweenManager")
 
 ---
---- @class flora
+--- @class Flora
 ---
 --- The main class used to initialize Flora
 ---
-flora = Class:extend()
+Flora = Class:extend()
 
 --- 
 --- A helper object for configuring Flora.
 --- 
 --- @type flora.Config
 --- 
-flora.config = require("flora.Config"):new()
+Flora.config = require("flora.Config"):new()
 
 ---
 --- Loads the given module, returns any value returned by the given module(`true` when `nil`).
@@ -117,8 +119,8 @@ flora.config = require("flora.Config"):new()
 --- @param  modname  string
 --- @return unknown
 ---
-flora.import = function(modname)
-    return require(flora.config.sourceFolder .. "." .. modname)
+Flora.import = function(modname)
+    return require(Flora.config.sourceFolder .. "." .. modname)
 end
 
 ---
@@ -126,77 +128,84 @@ end
 ---
 --- @type string
 ---
-flora.os = love.system.getOS()
+Flora.os = love.system.getOS()
 
 --- 
 --- The native system API for Flora.
 --- 
 --- @type flora.native
 --- 
-flora.native = require("flora.native")
+Flora.native = require("flora.native")
 
 ---
 --- The logging system for Flora.
 ---
 --- @type flora.debug.Log
 ---
-flora.log = require("flora.debug.Log"):new()
-
----
---- The object responsible for managing assets.
----
---- @type flora.frontends.AssetFrontEnd
----
-flora.assets = require("flora.frontends.AssetFrontEnd"):new()
-
----
---- The object responsible for managing cameras.
----
---- @type flora.frontends.CameraFrontEnd
----
-flora.cameras = require("flora.frontends.CameraFrontEnd"):new()
-
----
---- The object responsible for managing keyboard input.
----
---- @type flora.input.keyboard.KeyboardManager
----
-flora.keys = require("flora.input.keyboard.KeyboardManager"):new()
-
----
---- The object responsible for managing mouse input.
----
---- @type flora.input.mouse.Pointer
----
-flora.mouse = require("flora.input.mouse.Pointer"):new()
-
----
---- The object responsible for managing sound playback.
----
---- @type flora.frontends.SoundFrontEnd
----
-flora.sound = require("flora.frontends.SoundFrontEnd"):new()
-
----
---- The object responsible for managing plugins.
----
---- @type flora.frontends.PluginFrontEnd
----
-flora.plugins = require("flora.frontends.PluginFrontEnd"):new()
+Flora.log = require("flora.debug.Log"):new()
 
 ---
 --- The object responsible for managing signals.
 ---
 --- @type flora.frontends.SignalFrontEnd
 ---
-flora.signals = require("flora.frontends.SignalFrontEnd"):new()
+Flora.signals = require("flora.frontends.SignalFrontEnd"):new()
+
+---
+--- The object responsible for managing assets.
+---
+--- @type flora.frontends.AssetFrontEnd
+---
+Flora.assets = require("flora.frontends.AssetFrontEnd"):new()
+
+---
+--- The object responsible for managing cameras.
+---
+--- @type flora.frontends.CameraFrontEnd
+---
+Flora.cameras = require("flora.frontends.CameraFrontEnd"):new()
+
+---
+--- The object responsible for managing keyboard input.
+---
+--- @type flora.input.keyboard.KeyboardManager
+---
+Flora.keys = require("flora.input.keyboard.KeyboardManager"):new()
+
+---
+--- The object responsible for managing mouse input.
+---
+--- @type flora.input.mouse.Pointer
+---
+Flora.mouse = require("flora.input.mouse.Pointer"):new()
+
+---
+--- The object responsible for managing sound playback.
+---
+--- @type flora.frontends.SoundFrontEnd
+---
+Flora.sound = require("flora.frontends.SoundFrontEnd"):new()
+
+---
+--- The object responsible for managing plugins.
+---
+--- @type flora.frontends.PluginFrontEnd
+---
+Flora.plugins = require("flora.frontends.PluginFrontEnd"):new()
+
+---
+--- The object responsible for managing random number generation.
+--- 
+--- @type flora.math.Random
+---
+Flora.random = require("flora.math.Random"):new()
 
 ---
 --- The object responsible for correctly sizing the game to the window.
 ---
 --- @type flora.display.scalemodes.BaseScaleMode
 ---
-flora.scaleMode = require("flora.display.scalemodes.RatioScaleMode"):new()
+Flora.scaleMode = require("flora.display.scalemodes.RatioScaleMode"):new()
 
 ---
 --- The object responsible for displaying a tray
@@ -204,7 +213,7 @@ flora.scaleMode = require("flora.display.scalemodes.RatioScaleMode"):new()
 ---
 --- @type flora.display.soundtray.DefaultSoundTray
 ---
-flora.soundTray = require("flora.display.soundtray.DefaultSoundTray"):new()
+Flora.soundTray = require("flora.display.soundtray.DefaultSoundTray"):new()
 
 ---
 --- The default Save data object for flora.
@@ -213,7 +222,7 @@ flora.soundTray = require("flora.display.soundtray.DefaultSoundTray"):new()
 --- 
 --- @type flora.utils.Save
 ---
-flora.save = nil
+Flora.save = nil
 
 ---
 --- The first available camera, usually set
@@ -221,14 +230,14 @@ flora.save = nil
 --- 
 --- @type flora.display.Camera
 ---
-flora.camera = nil
+Flora.camera = nil
 
 ---
 --- An instance of the currently loaded State.
 ---
 --- @type flora.display.State
 ---
-flora.state = nil
+Flora.state = nil
 
 ---
 --- The width of the game area. (in pixels)
@@ -236,7 +245,7 @@ flora.state = nil
 --- If you want to change the game width AFTER initializing
 --- flora, plEase use `flora.resizeGame()`!
 ---
-flora.gameWidth = 640
+Flora.gameWidth = 640
 
 ---
 --- The height of the game area. (in pixels)
@@ -244,25 +253,25 @@ flora.gameWidth = 640
 --- If you want to change the game height AFTER initializing
 --- flora, plEase use `flora.resizeGame()`!
 ---
-flora.gameHeight = 640
+Flora.gameHeight = 640
 
 ---
 --- Starts the Flora engine after it has been
 --- successfully configured.
 ---
-function flora.start()
-    flora.native.setDarkMode(true)
-    if flora.config.debugMode then
-        flora.log:verbose("Starting engine")
+function Flora.start()
+    Flora.native.setDarkMode(true)
+    if Flora.config.debugMode then
+        Flora.log:verbose("Starting engine")
     end
-    flora.save = Save:new()
-    flora.save:bind("flora")
+    Flora.save = Save:new()
+    Flora.save:bind("flora")
 
-    if flora.save.data.volume then
-        flora.sound.volume = flora.save.data.volume
+    if Flora.save.data.volume then
+        Flora.sound.volume = Flora.save.data.volume
     end
-    if flora.save.data.muted then
-        flora.sound.muted = flora.save.data.muted
+    if Flora.save.data.muted then
+        Flora.sound.muted = Flora.save.data.muted
     end
 
     love.run = function()
@@ -294,7 +303,7 @@ function flora.start()
             
             local focused = love.window.hasFocus()
 
-            local cap = (focused and flora.config.maxFPS or 10)
+            local cap = (focused and Flora.config.maxFPS or 10)
             local capDt = (cap > 0) and 1 / cap or 0
 
             if love.timer then
@@ -345,47 +354,47 @@ function flora.start()
         end
         local cur_file = debug.getinfo(2, "S").source:sub(2)
         local cur_line = debug.getinfo(2, "l").currentline
-        flora.log:print(str, cur_file, cur_line)
+        Flora.log:print(str, cur_file, cur_line)
     end
-    flora.gameWidth = flora.config.gameWidth
-    flora.gameHeight = flora.config.gameHeight
+    Flora.gameWidth = Flora.config.gameWidth
+    Flora.gameHeight = Flora.config.gameHeight
 
-    flora._canvas = love.graphics.newCanvas(flora.gameWidth, flora.gameHeight)
+    Flora._canvas = love.graphics.newCanvas(Flora.gameWidth, Flora.gameHeight)
 
     TimerManager.global = TimerManager:new()
-    flora.plugins:add(TimerManager.global)
+    Flora.plugins:add(TimerManager.global)
 
     TweenManager.global = TweenManager:new()
-    flora.plugins:add(TweenManager.global)
+    Flora.plugins:add(TweenManager.global)
 
-    if flora.config.initialState then
-        flora._requestedState = flora.config.initialState
+    if Flora.config.initialState then
+        Flora._requestedState = Flora.config.initialState
     else
-        flora._requestedState = require("flora.display.State"):new()
+        Flora._requestedState = require("flora.display.State"):new()
     end
 
-    if flora.config.debugMode then
-        flora.log:verbose("Requesting switch to initial State")
+    if Flora.config.debugMode then
+        Flora.log:verbose("Requesting switch to initial State")
     end
-    flora.cameras:reset()
-    flora._switchState()
+    Flora.cameras:reset()
+    Flora._switchState()
 
-    flora.scaleMode:onMeasure(love.graphics.getWidth(), love.graphics.getHeight())
+    Flora.scaleMode:onMeasure(love.graphics.getWidth(), love.graphics.getHeight())
 
-    if flora.config.debugMode then
-        flora.log:success("Started engine successfully")
-    end
-end
-
-function flora.preUpdate(dt)
-    if flora.soundTray and flora.soundTray.exists and flora.soundTray.active then
-        flora.soundTray:update(dt)
+    if Flora.config.debugMode then
+        Flora.log:success("Started engine successfully")
     end
 end
 
-function flora.postDraw()
-    if flora.soundTray and flora.soundTray.exists and flora.soundTray.visible then
-        flora.soundTray:draw()
+function Flora.preUpdate(dt)
+    if Flora.soundTray and Flora.soundTray.exists and Flora.soundTray.active then
+        Flora.soundTray:update(dt)
+    end
+end
+
+function Flora.postDraw()
+    if Flora.soundTray and Flora.soundTray.exists and Flora.soundTray.visible then
+        Flora.soundTray:draw()
     end
 
     local displayedFPS = love.timer.getFPS()
@@ -406,40 +415,40 @@ end
 ---
 --- Switches to a given State, and disposes of the old one.
 --- 
---- @param  new_State  flora.display.State  The new State to switch to.
+--- @param  newState  flora.display.State  The new State to switch to.
 ---
-function flora.switchState(new_State)
-    if flora.config.debugMode then
-        flora.log:verbose("Requesting State switch")
+function Flora.switchState(newState)
+    if Flora.config.debugMode then
+        Flora.log:verbose("Requesting State switch")
     end
-    flora._requestedState = new_State
+    Flora._requestedState = newState
 end
 
-function flora.resizeGame(width, height)
-    local oldWidth = flora.gameWidth
-    local oldHeight = flora.gameHeight
+function Flora.resizeGame(width, height)
+    local oldWidth = Flora.gameWidth
+    local oldHeight = Flora.gameHeight
 
-    for i = 1, flora.cameras.list.length do
+    for i = 1, Flora.cameras.list.length do
         ---
         --- @type flora.display.Camera
         ---
-        local cam = flora.cameras.list[i]
+        local cam = Flora.cameras.list[i]
         if cam and cam.width == oldWidth and cam.height == oldHeight then
             cam:resize(width, height)
         end
     end
     
-    flora.gameWidth = width
-    flora.gameHeight = height
+    Flora.gameWidth = width
+    Flora.gameHeight = height
 
-    if flora._canvas then
-        flora._canvas:release()
+    if Flora._canvas then
+        Flora._canvas:release()
     end
-    flora._canvas = love.graphics.newCanvas(flora.gameWidth, flora.gameHeight)
+    Flora._canvas = love.graphics.newCanvas(Flora.gameWidth, Flora.gameHeight)
 
     local ww = love.graphics.getWidth()
     local wh = love.graphics.getHeight()
-    flora.scaleMode:onMeasure(ww, wh)
+    Flora.scaleMode:onMeasure(ww, wh)
 end
 
 -----------------------
@@ -450,35 +459,35 @@ end
 --- @protected
 --- @type love.Canvas
 ---
-flora._canvas = nil
+Flora._canvas = nil
 
 ---
 --- @protected
 --- @type flora.display.State
 ---
-flora._requestedState = nil
+Flora._requestedState = nil
 
 ---
 --- @protected
 ---
-function flora._switchState()
-    flora.signals.preStateSwitch:emit()
+function Flora._switchState()
+    Flora.signals.preStateSwitch:emit()
     
-    if flora.state then
-        flora.state:dispose() 
+    if Flora.state then
+        Flora.state:dispose() 
     end
-    flora.cameras:reset()
+    Flora.cameras:reset()
 
-    flora.state = flora._requestedState
-    flora._requestedState = nil
+    Flora.state = Flora._requestedState
+    Flora._requestedState = nil
 
-    flora.signals.preStateCreate:emit(flora.state)
-    flora.state:ready()
+    Flora.signals.preStateCreate:emit(Flora.state)
+    Flora.state:ready()
     
-    if flora.config.debugMode then
-        flora.log:success("State switched successfully")
+    if Flora.config.debugMode then
+        Flora.log:success("State switched successfully")
     end
-    flora.signals.postStateSwitch:emit()
+    Flora.signals.postStateSwitch:emit()
 end
 
 ---
@@ -486,34 +495,34 @@ end
 ---
 function love.update(dt)
     if love.window.hasFocus() then
-        if flora._requestedState then
-            flora._switchState()
+        if Flora._requestedState then
+            Flora._switchState()
         end
 
-        if flora.preUpdate then
-            flora.preUpdate(dt)
+        if Flora.preUpdate then
+            Flora.preUpdate(dt)
         end
-        flora.signals.preUpdate:emit()
+        Flora.signals.preUpdate:emit()
 
-        flora.mouse:update()
+        Flora.mouse:update()
         
-        flora.sound:update()
-        flora.plugins:update(dt)
+        Flora.sound:update()
+        Flora.plugins:update(dt)
 
-        if flora.state then
-            flora.state:update(dt)
+        if Flora.state then
+            Flora.state:update(dt)
         end
-        flora.cameras:update(dt)
+        Flora.cameras:update(dt)
 
-        flora.keys:update()
-        flora.mouse:postUpdate()
+        Flora.keys:update()
+        Flora.mouse:postUpdate()
         
-        if flora.postUpdate then
-            flora.postUpdate(dt)
+        if Flora.postUpdate then
+            Flora.postUpdate(dt)
         end
-        flora.signals.postUpdate:emit()
+        Flora.signals.postUpdate:emit()
     else
-        flora.sound:update()
+        Flora.sound:update()
     end
 end
 
@@ -521,82 +530,82 @@ end
 --- @protected
 ---
 function love.draw()
-    for i = 1, flora.cameras.list.length do
-        local cam = flora.cameras.list.members[i]
+    for i = 1, Flora.cameras.list.length do
+        local cam = Flora.cameras.list.members[i]
         if cam and cam.exists and cam.visible then
             cam:clear()
         end
     end
     
-    if flora.preDraw then
-        flora.preDraw()
+    if Flora.preDraw then
+        Flora.preDraw()
     end
-    flora.signals.preDraw:emit()
+    Flora.signals.preDraw:emit()
 
-    if not flora.plugins.drawAbove then
-        flora.plugins:draw()
+    if not Flora.plugins.drawAbove then
+        Flora.plugins:draw()
     end
-    if flora.state then
-        flora.state:draw()
+    if Flora.state then
+        Flora.state:draw()
     end
-    love.graphics.setCanvas(flora._canvas)
+    love.graphics.setCanvas(Flora._canvas)
     
-    for i = 1, flora.cameras.list.length do
-        local cam = flora.cameras.list.members[i]
+    for i = 1, Flora.cameras.list.length do
+        local cam = Flora.cameras.list.members[i]
         if cam and cam.exists and cam.visible then
             cam:draw()
         end
     end
-    if flora.plugins.drawAbove then
-        flora.plugins:draw()
+    if Flora.plugins.drawAbove then
+        Flora.plugins:draw()
     end
 
     love.graphics.setCanvas()
     love.graphics.draw(
-        flora._canvas,
-        flora.scaleMode.offset.x, flora.scaleMode.offset.y, 0,
-        flora.scaleMode.scale.x, flora.scaleMode.scale.y
+        Flora._canvas,
+        Flora.scaleMode.offset.x, Flora.scaleMode.offset.y, 0,
+        Flora.scaleMode.scale.x, Flora.scaleMode.scale.y
     )
-    if not flora.mouse.useSystemCursor and flora.mouse.visible then
-        flora.mouse:draw()
+    if not Flora.mouse.useSystemCursor and Flora.mouse.visible then
+        Flora.mouse:draw()
     end
 
-    if flora.postDraw then
-        flora.postDraw()
+    if Flora.postDraw then
+        Flora.postDraw()
     end
-    flora.signals.postDraw:emit()
+    Flora.signals.postDraw:emit()
 end
 
 ---
 --- @protected
 ---
 function love.resize(width, height)
-    flora.scaleMode:onMeasure(width, height)
+    Flora.scaleMode:onMeasure(width, height)
 end
 
 function love.keypressed(key, scancode, isrepeat)
-    flora.keys:keyPressed(key, scancode, isrepeat)
+    Flora.keys:keyPressed(key, scancode, isrepeat)
 end
 
 function love.keyreleased(key, scancode, isrepeat)
-    flora.keys:keyReleased(key, scancode, isrepeat)
+    Flora.keys:keyReleased(key, scancode, isrepeat)
 end
 
 function love.mousemoved(x, y, _, _, _)
     if love.window.hasFocus() then
-        flora.mouse:onMoved(x, y)
+        Flora.mouse:onMoved(x, y)
     end
 end
 
 function love.mousepressed(_, _, button, _, _)
     if love.window.hasFocus() then
-        flora.mouse:onPressed(button)
+        Flora.mouse:onPressed(button)
     end
 end
 
 function love.mouserelEased(_, _, button, _, _)
     if love.window.hasFocus() then
-        flora.mouse:onReleased(button)
+        Flora.mouse:onReleased(button)
     end
 end
 
@@ -604,4 +613,4 @@ function love.quit()
     lily.quit()
 end
 
-return flora
+return Flora

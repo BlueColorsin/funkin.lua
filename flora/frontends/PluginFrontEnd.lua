@@ -52,7 +52,7 @@ end
 
 function PluginFrontEnd:add(plugin)
     if table.contains(self.list.members, plugin) then
-        flora.log:warn("Plugin was already added!")
+        Flora.log:warn("Plugin was already added!")
         return
     end
     self.list:add(plugin)
@@ -60,7 +60,7 @@ end
 
 function PluginFrontEnd:insert(pos, plugin)
     if table.contains(self.list.members, plugin) then
-        flora.log:warn("Plugin was already added!")
+        Flora.log:warn("Plugin was already added!")
         return
     end
     self.list:insert(pos, plugin)
@@ -68,7 +68,7 @@ end
 
 function PluginFrontEnd:remove(plugin)
     if not table.contains(self.list.members, plugin) then
-        flora.log:warn("Cannot remove plugin that was not yet added!")
+        Flora.log:warn("Cannot remove plugin that was not yet added!")
         return
     end
     self.list:remove(plugin)

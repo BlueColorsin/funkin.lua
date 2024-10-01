@@ -12,7 +12,7 @@ function RatioScaleMode:constructor(fill_screen)
 end
 
 function RatioScaleMode:updateGameSize(width, height)
-    local ratio = flora.gameWidth / flora.gameHeight
+    local ratio = Flora.gameWidth / Flora.gameHeight
     local realRatio = width / height
 
     local scaleY = realRatio < ratio

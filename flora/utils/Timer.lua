@@ -3,15 +3,15 @@ local TimerManager = require("flora.plugins.TimerManager")
 ---
 --- A basic timer class.
 ---
---- @class flora.utils.timer : flora.base.Basic
+--- @class flora.utils.Timer : flora.base.Basic
 ---
-local timer = Basic:extend("timer", ...)
+local Timer = Basic:extend("Timer", ...)
 
 ---
 --- @param  manager  flora.plugins.TimerManager?  The manager that this timer belongs to. (default: `TimerManager.global`)
 ---
-function timer:constructor(manager)
-    timer.super.constructor(self)
+function Timer:constructor(manager)
+    Timer.super.constructor(self)
 
     self.visible = false
 
@@ -58,9 +58,9 @@ end
 --- @param  onComplete  function?  A function that gets called when the timer completes, once for each loop.
 --- @param  loops        integer?   An optional number of times to loop the timer.
 --- 
---- @return flora.utils.timer
+--- @return flora.utils.Timer
 ---
-function timer:start(duration, onComplete, loops)
+function Timer:start(duration, onComplete, loops)
     self.duration = duration
     self.onComplete = onComplete
 
@@ -75,7 +75,7 @@ end
 --- Updates this timer.
 --- This function is automatically called by the timer manager.
 ---
-function timer:update(dt)
+function Timer:update(dt)
     self.elapsedTime = self.elapsedTime + dt
 
     if self.elapsedTime >= self.duration then
@@ -102,9 +102,9 @@ end
 ---
 --- Stops this timer and resets its properties
 --- 
---- @return flora.utils.timer
+--- @return flora.utils.Timer
 ---
-function timer:stop()
+function Timer:stop()
     self.elapsedTime = 0.0
     self.duration = 0.0
 
@@ -123,13 +123,18 @@ end
 ---
 --- @param  duration  number  The new duration of the timer in seconds.
 --- 
---- @return flora.utils.timer
+--- @return flora.utils.Timer
 ---
-function timer:reset(duration)
+function Timer:reset(duration)
     self.duration = duration
     self.elapsedTime = 0.0
     self.loopsLeft = self.loops
     return self
 end
 
-return timer
+function Timer:dispose()
+    Timer.super.dispose(self)
+    self:stop()
+end
+
+return Timer

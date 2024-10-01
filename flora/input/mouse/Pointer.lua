@@ -155,7 +155,7 @@ function Pointer:constructor()
 end
 
 function Pointer:load(texture)
-    self.texture = flora.assets:loadTexture(texture)
+    self.texture = Flora.assets:loadTexture(texture)
 end
 
 function Pointer:update()
@@ -253,7 +253,7 @@ end
 ---
 function Pointer:getWorldPosition(cam, vec)
     if not cam then
-        cam = flora.camera
+        cam = Flora.camera
     end
     if not vec then
         vec = Vector2:new()
@@ -261,8 +261,8 @@ function Pointer:getWorldPosition(cam, vec)
     local ww = love.graphics.getWidth()
     local wh = love.graphics.getHeight()
 
-    local gw = flora.gameWidth
-    local gh = flora.gameHeight
+    local gw = Flora.gameWidth
+    local gh = Flora.gameHeight
 
     local scale = math.min(ww / gw, wh / gh) * cam.zoom
     return vec:set(
@@ -273,7 +273,7 @@ end
 
 function Pointer:overlaps(obj, cam)
     if not cam then
-        cam = flora.camera
+        cam = Flora.camera
     end
     return (
         obj.visible and

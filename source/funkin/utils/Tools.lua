@@ -10,12 +10,12 @@ local Tools = Class:extend()
 ---
 function Tools.parseCSV(csv)
     local list = {}
-    local split_csv = csv:trim():replace("\r", ""):split("\n")
-    for i = 1, #split_csv do
+    local splitCSV = csv:trim():replace("\r", ""):split("\n")
+    for i = 1, #splitCSV do
         ---
         --- @type string
         ---
-        local line = split_csv[i]
+        local line = splitCSV[i]
         table.insert(line:split(","))
     end
     return list

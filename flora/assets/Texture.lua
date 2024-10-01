@@ -52,7 +52,7 @@ end
 ---
 function Texture:dispose()
     self.image:release()
-    flora.assets._textureCache[self.key] = nil
+    Flora.assets._textureCache[self.key] = nil
 end
 
 function Texture:__tostring()

@@ -51,17 +51,28 @@ function KeyboardManager:update()
 end
 
 function KeyboardManager:keyPressed(key, _, _)
-    self.pressed[key] = true
-    self.released[key] = false
-
-    self.justPressed[key] = true
+    local realKey = key
+    for k, value in pairs(KeyCode) do
+        if value == key then
+            realKey = k
+        end
+    end
+    self.pressed[realKey] = true
+    self.released[realKey] = false
+    self.justPressed[realKey] = true
 end
 
 function KeyboardManager:keyReleased(key, _, _)
-    self.pressed[key] = false
-    self.released[key] = true
-
-    self.justReleased[key] = true
+    local realKey = key
+    for k, value in pairs(KeyCode) do
+        if value == key then
+            realKey = k
+            break
+        end
+    end
+    self.pressed[realKey] = false
+    self.released[realKey] = true
+    self.justReleased[realKey] = true
 end
 
 return KeyboardManager

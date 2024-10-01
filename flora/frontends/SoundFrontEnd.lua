@@ -33,6 +33,18 @@ function SoundFrontEnd:constructor()
     --- `load()` or `play()` are called.
     ---
     self.list = {}
+
+    Flora.signals.preStateCreate:connect(function(_)
+        for i = 1, #self.list do
+            ---
+            --- @type flora.Sound
+            ---
+            local snd = self.list[i]
+            if snd and snd.playing then
+                snd:stop()
+            end
+        end
+    end)
 end
 
 ---

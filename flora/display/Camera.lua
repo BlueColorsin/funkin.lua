@@ -14,8 +14,8 @@ local Camera = Object2D:extend("Camera", ...)
 function Camera:constructor(x, y, width, height)
     Camera.super.constructor(
         self, x, y,
-        width and width or flora.gameWidth,
-        height and height or flora.gameHeight
+        width and width or Flora.gameWidth,
+        height and height or Flora.gameHeight
     )
 
     ---
@@ -48,7 +48,7 @@ function Camera:constructor(x, y, width, height)
     --- @protected
     --- @type flora.utils.Color
     ---
-    self._bgColor = Color:new(flora.cameras.bgColor) 
+    self._bgColor = Color:new(Flora.cameras.bgColor) 
 
     ---
     --- @protected

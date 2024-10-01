@@ -114,10 +114,10 @@ function Sound:load(data, stream)
     if stream then
         self.source = love.audio.newSource(data, "stream")
     else
-        self.source = love.audio.newSource(flora.assets:load_sound(data), "static")
+        self.source = love.audio.newSource(Flora.assets:loadSound(data), "static")
     end
     self.source:setLooping(false)
-    self.source:setVolume(math.clamp(self.volume * flora.sound.volume * (not flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
+    self.source:setVolume(math.clamp(self.volume * Flora.sound.volume * (not Flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
     self.source:setPitch(self.pitch)
     
     return self
@@ -126,7 +126,7 @@ end
 function Sound:play()
     if self.source then
         self.source:play()
-        self.source:setVolume(math.clamp(self.volume * flora.sound.volume * (not flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
+        self.source:setVolume(math.clamp(self.volume * Flora.sound.volume * (not Flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
     end
     self._playing = true
     self._paused = false
@@ -200,7 +200,7 @@ end
 
 function Sound:update()
     if self.source then
-        self.source:setVolume(math.clamp(self.volume * flora.sound.volume * (not flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
+        self.source:setVolume(math.clamp(self.volume * Flora.sound.volume * (not Flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
         
         if self._playing and not self._paused and not self.source:isPlaying() then
             self._playing = false
@@ -296,7 +296,7 @@ end
 function Sound:set_volume(val)
     self._volume = math.clamp(val, 0.0, 1.0)
     if self.source then
-        self.source:setVolume(math.clamp(self.volume * flora.sound.volume, 0.0, 1.0))
+        self.source:setVolume(math.clamp(self.volume * Flora.sound.volume, 0.0, 1.0))
     end
     return self._volume
 end

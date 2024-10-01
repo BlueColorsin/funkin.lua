@@ -86,7 +86,7 @@ end
 ---
 function Basic:get_cameras()
     if not self._cameras then
-        return flora.cameras.defaultCameras
+        return Flora.cameras.defaultCameras
     end
     return self._cameras
 end

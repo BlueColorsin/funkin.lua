@@ -41,7 +41,7 @@ function Color:constructor(data)
         elseif t == "table" then
             self.r, self.g, self.b, self.a = data.r, data.g, data.b, data.a
         else
-            flora.log:error("Cannot convert type: " .. t .. " into a color!")
+            Flora.log:error("Cannot convert type: " .. t .. " into a color!")
         end
     end
 end

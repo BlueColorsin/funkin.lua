@@ -32,7 +32,7 @@ function DefaultSoundTray:show(up)
 
     self._timer = 0.0
 
-    flora.sound:play("flora/embed/sounds/pop.ogg")
+    Flora.sound:play("flora/embed/sounds/pop.ogg")
     DefaultSoundTray.super.show(self, up)
 end
 
@@ -68,9 +68,9 @@ function DefaultSoundTray:draw()
     love.graphics.setColor(1, 1, 1, 0.5)
     love.graphics.rectangle("fill", barX, barY, barWidth, barHeight)
 
-    if flora.sound.volume > 0 and not flora.sound.muted then
+    if Flora.sound.volume > 0 and not Flora.sound.muted then
         love.graphics.setColor(1, 1, 1, 1)
-        love.graphics.rectangle("fill", barX, barY, barWidth * flora.sound.volume, barHeight)
+        love.graphics.rectangle("fill", barX, barY, barWidth * Flora.sound.volume, barHeight)
     end
     love.graphics.setColor(pr, pg, pb, pa)
 end

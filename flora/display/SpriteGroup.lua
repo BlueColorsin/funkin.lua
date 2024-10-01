@@ -114,6 +114,16 @@ function SpriteGroup:clear()
     self.group:clear()
 end
 
+function SpriteGroup:recycle(class, factory, force, revive)
+	force = force and force or false
+	revive = revive and revive or true
+    self.group:recycle(class, factory, force, revive)
+end
+
+function SpriteGroup:getFirstAvailable(class, force)
+	return self.group:getFirstAvailable(class, force)
+end
+
 ---
 --- @param  func     function
 --- @param  recurse  boolean?

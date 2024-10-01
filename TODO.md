@@ -36,6 +36,7 @@
     - Characters
 
 - UI
-    - Alphabet [X]
+    - Alphabet [-]
+        - Fix hard crash when batching (no error, yikes)
 
 - Modding Support

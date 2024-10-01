@@ -55,7 +55,7 @@ function CameraFrontEnd:reset(cam)
     if not cam then
         cam = camera:new()
     end
-    flora.camera = cam
+    Flora.camera = cam
     self.defaultCameras = {cam}
     
     self.list:add(cam)
@@ -63,7 +63,7 @@ end
 
 function CameraFrontEnd:add(cam, default)
     if table.contains(self.list.members, cam) then
-        flora.log:warn("Camera was already added!")
+        Flora.log:warn("Camera was already added!")
         return
     end
     if default then
@@ -74,7 +74,7 @@ end
 
 function CameraFrontEnd:insert(pos, cam, default)
     if table.contains(self.list.members, cam) then
-        flora.log:warn("Camera was already added!")
+        Flora.log:warn("Camera was already added!")
         return
     end
     if default then
@@ -85,7 +85,7 @@ end
 
 function CameraFrontEnd:remove(cam)
     if not table.contains(self.list.members, cam) then
-        flora.log:warn("Cannot remove camera that was not yet added!")
+        Flora.log:warn("Cannot remove camera that was not yet added!")
         return
     end
     local defaultIdx = table.index_of(self.defaultCameras, cam)

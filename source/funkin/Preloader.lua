@@ -16,11 +16,11 @@ Preloader.tips = {
 function Preloader:ready()
     Preloader.super.ready(self)
 
-    if not flora.save.data.volume then
-        flora.sound.volume = 0.3
+    if not Flora.save.data.volume then
+        Flora.sound.volume = 0.3
 
-        flora.save.data.volume = flora.sound.volume
-        flora.save:flush()
+        Flora.save.data.volume = Flora.sound.volume
+        Flora.save:flush()
     end
 
     self.chosenTip = Preloader.tips[love.math.random(1, #Preloader.tips)]
@@ -43,8 +43,8 @@ function Preloader:ready()
     self.spinner:loadTexture("assets/images/spinner.png")
     self.spinner:setGraphicSize(48, 48)
     self.spinner:setPosition(
-        flora.gameWidth - self.spinner.width - 30,
-        flora.gameHeight - self.spinner.height - 30
+        Flora.gameWidth - self.spinner.width - 30,
+        Flora.gameHeight - self.spinner.height - 30
     )
     self:add(self.spinner)
 
@@ -55,7 +55,7 @@ function Preloader:ready()
     self.statusTxt.text = self.chosenTip .. "\nPreloading assets..."
     self.statusTxt:setFormat("assets/fonts/vcr.ttf", 18, Color.WHITE, "left")
     self.statusTxt:setBorderStyle("outline", Color.BLACK, 3)
-    self.statusTxt:setPosition(30, flora.gameHeight - self.statusTxt.height - 30)
+    self.statusTxt:setPosition(30, Flora.gameHeight - self.statusTxt.height - 30)
     self:add(self.statusTxt)
 
     self.preloadedAssets = 0
@@ -69,7 +69,7 @@ function Preloader:ready()
 end
 
 function Preloader:preloadTexture(path, compressed)
-    flora.assets:loadTextureASync(path, compressed, function(tex)
+    Flora.assets:loadTextureASync(path, compressed, function(tex)
         tex:reference()
         self.statusTxt.text = self.chosenTip .. "\nPreloaded " .. path .. " successfully"
         self.preloadedAssets = self.preloadedAssets + 1
@@ -78,7 +78,7 @@ function Preloader:preloadTexture(path, compressed)
 end
 
 function Preloader:preloadSound(path)
-    flora.assets:loadSoundASync(path, function(_)
+    Flora.assets:loadSoundASync(path, function(_)
         self.statusTxt.text = self.chosenTip .. "\nPreloaded " .. path .. " successfully"
         self.preloadedAssets = self.preloadedAssets + 1
     end)
@@ -114,12 +114,11 @@ function Preloader:update(dt)
         self.spinner:kill()
         self.statusTxt.text = self.chosenTip .. "\nFinished preloading, game on!"
 
-        flora.sound:play(Paths.sound("select", "sounds/menus"))
-        flora.camera:fade(Color.BLACK, 1.25, false, function()
-            -- flora.camera._fade_fx_alpha = 0.0
+        Flora.sound:play(Paths.sound("select", "sounds/menus"))
+        Flora.camera:fade(Color.BLACK, 1.25, false, function()
             Timer:new():start(0.5, function(_)
-                local TitleScreen = flora.import("funkin.states.TitleScreen")
-                flora.switchState(TitleScreen:new())
+                local TitleState = Flora.import("funkin.states.TitleState")
+                Flora.switchState(TitleState:new())
             end)
         end)
     end

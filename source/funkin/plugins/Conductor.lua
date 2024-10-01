@@ -310,7 +310,7 @@ function Conductor:update(dt)
             self.beatHit:emit(self.beat)
         end
         if self.hasMetronome then
-            flora.sound:play(Paths.sound("metronome"))
+            Flora.sound:play(Paths.sound("metronome"))
         end
     end
     local runMeasure = self:_updateMeasure(self.beatf / self.timeSignature[1])
@@ -323,7 +323,7 @@ function Conductor:update(dt)
             self.measureHit:emit(self.measure)
         end
     end
-    local state = flora.state
+    local state = Flora.state
     while state do
         if not state.subState or state.persistentUpdate then
             if runStep and state.stepHit then

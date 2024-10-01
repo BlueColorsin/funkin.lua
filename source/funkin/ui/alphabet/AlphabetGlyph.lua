@@ -78,7 +78,7 @@ function AlphabetGlyph:constructor(parent, x, y, char, type)
     --- @protected
     --- @type integer
     ---
-    self._batchIdx = -1
+    self._batchIdx = nil
 
     self:set_char(char)
 end
@@ -88,57 +88,55 @@ function AlphabetGlyph.convert(char)
     return converted and converted or char
 end
 
--- function AlphabetGlyph:draw()
---     if not self.frames or not self.frame or self.alpha <= 0 then
---         return
---     end
---     local batch = self.parent and self.parent._batch
--- 	if not batch then
---         return    
---     end
---     batch:setColor(self.tint.r, self.tint.g, self.tint.b, self.alpha)
-
---     local filter = self.antialiasing and "linear" or "nearest"
---     self.texture.image:setFilter(filter, filter)
-
---     local otx = self.origin.x * self.frameWidth
---     local oty = self.origin.y * self.frameHeight
-
---     local ox = self.origin.x * self.width
---     local oy = self.origin.y * self.height
+function AlphabetGlyph:draw()
+    if not self.frames or not self.frame or self.alpha <= 0 then
+        return
+    end
+    local batch = self.parent and self.parent._batch
+	if not batch then
+        return    
+    end
+    batch:setColor(self.tint.r, self.tint.g, self.tint.b, self.alpha)
     
---     local curAnim = self.animation.curAnim
+    local filter = self.antialiasing and "linear" or "nearest"
+    self.texture.image:setFilter(filter, filter)
 
---     local rx = (self.x - self.parent.x) + ox
---     local ry = (self.y - self.parent.y) + oy
+    local otx = self.origin.x * self.frameWidth
+    local oty = self.origin.y * self.frameHeight
 
---     local offx = curAnim and curAnim.offset.x or 0.0
---     local offy = curAnim and curAnim.offset.y or 0.0
+    local ox = self.origin.x * self.width
+    local oy = self.origin.y * self.height
+    
+    local curAnim = self.animation.curAnim
 
---     offx = offx - (self.frame.offset.x * (self.scale.x < 0 and -1 or 1))
---     offy = offy - (self.frame.offset.y * (self.scale.y < 0 and -1 or 1))
+    local rx = (self.x - self.parent.x) + ox
+    local ry = (self.y - self.parent.y) + oy
 
---     rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
---     ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
+    local offx = curAnim and curAnim.offset.x or 0.0
+    local offy = curAnim and curAnim.offset.y or 0.0
 
---     local a = math.rad(self.angle)
---     local sx = self.scale.x
---     local sy = self.scale.y
+    offx = offx - (self.frame.offset.x * (self.scale.x < 0 and -1 or 1))
+    offy = offy - (self.frame.offset.y * (self.scale.y < 0 and -1 or 1))
 
---     if self._batchIdx == -1 then
---         self._batchIdx = batch:add(self.frame.quad, rx, ry, a, sx, sy, otx, oty)
---     else
---         batch:set(self._batchIdx, self.frame.quad, rx, ry, a, sx, sy, otx, oty)
---     end
--- end
+    rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
+    ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
+
+    local a = math.rad(self.angle)
+    local sx = self.scale.x
+    local sy = self.scale.y
+
+    if not self._batchIdx then
+        self._batchIdx = batch:add(self.frame.quad, rx, ry, a, sx, sy, otx, oty)
+    else
+        batch:set(self._batchIdx, self.frame.quad, rx, ry, a, sx, sy, otx, oty)
+    end
+end
 
 function AlphabetGlyph:dispose()
-    local batch = self.parent and self.parent._batch
-	if batch then
-        batch:clear()
-        batch:flush()
-    end
-    self._batchIdx = -1
+    if self.parent and self.parent.batch and self._batchIdx then
+		self.parent.batch:set(self._batchIdx, 0, 0, 0, 0, 0, 0, 0)
+	end
+	self.parent = nil
     AlphabetGlyph.super.dispose(self)
 end
 
@@ -277,7 +275,7 @@ function AlphabetGlyph:set_char(val)
         self.animation:addByPrefix("idle", converted .. "0", 24)
     end
     if not self.animation:exists("idle") then
-        flora.log:warn('Letter in ' .. self._type .. ' alphabet: ' .. converted .. ' doesn\'t exist!');
+        Flora.log:warn('Letter in ' .. self._type .. ' alphabet: ' .. converted .. ' doesn\'t exist!');
         self.animation:addByPrefix("idle", "?0", 24)
     end
     self.animation:play("idle")

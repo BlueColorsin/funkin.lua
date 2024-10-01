@@ -11,51 +11,51 @@ function InitState:ready()
     ---
     --- @type funkin.assets.Paths
     ---
-    Paths = flora.import("funkin.assets.Paths")
+    Paths = Flora.import("funkin.assets.Paths")
 
     ---
     --- @type funkin.states.MusicBeatState
     ---
-    MusicBeatState = flora.import("funkin.states.MusicBeatState")
+    MusicBeatState = Flora.import("funkin.states.MusicBeatState")
 
     ---
     --- @type funkin.plugins.Conductor
     ---
-    Conductor = flora.import("funkin.plugins.Conductor")
+    Conductor = Flora.import("funkin.plugins.Conductor")
 
     ---
     --- @type funkin.data.Settings
     ---
-    Settings = flora.import("funkin.data.Settings")
+    Settings = Flora.import("funkin.data.Settings")
     Settings.init()
 
     ---
     --- @type funkin.ui.alphabet.Alphabet
     ---
-    Alphabet = flora.import("funkin.ui.alphabet.Alphabet")
+    Alphabet = Flora.import("funkin.ui.alphabet.Alphabet")
 
-    if flora.soundTray then
-        flora.soundTray:dispose()
+    if Flora.soundTray then
+        Flora.soundTray:dispose()
     end
-    flora.soundTray = flora.import("funkin.ui.SoundTray"):new()
+    Flora.soundTray = Flora.import("funkin.ui.SoundTray"):new()
 
-    flora.signals.preStateSwitch:connect(function()
-        if flora.state.__class ~= InitState._lastState then
+    Flora.signals.preStateCreate:connect(function()
+        if Flora.state.__class ~= InitState._lastState then
             Paths.clearCache()
         end
     end)
-    flora.signals.postStateSwitch:connect(function()
-        InitState._lastState = flora.state.__class
+    Flora.signals.postStateSwitch:connect(function()
+        InitState._lastState = Flora.state.__class
     end)
 
     Conductor.instance = Conductor:new()
-    flora.plugins:add(Conductor.instance)
+    Flora.plugins:add(Conductor.instance)
 
-    -- local Preloader = flora.import("funkin.Preloader")
-    -- flora.switchState(Preloader:new())
+    -- local Preloader = Flora.import("funkin.Preloader")
+    -- Flora.switchState(Preloader:new())
 
-    local TitleScreen = flora.import("funkin.states.TitleScreen")
-    flora.switchState(TitleScreen:new())
+    local TitleState = Flora.import("funkin.states.TitleState")
+    Flora.switchState(TitleState:new())
 end
 
 return InitState

@@ -50,8 +50,8 @@ function BaseScaleMode:updateDeviceSize(width, height)
 end
 
 function BaseScaleMode:updateScaleOffset()
-    self.scale.x = self.gameSize.x / flora.gameWidth
-    self.scale.y = self.gameSize.y / flora.gameHeight
+    self.scale.x = self.gameSize.x / Flora.gameWidth
+    self.scale.y = self.gameSize.y / Flora.gameHeight
     self:update_offset_x()
     self:update_offset_y()
 end

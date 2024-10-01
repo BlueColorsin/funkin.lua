@@ -1,4 +1,4 @@
-local Font = require("flora.assets.Font")
+local Font = require("Flora.assets.Font")
 
 ---
 --- A sprite that can render text to the screen.
@@ -106,7 +106,7 @@ function Text:constructor(x, y, fieldWidth, txt, size)
     --- @protected
     --- @type flora.assets.Font?
     ---
-    self._font = flora.assets:loadFont("flora/embed/fonts/nokiafc22.ttf")
+    self._font = Flora.assets:loadFont("flora/embed/fonts/nokiafc22.ttf")
 
     ---
     --- @protected
@@ -188,7 +188,7 @@ function Text:constructor(x, y, fieldWidth, txt, size)
 
     local key = tostring(self)
     local tex = Texture:new(key, love.graphics.newImage(love.image.newImageData(1, 1)))
-    flora.assets:cacheTexture(key, tex)
+    Flora.assets:cacheTexture(key, tex)
 
     -- TODO: using normal frames property SHOULD work, but doesn't for some reason
     self._frames = FrameCollection.fromTexture(tex)
@@ -247,22 +247,22 @@ end
 function Text:dispose()
     Text.super.dispose(self)
 
-    if flora.config.debugMode then
-        flora.log:verbose("Unreferencing _font on text " .. tostring(self))
+    if Flora.config.debugMode then
+        Flora.log:verbose("Unreferencing _font on text " .. tostring(self))
     end
     if self._font then
         self._font:unreference()
     end
     self._font = nil
 
-    if flora.config.debugMode then
-        flora.log:verbose("Disposing _canvas on text " .. tostring(self))
+    if Flora.config.debugMode then
+        Flora.log:verbose("Disposing _canvas on text " .. tostring(self))
     end
     self._canvas:release()
     self._canvas = nil
 
-    if flora.config.debugMode then
-        flora.log:verbose("Disposing _textObj on text " .. tostring(self))
+    if Flora.config.debugMode then
+        Flora.log:verbose("Disposing _textObj on text " .. tostring(self))
     end
     if self._textObj then
         self._textObj:release()
@@ -473,7 +473,7 @@ function Text:set_font(val)
     if self._textObj then
         self._textObj:release()
     end
-    self._font = flora.assets:loadFont(val)
+    self._font = Flora.assets:loadFont(val)
     self._font:reference()
 
     self._fontData = self._font:getDataForSize(self._size)

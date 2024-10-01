@@ -1,7 +1,7 @@
 ---
 --- @type funkin.ui.alphabet.AlphabetGlyph
 ---
-local AlphabetGlyph = flora.import("funkin.ui.alphabet.AlphabetGlyph")
+local AlphabetGlyph = Flora.import("funkin.ui.alphabet.AlphabetGlyph")
 
 ---
 --- @class funkin.ui.alphabet.Alphabet : flora.display.SpriteGroup
@@ -95,7 +95,7 @@ function Alphabet:constructor(x, y, text, type, alignment, size)
     --- @protected
     --- @type love.SpriteBatch
     ---
-    self._batch = love.graphics.newSpriteBatch(Paths.getSparrowAtlas(self._type, "images/menus/fonts").texture.image, 1, "stream")
+    self._batch = love.graphics.newSpriteBatch(Paths.getSparrowAtlas(self._type, "images/menus/fonts").texture.image, nil, "stream")
 
     self:set_type(self._type)
 end
@@ -104,53 +104,56 @@ function Alphabet:update(dt)
     if self.isMenuItem then
         local scaledY = self.targetY * 1.3
         x = math.lerp(x, self.textOffset.x + (self.targetY * self.menuSpacing.x) + 90, dt * 9.6);
-        y = math.lerp(y, self.textOffset.y + (scaledY * self.menuSpacing.y) + (flora.game_height * 0.45), dt * 9.6);
+        y = math.lerp(y, self.textOffset.y + (scaledY * self.menuSpacing.y) + (Flora.gameHeight * 0.45), dt * 9.6);
     end
     Alphabet.super.update(self, dt)
 end
 
--- function Alphabet:draw()
---     for i = 1, self.length do
---         local glyph = self.members[i]
---         glyph:draw()
---     end
---     local oldDefaultCameras = flora.cameras.defaultCameras
---     if self._cameras then
---         flora.cameras.defaultCameras = self._cameras
---     end
---     local batchTex = self._batch:getTexture()
---     for i = 1, #flora.cameras.defaultCameras do
---         ---
---         --- @type flora.display.Camera
---         ---
---         local cam = flora.cameras.defaultCameras[i]
+function Alphabet:draw()
+    for i = 1, self.length do
+        local glyph = self.members[i]
+        glyph:draw()
+    end
+    local oldDefaultCameras = Flora.cameras.defaultCameras
+    if self._cameras then
+        Flora.cameras.defaultCameras = self._cameras
+    end
+    local batchTex = self._batch:getTexture()
+    for i = 1, #Flora.cameras.defaultCameras do
+        ---
+        --- @type flora.display.Camera
+        ---
+        local cam = Flora.cameras.defaultCameras[i]
 
---         local otx = self.origin.x * (self.width / math.abs(self.scale.x))
---         local oty = self.origin.y * (self.height / math.abs(self.scale.y))
+        local otx = self.origin.x * (self.width / math.abs(self.scale.x))
+        local oty = self.origin.y * (self.height / math.abs(self.scale.y))
 
---         local ox = self.origin.x * self.width
---         local oy = self.origin.y * self.height
+        local ox = self.origin.x * self.width
+        local oy = self.origin.y * self.height
 
---         local rx = self.x + ox
---         local ry = self.y + oy
+        local rx = self.x + ox
+        local ry = self.y + oy
 
---         local offx = 0.0
---         local offy = 0.0
+        local offx = 0.0
+        local offy = 0.0
 
---         offx = offx - (cam.scroll.x * self.scrollFactor.x)
---         offy = offy - (cam.scroll.y * self.scrollFactor.y)
+        offx = offx - (cam.scroll.x * self.scrollFactor.x)
+        offy = offy - (cam.scroll.y * self.scrollFactor.y)
 
---         rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
--- 	    ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
+        rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
+	    ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
 
---         cam:drawSpriteBatch(
---             self._batch, rx, ry,
---             batchTex:getWidth() * self.scale.x, batchTex:getHeight() * self.scale.y,
---             self.angle, otx, oty, Color.WHITE
---         )
---     end
---     flora.cameras.defaultCameras = oldDefaultCameras
--- end
+        local filter = self.antialiasing and "linear" or "nearest"
+        batchTex:setFilter(filter, filter)
+
+        cam:drawSpriteBatch(
+            self._batch, rx, ry,
+            batchTex:getWidth() * self.scale.x, batchTex:getHeight() * self.scale.y,
+            self.angle, otx, oty, Color.WHITE
+        )
+    end
+    Flora.cameras.defaultCameras = oldDefaultCameras
+end
 
 function Alphabet:dispose()
     Alphabet.super.dispose(self)
@@ -173,15 +176,14 @@ function Alphabet:updateText(newText, force)
     if self._text == newText and not force then
         return
     end
-    -- self._batch:clear()
-    -- self._batch:flush()
-
+    if self._batch then
+        self._batch:clear()
+    end
     for i = 1, self.length do
         local line = self.members[i]
         line:dispose()
     end
     self:clear()
-
     local glyphPos = Vector2:new()
     local rows = 0
 
@@ -256,10 +258,10 @@ function Alphabet:updateSize(size)
         ---
         local line = self.members[i]
         line:forEach(function(glyph)
-            glyph.scale:set(self._size, self._size)
+            glyph.scale:set(size, size)
             glyph:setPosition(
-                line.x + (glyph.spawnPos.x * self._size),
-                line.y + (glyph.spawnPos.y * self._size)
+                line.x + (glyph.spawnPos.x * size),
+                line.y + (glyph.spawnPos.y * size)
             )
         end)
     end

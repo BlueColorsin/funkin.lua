@@ -14,7 +14,7 @@ function FrameCollection:constructor(texture, frames)
     ---
     --- @type flora.assets.Texture?
     ---
-    self.texture = flora.assets:loadTexture(texture)
+    self.texture = Flora.assets:loadTexture(texture)
 
     ---
     --- @type table<flora.display.animation.FrameData>
@@ -26,7 +26,7 @@ function FrameCollection.fromTexture(texture)
     ---
     --- @type flora.assets.Texture?
     ---
-	local tex = flora.assets:loadTexture(texture)
+	local tex = Flora.assets:loadTexture(texture)
 
     ---
     --- @type flora.display.animation.FrameCollection

@@ -97,7 +97,7 @@ function AnimationController:update(delta)
     end
     self._elapsedTime = 0
 
-    if self.curAnim.curFrame < self.curAnim.frameCount - 1 then
+    if self.curAnim.curFrame < self.curAnim.frameCount then
         self.curAnim.curFrame = self.curAnim.curFrame + 1
         self.parent.frame = self.curAnim.frames[self.curAnim.curFrame]
         return
@@ -117,10 +117,10 @@ end
 ---
 --- Adds a new animation to the sprite.
 ---
---- @param name   string   What this animation should be called (e.g. `"run"`).
---- @param frames table    An array of numbers indicating what frames to play in what order (e.g. `[1, 2, 3]`).
---- @param fps    number   The speed in frames per second that the animation should play at (e.g. `30` fps).
---- @param loop   boolean  Whether or not the animation is looped or just plays once.
+--- @param name   string    What this animation should be called (e.g. `"run"`).
+--- @param frames table     An array of numbers indicating what frames to play in what order (e.g. `[1, 2, 3]`).
+--- @param fps    number    The speed in frames per second that the animation should play at (e.g. `30` fps).
+--- @param loop   boolean?  Whether or not the animation is looped or just plays once.
 ---
 function AnimationController:add(name, frames, fps, loop)
     local atlas = self.parent.frames
@@ -131,7 +131,7 @@ function AnimationController:add(name, frames, fps, loop)
     for _, num in ipairs(frames) do
         table.insert(datas, atlas.frames[num])
     end
-    local anim = AnimationData:new(name, datas, fps, loop)
+    local anim = AnimationData:new(name, datas, fps, loop and loop or true)
     self.animations[name] = anim
 end
 
@@ -155,7 +155,7 @@ function AnimationController:addByPrefix(name, prefix, fps, loop)
         end
     end
     if #__frames == 0 then
-        flora.log:warn("Failed to add animation called " .. name .. " since no frames were found")
+        Flora.log:warn("Failed to add animation called " .. name .. " since no frames were found")
         return
     end
     local anim = AnimationData:new(name, __frames, fps, loop and loop or true)
@@ -183,14 +183,14 @@ function AnimationController:addByIndices(name, prefix, indices, fps, loop)
         end
     end
     if #__frames == 0 then
-        flora.log:warn("Failed to add animation called " .. name .. " since no frames were found")
+        Flora.log:warn("Failed to add animation called " .. name .. " since no frames were found")
         return
     end
     local datas = {}
     for _, num in ipairs(indices) do
         table.insert(datas, __frames[num])
     end
-    local anim = AnimationData:new(name, datas, fps, loop)
+    local anim = AnimationData:new(name, datas, fps, loop and loop or true)
     self.animations[name] = anim
 end
 
@@ -241,7 +241,7 @@ end
 ---
 function AnimationController:play(name, force, reversed, frame)
     if not self:exists(name) then
-        flora.log:warn("Animation called "..name.." doesn't exist!")
+        Flora.log:warn("Animation called "..name.." doesn't exist!")
         return false
     end
     if self.name == name and not self.finished and not (force and force or false) then

@@ -45,7 +45,7 @@ function Font:dispose()
         fnt:release()
     end
     self.data = nil
-    flora.assets._fontCache[self.path] = nil
+    Flora.assets._fontCache[self.path] = nil
 end
 
 function Font:__tostring()

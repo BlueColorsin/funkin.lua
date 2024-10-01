@@ -129,7 +129,7 @@ function Sprite:constructor(x, y, texture)
     --- @protected
     --- @type flora.display.animation.FrameCollection?
     ---
-    self._frames = texture and FrameCollection.fromTexture(flora.assets:loadTexture(texture)) or nil
+    self._frames = texture and FrameCollection.fromTexture(Flora.assets:loadTexture(texture)) or nil
 
     ---
     --- @protected
@@ -141,12 +141,42 @@ end
 ---
 --- Loads a given texture onto this sprite.
 --- 
---- @param  texture  flora.assets.Texture  The texture to load onto this sprite.
+--- @param  texture      flora.assets.Texture?|string  The texture to load onto this sprite.
+--- @param  animated     boolean?                      Whether or not the texture is animated.
+--- @param  frameWidth   number?                       The width of each frame in the texture.
+--- @param  frameHeight  number?                       The height of each frame in the texture.
 --- 
 --- @return flora.display.Sprite
 ---
-function Sprite:loadTexture(texture)
-    self.frames = FrameCollection.fromTexture(flora.assets:loadTexture(texture))
+function Sprite:loadTexture(texture, animated, frameWidth, frameHeight)
+    texture = Flora.assets:loadTexture(texture)
+    if not texture then
+        return self
+    end
+    frameWidth = frameWidth and frameWidth or 0
+    frameHeight = frameHeight and frameHeight or 0
+
+    if frameWidth == 0 then
+        frameWidth = animated and texture.height or texture.width
+        frameWidth = (frameWidth > texture.width) and texture.width or frameWidth
+   
+    elseif frameWidth > texture.width then
+        Flora.log:warn('frameWidth:' .. frameWidth .. ' is larger than the graphic\'s width:' .. texture.width)
+    end
+
+    if frameHeight == 0 then
+        frameHeight = animated and frameWidth or texture.height
+        frameHeight = (frameHeight > texture.height) and texture.height or frameHeight
+    
+    elseif frameHeight > texture.height then
+        Flora.log:warn('frameHeight:' ..frameHeight .. ' is larger than the graphic\'s height:' .. texture.height)
+    end
+
+    if animated then
+        self.frames = TileFrames.fromTexture(texture, Vector2:new(frameWidth, frameHeight))
+    else
+        self.frames = FrameCollection.fromTexture(texture)
+    end
     return self
 end
 
@@ -157,10 +187,10 @@ end
 ---
 function Sprite:screenCenter(axes)
     if Axes.hasX(axes) then
-        self.x = math.floor((flora.gameWidth - self.width) * 0.5)
+        self.x = math.floor((Flora.gameWidth - self.width) * 0.5)
     end
     if Axes.hasY(axes) then
-        self.y = math.floor((flora.gameHeight - self.height) * 0.5)
+        self.y = math.floor((Flora.gameHeight - self.height) * 0.5)
     end
 end
 
@@ -224,13 +254,13 @@ end
 function Sprite:dispose()
     Sprite.super.dispose(self)
 
-    if flora.config.debugMode then
-        flora.log:verbose("Unreferencing texture on sprite " .. tostring(self))
+    if Flora.config.debugMode then
+        Flora.log:verbose("Unreferencing texture on sprite " .. tostring(self))
     end
     self.frames = nil
 
-    if flora.config.debugMode then
-        flora.log:verbose("Removing extra vars on sprite " .. tostring(self))
+    if Flora.config.debugMode then
+        Flora.log:verbose("Removing extra vars on sprite " .. tostring(self))
     end
     self.scale = nil
     self.origin = nil

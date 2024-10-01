@@ -21,7 +21,7 @@ function TweenManager:constructor()
     ---
     self.list = Group:new()
 
-    flora.signals.preStateCreate:connect(function()
+    Flora.signals.preStateCreate:connect(function()
         self:reset()
     end)
 end

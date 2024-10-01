@@ -18,7 +18,7 @@ function AtlasFrames.fromSparrow(texture, xmlFile)
     ---
     --- @type flora.assets.Texture?
     ---
-    local tex = flora.assets:loadTexture(texture)
+    local tex = Flora.assets:loadTexture(texture)
 
     ---
     --- @type flora.display.animation.AtlasFrames
@@ -40,11 +40,6 @@ function AtlasFrames.fromSparrow(texture, xmlFile)
         end
     end
 	return atlas
-end
-
-function AtlasFrames:dispose()
-	AtlasFrames.super.dispose(self)
-	self.texture:unreference()
 end
 
 return AtlasFrames
