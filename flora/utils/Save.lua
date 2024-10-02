@@ -7,6 +7,8 @@
 local Save = Class:extend("Save", ...)
 Save.dir = love.filesystem.getSaveDirectory()
 
+
+
 function Save:constructor()
     ---
     --- The data belonging to this save data object.
@@ -20,6 +22,15 @@ function Save:constructor()
     --- @type string
     ---
     self._path = nil
+
+    ---5
+    --- @protected
+    --- @type function?
+    ---
+    self._quitCallback = function()
+        self:flush()
+    end
+    Flora.signals.preQuit:connect(self._quitCallback)
 end
 
 function Save:bind(name)
@@ -38,6 +49,17 @@ function Save:flush()
         return
     end
     love.filesystem.write(self._path, love.data.encode("string", "hex", Json.encode(self.data)))
+end
+
+function Save:close()
+    self.data = nil
+    self._path = nil
+    self._quitCallback = nil
+end
+
+function Save:dispose()
+    Flora.signals.preQuit:disconnect(self._quitCallback)
+    self:close()
 end
 
 return Save

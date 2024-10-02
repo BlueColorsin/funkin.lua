@@ -18,26 +18,17 @@ function BaseSoundTray:show(up)
 end
 
 function BaseSoundTray:update(dt)
-    for i = 1, #self.volumeUpKeys do
-        local key = self.volumeUpKeys[i]
-        if Flora.keys.justPressed[key] then
-            Flora.sound.volume = math.clamp(math.truncate(Flora.sound.volume + 0.1, 1), 0.0, 1.0)
-            self:show(true)
-        end
+    if Flora.keys:anyJustPressed(self.volumeUpKeys) then
+        Flora.sound.volume = math.clamp(math.truncate(Flora.sound.volume + 0.1, 1), 0.0, 1.0)
+        self:show(true)
     end
-    for i = 1, #self.volumeDownKeys do
-        local key = self.volumeDownKeys[i]
-        if Flora.keys.justPressed[key] then
-            Flora.sound.volume = math.clamp(math.truncate(Flora.sound.volume - 0.1, 1), 0.0, 1.0)
-            self:show(false)
-        end
+    if Flora.keys:anyJustPressed(self.volumeDownKeys) then
+        Flora.sound.volume = math.clamp(math.truncate(Flora.sound.volume - 0.1, 1), 0.0, 1.0)
+        self:show(false)
     end
-    for i = 1, #self.volumeMuteKeys do
-        local key = self.volumeMuteKeys[i]
-        if Flora.keys.justPressed[key] then
-            Flora.sound.muted = not Flora.sound.muted
-            self:show(true)
-        end
+    if Flora.keys:anyJustPressed(self.volumeMuteKeys) then
+        Flora.sound.muted = not Flora.sound.muted
+        self:show(true)
     end
 end
 

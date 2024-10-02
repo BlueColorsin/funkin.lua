@@ -1,7 +1,7 @@
 ---
 --- @type funkin.assets.Paths
 ---
-local Paths = flora.import("funkin.assets.Paths")
+local Paths = Flora.import("funkin.assets.Paths")
 
 ---
 --- @class funkin.Preloader : funkin.states.MusicBeatState

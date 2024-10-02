@@ -6,6 +6,10 @@ local TitleState = MusicBeatState:extend("TitleState", ...)
 function TitleState:ready()
     TitleState.super.ready(self)
 
+    Discord.changePresence({
+        state = "In the Title Screen"
+    })
+
     self.beatCallbacks = {
         [1] = function()
             self:createCoolText({"The", "Funkin Crew Inc"})
@@ -140,10 +144,9 @@ end
 function TitleState:update(dt)
     TitleState.super.update(self, dt)
 
-    if Flora.keys.justPressed.ENTER then
+    if Controls.justPressed.ACCEPT then
         if not self.skippedIntro then
             self:skipIntro()
-        
         else
             if not self.accepted then
                 self.accepted = true

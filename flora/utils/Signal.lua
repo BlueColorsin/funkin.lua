@@ -7,7 +7,12 @@ function Signal:constructor()
     ---
     --- @protected
     ---
-    self.__connected = {}
+    self._connected = {}
+
+	---
+    --- @protected
+    ---
+    self._cancelled = false
 end
 
 -- This function is syntax sugar.
@@ -18,44 +23,60 @@ end
 ---
 --- Connects a listener function to this signal.
 ---
---- @param listener  function  The listener to connect to this signal.
+--- @param  listener  function  The listener to connect to this signal.
+--- @param  priority  integer?  The priority of the listener. Lower numbers are called first.
 ---
-function Signal:connect(listener)
-	if type(listener) ~= "function" or table.contains(self.__connected, listener) then
+function Signal:connect(listener, priority)
+	if type(listener) ~= "function" or table.contains(self._connected, listener) then
 		return
 	end
-	table.insert(self.__connected, listener)
+	if priority then
+		table.insert(self._connected, listener, priority)
+	else
+		table.insert(self._connected, listener)
+	end
 end
 
 ---
 --- Disconnects a listener function from this signal.
 ---
---- @param listener  function  The listener to disconnect from this signal.
+--- @param  listener  function  The listener to disconnect from this signal.
 ---
 function Signal:disconnect(listener)
-	if type(listener) ~= "function" or not table.contains(self.__connected, listener) then
+	if type(listener) ~= "function" or not table.contains(self._connected, listener) then
 		return
 	end
-	table.remove_item(self.__connected, listener)
+	table.remove_item(self._connected, listener)
 end
 
 ---
 --- Emits/calls each listener functions connected
 --- to this signal.
 ---
---- @param ...  vararg  The parameters to call on each function.
+--- @param  ...  vararg  The parameters to call on each function.
 ---
 function Signal:emit(...)
-	for i = 1, #self.__connected do
-		self.__connected[i](...)
+	self._cancelled = false
+	for i = 1, #self._connected do
+		if self._cancelled then
+			break
+		end
+		self._connected[i](...)
 	end
+end
+
+---
+--- Cancels all listener functions from this signal.
+---
+function Signal:cancel()
+	self._cancelled = true
 end
 
 ---
 --- Removes all listener functions from this signal.
 ---
 function Signal:reset()
-	self.__connected = {}
+	self._connected = {}
 end
 
 return Signal

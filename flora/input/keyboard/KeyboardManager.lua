@@ -1,4 +1,5 @@
 local KeyCode = require("flora.input.keyboard.KeyCode")
+local InputState = require("flora.input.InputState")
 
 ---
 --- A class for managing keyboard input.
@@ -35,6 +36,84 @@ function KeyboardManager:constructor()
         self.justPressed[key] = false
         self.justReleased[key] = false
     end
+end
+
+function KeyboardManager:checkState(key, state)
+    if key == KeyCode.NONE then
+        return false
+    end
+    local tbl = nil
+    if state == InputState.PRESSED then
+        tbl = self.pressed
+    
+    elseif state == InputState.RELEASED then
+        tbl = self.released
+    
+    elseif state == InputState.JUST_PRESSED then
+        tbl = self.justPressed
+    
+    elseif state == InputState.JUST_RELEASED then
+        tbl = self.justReleased
+    end
+    for k, value in pairs(tbl) do
+        local rawKey = KeyCode[k]
+        if rawKey == key and value then
+            return true
+        end
+    end
+    return false
+end
+
+function KeyboardManager:anyPressed(keys)
+    for i = 1, #keys do
+        ---
+        --- @type string
+        ---
+        local key = keys[i]
+        if self:checkState(key, InputState.PRESSED) then
+            return true
+        end
+    end
+    return false
+end
+
+function KeyboardManager:anyReleased(keys)
+    for i = 1, #keys do
+        ---
+        --- @type string
+        ---
+        local key = keys[i]
+        if self:checkState(key, InputState.RELEASED) then
+            return true
+        end
+    end
+    return false
+end
+
+function KeyboardManager:anyJustPressed(keys)
+    for i = 1, #keys do
+        ---
+        --- @type string
+        ---
+        local key = keys[i]
+        if self:checkState(key, InputState.JUST_PRESSED) then
+            return true
+        end
+    end
+    return false
+end
+
+function KeyboardManager:anyJustReleased(keys)
+    for i = 1, #keys do
+        ---
+        --- @type string
+        ---
+        local key = keys[i]
+        if self:checkState(key, InputState.JUST_RELEASED) then
+            return true
+        end
+    end
+    return false
 end
 
 function KeyboardManager:update()

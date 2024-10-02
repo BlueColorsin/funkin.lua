@@ -1,4 +1,49 @@
 ---
+--- @type funkin.api.Discord
+---
+Discord = Flora.import("funkin.api.Discord")
+
+---
+--- @type funkin.assets.Paths
+---
+Paths = Flora.import("funkin.assets.Paths")
+
+---
+--- @type funkin.states.MusicBeatState
+---
+MusicBeatState = Flora.import("funkin.states.MusicBeatState")
+
+---
+--- @type funkin.plugins.Conductor
+---
+Conductor = Flora.import("funkin.plugins.Conductor")
+
+---
+--- @type funkin.data.Settings
+---
+Settings = Flora.import("funkin.data.Settings")
+
+---
+--- @type funkin.input.Controls
+---
+Controls = Flora.import("funkin.input.Controls")
+
+---
+--- @type funkin.ui.alphabet.Alphabet
+---
+Alphabet = Flora.import("funkin.ui.alphabet.Alphabet")
+
+---
+--- @type funkin.Preloader
+---
+local Preloader = Flora.import("funkin.Preloader")
+
+---
+--- @type funkin.states.TitleState
+---
+local TitleState = Flora.import("funkin.states.TitleState")
+
+---
 --- @class funkin.states.InitState : flora.display.State
 ---
 local InitState = State:extend("InitState", ...)
@@ -7,32 +52,6 @@ InitState._lastState = ""
 
 function InitState:ready()
     InitState.super.ready(self)
-
-    ---
-    --- @type funkin.assets.Paths
-    ---
-    Paths = Flora.import("funkin.assets.Paths")
-
-    ---
-    --- @type funkin.states.MusicBeatState
-    ---
-    MusicBeatState = Flora.import("funkin.states.MusicBeatState")
-
-    ---
-    --- @type funkin.plugins.Conductor
-    ---
-    Conductor = Flora.import("funkin.plugins.Conductor")
-
-    ---
-    --- @type funkin.data.Settings
-    ---
-    Settings = Flora.import("funkin.data.Settings")
-    Settings.init()
-
-    ---
-    --- @type funkin.ui.alphabet.Alphabet
-    ---
-    Alphabet = Flora.import("funkin.ui.alphabet.Alphabet")
 
     if Flora.soundTray then
         Flora.soundTray:dispose()
@@ -48,13 +67,15 @@ function InitState:ready()
         InitState._lastState = Flora.state.__class
     end)
 
+    Discord.init()
+    
+    Settings.init()
+    Controls.init()
+
     Conductor.instance = Conductor:new()
     Flora.plugins:add(Conductor.instance)
 
-    -- local Preloader = Flora.import("funkin.Preloader")
     -- Flora.switchState(Preloader:new())
-
-    local TitleState = Flora.import("funkin.states.TitleState")
     Flora.switchState(TitleState:new())
 end
 

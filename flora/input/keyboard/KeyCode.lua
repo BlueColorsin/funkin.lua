@@ -4,6 +4,7 @@
 --- All keycodes taken from the [Love2D Wiki](https://love2d.org/wiki/KeyConstant)
 ---
 local KeyCode = {
+    NONE = "none",
     A = "a",
     B = "b",
     C = "c",
@@ -98,7 +99,7 @@ local KeyCode = {
     RIGHT = "right",
     LEFT = "left",
     HOME = "home",
-    END_ = "end",
+    END = "end",
     PAGE_UP = "pageup",
     PAGE_DOWN = "pagedown",
 

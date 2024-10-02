@@ -1,3 +1,4 @@
+---@diagnostic disable: invisible
 
 if Flora then
     print("Flora was already initialized!")
@@ -95,6 +96,13 @@ local TweenManager = require("flora.plugins.TweenManager")
 --- The main class used to initialize Flora
 ---
 Flora = Class:extend()
+
+---
+--- The amount of time passed since the last frame. (in seconds)
+--- 
+--- @type number
+---
+Flora.deltaTime = 0.0
 
 --- 
 --- A helper object for configuring Flora.
@@ -308,6 +316,7 @@ function Flora.start()
 
             if love.timer then
                 dt = math.min(love.timer.step(), math.max(capDt, 0.0416))
+                Flora.deltaTime = dt
             end
             
             fpsTimer = fpsTimer + dt
@@ -610,7 +619,12 @@ function love.mouserelEased(_, _, button, _, _)
 end
 
 function love.quit()
+    Flora.signals.preQuit:emit()
+    if Flora.signals.preQuit._cancelled then
+        return true
+    end
     lily.quit()
+    return false
 end
 
 return Flora

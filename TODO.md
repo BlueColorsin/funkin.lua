@@ -13,6 +13,8 @@
     - Flip X and Flip Y
 
 - Substates
+- Gamepad Input
+
 - Ensure everything is documented
 
 - Make this publishable on platforms other than Windows

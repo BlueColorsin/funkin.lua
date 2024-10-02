@@ -42,6 +42,11 @@ function SignalFrontEnd:constructor()
     --- @type flora.utils.Signal
     ---
     self.postStateSwitch = Signal:new()
+
+    ---
+    --- @type flora.utils.Signal
+    ---
+    self.preQuit = Signal:new()
 end
 
 return SignalFrontEnd

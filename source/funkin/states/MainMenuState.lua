@@ -1,10 +1,20 @@
 ---
+--- @type funkin.states.TitleState
+---
+local TitleState = Flora.import("funkin.states.TitleState")
+
+---
 --- @class funkin.states.MainMenuState : funkin.states.MusicBeatState
 ---
 local MainMenuState = MusicBeatState:extend("MainMenuState", ...)
 
 function MainMenuState:ready()
     MainMenuState.super.ready(self)
+
+    Discord.changePresence({
+        state = "In the Main Menu",
+        details = "Selecting nothing"
+    })
 
     ---
     --- @type flora.display.Sprite
@@ -21,6 +31,10 @@ function MainMenuState:update(dt)
 
     if Flora.sound.music.volume < 1 then
         Flora.sound.music.volume = Flora.sound.music.volume + (dt * 0.5)
+    end
+
+    if Controls.justPressed.BACK then
+        Flora.switchState(TitleState:new())
     end
 end
 
