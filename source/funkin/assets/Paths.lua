@@ -23,6 +23,9 @@ function Paths.getExtsForType(type)
 
     elseif type == "sound" or type == "audio" then
         return {".ogg", ".oga", ".ogv", ".wav", ".mp3"}
+
+    elseif type == "font" then
+        return {".ttf", ".otf"}
     end
     return {}
 end
@@ -42,6 +45,16 @@ function Paths.suffixExtFromType(type, path)
         end
     end
     return path
+end
+
+---
+--- @param  name  string
+--- @param  dir   string?
+--- 
+--- @return string
+---
+function Paths.font(name, dir)
+    return Paths.suffixExtFromType("font", Paths.asset(Path.join({dir and dir or "fonts", name})))
 end
 
 ---

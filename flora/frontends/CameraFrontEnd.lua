@@ -20,6 +20,8 @@ function CameraFrontEnd:constructor()
 
     ---
     --- The background color of any new camera.
+    --- 
+    --- @type flora.utils.Color|integer
     ---
     self.bgColor = nil
 
@@ -88,7 +90,7 @@ function CameraFrontEnd:remove(cam)
         Flora.log:warn("Cannot remove camera that was not yet added!")
         return
     end
-    local defaultIdx = table.index_of(self.defaultCameras, cam)
+    local defaultIdx = table.indexOf(self.defaultCameras, cam)
     if defaultIdx ~= 1 then
         table.remove(self.defaultCameras, defaultIdx)
     end

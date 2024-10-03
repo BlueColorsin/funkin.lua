@@ -65,6 +65,16 @@ function Pointer:constructor()
     self.deltaScreenY = 0.0
 
     ---
+    --- The amount the vertical mouse wheel has moved since last frame.
+    ---
+    self.wheel = 0.0
+
+    ---
+    --- The amount the horizontal mouse wheel (if available) has moved since last frame.
+    ---
+    self.horizontalWheel = 0.0
+
+    ---
     --- Whether or not the left mouse button has just been pressed.
     ---
     self.justPressed = false
@@ -127,7 +137,7 @@ function Pointer:constructor()
     ---
     --- Whether or not antialiasing is enabled on the cursor.
     ---
-    self.antialiasing = false
+    self.antialiasing = true
 
     ---
     --- The X and Y scale factor of this sprite.
@@ -177,6 +187,9 @@ function Pointer:postUpdate()
     self.deltaScreenX = 0.0
     self.deltaScreenY = 0.0
 
+    self.wheel = 0.0
+    self.horizontalWheel = 0.0
+
     self.justPressed = false
     self.justPressedMiddle = false
     self.justPressedRight = false
@@ -186,6 +199,25 @@ function Pointer:postUpdate()
     self.justReleasedRight = false
 
     love.mouse.setVisible(self.useSystemCursor and self.visible)
+end
+
+function Pointer:onStateSwitch()
+    self.deltaX = 0.0
+    self.deltaY = 0.0
+
+    self.deltaScreenX = 0.0
+    self.deltaScreenY = 0.0
+
+    self.wheel = 0.0
+    self.horizontalWheel = 0.0
+
+    self.justPressed = false
+    self.justPressedMiddle = false
+    self.justPressedRight = false
+
+    self.justReleased = false
+    self.justReleasedMiddle = false
+    self.justReleasedRight = false
 end
 
 function Pointer:draw()
@@ -243,6 +275,11 @@ function Pointer:onReleased(button)
         self.pressedMiddle = false
         self.releasedMiddle = true
     end
+end
+
+function Pointer:onWheelMoved(dx, dy)
+    self.wheel = dy < 0.0 and 1.0 or -1.0
+    self.horizontalWheel = dx < 0.0 and 1.0 or -1.0
 end
 
 ---

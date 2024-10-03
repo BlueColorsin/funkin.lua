@@ -1,3 +1,6 @@
+---@diagnostic disable: invisible
+
+local SpriteUtil = require("flora.utils.SpriteUtil")
 local AnimationController = require("flora.display.animation.AnimationController")
 
 --- 
@@ -6,7 +9,7 @@ local AnimationController = require("flora.display.animation.AnimationController
 --- @class flora.display.Sprite : flora.display.Object2D
 --- 
 local Sprite = Object2D:extend("Sprite", ...)
-Sprite.default_antialiasing = false
+Sprite.defaultAntialiasing = false
 
 ---
 --- Constructs a new sprite.
@@ -47,6 +50,20 @@ function Sprite:constructor(x, y, texture)
     self.frame = nil
 
     ---
+    --- The X and Y offset of this sprite. (not accounting for rotation)
+    ---
+    --- @type flora.math.Vector2
+    ---
+    self.offset = Vector2:new(0, 0)
+
+    ---
+    --- The X and Y offset of this sprite. (accounting for rotation)
+    ---
+    --- @type flora.math.Vector2
+    ---
+    self.frameOffset = Vector2:new(0, 0)
+
+    ---
     --- The X and Y scale factor of this sprite.
     ---
     --- @type flora.math.Vector2
@@ -77,7 +94,7 @@ function Sprite:constructor(x, y, texture)
     ---
     --- The tint of this sprite.
     --- 
-    --- @type flora.utils.Color
+    --- @type flora.utils.Color|integer
     ---
     self.tint = nil
 
@@ -92,7 +109,7 @@ function Sprite:constructor(x, y, texture)
     --- Whether or not antialiasing is enabled on this sprite.
     --- If you have pixel-art loaded onto it, turn this off!
     ---
-    self.antialiasing = Sprite.default_antialiasing
+    self.antialiasing = Sprite.defaultAntialiasing
 
     ---
     --- The object responsible for controlling this sprite's animation.
@@ -181,17 +198,39 @@ function Sprite:loadTexture(texture, animated, frameWidth, frameHeight)
 end
 
 ---
---- Centers this sprite to the middle of the screen.
+--- Generates a texture of a given width and height
+--- and fills it's pixels with a given color.
 ---
---- @param  axes  integer  The axes to center this sprite on. (`X`, `Y`, or `XY`)
+--- @param  width   integer                    The width of the generated texture. (in pixels)
+--- @param  height  integer                    The height of the generated texture. (in pixels)
+--- @param  color   flora.utils.Color|integer  The color of the pixels in the generated texture.
 ---
-function Sprite:screenCenter(axes)
-    if Axes.hasX(axes) then
-        self.x = math.floor((Flora.gameWidth - self.width) * 0.5)
-    end
-    if Axes.hasY(axes) then
-        self.y = math.floor((Flora.gameHeight - self.height) * 0.5)
-    end
+--- @return flora.display.Sprite
+---
+function Sprite:makeTexture(width, height, color)
+    self.antialiasing = false
+    self:loadTexture(SpriteUtil.makeRectangle(width, height, color))
+    return self
+end
+
+---
+--- Acts similarily to `makeTexture()`, but instead generating
+--- a 1x1 texture with the given color, then setting this
+--- sprite's scale to the given width and height.
+--- 
+--- This is preferred over `makeTexture()`, however it is still
+--- available if you absolutely need to use it.
+---
+--- @param  width   integer                    The width of the sprite. (in pixels)
+--- @param  height  integer                    The height of the sprite. (in pixels)
+--- @param  color   flora.utils.Color|integer  The color of the generated texture.
+---
+--- @return flora.display.Sprite
+---
+function Sprite:makeSolid(width, height, color)
+    self:makeTexture(1, 1, color)
+    self.scale:set(width, height)
+    return self
 end
 
 function Sprite:setGraphicSize(width, height)
@@ -228,11 +267,11 @@ function Sprite:draw()
 
         local curAnim = self.animation.curAnim
 
-        local rx = self.x + ox
-        local ry = self.y + oy
+        local rx = (self.x - self.offset.x) + ox
+        local ry = (self.y - self.offset.y) + oy
 
-        local offx = curAnim and curAnim.offset.x or 0.0
-        local offy = curAnim and curAnim.offset.y or 0.0
+        local offx = ((curAnim and curAnim.offset.x or 0.0) + self.frameOffset.x) * (self.scale.x < 0 and -1 or 1)
+        local offy = ((curAnim and curAnim.offset.y or 0.0) + self.frameOffset.y) * (self.scale.x < 0 and -1 or 1)
 
         offx = offx - (self.frame.offset.x * (self.scale.x < 0 and -1 or 1))
         offy = offy - (self.frame.offset.y * (self.scale.y < 0 and -1 or 1))
@@ -240,8 +279,8 @@ function Sprite:draw()
         offx = offx - (cam.scroll.x * self.scrollFactor.x)
         offy = offy - (cam.scroll.y * self.scrollFactor.y)
 
-        rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
-	    ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
+        rx = rx + ((offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle)
+	    ry = ry + ((offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle)
 
         cam:drawFrame(
             self.texture, self.frame, rx, ry,

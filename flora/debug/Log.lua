@@ -22,7 +22,7 @@ function Log:print(output, curFile, curLine)
 
     Flora.native.setConsoleColors()
 
-    io.stdout:write(tostring(output) .. "\n")
+    io.stdout:write(tostring(output) .. "\r\n")
     io.stdout:flush()
 end
 
@@ -41,7 +41,7 @@ function Log:warn(output, curFile, curLine)
 
     Flora.native.setConsoleColors()
 
-    io.stdout:write(tostring(output) .. "\n")
+    io.stdout:write(tostring(output) .. "\r\n")
     io.stdout:flush()
 end
 
@@ -60,7 +60,7 @@ function Log:error(output, curFile, curLine)
 
     Flora.native.setConsoleColors()
 
-    io.stdout:write(tostring(output) .. "\n")
+    io.stdout:write(tostring(output) .. "\r\n")
     io.stdout:flush()
 end
 
@@ -79,7 +79,7 @@ function Log:success(output, curFile, curLine)
 
     Flora.native.setConsoleColors()
 
-    io.stdout:write(tostring(output) .. "\n")
+    io.stdout:write(tostring(output) .. "\r\n")
     io.stdout:flush()
 end
 
@@ -98,7 +98,7 @@ function Log:verbose(output, curFile, curLine)
 
     Flora.native.setConsoleColors()
 
-    io.stdout:write(tostring(output) .. "\n")
+    io.stdout:write(tostring(output) .. "\r\n")
     io.stdout:flush()
 end
 

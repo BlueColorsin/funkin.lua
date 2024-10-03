@@ -9,6 +9,26 @@ Discord = Flora.import("funkin.api.Discord")
 Paths = Flora.import("funkin.assets.Paths")
 
 ---
+--- @type funkin.substates.MusicBeatSubstate
+---
+MusicBeatSubstate = Flora.import("funkin.substates.MusicBeatSubstate")
+
+---
+--- @type funkin.ui.transition.BaseTransition
+---
+BaseTransition = Flora.import("funkin.ui.transition.BaseTransition")
+
+---
+--- @type funkin.ui.transition.InstantTransition
+---
+InstantTransition = Flora.import("funkin.ui.transition.InstantTransition")
+
+---
+--- @type funkin.ui.transition.SwipeTransition
+---
+SwipeTransition = Flora.import("funkin.ui.transition.SwipeTransition")
+
+---
 --- @type funkin.states.MusicBeatState
 ---
 MusicBeatState = Flora.import("funkin.states.MusicBeatState")
@@ -68,6 +88,7 @@ function InitState:ready()
     end)
 
     Discord.init()
+    Sprite.defaultAntialiasing = true
     
     Settings.init()
     Controls.init()

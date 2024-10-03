@@ -61,7 +61,7 @@ function Text:constructor(x, y, fieldWidth, txt, size)
     --- This is different from `tint`, since it ONLY
     --- affects the raw text color, nothing else!
     --- 
-    --- @type flora.utils.Color
+    --- @type flora.utils.Color|integer
     ---
     self.color = nil
 
@@ -75,7 +75,7 @@ function Text:constructor(x, y, fieldWidth, txt, size)
     ---
     --- The color of the border applied to this text. (default: `Color.TRANSPARENT`)
     --- 
-    --- @type flora.utils.Color
+    --- @type flora.utils.Color|integer
     ---
     self.borderColor = nil
 
@@ -200,7 +200,7 @@ end
 ---
 --- @param  font         string                      The font used to render this text object. (default is `flora/embed/fonts/nokiafc22.ttf`)
 --- @param  size         integer                     The size of the font used to render this text object. (default: `8`)
---- @param  textColor    flora.utils.Color           The The color of the text displayed onto this text object. This is different from `tint`, since it ONLY affects the raw text color, nothing else! (default: `Color.WHITE`)
+--- @param  textColor    flora.utils.Color?          The color of the text displayed onto this text object. This is different from `tint`, since it ONLY affects the raw text color, nothing else! (default: `Color.WHITE`)
 --- @param  alignment    "left"|"center"|"right"?    The alignment of the text displayed onto this text object. (default: `left`)
 --- @param  borderStyle  "none"|"outline"|"shadow"?  The border style to use for this text object. (default: `outline`)
 --- @param  borderColor  flora.utils.Color|integer?  The color of the border applied to this text. (default: `Color.TRANSPARENT`)

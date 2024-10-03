@@ -17,6 +17,13 @@ function Tween:constructor(manager)
     self.visible = false
 
     ---
+    --- Controls whether or not this tween is paused.
+    --- 
+    --- @type boolean
+    ---
+    self.paused = false
+
+    ---
     --- The manager that this tween belongs to.
     ---
     --- @type flora.plugins.TweenManager?
@@ -167,6 +174,9 @@ end
 --- This function is automatically called by the tween manager.
 ---
 function Tween:update(dt)
+    if self.paused then
+        return
+    end
     self._elapsedTime = self._elapsedTime + dt
     if self._elapsedTime >= self.startDelay then
         self._tweeners:update(dt)

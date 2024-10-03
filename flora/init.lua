@@ -50,12 +50,28 @@ Object = require("flora.base.Object")
 RefCounted = require("flora.base.RefCounted")
 Basic = require("flora.base.Basic")
 
+Bit = require("flora.utils.Bit")
+Axes = require("flora.utils.Axes")
+Path = require("flora.utils.Path")
+File = require("flora.utils.File")
+Save = require("flora.utils.Save")
+Pool = require("flora.utils.Pool")
+Color = require("flora.utils.Color")
+Timer = require("flora.utils.Timer")
+Signal = require("flora.utils.Signal")
+
+HorizontalAlign = require("flora.utils.HorizontalAlign")
+VerticalAlign = require("flora.utils.VerticalAlign")
+
 Texture = require("flora.assets.Texture")
 
 Camera = require("flora.display.Camera")
 Group = require("flora.display.Group")
 Object2D = require("flora.display.Object2D")
+
 State = require("flora.display.State")
+SubState = require("flora.display.SubState")
+
 Sprite = require("flora.display.Sprite")
 SpriteGroup = require("flora.display.SpriteGroup")
 Text = require("flora.display.Text")
@@ -66,24 +82,15 @@ FrameCollection = require("flora.display.animation.FrameCollection")
 TileFrames = require("flora.display.animation.TileFrames")
 AtlasFrames = require("flora.display.animation.AtlasFrames")
 
+Flicker = require("flora.display.effects.Flicker")
+
 KeyCode = require("flora.input.keyboard.KeyCode")
 
 Vector2 = require("flora.math.Vector2")
+Rect2 = require("flora.math.Rect2")
 
-Bit = require("flora.utils.Bit")
-Axes = require("flora.utils.Axes")
-Path = require("flora.utils.Path")
-File = require("flora.utils.File")
-Save = require("flora.utils.Save")
-Color = require("flora.utils.Color")
-Timer = require("flora.utils.Timer")
-Signal = require("flora.utils.Signal")
-
-Ease = require("flora.Tweens.Ease")
-Tween = require("flora.Tweens.Tween")
-
-HorizontalAlign = require("flora.utils.HorizontalAlign")
-VerticalAlign = require("flora.utils.VerticalAlign")
+Ease = require("flora.tweens.Ease")
+Tween = require("flora.tweens.Tween")
 
 Sound = require("flora.Sound")
 
@@ -251,7 +258,7 @@ Flora.state = nil
 --- The width of the game area. (in pixels)
 --- 
 --- If you want to change the game width AFTER initializing
---- flora, plEase use `flora.resizeGame()`!
+--- flora, please use `flora.resizeGame()`!
 ---
 Flora.gameWidth = 640
 
@@ -259,7 +266,7 @@ Flora.gameWidth = 640
 --- The height of the game area. (in pixels)
 --- 
 --- If you want to change the game height AFTER initializing
---- flora, plEase use `flora.resizeGame()`!
+--- flora, please use `flora.resizeGame()`!
 ---
 Flora.gameHeight = 640
 
@@ -428,9 +435,16 @@ end
 ---
 function Flora.switchState(newState)
     if Flora.config.debugMode then
-        Flora.log:verbose("Requesting State switch")
+        Flora.log:verbose("Running state outro on current state")
     end
-    Flora._requestedState = newState
+    local stateOnCall = Flora.state
+    stateOnCall:startOutro(function()
+        if Flora.state == stateOnCall then
+            Flora._requestedState = newState
+        else
+            Flora.log:warn("onOutroComplete was called after the state was switched, ignoring!")
+        end
+    end)
 end
 
 function Flora.resizeGame(width, height)
@@ -519,7 +533,7 @@ function love.update(dt)
         Flora.plugins:update(dt)
 
         if Flora.state then
-            Flora.state:update(dt)
+            Flora.state:tryUpdate(dt)
         end
         Flora.cameras:update(dt)
 
@@ -612,9 +626,15 @@ function love.mousepressed(_, _, button, _, _)
     end
 end
 
-function love.mouserelEased(_, _, button, _, _)
+function love.mousereleased(_, _, button, _, _)
     if love.window.hasFocus() then
         Flora.mouse:onReleased(button)
+    end
+end
+
+function love.wheelmoved(dx, dy)
+    if love.window.hasFocus() then
+        Flora.mouse:onWheelMoved(dx, dy)
     end
 end
 

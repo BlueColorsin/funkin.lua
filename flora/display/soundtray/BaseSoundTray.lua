@@ -19,10 +19,12 @@ end
 
 function BaseSoundTray:update(dt)
     if Flora.keys:anyJustPressed(self.volumeUpKeys) then
+        Flora.sound.muted = false
         Flora.sound.volume = math.clamp(math.truncate(Flora.sound.volume + 0.1, 1), 0.0, 1.0)
         self:show(true)
     end
     if Flora.keys:anyJustPressed(self.volumeDownKeys) then
+        Flora.sound.muted = false
         Flora.sound.volume = math.clamp(math.truncate(Flora.sound.volume - 0.1, 1), 0.0, 1.0)
         self:show(false)
     end

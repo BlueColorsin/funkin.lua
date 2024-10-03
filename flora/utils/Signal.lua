@@ -12,6 +12,11 @@ function Signal:constructor()
 	---
     --- @protected
     ---
+    self._connectedOnce = {}
+
+	---
+    --- @protected
+    ---
     self._cancelled = false
 end
 
@@ -25,8 +30,9 @@ end
 ---
 --- @param  listener  function  The listener to connect to this signal.
 --- @param  priority  integer?  The priority of the listener. Lower numbers are called first.
+--- @param  once      boolean?  Whether or not the listener should only be called once.
 ---
-function Signal:connect(listener, priority)
+function Signal:connect(listener, priority, once)
 	if type(listener) ~= "function" or table.contains(self._connected, listener) then
 		return
 	end
@@ -34,6 +40,9 @@ function Signal:connect(listener, priority)
 		table.insert(self._connected, listener, priority)
 	else
 		table.insert(self._connected, listener)
+	end
+	if once then
+		table.insert(self._connectedOnce, listener)
 	end
 end
 
@@ -46,7 +55,10 @@ function Signal:disconnect(listener)
 	if type(listener) ~= "function" or not table.contains(self._connected, listener) then
 		return
 	end
-	table.remove_item(self._connected, listener)
+	if table.contains(self._connectedOnce, listener) then
+		table.removeItem(self._connectedOnce, listener)
+	end
+	table.removeItem(self._connected, listener)
 end
 
 ---
@@ -57,11 +69,19 @@ end
 ---
 function Signal:emit(...)
 	self._cancelled = false
+	local connectedOnce = {}
 	for i = 1, #self._connected do
 		if self._cancelled then
 			break
 		end
-		self._connected[i](...)
+		local func = self._connected[i]
+		if table.contains(self._connectedOnce, func) then
+			table.insert(connectedOnce, func)
+		end
+		func(...)
+	end
+	for i = 1, #connectedOnce do
+		self:disconnect(connectedOnce[i])
 	end
 end
 

@@ -38,6 +38,16 @@ function KeyboardManager:constructor()
     end
 end
 
+function KeyboardManager:onStateSwitch()
+    for key, _ in pairs(KeyCode) do
+        self.pressed[key] = false
+        self.released[key] = true
+
+        self.justPressed[key] = false
+        self.justReleased[key] = false
+    end
+end
+
 function KeyboardManager:checkState(key, state)
     if key == KeyCode.NONE then
         return false

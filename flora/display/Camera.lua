@@ -1,5 +1,6 @@
 local Color = require("flora.utils.Color")
 local Object2D = require("flora.display.Object2D")
+local Rect2    = require("flora.math.Rect2")
 
 --- 
 --- An object that all objects must render to.
@@ -7,6 +8,8 @@ local Object2D = require("flora.display.Object2D")
 --- @class flora.display.Camera : flora.display.Object2D
 --- 
 local Camera = Object2D:extend("Camera", ...)
+
+-- TODO: shake effect
 
 ---
 --- Constructs a new camera.
@@ -21,7 +24,7 @@ function Camera:constructor(x, y, width, height)
     ---
     --- The background color of this camera.
     ---
-    --- @type flora.utils.Color
+    --- @type flora.utils.Color|integer
     ---
     self.bgColor = nil
 
@@ -38,11 +41,88 @@ function Camera:constructor(x, y, width, height)
     self.angle = 0.0
 
     ---
+    --- Whether or not antialiasing is enabled on this camera.
+    --- If you have a bunch of pixel-art displayed onto it, leave this off!
+    ---
+    self.antialiasing = false
+
+    ---
     --- The scroll offset of this camera.
     --- 
     --- @type flora.math.Vector2
     ---
     self.scroll = Vector2:new()
+
+    ---
+    --- The object that this camera is following.
+    --- 
+    --- @type flora.display.Object2D
+    ---
+    self.target = nil
+
+    ---
+    --- The offset used when following the target.
+    --- 
+    --- @type flora.math.Vector2
+    ---
+    self.targetOffset = Vector2:new()
+
+    ---
+    --- The follow style of this camera
+    ---
+    --- @type "lockon"|"platformer"|"topdown"|"topdown_tight"|"screen_by_screen"|"no_dead_zone"
+    ---
+    self.style = "lockon"
+
+    ---
+    --- Determines the speed of this camera when following.
+    ---
+    --- @type number
+    ---
+    self.followLerp = 1
+
+    ---
+    --- Used to force the camera to look ahead of the target.
+    ---
+    --- @type flora.math.Vector2
+    ---
+    self.followLead = Vector2:new()
+
+    ---
+    --- A rectangle to keep the currently targetted object
+    --- within when following it.
+    ---
+    --- @type flora.math.Rect2
+    ---
+    self.deadzone = nil
+
+    ---
+    --- Lower bound of the camera's `scroll` on the x axis.
+    --- 
+    --- @type number
+    ---
+    self.minScrollX = nil
+    
+    ---
+    --- Upper bound of the camera's `scroll` on the x axis.
+    ---
+    --- @type number
+    ---
+    self.maxScrollX = nil
+    
+    ---
+    --- Lower bound of the camera's `scroll` on the x axis.
+    ---
+    --- @type number
+    ---
+    self.minScrollY = nil
+
+    ---
+    --- Upper bound of the camera's `scroll` on the y axis.
+    ---
+    --- @type number
+    ---
+    self.maxScrollY = nil
 
     ---
     --- @protected
@@ -115,6 +195,24 @@ function Camera:constructor(x, y, width, height)
     --- @type function
     ---
     self._fadeFxComplete = nil
+
+    ---
+    --- @protected
+    --- @type flora.math.Vector2
+    ---
+    self._lastTargetPosition = nil
+
+    ---
+    --- @protected
+    --- @type flora.math.Vector2
+    ---
+    self._scrollTarget = Vector2:new()
+
+    ---
+    --- @protected
+    --- @type flora.math.Vector2
+    ---
+    self._point = Vector2:new()
 end
 
 ---
@@ -156,6 +254,142 @@ function Camera:detach()
 end
 
 ---
+--- @param  target  flora.display.Object2D                                                              The object to follow.
+--- @param  style   "lockon"|"platformer"|"topdown"|"topdown_tight"|"screen_by_screen"|"no_dead_zone"?  The follow style to use.
+--- @param  lerp    number?                                                                             How much lag the camera should have (can help smooth out the camera movement).                                                                 
+---
+function Camera:follow(target, style, lerp)
+    if style == nil then
+        style = "lockon"
+    end
+    if lerp == nil then
+        lerp = 1
+    end
+    self.style = style
+    self.target = target
+    self.followLerp = lerp
+
+    self._lastTargetPosition = nil
+    self.deadzone = nil
+
+    if style == "lockon" then
+        local w = 0.0
+        local h = 0.0
+        if self.target then
+            w = self.target.width
+            h = self.target.height
+        end
+        self.deadzone = Rect2:new((self.width - w) / 2, (self.height - h) / 2 - h * 0.25, w, h)
+
+    elseif style == "platformer" then
+        local w = self.width / 8
+        local h = self.height / 3
+        self.deadzone = Rect2:new((self.width - w) / 2, (self.height - h) / 2 - h * 0.25, w, h)
+
+    elseif style == "topdown" then
+        local helper = math.max(self.width, self.height) / 4
+        self.deadzone = Rect2:new((self.width - helper) / 2, (self.height - helper) / 2, helper, helper)
+
+    elseif style == "topdown_tight" then
+        local helper = math.max(self.width, self.height) / 8
+        self.deadzone = Rect2:new((self.width - helper) / 2, (self.height - helper) / 2, helper, helper)
+
+    elseif style == "screen_by_screen" then
+        self.deadzone = Rect2:new(0, 0, self.width, self.height)
+
+    elseif style == "no_dead_zone" then
+        self.deadzone = nil
+    end
+end
+
+function Camera:updateFollow()
+    if not self.deadzone then
+        self.target:getMidpoint(self._point)
+        self._point:add(self.targetOffset.x, self.targetOffset.y)
+        self:focusOn(self._point)
+    else
+        local edge = 0.0
+        local targetX = self.target.x + self.targetOffset.x
+        local targetY = self.target.y + self.targetOffset.y
+
+        if self.style == "screen_by_screen" then
+            if targetX >= self.scroll.x + self.width then
+                self._scrollTarget.x = self._scrollTarget.x + self.width
+            
+            elseif targetX < self.scroll.x then
+                self._scrollTarget.x = self._scrollTarget.x - self.width
+            end
+            if targetY >= self.scroll.y + self.height then
+                self._scrollTarget.y = self._scrollTarget.y + self.height
+            
+            elseif targetY < self.scroll.y then
+                self._scrollTarget.y = self._scrollTarget.y - self.height
+            end
+        else
+            edge = targetX - self.deadzone.x
+            if self._scrollTarget.x > edge then
+                self._scrollTarget.x = edge
+            end
+            edge = targetX + self.target.width - self.deadzone.x - self.deadzone.width
+            if self._scrollTarget.x < edge then
+                self._scrollTarget.x = edge
+            end
+            edge = targetY - self.deadzone.y
+            if self._scrollTarget.y > edge then
+                self._scrollTarget.y = edge
+            end
+            edge = targetY + self.target.height - self.deadzone.y - self.deadzone.height
+            if self._scrollTarget.y < edge then
+                self._scrollTarget.y = edge
+            end
+        end
+
+        if self.target:is(Sprite) then
+            if not self._lastTargetPosition then
+                self._lastTargetPosition = Vector2:new(self.target.x, self.target.y)
+            end
+            self._scrollTarget.x = self._scrollTarget.x + (self.target.x - self._lastTargetPosition.x) * self.followLead.x
+            self._scrollTarget.y = self._scrollTarget.y + (self.target.y - self._lastTargetPosition.y) * self.followLead.y
+
+            self._lastTargetPosition.x = self.target.x
+            self._lastTargetPosition.y = self.target.y
+        end
+
+        local adjustedLerp = self.followLerp * Flora.deltaTime * 60.0
+        if self.followLerp >= 1 or adjustedLerp >= 1 then
+            self.scroll:copyFrom(self._scrollTarget)
+        else
+            self.scroll.x = math.lerp(self.scroll.x, self._scrollTarget.x, adjustedLerp)
+			self.scroll.y = math.lerp(self.scroll.y, self._scrollTarget.y, adjustedLerp)
+        end
+    end
+end
+
+function Camera:updateScroll()
+    self:bindScrollPos(self.scroll)
+end
+
+function Camera:bindScrollPos(scrollPos)
+    local minX = self.minScrollX and self.minScrollX - (self.zoom - 1) * self.width / (2 * self.zoom) or nil
+    local maxX = self.maxScrollX and self.maxScrollX + (self.zoom - 1) * self.width / (2 * self.zoom) or nil
+    local minY = self.minScrollY and self.minScrollY - (self.zoom - 1) * self.height / (2 * self.zoom) or nil
+    local maxY = self.maxScrollY and self.maxScrollY + (self.zoom - 1) * self.height / (2 * self.zoom) or nil
+
+    scrollPos.x = math.clamp(scrollPos.x, minX, maxX and maxX - self.width or nil)
+    scrollPos.y = math.clamp(scrollPos.y, minY, maxY and maxY - self.height or nil)
+    return scrollPos
+end
+
+function Camera:snapToTarget()
+    self:updateFollow()
+    self.scroll:copyFrom(self._scrollTarget)
+end
+
+function Camera:focusOn(vec)
+    self.scroll:set(vec.x - self.width * 0.5, vec.y - self.height * 0.5)
+end
+
+---
 --- Resizes this camera to the given width and height.
 ---
 --- @param  width   number  The new width of this camera.
@@ -183,7 +417,7 @@ end
 --- @param  origin_y  number                The rotation origin to draw the given texture at. (y axis, in pixels)
 --- @param  tint      flora.utils.Color     The tint applied to the given texture when drawing it.
 ---
-function Camera:draw_texture(texture, x, y, width, height, angle, origin_x, origin_y, tint)
+function Camera:drawTexture(texture, x, y, width, height, angle, origin_x, origin_y, tint)
     local prev_canvas = love.graphics.getCanvas()
     love.graphics.setCanvas(self._canvas)
     
@@ -372,11 +606,15 @@ end
 --- Updates this cameras's properties and fields.
 ---
 function Camera:update(dt)
+    if self.target then
+        self:updateFollow()
+    end
+    self:updateScroll()
     self:updateFlash(dt)
     self:updateFade(dt)
 end
 
-function Camera:draw_fx()
+function Camera:drawFX()
     local prev_canvas = love.graphics.getCanvas()
     love.graphics.setCanvas(self._canvas)
 
@@ -403,7 +641,11 @@ end
 --- Draws this camera to the screen.
 ---
 function Camera:draw()
-    self:draw_fx()
+    self:drawFX()
+
+    local filter = self.antialiasing and "linear" or "nearest"
+    self._canvas:setFilter(filter, filter)
+
     love.graphics.draw(self._canvas, self.x, self.y)
 end
 

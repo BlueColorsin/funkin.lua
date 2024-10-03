@@ -60,10 +60,28 @@ end
 --- Returns a clamped version of a specified number where
 --- it never goes below `minimum` or above `maximum`.
 ---
---- @param  value    number  The number to clamp.
---- @param  minimum  number  The minimum value that `value` can go-to.
---- @param  maximum  number  The maximum value that `value` can go-to.
+--- @param  value    number   The number to clamp.
+--- @param  minimum  number?  The minimum value that `value` can go-to.
+--- @param  maximum  number?  The maximum value that `value` can go-to.
 ---
 function math.clamp(value, minimum, maximum)
-    return math.max(minimum, math.min(value, maximum))
+    local lowerBound = (minimum and value < minimum) and minimum or value
+	return (maximum and lowerBound > maximum) and maximum or lowerBound
+end
+
+--- 
+--- Returns a wrapped version of a specified number where
+--- it wraps around to `minimum` when it exceeds `maximum` and
+--- wraps around to `maximum` when it goes below `minimum`.
+---
+--- @param  value    number   The number to wrap.
+--- @param  minimum  number?  The minimum value that `value` can go-to.
+--- @param  maximum  number?  The maximum value that `value` can go-to.
+---
+function math.wrap(value, minimum, maximum)
+    local range = maximum - minimum + 1
+    if value < minimum then
+        value = value + range * math.round((minimum - value) / range + 1)
+    end
+    return minimum + (value - minimum) % range
 end

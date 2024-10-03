@@ -29,10 +29,11 @@ function TitleState:ready()
         end,
         [8] = function()
             self:deleteCoolText()
-
-            self:remove(self.ngSpr, true)
-            self.ngSpr:dispose()
-            self.ngSpr = nil
+            if self.ngSpr then
+                self:remove(self.ngSpr, true)
+                self.ngSpr:dispose()
+                self.ngSpr = nil
+            end
         end,
         [9] = function()
             self:createCoolText({"quote 1 :]"})

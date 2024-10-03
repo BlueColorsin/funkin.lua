@@ -16,6 +16,13 @@ function Timer:constructor(manager)
     self.visible = false
 
     ---
+    --- Controls whether or not this timer is paused.
+    --- 
+    --- @type boolean
+    ---
+    self.paused = false
+
+    ---
     --- The manager that this timer belongs to.
     ---
     --- @type flora.plugins.TimerManager?
@@ -76,6 +83,9 @@ end
 --- This function is automatically called by the timer manager.
 ---
 function Timer:update(dt)
+    if self.paused then
+        return
+    end
     self.elapsedTime = self.elapsedTime + dt
 
     if self.elapsedTime >= self.duration then
