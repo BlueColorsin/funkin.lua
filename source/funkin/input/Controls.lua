@@ -18,25 +18,34 @@ function Controls.init()
     Controls._save:bind("controls")
 
     Controls.list = {
-        -- UI Bindings
-        UI_LEFT  = InputAction:new("ui_left",  {KeyCode.A, KeyCode.LEFT}),
-        UI_DOWN  = InputAction:new("ui_down",  {KeyCode.S, KeyCode.DOWN}),
-        UI_UP    = InputAction:new("ui_up",    {KeyCode.W, KeyCode.UP}),
-        UI_RIGHT = InputAction:new("ui_right", {KeyCode.D, KeyCode.RIGHT}),
-
-        ACCEPT   = InputAction:new("accept", {KeyCode.ENTER, KeyCode.SPACE}),
-        BACK     = InputAction:new("back",   {KeyCode.ESCAPE, KeyCode.BACKSPACE}),
-
         -- Gameplay Bindings
         NOTE_LEFT  = InputAction:new("note_left",  {KeyCode.A, KeyCode.LEFT}),
         NOTE_DOWN  = InputAction:new("note_down",  {KeyCode.S, KeyCode.DOWN}),
         NOTE_UP    = InputAction:new("note_up",    {KeyCode.W, KeyCode.UP}),
         NOTE_RIGHT = InputAction:new("note_right", {KeyCode.D, KeyCode.RIGHT}),
 
-        PAUSE = InputAction:new("pause", {KeyCode.ENTER, KeyCode.ESCAPE}),
-        RESET = InputAction:new("reset", {KeyCode.R, KeyCode.NONE}),
+        -- UI Bindings
+        UI_LEFT  = InputAction:new("ui_left",  {KeyCode.A, KeyCode.LEFT}),
+        UI_DOWN  = InputAction:new("ui_down",  {KeyCode.S, KeyCode.DOWN}),
+        UI_UP    = InputAction:new("ui_up",    {KeyCode.W, KeyCode.UP}),
+        UI_RIGHT = InputAction:new("ui_right", {KeyCode.D, KeyCode.RIGHT}),
 
-        -- Engine Bindings
+        RESET    = InputAction:new("reset", {KeyCode.R, KeyCode.NONE}),
+        ACCEPT   = InputAction:new("accept", {KeyCode.ENTER, KeyCode.SPACE}),
+        BACK     = InputAction:new("back",   {KeyCode.ESCAPE, KeyCode.BACKSPACE}),
+        PAUSE    = InputAction:new("pause", {KeyCode.ENTER, KeyCode.ESCAPE}),
+
+        -- Window Bindings
+        SCREENSHOT = InputAction:new("screenshot", {KeyCode.F3, KeyCode.NONE}),
+        FULLSCREEN = InputAction:new("fullscreen", {KeyCode.F11, KeyCode.NONE}),
+
+        -- Volume Bindings
+        VOLUME_UP = InputAction:new("volume_up", {KeyCode.EQUALS, KeyCode.NUMPAD_PLUS}),
+        VOLUME_DOWN = InputAction:new("volume_down", {KeyCode.MINUS, KeyCode.NUMPAD_MINUS}),
+        VOLUME_MUTE = InputAction:new("volume_mute", {KeyCode.ZERO, KeyCode.NUMPAD_0}),
+
+        -- Debug Bindings
+        EDITORS = InputAction:new("editors", {KeyCode.EIGHT, KeyCode.NUMPAD_8}),
         CHARTER = InputAction:new("charter", {KeyCode.SEVEN, KeyCode.NUMPAD_7}),
         SWITCH_MOD = InputAction:new("switch_mod", {KeyCode.TAB, KeyCode.NONE}),
     }
@@ -44,18 +53,24 @@ function Controls.init()
     --- Helpful dot syntax for checking if an action was just pressed.
     ---
     Controls.justPressed = {
-        UI_LEFT  = nil,
-        UI_DOWN  = nil,
-        UI_UP    = nil,
-        UI_RIGHT = nil,
-        ACCEPT   = nil,
-        BACK     = nil,
         NOTE_LEFT  = nil,
         NOTE_DOWN  = nil,
         NOTE_UP    = nil,
         NOTE_RIGHT = nil,
-        PAUSE = nil,
-        RESET = nil,
+        UI_LEFT  = nil,
+        UI_DOWN  = nil,
+        UI_UP    = nil,
+        UI_RIGHT = nil,
+        RESET    = nil,
+        ACCEPT   = nil,
+        BACK     = nil,
+        PAUSE    = nil,
+        SCREENSHOT = nil,
+        FULLSCREEN = nil,
+        VOLUME_UP = nil,
+        VOLUME_DOWN = nil,
+        VOLUME_MUTE = nil,
+        EDITORS = nil,
         CHARTER = nil,
         SWITCH_MOD = nil,
     }
@@ -64,18 +79,24 @@ function Controls.init()
     --- Helpful dot syntax for checking if an action is pressed.
     ---
     Controls.pressed = {
-        UI_LEFT  = nil,
-        UI_DOWN  = nil,
-        UI_UP    = nil,
-        UI_RIGHT = nil,
-        ACCEPT   = nil,
-        BACK     = nil,
         NOTE_LEFT  = nil,
         NOTE_DOWN  = nil,
         NOTE_UP    = nil,
         NOTE_RIGHT = nil,
-        PAUSE = nil,
-        RESET = nil,
+        UI_LEFT  = nil,
+        UI_DOWN  = nil,
+        UI_UP    = nil,
+        UI_RIGHT = nil,
+        RESET    = nil,
+        ACCEPT   = nil,
+        BACK     = nil,
+        PAUSE    = nil,
+        SCREENSHOT = nil,
+        FULLSCREEN = nil,
+        VOLUME_UP = nil,
+        VOLUME_DOWN = nil,
+        VOLUME_MUTE = nil,
+        EDITORS = nil,
         CHARTER = nil,
         SWITCH_MOD = nil,
     }
@@ -84,18 +105,24 @@ function Controls.init()
     --- Helpful dot syntax for checking if an action was just released.
     ---
     Controls.justReleased = {
-        UI_LEFT  = nil,
-        UI_DOWN  = nil,
-        UI_UP    = nil,
-        UI_RIGHT = nil,
-        ACCEPT   = nil,
-        BACK     = nil,
         NOTE_LEFT  = nil,
         NOTE_DOWN  = nil,
         NOTE_UP    = nil,
         NOTE_RIGHT = nil,
-        PAUSE = nil,
-        RESET = nil,
+        UI_LEFT  = nil,
+        UI_DOWN  = nil,
+        UI_UP    = nil,
+        UI_RIGHT = nil,
+        RESET    = nil,
+        ACCEPT   = nil,
+        BACK     = nil,
+        PAUSE    = nil,
+        SCREENSHOT = nil,
+        FULLSCREEN = nil,
+        VOLUME_UP = nil,
+        VOLUME_DOWN = nil,
+        VOLUME_MUTE = nil,
+        EDITORS = nil,
         CHARTER = nil,
         SWITCH_MOD = nil,
     }
@@ -104,18 +131,24 @@ function Controls.init()
     --- Helpful dot syntax for checking if an action is released.
     ---
     Controls.released = {
-        UI_LEFT  = nil,
-        UI_DOWN  = nil,
-        UI_UP    = nil,
-        UI_RIGHT = nil,
-        ACCEPT   = nil,
-        BACK     = nil,
         NOTE_LEFT  = nil,
         NOTE_DOWN  = nil,
         NOTE_UP    = nil,
         NOTE_RIGHT = nil,
-        PAUSE = nil,
-        RESET = nil,
+        UI_LEFT  = nil,
+        UI_DOWN  = nil,
+        UI_UP    = nil,
+        UI_RIGHT = nil,
+        RESET    = nil,
+        ACCEPT   = nil,
+        BACK     = nil,
+        PAUSE    = nil,
+        SCREENSHOT = nil,
+        FULLSCREEN = nil,
+        VOLUME_UP = nil,
+        VOLUME_DOWN = nil,
+        VOLUME_MUTE = nil,
+        EDITORS = nil,
         CHARTER = nil,
         SWITCH_MOD = nil,
     }

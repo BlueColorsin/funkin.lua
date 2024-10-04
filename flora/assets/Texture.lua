@@ -51,7 +51,11 @@ end
 --- Removes this texture from memory.
 ---
 function Texture:dispose()
+    if not self.image then
+        return
+    end
     self.image:release()
+    self.image = nil
     Flora.assets._textureCache[self.key] = nil
 end
 

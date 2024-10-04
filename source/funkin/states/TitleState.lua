@@ -36,10 +36,10 @@ function TitleState:ready()
             end
         end,
         [9] = function()
-            self:createCoolText({"quote 1 :]"})
+            self:createCoolText({self.introTexts[1]})
         end,
         [11] = function()
-            self:createCoolText({"quote 1 :]", "quote 2 :]"})
+            self:createCoolText({self.introTexts[1], self.introTexts[2]})
         end,
         [12] = function()
             self:deleteCoolText()
@@ -52,12 +52,13 @@ function TitleState:ready()
         end,
         [15] = function()
             self:createCoolText({"Friday", "Night", "Funkin"})
-        end,
-        [16] = function()
-            self:skipIntro()
-        end,
+        end
     }
+    self.introLength = 16
     self.danced = false
+
+    local lines = Tools.parseCSV(File.read(Paths.csv("introText")))
+    self.introTexts = lines[Flora.random:int(1, #lines)]
 
     self.skippedIntro = false
     self.accepted = false
@@ -128,11 +129,8 @@ function TitleState:ready()
     self.titleGroup:add(self.titleText)
 
     if not Flora.sound.music.playing then
-        Flora.sound:playMusic(Paths.music("freakyMenu"), true, 0.0)
+        Tools.playMusic(Paths.music("freakyMenu"), 0.0)
         Flora.sound.music:fadeIn(4)
-
-        self.attachedConductor:reset(102)
-        self.attachedConductor.music = Flora.sound.music
     end
 
     ---
@@ -206,8 +204,13 @@ function TitleState:skipIntro()
 end
 
 function TitleState:beatHit(beat)
-    if not self.skippedIntro and self.beatCallbacks[beat] then
-        self.beatCallbacks[beat]()
+    if not self.skippedIntro then
+        if self.beatCallbacks[beat] then
+            self.beatCallbacks[beat]()
+        end
+        if beat >= self.introLength then
+            self:skipIntro()
+        end
     end
     self.danced = not self.danced
     if not self.danced then

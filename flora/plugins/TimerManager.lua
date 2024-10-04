@@ -27,11 +27,11 @@ function TimerManager:constructor()
 end
 
 function TimerManager:reset()
-    for i = 1, self.list.length do
+    while self.list.length > 0 do
         ---
-        --- @type flora.utils.timer
+        --- @type flora.utils.Timer
         ---
-        local timer = self.list.members[i]
+        local timer = self.list.members[1]
         timer:dispose()
     end
 end

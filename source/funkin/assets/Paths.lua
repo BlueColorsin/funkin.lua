@@ -91,6 +91,46 @@ end
 --- @param  name  string
 --- @param  dir   string?
 --- 
+--- @return string
+---
+function Paths.json(name, dir)
+    return Paths.asset(Path.join({dir and dir or "data", name})) .. ".json"
+end
+
+---
+--- @param  name  string
+--- @param  dir   string?
+--- 
+--- @return string
+---
+function Paths.xml(name, dir)
+    return Paths.asset(Path.join({dir and dir or "data", name})) .. ".xml"
+end
+
+---
+--- @param  name  string
+--- @param  dir   string?
+--- 
+--- @return string
+---
+function Paths.txt(name, dir)
+    return Paths.asset(Path.join({dir and dir or "data", name})) .. ".txt"
+end
+
+---
+--- @param  name  string
+--- @param  dir   string?
+--- 
+--- @return string
+---
+function Paths.csv(name, dir)
+    return Paths.asset(Path.join({dir and dir or "data", name})) .. ".csv"
+end
+
+---
+--- @param  name  string
+--- @param  dir   string?
+--- 
 --- @return flora.display.animation.AtlasFrames
 ---
 function Paths.getSparrowAtlas(name, dir)

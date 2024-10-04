@@ -32,7 +32,7 @@ function Discord.changePresence(data)
         state = data.state,
         details = data.details,
         largeImageKey = data.icon and data.icon or "icon",
-        largeImageText = data.largeImageText and data.largeImageText or "Funkin' Flora"
+        largeImageText = data.largeImageText and data.largeImageText or "funkin.lua"
     })
 end
 

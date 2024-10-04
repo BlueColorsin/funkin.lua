@@ -24,7 +24,9 @@
 - Menus
     - Title Screen
     - Main Menu
-    - Freeplay Menu (From V-Slice)
+    - Freeplay Menu
+        - Implement legacy menu first (easier)
+        - Implement V-Slice menu (low priority)
     - Options Menu
     - Credits Menu
     - Mods Menu

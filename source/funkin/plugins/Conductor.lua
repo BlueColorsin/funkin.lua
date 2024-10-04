@@ -92,7 +92,7 @@ function Conductor:constructor()
     ---
     --- @type number
     ---
-    self.safeZoneOffset = Settings.data.hitWindow / 1000.0
+    self.safeZoneOffset = Settings.data.hitWindow
 
     ---
     --- @type boolean
@@ -207,19 +207,21 @@ function Conductor:setupBPMChanges(map)
 
     local curBPM = 0.0
     local time = 0.0
-    local lastStep = 0.0
+    local steps = 0.0
 
     for i = 1, #map.events do
         local event = map.events[i]
         if event.type == "BPM Change" and event.params and type(event.params.bpm) == "number" then
             local eventBPM = event.params.bpm
             if eventBPM ~= curBPM then
-                time = time + (event.step - lastStep) * ((60 / curBPM) / timeSig[2])
+                steps = steps + ((event.time - time) / (((60 / curBPM) / timeSig[2]) * 1000))
+                
+                time = event.time
                 curBPM = eventBPM
 
                 table.insert(self.bpmChanges, {
                     time = time,
-                    step = event.step,
+                    step = steps,
                     bpm = curBPM
                 })
                 lastStep = event.step
@@ -239,7 +241,7 @@ function Conductor:stepToTime(step)
         end
     end
 
-    return lastChange.time + ((step - lastChange.time) * ((60 / lastChange.bpm) * self.timeSignature[2]))
+    return lastChange.time + ((step - lastChange.time) * (((60 / lastChange.bpm) * self.timeSignature[2]) * 1000.0))
 end
 
 function Conductor:beatToTime(beat)
@@ -261,7 +263,7 @@ function Conductor:timeToStep(time)
         end
     end
 
-    return lastChange.step + ((time - lastChange.time) / ((60 / lastChange.bpm) * self.timeSignature[2]))
+    return lastChange.step + ((time - lastChange.time) / (((60 / lastChange.bpm) * self.timeSignature[2]) * 1000.0))
 end
 
 function Conductor:timeToBeat(time)
@@ -274,8 +276,9 @@ end
 
 function Conductor:update(dt)
     if self.music and self.music.playing then
-        if math.abs(self.rawTime - self.music.time) > 0.02 then
-            self.rawTime = self.music.time 
+        local musicTime = (self.music.time * 1000.0)
+        if math.abs(self.rawTime - musicTime) > 20 then
+            self.rawTime = musicTime
         end
     end
     self._lastBPMChange = self.bpmChanges[1]
@@ -417,21 +420,21 @@ end
 --- @protected
 ---
 function Conductor:get_time()
-    return self.rawTime - (self.allowSongOffset and Settings.data.songOffset * 0.001 or 0.0)
+    return self.rawTime - (self.allowSongOffset and Settings.data.songOffset or 0.0)
 end
 
 ---
 --- @protected
 ---
 function Conductor:get_crotchet()
-    return 60.0 / self.bpm
+    return (60.0 / self.bpm) * 1000.0
 end
 
 ---
 --- @protected
 ---
 function Conductor:get_stepCrotchet()
-    return (60.0 / self.bpm) / self.timeSignature[2]
+    return ((60.0 / self.bpm) / self.timeSignature[2]) * 1000.0
 end
 
 ---

@@ -1,4 +1,4 @@
-# <img src="./art/icons/icon16.png" alt="Friday Night Funkin'" width="24" /> Funkin' Flora
+# <img src="./art/icons/icon16.png" alt="Friday Night Funkin'" width="24" /> funkin.lua
 
 > [!NOTE]  
 > This only works for LÖVE 12.0 and above, you can download it from the main [LÖVE GitHub Repository](https://github.com/love2d/love) [Actions](https://github.com/love2d/love/actions).

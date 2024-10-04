@@ -1,9 +1,9 @@
 function love.conf(t)
-    t.identity = "funkin-flora"
+    t.identity = "funkin.lua"
     t.version = "12.0"
     t.console = false
 
-    t.window.title = "Funkin' Flora"
+    t.window.title = "funkin.lua"
     
     t.window.width = 1152
     t.window.height = 648

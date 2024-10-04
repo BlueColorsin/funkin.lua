@@ -1,0 +1,25 @@
+{
+    "title": "Test",
+
+    "icon": "bf-pixel",
+    "color": "#FFFFFF",
+
+    "variants": ["base"],
+    "difficulties": ["normal"],
+
+    "bpm": 150,
+    "timeSignature": "4/4",
+
+    "artist": "MtH",
+    "charter": "MtH",
+
+    "characters": {
+        "opponent": "bf-pixel",
+        "spectator": "gf",
+        "player": "bf"
+    },
+    "uiSkin": "base",
+    "scrollSpeed": {
+        "normal": 2.7
+    }
+}

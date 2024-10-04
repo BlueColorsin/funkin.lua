@@ -23,7 +23,7 @@ end
 function MusicBeatState:update(dt)
     MusicBeatState.super.update(self, dt)
     if self.increaseConductorTime then
-        self.attachedConductor.rawTime = self.attachedConductor.rawTime + dt
+        self.attachedConductor.rawTime = self.attachedConductor.rawTime + (dt * 1000.0)
     end
 end
 

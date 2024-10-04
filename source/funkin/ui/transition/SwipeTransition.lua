@@ -11,7 +11,7 @@ local SwipeTransition = BaseTransition:extend("SwipeTransition", ...)
 function SwipeTransition:startIn()
     local canContinue = InstantTransition.super.startIn(self)
     if canContinue then
-        local duration = 0.7
+        local duration = 0.6
 
         ---
         --- @type flora.display.Sprite
@@ -48,7 +48,7 @@ end
 function SwipeTransition:startOut()
     local canContinue = InstantTransition.super.startOut(self)
     if canContinue then
-        local duration = 0.7
+        local duration = 0.6
 
         ---
         --- @type flora.display.Sprite

@@ -1,5 +1,5 @@
 ---
---- @class funkin.states.MusicBeatSubstate : flora.display.SubState
+--- @class funkin.substates.MusicBeatSubstate : flora.display.SubState
 ---
 local MusicBeatSubstate = SubState:extend("MusicBeatSubstate", ...)
 
@@ -17,7 +17,7 @@ end
 function MusicBeatSubstate:update(dt)
     MusicBeatSubstate.super.update(self, dt)
     if self.increaseConductorTime then
-        self.attachedConductor.rawTime = self.attachedConductor.rawTime + dt
+        self.attachedConductor.rawTime = self.attachedConductor.rawTime + (dt * 1000)
     end
 end
 

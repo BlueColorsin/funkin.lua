@@ -19,6 +19,10 @@ function MainMenuState:ready()
     -- yes keep updating actually
     self.persistentUpdate = true
 
+    if not Flora.sound.music.playing then
+        Tools.playMusic(Paths.music("freakyMenu"))
+    end
+
     Discord.changePresence({
         state = "In the Main Menu",
         details = "Selecting nothing"
@@ -85,7 +89,7 @@ function MainMenuState:ready()
     ---
     --- @type flora.display.Text
     ---
-    self.versionTxt = Text:new(5, Flora.gameHeight - 5, 0, "Friday Night Funkin' v0.5.0\nFunkin' Flora v0.1.0")
+    self.versionTxt = Text:new(5, Flora.gameHeight - 5, 0, "funkin.lua v0.1.0\nFriday Night Funkin' v0.5.0")
     self.versionTxt:setFormat(Paths.font("vcr"), 16)
     self.versionTxt:setBorderStyle("outline", Color.BLACK, 1)
     self.versionTxt.y = self.versionTxt.y - self.versionTxt.height

@@ -98,11 +98,11 @@ local TimerManager = require("flora.plugins.TimerManager")
 local TweenManager = require("flora.plugins.TweenManager")
 
 ---
---- @class Flora
+--- @class flora.Flora
 ---
 --- The main class used to initialize Flora
 ---
-Flora = Class:extend()
+Flora = Class:extend("Flora", ...)
 
 ---
 --- The amount of time passed since the last frame. (in seconds)
@@ -110,6 +110,13 @@ Flora = Class:extend()
 --- @type number
 ---
 Flora.deltaTime = 0.0
+
+---
+--- Controls whether or not the game window is in fullscreen.
+---
+--- @type boolean
+---
+Flora.fullscreen = nil
 
 --- 
 --- A helper object for configuring Flora.
@@ -282,6 +289,8 @@ function Flora.start()
     Flora.save = Save:new()
     Flora.save:bind("flora")
 
+    Flora._fullscreen = love.window.getFullscreen()
+
     if Flora.save.data.volume then
         Flora.sound.volume = Flora.save.data.volume
     end
@@ -447,6 +456,34 @@ function Flora.switchState(newState)
     end)
 end
 
+---
+--- Switches to a given State, and disposes of the old one.
+--- 
+--- @param  newState  flora.display.State  The new State to switch to.
+---
+function Flora.forceSwitchState(newState)
+    if Flora.config.debugMode then
+        Flora.log:verbose("Running state outro on current state")
+    end
+    Flora._requestedState = newState
+end
+
+---
+--- Resets the current state with the given parameters.
+---
+function Flora.resetState(...)
+    local cl = require(Flora.state.__path)
+    Flora.switchState(cl:new(...))
+end
+
+---
+--- Resets the current state with the given parameters.
+---
+function Flora.forceResetState(...)
+    local cl = require(Flora.state.__path)
+    Flora._requestedState = cl:new(...)
+end
+
 function Flora.resizeGame(width, height)
     local oldWidth = Flora.gameWidth
     local oldHeight = Flora.gameHeight
@@ -477,6 +514,12 @@ end
 -----------------------
 --- [ Private API ] ---
 -----------------------
+
+---
+--- @protected
+--- @type boolean
+---
+Flora._fullscreen = nil
 
 ---
 --- @protected
@@ -511,6 +554,24 @@ function Flora._switchState()
         Flora.log:success("State switched successfully")
     end
     Flora.signals.postStateSwitch:emit()
+end
+
+---
+--- @protected
+---
+function Flora.get_fullscreen()
+    return Flora._fullscreen
+end
+
+---
+--- @protected
+---
+function Flora.set_fullscreen(val)
+    Flora._fullscreen = val
+    if love.window then
+        love.window.setFullscreen(val, "desktop")
+    end
+    return Flora._fullscreen
 end
 
 ---

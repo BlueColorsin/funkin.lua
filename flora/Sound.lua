@@ -296,7 +296,7 @@ end
 function Sound:set_volume(val)
     self._volume = math.clamp(val, 0.0, 1.0)
     if self.source then
-        self.source:setVolume(math.clamp(self.volume * Flora.sound.volume, 0.0, 1.0))
+        self.source:setVolume(math.clamp(self.volume * Flora.sound.volume * (not Flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
     end
     return self._volume
 end

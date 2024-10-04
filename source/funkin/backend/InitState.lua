@@ -9,6 +9,11 @@ Discord = Flora.import("funkin.api.Discord")
 Paths = Flora.import("funkin.assets.Paths")
 
 ---
+--- @type funkin.utils.Tools
+---
+Tools = Flora.import("funkin.utils.Tools")
+
+---
 --- @type funkin.substates.MusicBeatSubstate
 ---
 MusicBeatSubstate = Flora.import("funkin.substates.MusicBeatSubstate")
@@ -44,9 +49,19 @@ Conductor = Flora.import("funkin.plugins.Conductor")
 Settings = Flora.import("funkin.data.Settings")
 
 ---
+--- @type funkin.data.SongDatabase
+---
+SongDatabase = Flora.import("funkin.data.SongDatabase")
+
+---
 --- @type funkin.input.Controls
 ---
 Controls = Flora.import("funkin.input.Controls")
+
+---
+--- @type funkin.plugins.KeybindManager
+---
+KeybindManager = Flora.import("funkin.plugins.KeybindManager")
 
 ---
 --- @type funkin.ui.alphabet.Alphabet
@@ -73,6 +88,15 @@ InitState._lastState = ""
 function InitState:ready()
     InitState.super.ready(self)
 
+    Discord.init()
+    Sprite.defaultAntialiasing = true
+    
+    Settings.init()
+    Controls.init()
+
+    SongDatabase.updateLevelList()
+    SongDatabase.updateSongList()
+
     if Flora.soundTray then
         Flora.soundTray:dispose()
     end
@@ -87,14 +111,11 @@ function InitState:ready()
         InitState._lastState = Flora.state.__class
     end)
 
-    Discord.init()
-    Sprite.defaultAntialiasing = true
-    
-    Settings.init()
-    Controls.init()
-
     Conductor.instance = Conductor:new()
     Flora.plugins:add(Conductor.instance)
+
+    KeybindManager.instance = KeybindManager:new()
+    Flora.plugins:add(KeybindManager.instance)
 
     -- Flora.switchState(Preloader:new())
     Flora.switchState(TitleState:new())

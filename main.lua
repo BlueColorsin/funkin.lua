@@ -3,7 +3,7 @@
 ----------------------
 
 ---
---- @type Flora
+--- @type flora.Flora
 ---
 Flora = require("flora")
 
@@ -14,7 +14,7 @@ Flora = require("flora")
 -- found in conf.lua in the project root        --
 --------------------------------------------------
 
--- Flora.config.debugMode = true
+Flora.config.debugMode = true
 Flora.config.maxFPS = 0
 
 Flora.config.gameWidth = 1280

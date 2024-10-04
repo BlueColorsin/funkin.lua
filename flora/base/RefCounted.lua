@@ -60,7 +60,7 @@ function RefCounted:set_references(val)
     if self._references <= 0 then
         self:dispose()
         if Flora.config.debugMode then
-            Flora.log:print("A RefCounted object has no references, disposing!")
+            Flora.log:print("A " .. self.__class .. " object has no references, disposing!")
         end
     end
     return self._references

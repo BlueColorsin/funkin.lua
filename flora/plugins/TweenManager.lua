@@ -27,11 +27,11 @@ function TweenManager:constructor()
 end
 
 function TweenManager:reset()
-    for i = 1, self.list.length do
+    while self.list.length > 0 do
         ---
-        --- @type flora.tweens.tween
+        --- @type flora.tweens.Tween
         ---
-        local tween = self.list.members[i]
+        local tween = self.list.members[1]
         tween:dispose()
     end
 end

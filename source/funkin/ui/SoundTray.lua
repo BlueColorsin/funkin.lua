@@ -7,6 +7,10 @@ local SoundTray = BaseSoundTray:extend("SoundTray", ...)
 
 function SoundTray:constructor()
     SoundTray.super.constructor(self)
+
+    self.volumeUpKeys = Controls.list.VOLUME_UP.keys
+    self.volumeDownKeys = Controls.list.VOLUME_DOWN.keys
+    self.volumeMuteKeys = Controls.list.VOLUME_MUTE.keys
     
     self.box = love.graphics.newImage(Paths.image("volumebox", "images/volume"))
     self.box:setFilter("linear", "linear")
