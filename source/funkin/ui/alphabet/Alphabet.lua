@@ -83,7 +83,7 @@ function Alphabet:constructor(x, y, text, type, alignment, size)
     --- @protected
     --- @type string
     ---
-    self._text = text
+    self._text = text and text or ""
     
     ---
     --- @protected
@@ -103,8 +103,8 @@ end
 function Alphabet:update(dt)
     if self.isMenuItem then
         local scaledY = self.targetY * 1.3
-        x = math.lerp(x, self.textOffset.x + (self.targetY * self.menuSpacing.x) + 90, dt * 9.6);
-        y = math.lerp(y, self.textOffset.y + (scaledY * self.menuSpacing.y) + (Flora.gameHeight * 0.45), dt * 9.6);
+        self.x = math.lerp(self.x, self.textOffset.x + (self.targetY * self.menuSpacing.x) + 90, dt * 9.6)
+        self.y = math.lerp(self.y, self.textOffset.y + (scaledY * self.menuSpacing.y) + (Flora.gameHeight * 0.45), dt * 9.6)
     end
     Alphabet.super.update(self, dt)
 end

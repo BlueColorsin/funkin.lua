@@ -130,4 +130,28 @@ function string.charCodeAt(str, pos)
     return string.byte(string.charAt(str, pos))
 end
 
+--- Pads a given string with a given character
+--- (default: whitespace) up to a certain length
+--- on the left side of the string.
+---
+--- @param  str     string   The string to pad.
+--- @param  length  integer  The length to pad the string to.
+--- @param  char    string   The character to pad the string with. (default: whitespace)
+---
+function string.lpad(str, length, char)
+    return string.rep(char or ' ', length - #str) .. str
+end
+
+--- Pads a given string with a given character
+--- (default: whitespace) up to a certain length
+--- on the right side of the string.
+---
+--- @param  str     string   The string to pad.
+--- @param  length  integer  The length to pad the string to.
+--- @param  char    string   The character to pad the string with. (default: whitespace)
+---
+function string.rpad(str, length, char)
+    return str .. string.rep(char or ' ', length - #str)
+end
+
 return {}

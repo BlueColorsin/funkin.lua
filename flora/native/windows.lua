@@ -154,23 +154,23 @@ Native.cursorType = {
 	PERSON = 32672
 }
 Native.consoleColor = {
-	black = 0,
-	dark_blue = 1,
-	dark_green = 2,
-	dark_cyan = 3,
-	dark_red = 4,
-	dark_magenta = 5,
-	dark_yellow = 6,
-	light_gray = 7,
-	gray = 8,
-	blue = 9,
-	green = 10,
-	cyan = 11,
-	red = 12,
-	magenta = 13,
-	yellow = 14,
-	white = 15,
-	none = -1
+	BLACK = 0,
+	DARK_BLUE = 1,
+	DARK_GREEN = 2,
+	DARK_CYAN = 3,
+	DARK_RED = 4,
+	DARK_MAGENTA = 5,
+	DARK_YELLOW = 6,
+	LIGHT_GRAY = 7,
+	GRAY = 8,
+	BLUE = 9,
+	GREEN = 10,
+	CYAN = 11,
+	RED = 12,
+	MAGENTA = 13,
+	YELLOW = 14,
+	WHITE = 15,
+	NONE = -1
 }
 Native.STD_INPUT_HANDLE = ffi.cast("DWORD", -10)
 Native.STD_OUTPUT_HANDLE = ffi.cast("DWORD", -11)
@@ -204,11 +204,11 @@ function Native.setDarkMode(enable)
 end
 
 function Native.setConsoleColors(fg_color, bg_color)
-	if fg_color == nil or fg_color == Native.consoleColor.none then
-		fg_color = Native.consoleColor.light_gray
+	if fg_color == nil or fg_color == Native.consoleColor.NONE then
+		fg_color = Native.consoleColor.LIGHT_GRAY
 	end
-	if bg_color == nil or bg_color == Native.consoleColor.none then
-		bg_color = Native.consoleColor.black
+	if bg_color == nil or bg_color == Native.consoleColor.NONE then
+		bg_color = Native.consoleColor.BLACK
 	end
 	local console = ffi.C.GetStdHandle(Native.STD_OUTPUT_HANDLE)
 	ffi.C.SetConsoleTextAttribute(console, (bg_color * 16) + fg_color)

@@ -3,6 +3,13 @@
 > [!NOTE]  
 > This only works for LÖVE 12.0 and above, you can download it from the main [LÖVE GitHub Repository](https://github.com/love2d/love) [Actions](https://github.com/love2d/love/actions).
 
+> [!IMPORTANT]  
+> To clone this repo, use the following command:
+> ```bat
+> git clone https://github.com/swordcube/funkin.lua funkin-lua
+> ```
+> Otherwise [LÖVE](https://github.com/love2d/love) will most likely have trouble opening the project!
+
 A modding framework for Friday Night Funkin', made *entirely* in the [Lua](https://www.lua.org/) programming language via [LÖVE](github.com/love2d/love)!
 
 If you prefer [Lua](https://www.lua.org/) or come from another VSRG with [Lua](https://www.lua.org/) scripting support (i.e. [NotITG](https://www.noti.tg/)), and want to have a go at modding Funkin', you could try this project out!

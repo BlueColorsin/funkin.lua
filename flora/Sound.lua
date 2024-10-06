@@ -106,7 +106,7 @@ end
 --- @return flora.Sound
 ---
 function Sound:load(data, stream)
-    stream = stream and stream or true
+    stream = stream or true
 
     if self.source then
         self.source:release()
