@@ -1,4 +1,4 @@
-local Font = require("Flora.assets.Font")
+local Font = require("flora.assets.Font")
 
 ---
 --- A sprite that can render text to the screen.

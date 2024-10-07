@@ -95,7 +95,7 @@ function Alphabet:constructor(x, y, text, type, alignment, size)
     --- @protected
     --- @type love.SpriteBatch
     ---
-    self._batch = love.graphics.newSpriteBatch(Paths.getSparrowAtlas(self._type, "images/menus/fonts").texture.image, nil, "stream")
+    --self._batch = love.graphics.newSpriteBatch(Paths.getSparrowAtlas(self._type, "images/menus/fonts").texture.image, nil, "stream")
 
     self:set_type(self._type)
 end
@@ -109,6 +109,7 @@ function Alphabet:update(dt)
     Alphabet.super.update(self, dt)
 end
 
+--[[
 function Alphabet:draw()
     for i = 1, self.length do
         local glyph = self.members[i]
@@ -161,6 +162,7 @@ function Alphabet:dispose()
     self._batch:release()
     self._batch = nil
 end
+]]--
 
 -----------------------
 --- [ Private API ] ---
@@ -273,7 +275,7 @@ end
 ---
 function Alphabet:set_type(val)
     self._type = val
-    self._batch:setTexture(Paths.getSparrowAtlas(self._type, "images/menus/fonts").texture.image)
+    --self._batch:setTexture(Paths.getSparrowAtlas(self._type, "images/menus/fonts").texture.image)
 
     self:updateText(self._text, true)
     self:updateSize(self._size)

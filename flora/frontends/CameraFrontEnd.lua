@@ -1,5 +1,5 @@
 local color = require("flora.utils.Color")
-local camera = require("flora.display.camera")
+local camera = require("flora.display.Camera")
 
 ---
 --- Accessed via `flora.cameras`.
