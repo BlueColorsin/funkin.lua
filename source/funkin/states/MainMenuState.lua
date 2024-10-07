@@ -1,4 +1,9 @@
 ---
+--- @type funkin.objects.game.HealthIcon
+---
+local HealthIcon = Flora.import("funkin.objects.game.HealthIcon")
+
+---
 --- @type funkin.objects.ui.mainmenu.MainMenuList
 ---
 local MainMenuList = Flora.import("funkin.objects.ui.mainmenu.MainMenuList")
@@ -96,6 +101,11 @@ function MainMenuState:ready()
     self.versionTxt.scrollFactor:set()
     self:add(self.versionTxt)
 
+    for i = 1, 10 do
+        local balls = HealthIcon:new("gf", false)
+        balls.scrollFactor:set()
+        self:add(balls)
+    end
     Flora.camera:follow(self.camFollow, nil, 0.06)
 end
 

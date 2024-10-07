@@ -284,6 +284,7 @@ function Sprite:setGraphicSize(width, height)
 end
 
 function Sprite:update(dt)
+    Sprite.super.update(self, dt)
     self.animation:update(dt)
 end
 

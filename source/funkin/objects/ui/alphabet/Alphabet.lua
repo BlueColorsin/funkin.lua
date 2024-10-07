@@ -101,12 +101,12 @@ function Alphabet:constructor(x, y, text, type, alignment, size)
 end
 
 function Alphabet:update(dt)
-    if self.isMenuItem then
-        local scaledY = self.targetY * 1.3
-        self.x = math.lerp(self.x, self.textOffset.x + (self.targetY * self.menuSpacing.x) + 90, dt * 9.6)
-        self.y = math.lerp(self.y, self.textOffset.y + (scaledY * self.menuSpacing.y) + (Flora.gameHeight * 0.45), dt * 9.6)
-    end
-    Alphabet.super.update(self, dt)
+    -- if self.isMenuItem then
+    --     local scaledY = self.targetY * 1.3
+    --     self.x = math.lerp(self.x, self.textOffset.x + (self.targetY * self.menuSpacing.x) + 90, dt * 9.6)
+    --     self.y = math.lerp(self.y, self.textOffset.y + (scaledY * self.menuSpacing.y) + (Flora.gameHeight * 0.45), dt * 9.6)
+    -- end
+    -- Alphabet.super.update(self, dt)
 end
 
 function Alphabet:draw()
@@ -118,6 +118,8 @@ function Alphabet:draw()
     if self._cameras then
         Flora.cameras.defaultCameras = self._cameras
     end
+    local cw = self.width
+    local ch = self.height
     local batchTex = self._batch:getTexture()
     for i = 1, #Flora.cameras.defaultCameras do
         ---
@@ -125,11 +127,11 @@ function Alphabet:draw()
         ---
         local cam = Flora.cameras.defaultCameras[i]
 
-        local otx = self.origin.x * (self.width / math.abs(self.scale.x))
-        local oty = self.origin.y * (self.height / math.abs(self.scale.y))
+        local otx = self.origin.x * (cw / math.abs(self.scale.x))
+        local oty = self.origin.y * (ch / math.abs(self.scale.y))
 
-        local ox = self.origin.x * self.width
-        local oy = self.origin.y * self.height
+        local ox = self.origin.x * cw
+        local oy = self.origin.y * ch
 
         local rx = self.x + ox
         local ry = self.y + oy
