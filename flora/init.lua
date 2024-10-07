@@ -409,8 +409,18 @@ function Flora.start()
     if Flora.config.debugMode then
         Flora.log:success("Started engine successfully")
     end
-    love.profiler = require("profiler")
-    love.profiler:start('once')
+    love.args = {}
+    if arg then
+        for i = 1, #arg do
+            if arg[i] == "-profile" or arg[i] == "--profile" then
+                table.insert(love.args, "profile")
+            end
+        end
+    end
+    if table.contains(love.args, "profile") then
+        love.profiler = require("profiler")
+        love.profiler:start('once')
+    end
 end
 
 function Flora.preUpdate(dt)
@@ -707,8 +717,10 @@ function love.quit()
         return true
     end
     lily.quit()
-    love.profiler:stop()
-    love.profiler:writeReport("profiler_report.txt")
+    if table.contains(love.args, "profile") then
+        love.profiler:stop()
+        love.profiler:writeReport("profiler_report.txt")
+    end
     return false
 end
 
