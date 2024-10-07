@@ -88,7 +88,6 @@ function AlphabetGlyph.convert(char)
     return converted and converted or char
 end
 
---[[
 function AlphabetGlyph:draw()
     if not self.frames or not self.frame or not self.frame.quad or self.alpha <= 0 then
         return
@@ -141,7 +140,6 @@ function AlphabetGlyph:dispose()
 	self.parent = nil
     AlphabetGlyph.super.dispose(self)
 end
-]]--
 
 -----------------------
 --- [ Private API ] ---
