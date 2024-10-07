@@ -1,4 +1,14 @@
 ---
+--- @type funkin.data.Cache
+---
+Cache = Flora.import("funkin.data.Cache")
+
+---
+--- @type funkin.data.Constants
+---
+Constants = Flora.import("funkin.data.Constants")
+
+---
 --- @type funkin.api.Discord
 ---
 Discord = Flora.import("funkin.api.Discord")
@@ -19,19 +29,19 @@ Tools = Flora.import("funkin.utils.Tools")
 MusicBeatSubstate = Flora.import("funkin.substates.MusicBeatSubstate")
 
 ---
---- @type funkin.ui.transition.BaseTransition
+--- @type funkin.objects.ui.transition.BaseTransition
 ---
-BaseTransition = Flora.import("funkin.ui.transition.BaseTransition")
+BaseTransition = Flora.import("funkin.objects.ui.transition.BaseTransition")
 
 ---
---- @type funkin.ui.transition.InstantTransition
+--- @type funkin.objects.ui.transition.InstantTransition
 ---
-InstantTransition = Flora.import("funkin.ui.transition.InstantTransition")
+InstantTransition = Flora.import("funkin.objects.ui.transition.InstantTransition")
 
 ---
---- @type funkin.ui.transition.SwipeTransition
+--- @type funkin.objects.ui.transition.SwipeTransition
 ---
-SwipeTransition = Flora.import("funkin.ui.transition.SwipeTransition")
+SwipeTransition = Flora.import("funkin.objects.ui.transition.SwipeTransition")
 
 ---
 --- @type funkin.states.MusicBeatState
@@ -64,9 +74,9 @@ Controls = Flora.import("funkin.input.Controls")
 KeybindManager = Flora.import("funkin.plugins.KeybindManager")
 
 ---
---- @type funkin.ui.alphabet.Alphabet
+--- @type funkin.objects.ui.alphabet.Alphabet
 ---
-Alphabet = Flora.import("funkin.ui.alphabet.Alphabet")
+Alphabet = Flora.import("funkin.objects.ui.alphabet.Alphabet")
 
 ---
 --- @type funkin.Preloader
@@ -100,11 +110,11 @@ function InitState:ready()
     if Flora.soundTray then
         Flora.soundTray:dispose()
     end
-    Flora.soundTray = Flora.import("funkin.ui.SoundTray"):new()
+    Flora.soundTray = Flora.import("funkin.objects.ui.SoundTray"):new()
 
     Flora.signals.preStateCreate:connect(function()
         if Flora.state.__class ~= InitState._lastState then
-            Paths.clearCache()
+            Cache.clear()
         end
     end)
     Flora.signals.postStateSwitch:connect(function()

@@ -18,6 +18,14 @@ function AnimationController:constructor(parent)
     --- The list of added animations.
     ---
     self.animations = {}
+
+    ---
+    --- The total number of frames in the parent
+    --- sprite's texture.
+    --- 
+    --- @type integer
+    ---
+    self.numFrames = nil
     
     ---
     --- The name of the currently playing animation.
@@ -128,7 +136,7 @@ function AnimationController:add(name, frames, fps, loop)
         return
     end
     local datas = {}
-    for _, num in ipairs(frames) do
+    for _, num in pairs(frames) do
         table.insert(datas, atlas.frames[num])
     end
     local anim = AnimationData:new(name, datas, fps, loop and loop or true)
@@ -256,11 +264,10 @@ function AnimationController:play(name, force, reversed, frame)
     self.curAnim = self.animations[name]
     self.curAnim.curFrame = frame and frame or 1
     
-    self.parent.frame = self.curAnim.frames[self.curAnim.curFrame]
-
     if self.parent == nil or self.curAnim == nil or self.curAnim.frames == nil or self.curAnim.frames[1] == nil then
         return false
     end
+    self.parent.frame = self.curAnim.frames[self.curAnim.curFrame]
     return true
 end
 
@@ -280,6 +287,20 @@ function AnimationController:setOffset(name, x, y)
         return
     end
     anim.offset:set(x, y)
+end
+
+-----------------------
+--- [ Private API ] ---
+-----------------------
+
+---
+--- @protected
+---
+function AnimationController:get_numFrames()
+    if self.parent then
+        return self.parent.numFrames
+    end
+    return 0.0
 end
 
 return AnimationController

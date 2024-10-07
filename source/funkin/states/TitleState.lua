@@ -86,7 +86,7 @@ function TitleState:ready()
     self:add(self.ngSpr)
 
     ---
-    --- @type funkin.ui.alphabet.Alphabet
+    --- @type funkin.objects.ui.alphabet.Alphabet
     ---
     self.introText = Alphabet:new(0, 200, "", "bold", "center", 1)
     self.introText:screenCenter(Axes.X)

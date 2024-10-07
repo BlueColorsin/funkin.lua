@@ -43,6 +43,14 @@ function Sprite:constructor(x, y, texture)
     self.texture = nil
 
     ---
+    --- The total number of frames in the parent
+    --- sprite's texture.
+    --- 
+    --- @type integer
+    ---
+    self.numFrames = nil
+
+    ---
     --- The current frame to used to render this sprite.
     ---
     --- @type flora.display.animation.FrameData?
@@ -83,6 +91,22 @@ function Sprite:constructor(x, y, texture)
     --- @type flora.math.Vector2
     ---
     self.scrollFactor = Vector2:new(1, 1)
+
+    ---
+    --- Controls whether or not this sprite is
+    --- flipped on the X axis.
+    ---
+    --- @type boolean
+    ---
+    self.flipX = false
+
+    ---
+    --- Controls whether or not this sprite is
+    --- flipped on the Y axis.
+    ---
+    --- @type boolean
+    ---
+    self.flipY = false
 
     ---
     --- The rotation of this sprite. (in degrees)
@@ -146,13 +170,15 @@ function Sprite:constructor(x, y, texture)
     --- @protected
     --- @type flora.display.animation.FrameCollection?
     ---
-    self._frames = texture and FrameCollection.fromTexture(Flora.assets:loadTexture(texture)) or nil
+    self._frames = nil
 
     ---
     --- @protected
     --- @type flora.display.animation.FrameData?
     ---
     self._frame = nil
+
+    self:loadTexture(texture)
 end
 
 ---
@@ -166,7 +192,9 @@ end
 --- @return flora.display.Sprite
 ---
 function Sprite:loadTexture(texture, animated, frameWidth, frameHeight)
+    animated = animated ~= nil and animated or false
     texture = Flora.assets:loadTexture(texture)
+
     if not texture then
         return self
     end
@@ -233,11 +261,26 @@ function Sprite:makeSolid(width, height, color)
     return self
 end
 
+---
+--- @param  width?   number
+--- @param  height?  number
+---
 function Sprite:setGraphicSize(width, height)
-    self.scale:set(
-        width / self.frameWidth,
-        height / self.frameHeight
-    )
+    width = width or 0.0
+    height = height or 0.0
+
+    if width <= 0 and height <= 0 then
+        return
+    end
+    local newScaleX = width / self.frameWidth
+    local newScaleY = height / self.frameHeight
+    self.scale:set(newScaleX, newScaleY)
+
+    if width <= 0 then
+        self.scale.x = newScaleY
+    elseif height <= 0 then
+        self.scale.y = newScaleX
+    end
 end
 
 function Sprite:update(dt)
@@ -245,7 +288,7 @@ function Sprite:update(dt)
 end
 
 function Sprite:draw()
-    if not self.frames or not self.frame or self.alpha <= 0 then
+    if not self.frames or not self.frame or not self.frame.quad or self.alpha <= 0 then
         return
     end
     local filter = self.antialiasing and "linear" or "nearest"
@@ -270,8 +313,8 @@ function Sprite:draw()
         local rx = (self.x - self.offset.x) + ox
         local ry = (self.y - self.offset.y) + oy
 
-        local offx = ((curAnim and curAnim.offset.x or 0.0) + self.frameOffset.x) * (self.scale.x < 0 and -1 or 1)
-        local offy = ((curAnim and curAnim.offset.y or 0.0) + self.frameOffset.y) * (self.scale.x < 0 and -1 or 1)
+        local offx = ((curAnim and curAnim.offset.x or 0.0) - self.frameOffset.x) * (self.scale.x < 0 and -1 or 1)
+        local offy = ((curAnim and curAnim.offset.y or 0.0) - self.frameOffset.y) * (self.scale.x < 0 and -1 or 1)
 
         offx = offx - (self.frame.offset.x * (self.scale.x < 0 and -1 or 1))
         offy = offy - (self.frame.offset.y * (self.scale.y < 0 and -1 or 1))
@@ -282,9 +325,12 @@ function Sprite:draw()
         rx = rx + ((offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle)
 	    ry = ry + ((offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle)
 
+        local sx = self.scale.x * (self.flipX and -1.0 or 1.0)
+        local sy = self.scale.y * (self.flipY and -1.0 or 1.0)
+
         cam:drawFrame(
             self.texture, self.frame, rx, ry,
-            self.frame.width * self.scale.x, self.frame.height * self.scale.y,
+            self.frame.width * sx, self.frame.height * sy,
             self.angle, otx, oty, self.tint
         )
     end
@@ -388,6 +434,16 @@ end
 ---
 --- @protected
 ---
+function Sprite:get_numFrames()
+    if self.frames then
+        return self.frames.numFrames
+    end
+    return 0
+end
+
+---
+--- @protected
+---
 function Sprite:set_frame(val)
     self._frame = val
     return self._frame
@@ -397,14 +453,18 @@ end
 --- @protected
 ---
 function Sprite:set_frames(val)
-    if self._frames then
-        self._frames:unreference()
-    end
     if val then
-        val:reference()
-        self.frame = val.frames[1]
+        if self._frames then
+            self._frames:unreference()
+        end
+        self._frames = val
+        self._frames:reference()
+        
+        self.frame = self._frames.frames[1]
+        
+        self.animation.animations = {}
+        self.animation.curAnim = nil
     end
-    self._frames = val
     return self._frames
 end
 

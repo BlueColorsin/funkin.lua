@@ -39,7 +39,10 @@ end
 
 function FrameData:dispose()
 	self.quad:release()
+    self.quad = nil
+
     self.texture:unreference()
+    self.texture = nil
 end
 
 return FrameData

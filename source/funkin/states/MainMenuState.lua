@@ -1,7 +1,7 @@
 ---
---- @type funkin.ui.mainmenu.MainMenuList
+--- @type funkin.objects.ui.mainmenu.MainMenuList
 ---
-local MainMenuList = Flora.import("funkin.ui.mainmenu.MainMenuList")
+local MainMenuList = Flora.import("funkin.objects.ui.mainmenu.MainMenuList")
 
 ---
 --- @class funkin.states.MainMenuState : funkin.states.MusicBeatState
@@ -56,7 +56,7 @@ function MainMenuState:ready()
     self:add(self.camFollow)
     
     ---
-    --- @type funkin.ui.mainmenu.MainMenuList
+    --- @type funkin.objects.ui.mainmenu.MainMenuList
     ---
     self.menuItems = MainMenuList:new()
     self.menuItems:addItem("storymode", "Story Mode", function()
@@ -105,7 +105,7 @@ function MainMenuState:startExitState(newState)
     local duration = 0.4
     for i = 1, self.menuItems.length do
         ---
-        --- @type funkin.ui.mainmenu.MainMenuButton
+        --- @type funkin.objects.ui.mainmenu.MainMenuButton
         ---
         local item = self.menuItems.members[i]
         if i ~= self.menuItems.selectedItem then
@@ -129,6 +129,8 @@ function MainMenuState:update(dt)
     end
 
     if Controls.justPressed.BACK then
+        Flora.sound:play(Paths.sound("cancel", "sounds/menus"))
+        
         local TitleState = Flora.import("funkin.states.TitleState")
         Flora.switchState(TitleState:new())
     end

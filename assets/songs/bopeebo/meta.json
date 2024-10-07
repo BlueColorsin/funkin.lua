@@ -1,0 +1,30 @@
+{
+	"title": "Bopeebo",
+
+	"icon": "dad",
+	"color": "#9271FD",
+
+	"variants": ["erect"],
+	"difficulties": ["easy", "normal", "hard"],
+
+	"bpm": 100,
+	"timeSignature": "4/4",
+
+	"artist": "Kawai Sprite",
+	"charter": "ninjamuffin99 + MtH",
+
+	"characters": {
+		"opponent": "dad",
+		"player": "bf",
+		"spectator": "gf"
+	},
+	"scrollSpeed": {
+		"hard": 1.3,
+		"default": 1
+	},
+
+	"stage": "stage",
+	"uiSkin": "base",
+
+	"generatedBy": "funkin.lua - Chart Converter"
+}

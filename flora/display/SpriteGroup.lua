@@ -16,12 +16,12 @@ function SpriteGroup:constructor(x, y)
 
     self.alpha = nil
 
-    self:init_group()
+    self:initGroup()
 
     self.members = nil
     self.length = nil
 
-    self.direct_alpha = false
+    self.directAlpha = false
 
     ---
     --- @protected
@@ -42,7 +42,7 @@ function SpriteGroup:constructor(x, y)
     self._alpha = 1.0
 end
 
-function SpriteGroup:init_group()
+function SpriteGroup:initGroup()
     ---
     --- @type flora.display.Group
     ---
@@ -152,20 +152,20 @@ end
 --- @param  func     function
 --- @param  recurse  boolean
 ---
-function SpriteGroup:find_min_x()
-    return self.group.length == 0 and self._x or self:_find_min_x_helper()
+function SpriteGroup:findMinX()
+    return self.group.length == 0 and self._x or self:_findMinXHelper()
 end
 
-function SpriteGroup:find_max_x()
-    return self.group.length == 0 and self._x or self:_find_max_x_helper()
+function SpriteGroup:findMaxX()
+    return self.group.length == 0 and self._x or self:_findMaxXHelper()
 end
 
-function SpriteGroup:find_min_y()
-    return self.group.length == 0 and self._y or self:_find_min_y_helper()
+function SpriteGroup:findMinY()
+    return self.group.length == 0 and self._y or self:_findMinYHelper()
 end
 
-function SpriteGroup:find_max_y()
-    return self.group.length == 0 and self._y or self:_find_max_y_helper()
+function SpriteGroup:findMaxY()
+    return self.group.length == 0 and self._y or self:_findMaxYHelper()
 end
 
 function SpriteGroup:dispose()
@@ -189,19 +189,19 @@ end
 ---
 --- @protected
 ---
-function SpriteGroup:_find_min_x_helper()
+function SpriteGroup:_findMinXHelper()
     local value = math.huge
     for i = 1, self.group.length do
         local member = self.group.members[i]
         if member then
-            local min_x = 0.0
+            local minX = 0.0
             if member:is(SpriteGroup) then
-                min_x = member:find_min_x()
+                minX = member:findMinX()
             else
-                min_x = member.x
+                minX = member.x
             end
-            if min_x < value then
-                value = min_x
+            if minX < value then
+                value = minX
             end
         end
     end
@@ -211,19 +211,19 @@ end
 ---
 --- @protected
 ---
-function SpriteGroup:_find_max_x_helper()
+function SpriteGroup:_findMaxXHelper()
     local value = -math.huge
     for i = 1, self.group.length do
         local member = self.group.members[i]
         if member then
-            local max_x = 0.0
+            local maxX = 0.0
             if member:is(SpriteGroup) then
-                max_x = member:find_max_x()
+                maxX = member:findMaxX()
             else
-                max_x = member.x + member.width
+                maxX = member.x + member.width
             end
-            if max_x > value then
-                value = max_x
+            if maxX > value then
+                value = maxX
             end
         end
     end
@@ -233,19 +233,19 @@ end
 ---
 --- @protected
 ---
-function SpriteGroup:_find_min_y_helper()
+function SpriteGroup:_findMinYHelper()
     local value = math.huge
     for i = 1, self.group.length do
         local member = self.group.members[i]
         if member then
-            local min_y = 0.0
+            local minY = 0.0
             if member:is(SpriteGroup) then
-                min_y = member:find_min_y()
+                minY = member:findMinY()
             else
-                min_y = member.y
+                minY = member.y
             end
-            if min_y < value then
-                value = min_y
+            if minY < value then
+                value = minY
             end
         end
     end
@@ -255,19 +255,19 @@ end
 ---
 --- @protected
 ---
-function SpriteGroup:_find_max_y_helper()
+function SpriteGroup:_findMaxYHelper()
     local value = -math.huge
     for i = 1, self.group.length do
         local member = self.group.members[i]
         if member then
-            local max_y = 0.0
+            local maxY = 0.0
             if member:is(SpriteGroup) then
-                max_y = member:find_max_y()
+                maxY = member:findMaxY()
             else
-                max_y = member.y + member.height
+                maxY = member.y + member.height
             end
-            if max_y > value then
-                value = max_y
+            if maxY > value then
+                value = maxY
             end
         end
     end
@@ -293,7 +293,7 @@ end
 ---
 function SpriteGroup:get_width()
     if self.group.length > 0 then
-        return self:_find_max_x_helper() - self:_find_min_x_helper()
+        return self:_findMaxXHelper() - self:_findMinXHelper()
     end
     return 0.0
 end
@@ -303,7 +303,7 @@ end
 ---
 function SpriteGroup:get_height()
     if self.group.length > 0 then
-        return self:_find_max_y_helper() - self:_find_min_y_helper()
+        return self:_findMaxYHelper() - self:_findMinYHelper()
     end
     return 0.0
 end
@@ -373,19 +373,20 @@ end
 --- @protected
 ---
 function SpriteGroup:set_alpha(val)
-    self._alpha = val
+    local factor = (self._alpha > 0) and val / self._alpha or 0
     for i = 1, self.group.length do
         local obj = self.group.members[i]
-        if self.direct_alpha then
+        if self.directAlpha or val <= 0 then
             obj.alpha = val
         else
-            if obj.alpha > 0 or val == 0 then
-                obj.alpha = obj.alpha * val
+            if obj.alpha > 0 or val <= 0 then
+                obj.alpha = obj.alpha * factor
             else
                 obj.alpha = 1 / val
             end
         end
     end
+    self._alpha = val
     return self._alpha
 end
 

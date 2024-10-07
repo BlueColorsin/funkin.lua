@@ -31,7 +31,9 @@ function SongDatabase.updateLevelList()
         local levelData = Json.parse(File.read(Paths.json(levelID, "data/levels")))
         table.insert(SongDatabase.levelList, levelData)
     end
-    Flora.log:verbose("Found " .. #SongDatabase.levelList .. " level" .. (#SongDatabase.levelList ~= 1 and "s" or ""))
+    if Settings.data.verboseLogging then
+        Flora.log:verbose("Found " .. #SongDatabase.levelList .. " level" .. (#SongDatabase.levelList ~= 1 and "s" or ""))
+    end
     return true
 end
 
@@ -57,7 +59,9 @@ function SongDatabase.updateSongList()
             table.insert(SongDatabase.songList, songID)
         end
     end
-    Flora.log:verbose("Found " .. #SongDatabase.songList .. " song" .. (#SongDatabase.songList ~= 1 and "s" or ""))
+    if Settings.data.verboseLogging then
+        Flora.log:verbose("Found " .. #SongDatabase.songList .. " song" .. (#SongDatabase.songList ~= 1 and "s" or ""))
+    end
     return true
 end
 

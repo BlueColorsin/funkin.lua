@@ -16,9 +16,13 @@ end
 
 function KeybindManager:update(dt)
     if Flora.keys.justPressed.F5 then
+        Cache.clear()
+        
         SongDatabase.updateLevelList()
         SongDatabase.updateSongList()
+
         Flora.forceResetState()
+        Flora._switchState() -- immediately switch states to prevent crashes
     end
     if Controls.justPressed.FULLSCREEN then
         Flora.fullscreen = not Flora.fullscreen

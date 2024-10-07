@@ -17,7 +17,7 @@ Discord._updateTimer = 0.0
 function Discord.init()
     DiscordRPC.initialize("1290899086911733771", true)
     DiscordRPC.ready = function(userID, username, discriminator, avatar)
-        Flora.log:verbose("Connected as " .. username .. " (" .. userID .. ")")
+        Flora.log:success("Connected as " .. username .. " (" .. userID .. ")")
     end
     Flora.signals.preUpdate:connect(function()
         DiscordRPC.runCallbacks()

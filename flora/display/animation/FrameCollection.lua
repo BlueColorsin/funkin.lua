@@ -20,6 +20,13 @@ function FrameCollection:constructor(texture, frames)
     --- @type table<flora.display.animation.FrameData>
     ---
 	self.frames = frames and frames or {}
+
+    ---
+    --- The amount of frames in this frame collection.
+    ---
+    --- @type integer
+    ---
+    self.numFrames = nil
 end
 
 function FrameCollection.fromTexture(texture)
@@ -50,6 +57,17 @@ function FrameCollection:dispose()
         frame:dispose()
     end
 	self.frames = nil
+end
+
+-----------------------
+--- [ Private API ] ---
+-----------------------
+
+---
+--- @protected
+---
+function FrameCollection:get_numFrames()
+    return #self.frames
 end
 
 return FrameCollection

@@ -13,7 +13,7 @@ function AnimationData:constructor(name, frames, fps, loop)
     self.name = name
     self.fps = fps ~= nil and fps or 30.0
     self.loop = loop
-    self.curFrame = 0
+    self.curFrame = 1
     self.frames = frames
     self.numFrames = #frames
     self.frameCount = self.numFrames

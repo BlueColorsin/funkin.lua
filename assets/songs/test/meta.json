@@ -18,8 +18,9 @@
         "spectator": "gf",
         "player": "bf"
     },
-    "uiSkin": "base",
     "scrollSpeed": {
         "normal": 2.7
-    }
+    },
+    "stage": "stage",
+    "uiSkin": "base"
 }

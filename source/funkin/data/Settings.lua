@@ -18,7 +18,12 @@ Settings.data = {
     ---
     --- @type number
     ---
-    songOffset = 50.0
+    songOffset = 50.0,
+
+    ---
+    --- @type boolean
+    ---
+    verboseLogging = true
 }
 
 function Settings.init()

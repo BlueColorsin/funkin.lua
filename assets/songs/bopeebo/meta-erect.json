@@ -1,0 +1,29 @@
+{
+	"title": "Bopeebo Erect",
+
+	"icon": "dad",
+	"color": "#9271FD",
+
+	"variants": [],
+	"difficulties": ["erect", "nightmare"],
+
+	"bpm": 123,
+	"timeSignature": "4/4",
+	
+	"artist": "Kawai Sprite (feat. Saruky)",
+	"charter": "Jenny Crowe + fabs",
+
+	"characters": {
+		"opponent": "dad",
+		"player": "bf",
+		"spectator": "gf"
+	},
+	"scrollSpeed": {
+		"nightmare": 2.2,
+		"erect": 2.2
+	},
+	"stage": "stage",
+	"uiSkin": "base",
+
+	"generatedBy": "funkin.lua - Chart Converter"
+}

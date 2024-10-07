@@ -75,8 +75,8 @@ end
 --- wraps around to `maximum` when it goes below `minimum`.
 ---
 --- @param  value    number   The number to wrap.
---- @param  minimum  number?  The minimum value that `value` can go-to.
---- @param  maximum  number?  The maximum value that `value` can go-to.
+--- @param  minimum  number   The minimum value that `value` can go-to.
+--- @param  maximum  number   The maximum value that `value` can go-to.
 ---
 function math.wrap(value, minimum, maximum)
     local range = maximum - minimum + 1
