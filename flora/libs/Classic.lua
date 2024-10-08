@@ -22,11 +22,13 @@ function Class:constructor(...) end
 function Class:__index(k)
 	local cls = getmetatable(self)
 	local getterName = "get_" .. k
-	if rawget(self, getterName) then
-		return rawget(self, getterName)()
+	local selfGetter = rawget(self, getterName)
+	local clsGetter = cls[getterName]
+	if selfGetter then
+		return selfGetter()
 	
-	elseif cls[getterName] then
-		return cls[getterName](self)
+	elseif clsGetter then
+		return clsGetter(self)
 	end
 	return cls[k]
 end
@@ -38,11 +40,13 @@ function Class:__newindex(k, v)
 	end
 	local cls = getmetatable(self)
 	local setterName = "set_" .. k
-	if rawget(self, setterName) then
-		return rawget(self, setterName)(v)
+	local selfSetter = rawget(self, setterName)
+	local clsSetter = cls[setterName]
+	if selfSetter then
+		return selfSetter(v)
 	
-	elseif cls[setterName] then
-		cls[setterName](self, v)
+	elseif clsSetter then
+		clsSetter(self, v)
 		return self
 	end
 	return rawset(self, k, v)
