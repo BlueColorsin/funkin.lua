@@ -1,0 +1,3 @@
+[submodule "src/chip"]
+	path = src/chip
+	url = https://github.com/swordcube/chip.lua
