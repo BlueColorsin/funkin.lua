@@ -7,6 +7,8 @@ end
 
 io.stdout:setvbuf("no")
 
+require("flora.libs.autobatch")
+
 require("flora.utils.lua.Math")
 require("flora.utils.lua.String")
 require("flora.utils.lua.Table")
