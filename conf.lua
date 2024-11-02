@@ -4,7 +4,7 @@ function love.conf(t)
     t.console = false
 
     t.window.title = "funkin.lua"
-    
+
     t.window.width = 1152
     t.window.height = 648
 
