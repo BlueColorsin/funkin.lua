@@ -34,7 +34,9 @@ copy "%LOVE_PATH%\SDL2.dll" "../../export/%1/SDL2.dll" > nul
 copy "%LOVE_PATH%\OpenAL32.dll" "../../export/%1/OpenAL32.dll" > nul
 copy "%LOVE_PATH%\mpg123.dll" "../../export/%1/mpg123.dll" > nul
 copy "%LOVE_PATH%\msvcp120.dll" "../../export/%1/msvcp120.dll" > nul
+copy "%LOVE_PATH%\msvcp140.dll" "../../export/%1/msvcp140.dll" > nul
 copy "%LOVE_PATH%\msvcr120.dll" "../../export/%1/msvcr120.dll" > nul
+copy "%LOVE_PATH%\msvcr140.dll" "../../export/%1/msvcr140.dll" > nul
 
 @REM Create final executable
 echo Creating final executable
