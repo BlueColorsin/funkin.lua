@@ -103,6 +103,7 @@ function MainMenuState:ready()
 
     for i = 1, 10 do
         local balls = HealthIcon:new("gf", false)
+        balls.x = i * 30
         balls.scrollFactor:set()
         self:add(balls)
     end
