@@ -57,10 +57,10 @@ rcedit.exe temp.exe --set-icon ..\..\export\%1\icon.ico
 rcedit.exe temp.exe --set-file-version 1.0.0
 rcedit.exe temp.exe --set-product-version 1.0.0
 
-rcedit.exe temp.exe --set-version-string "ProductName" "Friday Night Funkin'"
+rcedit.exe temp.exe --set-version-string "ProductName" "funkin.lua"
 rcedit.exe temp.exe --set-version-string "CompanyName" "swordcube"
 rcedit.exe temp.exe --set-version-string "LegalCopyright" "2024-2024 swordcube"
-rcedit.exe temp.exe --set-version-string "FileDescription" "A port of Friday Night Funkin' to Love2D"
+rcedit.exe temp.exe --set-version-string "FileDescription" "funkin.lua"
 
 copy /b temp.exe + Flora.love "../../export/%1/Funkin.exe" > nul
 

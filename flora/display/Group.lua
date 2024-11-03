@@ -220,7 +220,7 @@ end
 function Group:update(dt)
     for i = 1, self.length do
         local obj = self.members[i]
-        if obj.exists and obj.active then
+        if obj and obj.exists and obj.active then
             obj:update(dt)
         end
     end
@@ -233,7 +233,7 @@ function Group:draw()
     end
     for i = 1, self.length do
         local obj = self.members[i]
-        if obj.exists and obj.visible then
+        if obj and obj.exists and obj.visible then
             obj:draw()
         end
     end

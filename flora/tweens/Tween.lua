@@ -206,14 +206,15 @@ function Tween:cancel()
 end
 
 function Tween:dispose()
-    Tween.super.dispose(self)
     self:stop()
-
+    
     if Flora.config.debugMode then
         Flora.log:verbose("Disposing tweener " .. tostring(self._tweeners))
     end
     self._tweeners:dispose()
     self._tweeners = nil
+    
+    Tween.super.dispose(self)
 end
 
 -----------------------
