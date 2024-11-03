@@ -48,7 +48,7 @@ function HealthIcon:constructor(character, isPlayer)
     ---
     --- @type boolean
     ---
-    self.canBop = true
+    self.canBop = false
 
     ---
     --- Whether this health icon represents the player.

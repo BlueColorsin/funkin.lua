@@ -109,54 +109,6 @@ function Alphabet:update(dt)
     Alphabet.super.update(self, dt)
 end
 
--- function Alphabet:draw()
---     for i = 1, self.length do
---         local glyph = self.members[i]
---         glyph:draw()
---     end
---     local oldDefaultCameras = Flora.cameras.defaultCameras
---     if self._cameras then
---         Flora.cameras.defaultCameras = self._cameras
---     end
---     local cw = self.width
---     local ch = self.height
---     local batchTex = self._batch:getTexture()
---     for i = 1, #Flora.cameras.defaultCameras do
---         ---
---         --- @type flora.display.Camera
---         ---
---         local cam = Flora.cameras.defaultCameras[i]
-
---         local otx = self.origin.x * (cw / math.abs(self.scale.x))
---         local oty = self.origin.y * (ch / math.abs(self.scale.y))
-
---         local ox = self.origin.x * cw
---         local oy = self.origin.y * ch
-
---         local rx = self.x + ox
---         local ry = self.y + oy
-
---         local offx = 0.0
---         local offy = 0.0
-
---         offx = offx - (cam.scroll.x * self.scrollFactor.x)
---         offy = offy - (cam.scroll.y * self.scrollFactor.y)
-
---         rx = rx + (offx * math.abs(self.scale.x)) * self._cosAngle + (offy * math.abs(self.scale.y)) * -self._sinAngle
--- 	    ry = ry + (offx * math.abs(self.scale.x)) * self._sinAngle + (offy * math.abs(self.scale.y)) * self._cosAngle
-
---         local filter = self.antialiasing and "linear" or "nearest"
---         batchTex:setFilter(filter, filter)
-
---         cam:drawSpriteBatch(
---             self._batch, rx, ry,
---             batchTex:getWidth() * self.scale.x, batchTex:getHeight() * self.scale.y,
---             self.angle, otx, oty, Color.WHITE
---         )
---     end
---     Flora.cameras.defaultCameras = oldDefaultCameras
--- end
-
 function Alphabet:dispose()
     Alphabet.super.dispose(self)
 

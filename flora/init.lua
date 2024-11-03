@@ -386,8 +386,6 @@ function Flora.start()
     Flora.gameWidth = Flora.config.gameWidth
     Flora.gameHeight = Flora.config.gameHeight
 
-    Flora._canvas = love.graphics.newCanvas(Flora.gameWidth, Flora.gameHeight)
-
     TimerManager.global = TimerManager:new()
     Flora.plugins:add(TimerManager.global)
 
@@ -515,11 +513,6 @@ function Flora.resizeGame(width, height)
     Flora.gameWidth = width
     Flora.gameHeight = height
 
-    if Flora._canvas then
-        Flora._canvas:release()
-    end
-    Flora._canvas = love.graphics.newCanvas(Flora.gameWidth, Flora.gameHeight)
-
     local ww = love.graphics.getWidth()
     local wh = love.graphics.getHeight()
     Flora.scaleMode:onMeasure(ww, wh)
@@ -534,12 +527,6 @@ end
 --- @type boolean
 ---
 Flora._fullscreen = nil
-
----
---- @protected
---- @type love.Canvas
----
-Flora._canvas = nil
 
 ---
 --- @protected
@@ -596,7 +583,6 @@ function love.update(dt)
         if Flora._requestedState then
             Flora._switchState()
         end
-
         if Flora.preUpdate then
             Flora.preUpdate(dt)
         end
@@ -634,7 +620,6 @@ function love.draw()
             cam:clear()
         end
     end
-    
     if Flora.preDraw then
         Flora.preDraw()
     end
@@ -646,24 +631,16 @@ function love.draw()
     if Flora.state then
         Flora.state:draw()
     end
-    love.graphics.setCanvas(Flora._canvas)
-    
+    if Flora.plugins.drawAbove then
+        Flora.plugins:draw()
+    end
     for i = 1, Flora.cameras.list.length do
         local cam = Flora.cameras.list.members[i]
         if cam and cam.exists and cam.visible then
             cam:draw()
         end
     end
-    if Flora.plugins.drawAbove then
-        Flora.plugins:draw()
-    end
 
-    love.graphics.setCanvas()
-    love.graphics.draw(
-        Flora._canvas,
-        Flora.scaleMode.offset.x, Flora.scaleMode.offset.y, 0,
-        Flora.scaleMode.scale.x, Flora.scaleMode.scale.y
-    )
     if not Flora.mouse.useSystemCursor and Flora.mouse.visible then
         Flora.mouse:draw()
     end

@@ -89,6 +89,11 @@ local Preloader = Flora.import("funkin.Preloader")
 local TitleState = Flora.import("funkin.states.TitleState")
 
 ---
+--- @type funkin.states.MainMenuState
+---
+local MainMenuState = Flora.import("funkin.states.MainMenuState")
+
+---
 --- @class funkin.states.InitState : flora.display.State
 ---
 local InitState = State:extend("InitState", ...)
@@ -99,7 +104,9 @@ function InitState:ready()
     InitState.super.ready(self)
 
     Discord.init()
+
     Sprite.defaultAntialiasing = true
+    Camera.defaultAntialiasing = true
     
     Settings.init()
     Controls.init()

@@ -9,6 +9,8 @@ local Rect2    = require("flora.math.Rect2")
 --- 
 local Camera = Object2D:extend("Camera", ...)
 
+Camera.defaultAntialiasing = false
+
 -- TODO: shake effect
 
 ---
@@ -44,7 +46,7 @@ function Camera:constructor(x, y, width, height)
     --- Whether or not antialiasing is enabled on this camera.
     --- If you have a bunch of pixel-art displayed onto it, leave this off!
     ---
-    self.antialiasing = false
+    self.antialiasing = Camera.defaultAntialiasing
 
     ---
     --- The scroll offset of this camera.
@@ -138,12 +140,6 @@ function Camera:constructor(x, y, width, height)
 
     ---
     --- @protected
-    --- @type love.Canvas
-    ---
-    self._canvas = love.graphics.newCanvas(self.width, self.height)
-
-    ---
-    --- @protected
     --- @type flora.utils.Color
     ---
     self._flashFxColor = Color:new(Color.WHITE)
@@ -213,6 +209,12 @@ function Camera:constructor(x, y, width, height)
     --- @type flora.math.Vector2
     ---
     self._point = Vector2:new()
+
+    ---
+    --- @protected
+    --- @type table<table>
+    ---
+    self._drawQueue = {}
 end
 
 ---
@@ -220,17 +222,12 @@ end
 --- resets it back to just it's background color.
 ---
 function Camera:clear()
-    local prev_canvas = love.graphics.getCanvas()
-    love.graphics.setCanvas(self._canvas)
-    
+    -- TODO: make this do something..maybe?
     local pr, pg, pb, pa = love.graphics.getColor()
     love.graphics.setColor(self.bgColor.r, self.bgColor.g, self.bgColor.b, self.bgColor.a)
-    
-    love.graphics.clear()
+
     love.graphics.rectangle("fill", 0, 0, self.width, self.height)
-    
     love.graphics.setColor(pr, pg, pb, pa)
-    love.graphics.setCanvas(prev_canvas)
 end
 
 function Camera:attach(do_push)
@@ -396,12 +393,8 @@ end
 --- @param  height  number  The new height of this camera.
 ---
 function Camera:resize(width, height)
-    if self._canvas then
-        self._canvas:release()
-    end
     self.width = width
     self.height = height
-    self._canvas = love.graphics.newCanvas(self.width, self.height)
 end
 
 ---
@@ -413,28 +406,23 @@ end
 --- @param  width     number                The width to draw the given texture at. (in pixels)
 --- @param  height    number                The height to draw the given texture at. (in pixels)
 --- @param  angle     number                The rotation to draw the given texture at. (in degrees)
---- @param  origin_x  number                The rotation origin to draw the given texture at. (x axis, in pixels)
---- @param  origin_y  number                The rotation origin to draw the given texture at. (y axis, in pixels)
+--- @param  originX   number                The rotation origin to draw the given texture at. (x axis, in pixels)
+--- @param  originY   number                The rotation origin to draw the given texture at. (y axis, in pixels)
 --- @param  tint      flora.utils.Color     The tint applied to the given texture when drawing it.
 ---
-function Camera:drawTexture(texture, x, y, width, height, angle, origin_x, origin_y, tint)
-    local prev_canvas = love.graphics.getCanvas()
-    love.graphics.setCanvas(self._canvas)
-    
-    local pr, pg, pb, pa = love.graphics.getColor()
-    love.graphics.setColor(tint.r, tint.g, tint.b, tint.a)
-
-    self:attach()
-    
-    love.graphics.draw(
-        texture.image, x, y, math.rad(angle),
-        width / texture.width, height / texture.height,
-        origin_x, origin_y
-    )
-    love.graphics.setColor(pr, pg, pb, pa)
-    love.graphics.setCanvas(prev_canvas)
-
-    self:detach()
+function Camera:drawTexture(texture, x, y, width, height, angle, originX, originY, tint)
+    table.insert(self._drawQueue, {
+        drawType = "texture",
+        texture = texture,
+        x = x,
+        y = y,
+        width = width,
+        height = height,
+        angle = angle,
+        originX = originX,
+        originY = originY,
+        tint = tint
+    })
 end
 
 ---
@@ -447,28 +435,24 @@ end
 --- @param  width     number                             The width to draw the given texture at. (in pixels)
 --- @param  height    number                             The height to draw the given texture at. (in pixels)
 --- @param  angle     number                             The rotation to draw the given texture at. (in degrees)
---- @param  origin_x  number                             The rotation origin to draw the given texture at. (x axis, in pixels)
---- @param  origin_y  number                             The rotation origin to draw the given texture at. (y axis, in pixels)
+--- @param  originX   number                             The rotation origin to draw the given texture at. (x axis, in pixels)
+--- @param  originY   number                             The rotation origin to draw the given texture at. (y axis, in pixels)
 --- @param  tint      flora.utils.Color                  The tint applied to the given texture when drawing it.
 ---
-function Camera:drawFrame(texture, frame, x, y, width, height, angle, origin_x, origin_y, tint)
-    local prev_canvas = love.graphics.getCanvas()
-    love.graphics.setCanvas(self._canvas)
-    
-    local pr, pg, pb, pa = love.graphics.getColor()
-    love.graphics.setColor(tint.r, tint.g, tint.b, tint.a)
-
-    self:attach()
-    
-    love.graphics.draw(
-        texture.image, frame.quad, x, y, math.rad(angle),
-        width / frame.width, height / frame.height,
-        origin_x, origin_y
-    )
-    love.graphics.setColor(pr, pg, pb, pa)
-    love.graphics.setCanvas(prev_canvas)
-
-    self:detach()
+function Camera:drawFrame(texture, frame, x, y, width, height, angle, originX, originY, tint)    
+    table.insert(self._drawQueue, {
+        drawType = "frame",
+        image = texture.image,
+        frame = frame,
+        x = x,
+        y = y,
+        width = width,
+        height = height,
+        angle = angle,
+        originX = originX,
+        originY = originY,
+        tint = tint
+    })
 end
 
 ---
@@ -480,29 +464,23 @@ end
 --- @param  width     number                             The width to draw the given texture at. (in pixels)
 --- @param  height    number                             The height to draw the given texture at. (in pixels)
 --- @param  angle     number                             The rotation to draw the given texture at. (in degrees)
---- @param  origin_x  number                             The rotation origin to draw the given texture at. (x axis, in pixels)
---- @param  origin_y  number                             The rotation origin to draw the given texture at. (y axis, in pixels)
+--- @param  originX   number                             The rotation origin to draw the given texture at. (x axis, in pixels)
+--- @param  originY   number                             The rotation origin to draw the given texture at. (y axis, in pixels)
 --- @param  tint      flora.utils.Color                  The tint applied to the given texture when drawing it.
 ---
-function Camera:drawSpriteBatch(batch, x, y, width, height, angle, origin_x, origin_y, tint)
-    local prev_canvas = love.graphics.getCanvas()
-    love.graphics.setCanvas(self._canvas)
-    
-    local pr, pg, pb, pa = love.graphics.getColor()
-    love.graphics.setColor(tint.r, tint.g, tint.b, tint.a)
-
-    self:attach()
-    
-    local texture = batch:getTexture()
-    love.graphics.draw(
-        batch, x, y, math.rad(angle),
-        width / texture:getWidth(), height / texture:getHeight(),
-        origin_x, origin_y
-    )
-    love.graphics.setColor(pr, pg, pb, pa)
-    love.graphics.setCanvas(prev_canvas)
-
-    self:detach()
+function Camera:drawSpriteBatch(batch, x, y, width, height, angle, originX, originY, tint)
+    table.insert(self._drawQueue, {
+        drawType = "batch",
+        batch = batch,
+        x = x,
+        y = y,
+        width = width,
+        height = height,
+        angle = angle,
+        originX = originX,
+        originY = originY,
+        tint = tint
+    })
 end
 
 ---
@@ -513,28 +491,22 @@ end
 --- @param  width     number                The width to draw the rectangle at. (in pixels)
 --- @param  height    number                The height to draw the rectangle at. (in pixels)
 --- @param  angle     number                The rotation to draw the rectangle at. (in degrees)
---- @param  origin_x  number                The rotation origin to draw the rectangle at. (x axis, in pixels)
---- @param  origin_y  number                The rotation origin to draw the rectangle at. (y axis, in pixels)
+--- @param  originX   number                The rotation origin to draw the rectangle at. (x axis, in pixels)
+--- @param  originY   number                The rotation origin to draw the rectangle at. (y axis, in pixels)
 --- @param  tint      flora.utils.Color     The color applied to the rectangle when drawing it.
 ---
-function Camera:drawRect(x, y, width, height, angle, origin_x, origin_y, color)
-    local prev_canvas = love.graphics.getCanvas()
-    love.graphics.setCanvas(self._canvas)
-    
-    local pr, pg, pb, pa = love.graphics.getColor()
-    love.graphics.setColor(color.r, color.g, color.b, color.a)
-
-    love.graphics.push()
-    love.graphics.translate(-origin_x, -origin_y)
-    love.graphics.rotate(math.rad(angle))
-
-    self:attach(false)
-    love.graphics.rectangle("fill", x, y, width, height)
-    
-    love.graphics.setColor(pr, pg, pb, pa)
-    love.graphics.setCanvas(prev_canvas)
-
-    self:detach()
+function Camera:drawRect(x, y, width, height, angle, originX, originY, color)
+    table.insert(self._drawQueue, {
+        drawType = "rect",
+        x = x,
+        y = y,
+        width = width,
+        height = height,
+        angle = angle,
+        originX = originX,
+        originY = originY,
+        color = color
+    })
 end
 
 function Camera:flash(flashColor, flashDuration, onComplete, force)
@@ -615,9 +587,6 @@ function Camera:update(dt)
 end
 
 function Camera:drawFX()
-    local prev_canvas = love.graphics.getCanvas()
-    love.graphics.setCanvas(self._canvas)
-
     if self._flashFxAlpha > 0.0 then
         local pr, pg, pb, pa = love.graphics.getColor()
         love.graphics.setColor(self._flashFxColor.r, self._flashFxColor.g, self._flashFxColor.b, self._flashFxColor.a * self._flashFxAlpha)
@@ -633,20 +602,41 @@ function Camera:drawFX()
         love.graphics.rectangle("fill", 0, 0, self.width, self.height)
         love.graphics.setColor(pr, pg, pb, pa)
     end
-
-    love.graphics.setCanvas(prev_canvas)
 end
 
 ---
 --- Draws this camera to the screen.
 ---
 function Camera:draw()
+    self:attach()
+    love.graphics.setScissor(
+        Flora.scaleMode.offset.x, Flora.scaleMode.offset.y,
+        Flora.scaleMode.gameSize.x, Flora.scaleMode.gameSize.y
+    )
+    love.graphics.translate(Flora.scaleMode.offset.x, Flora.scaleMode.offset.y)
+    love.graphics.scale(Flora.scaleMode.scale.x, Flora.scaleMode.scale.y)
+    
+    -- love.graphics.draw(self._canvas, self.x, self.y)
+    for i = 1, #self._drawQueue do
+        local drawItem = self._drawQueue[i] --- @type table
+        if drawItem.drawType == "frame" then
+            local tint = drawItem.tint
+            local pr, pg, pb, pa = love.graphics.getColor()
+            love.graphics.setColor(tint.r, tint.g, tint.b, tint.a)
+            
+            love.graphics.draw(
+                drawItem.image, drawItem.frame.quad, drawItem.x, drawItem.y, math.rad(drawItem.angle),
+                drawItem.width / drawItem.frame.width, drawItem.height / drawItem.frame.height,
+                drawItem.originX, drawItem.originY
+            )
+            love.graphics.setColor(pr, pg, pb, pa)
+        end
+    end
+    self._drawQueue = {}
     self:drawFX()
-
-    local filter = self.antialiasing and "linear" or "nearest"
-    self._canvas:setFilter(filter, filter)
-
-    love.graphics.draw(self._canvas, self.x, self.y)
+    
+    love.graphics.setScissor()
+    self:detach()
 end
 
 ---
@@ -656,9 +646,6 @@ function Camera:dispose()
     Camera.super.dispose(self)
 
     self._bgColor = nil
-
-    self._canvas:release()
-    self._canvas = nil
 
     self._fadeFxColor = nil
     self._fadeFxComplete = nil
