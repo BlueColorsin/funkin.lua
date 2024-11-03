@@ -126,7 +126,7 @@ end
 --- @param  name  string
 --- @param  dir   string?
 --- 
---- @return flora.display.animation.AtlasFrames
+--- @return flora.animation.AtlasFrames
 ---
 function Paths.getSparrowAtlas(name, dir)
     local img = Paths.image(name, dir)

@@ -2,7 +2,7 @@
 --- A class that timers can attach to, which manages
 --- updating them.
 ---
---- @class flora.plugins.TimerManager : flora.base.Basic
+--- @class flora.plugins.TimerManager : flora.Basic
 ---
 local TimerManager = Basic:extend("TimerManager", ...)
 

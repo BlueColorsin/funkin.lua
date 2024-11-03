@@ -1,8 +1,8 @@
-local FrameData = require("flora.display.animation.FrameData")
-local FrameCollection = require("flora.display.animation.FrameCollection")
+local FrameData = require("flora.animation.FrameData")
+local FrameCollection = require("flora.animation.FrameCollection")
 
 ---
---- @class flora.display.animation.TileFrames : flora.display.animation.FrameCollection
+--- @class flora.animation.TileFrames : flora.animation.FrameCollection
 ---
 local TileFrames = FrameCollection:extend("TileFrames", ...)
 
@@ -13,7 +13,7 @@ function TileFrames.fromTexture(texture, tileSize)
 	local tex = Flora.assets:loadTexture(texture)
 
     ---
-    --- @type flora.display.animation.TileFrames
+    --- @type flora.animation.TileFrames
     ---
 	local atlas = TileFrames:new(tex)
 

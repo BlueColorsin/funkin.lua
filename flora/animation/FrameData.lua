@@ -1,5 +1,5 @@
 ---
---- @class flora.display.animation.FrameData
+--- @class flora.animation.FrameData
 ---
 local FrameData = Class:extend("FrameData", ...)
 

@@ -1,7 +1,7 @@
 ---
 --- Accessed via `flora.Sound`.
 ---
---- @class flora.frontends.SoundFrontEnd : flora.base.Basic
+--- @class flora.frontends.SoundFrontEnd : flora.Basic
 ---
 local SoundFrontEnd = Basic:extend("SoundFrontEnd", ...)
 

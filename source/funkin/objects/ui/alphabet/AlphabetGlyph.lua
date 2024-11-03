@@ -74,12 +74,6 @@ function AlphabetGlyph:constructor(parent, x, y, char, type)
     ---
     self._char = char
 
-    ---
-    --- @protected
-    --- @type integer
-    ---
-    --self._batchIdx = nil
-
     self:set_char(char)
 end
 
@@ -89,9 +83,6 @@ function AlphabetGlyph.convert(char)
 end
 
 function AlphabetGlyph:dispose()
-    if self.parent and self.parent.batch and self._batchIdx then
-		self.parent.batch:set(self._batchIdx, 0, 0, 0, 0, 0, 0, 0)
-	end
 	self.parent = nil
     AlphabetGlyph.super.dispose(self)
 end

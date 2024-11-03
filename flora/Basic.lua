@@ -1,5 +1,5 @@
 ---
---- @class flora.base.Basic : flora.base.Object
+--- @class flora.Basic : flora.Object
 ---
 --- A basic object class for flora, with a few flags
 --- such as: `exists`, `active`, and `visible`.

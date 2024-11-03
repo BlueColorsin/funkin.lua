@@ -1,7 +1,7 @@
-local AnimationData = require("flora.display.animation.AnimationData")
+local AnimationData = require("flora.animation.AnimationData")
 
 ---
---- @class flora.display.animation.AnimationController
+--- @class flora.animation.AnimationController
 ---
 local AnimationController = Class:extend("AnimationController", ...)
 
@@ -41,7 +41,7 @@ function AnimationController:constructor(parent)
     ---
     --- ⚠️ **WARNING**: This can be `nil`!
     --- 
-    --- @type flora.display.animation.AnimationData
+    --- @type flora.animation.AnimationData
     ---
     self.curAnim = nil
     

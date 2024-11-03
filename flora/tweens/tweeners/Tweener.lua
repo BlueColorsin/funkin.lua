@@ -1,7 +1,7 @@
 ---
 --- A basic tween class.
 ---
---- @class flora.tweens.tweeners.Tweener : flora.base.Basic
+--- @class flora.tweens.tweeners.Tweener : flora.Basic
 ---
 local Tweener = Basic:extend("Tweener", ...)
 

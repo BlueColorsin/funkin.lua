@@ -2,7 +2,7 @@
 --- A class that tweens can attach to, which manages
 --- updating them.
 ---
---- @class flora.plugins.TweenManager : flora.base.Basic
+--- @class flora.plugins.TweenManager : flora.Basic
 ---
 local TweenManager = Basic:extend("TweenManager", ...)
 

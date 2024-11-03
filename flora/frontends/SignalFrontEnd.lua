@@ -1,7 +1,7 @@
 ---
 --- Accessed via `flora.plugins`.
 ---
---- @class flora.frontends.SignalFrontEnd : flora.base.Basic
+--- @class flora.frontends.SignalFrontEnd : flora.Basic
 ---
 local SignalFrontEnd = Basic:extend("SignalFrontEnd", ...)
 

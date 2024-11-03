@@ -3,7 +3,7 @@
 --- A basic texture class, used for caching and rendering
 --- textures to sprites.
 ---
---- @class flora.assets.Texture : flora.base.RefCounted
+--- @class flora.assets.Texture : flora.RefCounted
 ---
 local Texture = RefCounted:extend("Texture", ...)
 

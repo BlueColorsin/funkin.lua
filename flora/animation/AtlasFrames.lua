@@ -1,8 +1,8 @@
-local FrameData = require("flora.display.animation.FrameData")
-local FrameCollection = require("flora.display.animation.FrameCollection")
+local FrameData = require("flora.animation.FrameData")
+local FrameCollection = require("flora.animation.FrameCollection")
 
 ---
---- @class flora.display.animation.AtlasFrames : flora.display.animation.FrameCollection
+--- @class flora.animation.AtlasFrames : flora.animation.FrameCollection
 ---
 local AtlasFrames = FrameCollection:extend("AtlasFrames", ...)
 
@@ -12,7 +12,7 @@ local AtlasFrames = FrameCollection:extend("AtlasFrames", ...)
 --- @param  texture  flora.assets.Texture|string
 --- @param  xml      string
 ---
---- @return flora.display.animation.AtlasFrames
+--- @return flora.animation.AtlasFrames
 ---
 function AtlasFrames.fromSparrow(texture, xmlFile)
     ---
@@ -21,7 +21,7 @@ function AtlasFrames.fromSparrow(texture, xmlFile)
     local tex = Flora.assets:loadTexture(texture)
 
     ---
-    --- @type flora.display.animation.AtlasFrames
+    --- @type flora.animation.AtlasFrames
     ---
 	local atlas = AtlasFrames:new(tex)
 	local xml_content = File.exists(xmlFile) and File.read(xmlFile) or xmlFile

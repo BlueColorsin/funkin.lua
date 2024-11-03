@@ -1,7 +1,7 @@
 ---
 --- Accessed via `flora.plugins`.
 ---
---- @class flora.frontends.PluginFrontEnd : flora.base.Basic
+--- @class flora.frontends.PluginFrontEnd : flora.Basic
 ---
 local PluginFrontEnd = Basic:extend("PluginFrontEnd", ...)
 
@@ -27,7 +27,7 @@ end
 function PluginFrontEnd:update(dt)
     for i = 1, self.list.length do
         ---
-        --- @type flora.base.Basic
+        --- @type flora.Basic
         ---
         local plugin = self.list.members[i]
 
@@ -40,7 +40,7 @@ end
 function PluginFrontEnd:draw()
     for i = 1, self.list.length do
         ---
-        --- @type flora.base.Basic
+        --- @type flora.Basic
         ---
         local plugin = self.list.members[i]
 

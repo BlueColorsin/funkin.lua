@@ -1,5 +1,5 @@
 ---
---- @class flora.base.Object
+--- @class flora.Object
 ---
 --- A base object class for flora.
 ---

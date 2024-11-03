@@ -1,5 +1,5 @@
 ---
---- @class flora.base.RefCounted : flora.base.Object
+--- @class flora.RefCounted : flora.Object
 ---
 --- A base class for reference-counted objects.
 ---

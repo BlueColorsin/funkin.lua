@@ -1,7 +1,7 @@
 --- 
 --- A basic object with 2D positional and sizing data.
 --- 
---- @class flora.display.Object2D : flora.base.Basic
+--- @class flora.display.Object2D : flora.Basic
 --- 
 local Object2D = Basic:extend("Object2D", ...)
 

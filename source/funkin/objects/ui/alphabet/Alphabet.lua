@@ -90,12 +90,6 @@ function Alphabet:constructor(x, y, text, type, alignment, size)
     --- @type number
     ---
     self._size = size and size or 1.0
-    
-    ---
-    --- @protected
-    --- @type love.SpriteBatch
-    ---
-    self._batch = love.graphics.newSpriteBatch(Paths.getSparrowAtlas(self._type, "images/menus/fonts").texture.image, nil, "stream")
 
     self:set_type(self._type)
 end
@@ -107,13 +101,6 @@ function Alphabet:update(dt)
         self.y = math.lerp(self.y, self.textOffset.y + (scaledY * self.menuSpacing.y) + (Flora.gameHeight * 0.45), dt * 9.6)
     end
     Alphabet.super.update(self, dt)
-end
-
-function Alphabet:dispose()
-    Alphabet.super.dispose(self)
-
-    self._batch:release()
-    self._batch = nil
 end
 
 -----------------------
@@ -129,9 +116,6 @@ end
 function Alphabet:updateText(newText, force)
     if self._text == newText and not force then
         return
-    end
-    if self._batch then
-        self._batch:clear()
     end
     for i = 1, self.length do
         local line = self.members[i]
@@ -227,7 +211,6 @@ end
 ---
 function Alphabet:set_type(val)
     self._type = val
-    --self._batch:setTexture(Paths.getSparrowAtlas(self._type, "images/menus/fonts").texture.image)
 
     self:updateText(self._text, true)
     self:updateSize(self._size)

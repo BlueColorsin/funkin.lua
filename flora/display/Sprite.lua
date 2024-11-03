@@ -1,7 +1,7 @@
 ---@diagnostic disable: invisible
 
 local SpriteUtil = require("flora.utils.SpriteUtil")
-local AnimationController = require("flora.display.animation.AnimationController")
+local AnimationController = require("flora.animation.AnimationController")
 
 --- 
 --- A basic 2D object that can render a texture.
@@ -31,7 +31,7 @@ function Sprite:constructor(x, y, texture)
     ---
     --- The frame collection to used to render this sprite.
     ---
-    --- @type flora.display.animation.FrameCollection?
+    --- @type flora.animation.FrameCollection?
     ---
     self.frames = nil
 
@@ -53,7 +53,7 @@ function Sprite:constructor(x, y, texture)
     ---
     --- The current frame to used to render this sprite.
     ---
-    --- @type flora.display.animation.FrameData?
+    --- @type flora.animation.FrameData?
     ---
     self.frame = nil
 
@@ -138,7 +138,7 @@ function Sprite:constructor(x, y, texture)
     ---
     --- The object responsible for controlling this sprite's animation.
     --- 
-    --- @type flora.display.animation.AnimationController
+    --- @type flora.animation.AnimationController
     ---
     self.animation = AnimationController:new(self)
 
@@ -168,13 +168,13 @@ function Sprite:constructor(x, y, texture)
 
     ---
     --- @protected
-    --- @type flora.display.animation.FrameCollection?
+    --- @type flora.animation.FrameCollection?
     ---
     self._frames = nil
 
     ---
     --- @protected
-    --- @type flora.display.animation.FrameData?
+    --- @type flora.animation.FrameData?
     ---
     self._frame = nil
 
@@ -284,7 +284,6 @@ function Sprite:setGraphicSize(width, height)
 end
 
 function Sprite:update(dt)
-    Sprite.super.update(self, dt)
     self.animation:update(dt)
 end
 

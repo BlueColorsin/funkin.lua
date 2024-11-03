@@ -3,7 +3,7 @@
 --- A basic font class, used for storing fonts to
 --- render onto text.
 ---
---- @class flora.assets.Font : flora.base.RefCounted
+--- @class flora.assets.Font : flora.RefCounted
 ---
 local Font = RefCounted:extend("Font", ...)
 Font.oversampling = 2

@@ -1,7 +1,7 @@
 ---
 --- A basic object used for playing sounds.
 --- 
---- @class flora.Sound : flora.base.Object
+--- @class flora.Sound : flora.Object
 ---
 local Sound = Object:extend("Sound", ...)
 

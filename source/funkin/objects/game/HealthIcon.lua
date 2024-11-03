@@ -174,10 +174,10 @@ end
 --- @protected
 ---
 function HealthIcon:_loadAnimationOld()
-    self.animation:add("idle", {1}, 0, false)
-    self.animation:add("losing", {2}, 0, false)
+    self.animation:add("idle", {1}, 24, false)
+    self.animation:add("losing", {2}, 24, false)
     if self.animation.numFrames >= 3 then
-        self.animation:add("winning", {3}, 0, false)
+        self.animation:add("winning", {3}, 24, false)
     end
 end
 

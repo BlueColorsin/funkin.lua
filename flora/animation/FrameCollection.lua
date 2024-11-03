@@ -1,12 +1,12 @@
-local FrameData = require("flora.display.animation.FrameData")
+local FrameData = require("flora.animation.FrameData")
 
 ---
---- @class flora.display.animation.FrameCollection : flora.base.RefCounted
+--- @class flora.animation.FrameCollection : flora.RefCounted
 ---
 local FrameCollection = RefCounted:extend("FrameCollection", ...)
 
 ---
---- @param  frames  table<flora.display.animation.FrameData>?
+--- @param  frames  table<flora.animation.FrameData>?
 ---
 function FrameCollection:constructor(texture, frames)
     FrameCollection.super.constructor(self)
@@ -17,7 +17,7 @@ function FrameCollection:constructor(texture, frames)
     self.texture = Flora.assets:loadTexture(texture)
 
     ---
-    --- @type table<flora.display.animation.FrameData>
+    --- @type table<flora.animation.FrameData>
     ---
 	self.frames = frames and frames or {}
 
@@ -36,7 +36,7 @@ function FrameCollection.fromTexture(texture)
 	local tex = Flora.assets:loadTexture(texture)
 
     ---
-    --- @type flora.display.animation.FrameCollection
+    --- @type flora.animation.FrameCollection
     ---
 	local atlas = FrameCollection:new(tex)
 	table.insert(atlas.frames, FrameData:new(
@@ -51,7 +51,7 @@ end
 function FrameCollection:dispose()
     for i = 1, #self.frames do
         ---
-        --- @type flora.display.animation.FrameData
+        --- @type flora.animation.FrameData
         ---
         local frame = self.frames[i]
         frame:dispose()

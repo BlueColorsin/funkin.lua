@@ -3,7 +3,7 @@
 --- 
 --- An object that can hold several more game objects.
 --- 
---- @class flora.display.Group : flora.base.Basic
+--- @class flora.display.Group : flora.Basic
 --- 
 local Group = Basic:extend("Group", ...)
 
@@ -45,9 +45,9 @@ function Group:constructor()
 end
 
 ---
---- @param  obj  flora.base.Basic  The object to add to this group.
+--- @param  obj  flora.Basic  The object to add to this group.
 --- 
---- @return flora.base.Basic
+--- @return flora.Basic
 ---
 function Group:add(obj)
     if not obj then
@@ -91,9 +91,9 @@ end
 
 ---
 --- @param  pos  integer           The position to add the given object at.
---- @param  obj  flora.base.Basic  The object to add to this group.
+--- @param  obj  flora.Basic  The object to add to this group.
 --- 
---- @return flora.base.Basic
+--- @return flora.Basic
 ---
 function Group:insert(pos, obj)
     if not obj then
@@ -125,10 +125,10 @@ function Group:insert(pos, obj)
 end
 
 ---
---- @param  obj     flora.base.Basic  The object to remove from this group.
+--- @param  obj     flora.Basic  The object to remove from this group.
 --- @param  splice  boolean?          Whether or not to splice the object from the group. Turn this off if you plan to use recycling on this group!
 --- 
---- @return flora.base.Basic
+--- @return flora.Basic
 ---
 function Group:remove(obj, splice)
     splice = splice and splice or true
@@ -150,7 +150,7 @@ function Group:remove(obj, splice)
 end
 
 ---
---- @param  obj  flora.base.Basic
+--- @param  obj  flora.Basic
 ---
 --- @return boolean
 ---
@@ -220,7 +220,7 @@ end
 function Group:update(dt)
     for i = 1, self.length do
         local obj = self.members[i]
-        if obj and obj.exists and obj.active then
+        if obj.exists and obj.active then
             obj:update(dt)
         end
     end
@@ -233,7 +233,7 @@ function Group:draw()
     end
     for i = 1, self.length do
         local obj = self.members[i]
-        if obj and obj.exists and obj.visible then
+        if obj.exists and obj.visible then
             obj:draw()
         end
     end
@@ -247,7 +247,7 @@ end
 function Group:forEach(func, recurse)
     for i = 1, self.length do
         ---
-        --- @type flora.base.Basic
+        --- @type flora.Basic
         ---
         local basic = self.members[i]
         if basic then
@@ -268,7 +268,7 @@ end
 function Group:forEachAlive(func, recurse)
     for i = 1, self.length do
         ---
-        --- @type flora.base.Basic
+        --- @type flora.Basic
         ---
         local basic = self.members[i]
         if basic and basic.exists and basic.alive then
@@ -289,7 +289,7 @@ end
 function Group:forEachDead(func, recurse)
     for i = 1, self.length do
         ---
-        --- @type flora.base.Basic
+        --- @type flora.Basic
         ---
         local basic = self.members[i]
         if basic and not basic.alive then

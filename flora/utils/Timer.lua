@@ -3,7 +3,7 @@ local TimerManager = require("flora.plugins.TimerManager")
 ---
 --- A basic timer class.
 ---
---- @class flora.utils.Timer : flora.base.Basic
+--- @class flora.utils.Timer : flora.Basic
 ---
 local Timer = Basic:extend("Timer", ...)
 

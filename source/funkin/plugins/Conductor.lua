@@ -1,5 +1,5 @@
 ---
---- @class funkin.plugins.Conductor : flora.base.Basic
+--- @class funkin.plugins.Conductor : flora.Basic
 ---
 local Conductor = Basic:extend("Conductor", ...)
 

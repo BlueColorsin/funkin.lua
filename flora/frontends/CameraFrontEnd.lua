@@ -4,7 +4,7 @@ local camera = require("flora.display.Camera")
 ---
 --- Accessed via `flora.cameras`.
 ---
---- @class flora.frontends.CameraFrontEnd : flora.base.Basic
+--- @class flora.frontends.CameraFrontEnd : flora.Basic
 ---
 local CameraFrontEnd = Basic:extend("CameraFrontEnd", ...)
 

@@ -1,5 +1,5 @@
 ---
---- @class funkin.plugins.KeybindManager : flora.base.Basic
+--- @class funkin.plugins.KeybindManager : flora.Basic
 ---
 local KeybindManager = Basic:extend("KeybindManager", ...)
 

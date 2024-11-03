@@ -5,7 +5,7 @@ local Texture = require("flora.assets.Texture")
 ---
 --- Accessed via `flora.assets`.
 ---
---- @class flora.frontends.AssetFrontEnd : flora.base.Basic
+--- @class flora.frontends.AssetFrontEnd : flora.Basic
 ---
 local AssetFrontEnd = Basic:extend("AssetFrontEnd", ...)
 

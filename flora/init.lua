@@ -48,9 +48,9 @@ Xml = require("flora.libs.Xml")
 Json = require("flora.libs.Json")
 Class = require("flora.libs.Classic")
 
-Object = require("flora.base.Object")
-RefCounted = require("flora.base.RefCounted")
-Basic = require("flora.base.Basic")
+Object = require("flora.Object")
+RefCounted = require("flora.RefCounted")
+Basic = require("flora.Basic")
 
 Bit = require("flora.utils.Bit")
 Axes = require("flora.utils.Axes")
@@ -78,11 +78,11 @@ Sprite = require("flora.display.Sprite")
 SpriteGroup = require("flora.display.SpriteGroup")
 Text = require("flora.display.Text")
 
-Frame = require("flora.display.animation.FrameData")
-FrameCollection = require("flora.display.animation.FrameCollection")
+Frame = require("flora.animation.FrameData")
+FrameCollection = require("flora.animation.FrameCollection")
 
-TileFrames = require("flora.display.animation.TileFrames")
-AtlasFrames = require("flora.display.animation.AtlasFrames")
+TileFrames = require("flora.animation.TileFrames")
+AtlasFrames = require("flora.animation.AtlasFrames")
 
 Flicker = require("flora.display.effects.Flicker")
 

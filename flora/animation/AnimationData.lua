@@ -1,11 +1,11 @@
 ---
---- @class flora.display.animation.AnimationData
+--- @class flora.animation.AnimationData
 ---
 local AnimationData = Class:extend("AnimationData", ...)
 
 ---
 ---@param  name    string
----@param  frames  table<flora.display.animation.FrameData>
+---@param  frames  table<flora.animation.FrameData>
 ---@param  fps     number
 ---@param  loop    boolean
 ---

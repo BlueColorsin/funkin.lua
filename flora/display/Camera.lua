@@ -429,7 +429,7 @@ end
 --- Draws an animation frame to this camera with some other given parameters applied.
 --- 
 --- @param  texture   flora.assets.Texture               The texture to draw to the camera.
---- @param  frame     flora.display.animation.FrameData  The frame data used for clipping the texture when drawing it.
+--- @param  frame     flora.animation.FrameData  The frame data used for clipping the texture when drawing it.
 --- @param  x         number                             The X coordinate to draw the given texture at. (in pixels)
 --- @param  y         number                             The Y coordinate to draw the given texture at. (in pixels)
 --- @param  width     number                             The width to draw the given texture at. (in pixels)
@@ -444,34 +444,6 @@ function Camera:drawFrame(texture, frame, x, y, width, height, angle, originX, o
         drawType = "frame",
         image = texture.image,
         frame = frame,
-        x = x,
-        y = y,
-        width = width,
-        height = height,
-        angle = angle,
-        originX = originX,
-        originY = originY,
-        tint = tint
-    })
-end
-
----
---- Draws a sprite batch to this camera with some other given parameters applied.
---- 
---- @param  batch     love.SpriteBatch                   The sprite batch to draw to the camera.
---- @param  x         number                             The X coordinate to draw the given texture at. (in pixels)
---- @param  y         number                             The Y coordinate to draw the given texture at. (in pixels)
---- @param  width     number                             The width to draw the given texture at. (in pixels)
---- @param  height    number                             The height to draw the given texture at. (in pixels)
---- @param  angle     number                             The rotation to draw the given texture at. (in degrees)
---- @param  originX   number                             The rotation origin to draw the given texture at. (x axis, in pixels)
---- @param  originY   number                             The rotation origin to draw the given texture at. (y axis, in pixels)
---- @param  tint      flora.utils.Color                  The tint applied to the given texture when drawing it.
----
-function Camera:drawSpriteBatch(batch, x, y, width, height, angle, originX, originY, tint)
-    table.insert(self._drawQueue, {
-        drawType = "batch",
-        batch = batch,
         x = x,
         y = y,
         width = width,
@@ -616,7 +588,6 @@ function Camera:draw()
     love.graphics.translate(Flora.scaleMode.offset.x, Flora.scaleMode.offset.y)
     love.graphics.scale(Flora.scaleMode.scale.x, Flora.scaleMode.scale.y)
     
-    -- love.graphics.draw(self._canvas, self.x, self.y)
     for i = 1, #self._drawQueue do
         local drawItem = self._drawQueue[i] --- @type table
         if drawItem.drawType == "frame" then
@@ -628,6 +599,37 @@ function Camera:draw()
                 drawItem.image, drawItem.frame.quad, drawItem.x, drawItem.y, math.rad(drawItem.angle),
                 drawItem.width / drawItem.frame.width, drawItem.height / drawItem.frame.height,
                 drawItem.originX, drawItem.originY
+            )
+            love.graphics.setColor(pr, pg, pb, pa)
+
+        elseif drawItem.drawType == "texture" then
+            local tint = drawItem.tint
+            local pr, pg, pb, pa = love.graphics.getColor()
+            love.graphics.setColor(tint.r, tint.g, tint.b, tint.a)
+            
+            love.graphics.draw(
+                drawItem.image, drawItem.x, drawItem.y, math.rad(drawItem.angle),
+                drawItem.width / drawItem.frame.width, drawItem.height / drawItem.frame.height,
+                drawItem.originX, drawItem.originY
+            )
+            love.graphics.setColor(pr, pg, pb, pa)
+
+        elseif drawItem.drawType == "rect" then
+            local color = drawItem.color
+            local pr, pg, pb, pa = love.graphics.getColor()
+            love.graphics.setColor(color.r, color.g, color.b, color.a)
+            
+            local w2 = drawItem.width * drawItem.originX
+            local h2 = drawItem.height * drawItem.originY
+
+            love.graphics.translate(w2, h2)
+            love.graphics.rotate(math.rad(drawItem.angle))
+            love.graphics.translate(-w2, -h2)
+
+            love.graphics.rectangle(
+                "fill",
+                drawItem.x - drawItem.originX, drawItem.y - drawItem.originY,
+                drawItem.width, drawItem.height
             )
             love.graphics.setColor(pr, pg, pb, pa)
         end

@@ -4,7 +4,7 @@ local PropertyTweener = require("flora.tweens.tweeners.PropertyTweener")
 ---
 --- A basic tween class.
 ---
---- @class flora.tweens.Tween : flora.base.Basic
+--- @class flora.tweens.Tween : flora.Basic
 ---
 local Tween = Basic:extend("Tween", ...)
 
