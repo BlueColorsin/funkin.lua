@@ -34,7 +34,7 @@ function FrameData:constructor(name, x, y, offset_x, offset_y, width, height, te
     ---
     --- @type love.Quad
     ---
-	self.quad = love.graphics.newQuad(self.x, self.y, self.width, self.height, self.texture.image)
+	self.quad = love.graphics.newQuad(self.x, self.y, self.width, self.height, self.texture.width, self.texture.height)
 end
 
 function FrameData:dispose()

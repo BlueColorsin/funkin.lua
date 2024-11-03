@@ -11,7 +11,7 @@ function Tweener:constructor(parent)
     self.visible = false
 
     ---
-    --- @type flora.tweens.tween
+    --- @type flora.tweens.Tween
     ---
     self.parent = parent
 
