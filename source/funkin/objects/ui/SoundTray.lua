@@ -102,15 +102,15 @@ function SoundTray:update(dt)
     self._timer = self._timer + dt
 
     if self._timer > 1.5 then
-        self.y = math.lerp(self.y, -(self.height + 10), dt * 15.0)
-        self.alpha = math.lerp(self.alpha, 0.0, dt * 30.0)
+        self.y = math.lerp(self.y, -(self.height + 20), dt * 9.0)
+        self.alpha = math.lerp(self.alpha, 0.0, dt * 9.0)
 
         if self.y <= -self.height then
             self.visible = false
         end
     else
-        self.y = math.lerp(self.y, 20, dt * 15.0)
-        self.alpha = math.lerp(self.alpha, 1.0, dt * 15.0)
+        self.y = math.lerp(self.y, 10, dt * 9.0)
+        self.alpha = math.lerp(self.alpha, 1.0, dt * 9.0)
     end
     
     local ww = love.graphics.getWidth()
