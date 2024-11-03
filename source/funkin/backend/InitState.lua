@@ -135,7 +135,7 @@ function InitState:ready()
     Flora.plugins:add(KeybindManager.instance)
 
     -- Flora.switchState(Preloader:new())
-    Flora.switchState(MainMenuState:new())
+    Flora.switchState(TitleState:new())
 end
 
 return InitState
