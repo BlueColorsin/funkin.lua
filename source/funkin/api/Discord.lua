@@ -1,4 +1,5 @@
 ---
+--- @diagnostic disable: inject-field
 --- @type funkin.libs.DiscordRPC
 ---
 DiscordRPC = Flora.import("funkin.libs.DiscordRPC")

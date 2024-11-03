@@ -2,7 +2,7 @@ local TweenManager = require("flora.plugins.TweenManager")
 local TimerManager = require("flora.plugins.TimerManager")
 
 ---
---- @class funkin.objects.ui.transition.BaseTransition : funkin.states.MusicBeatSubstate
+--- @class funkin.objects.ui.transition.BaseTransition : funkin.substates.MusicBeatSubstate
 ---
 local BaseTransition = MusicBeatSubstate:extend("BaseTransition", ...)
 

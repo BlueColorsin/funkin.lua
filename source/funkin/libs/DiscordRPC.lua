@@ -92,6 +92,9 @@ void Discord_Respond(const char* userid, int reply);
 void Discord_UpdateHandlers(DiscordEventHandlers* handlers);
 ]]
 
+---
+--- @class funkin.libs.DiscordRPC
+---
 local discordRPC = {} -- module table
 
 -- proxy to detect garbage collection of the module
