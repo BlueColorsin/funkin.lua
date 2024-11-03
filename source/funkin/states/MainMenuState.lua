@@ -100,13 +100,7 @@ function MainMenuState:ready()
     self.versionTxt.y = self.versionTxt.y - self.versionTxt.height
     self.versionTxt.scrollFactor:set()
     self:add(self.versionTxt)
-
-    for i = 1, 10 do
-        local balls = HealthIcon:new("gf", false)
-        balls.x = i * 100
-        balls.scrollFactor:set()
-        self:add(balls)
-    end
+    
     Flora.camera:follow(self.camFollow, nil, 0.06)
 end
 

@@ -30,7 +30,7 @@ echo Copying Love2D DLLs to export
 
 copy "%LOVE_PATH%\love.dll" "../../export/%1/love.dll" > nul
 copy "%LOVE_PATH%\lua51.dll" "../../export/%1/lua51.dll" > nul
-copy "%LOVE_PATH%\SDL2.dll" "../../export/%1/SDL2.dll" > nul
+copy "%LOVE_PATH%\SDL3.dll" "../../export/%1/SDL3.dll" > nul
 copy "%LOVE_PATH%\OpenAL32.dll" "../../export/%1/OpenAL32.dll" > nul
 copy "%LOVE_PATH%\mpg123.dll" "../../export/%1/mpg123.dll" > nul
 copy "%LOVE_PATH%\msvcp120.dll" "../../export/%1/msvcp120.dll" > nul

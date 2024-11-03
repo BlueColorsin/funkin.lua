@@ -19,37 +19,32 @@ local Class = {__class = "Class"}
 
 function Class:constructor(...) end
 
+local __class, get_, set_, _, recursiveget = "__class", "get_", "set_", "_"
+function recursiveget(class, k)
+	local v = rawget(class, k)
+	if v == nil and class.super then return recursiveget(class.super, k)
+	else return v end
+end
+
 function Class:__index(k)
 	local cls = getmetatable(self)
-	local getterName = "get_" .. k
-	local selfGetter = rawget(self, getterName)
-	local clsGetter = cls[getterName]
-	if selfGetter then
-		return selfGetter()
-	
-	elseif clsGetter then
-		return clsGetter(self)
-	end
-	return cls[k]
+	local getter = recursiveget(rawget(self, __class) == nil and cls or self, get_ .. k)
+	if getter == nil then
+		local v = rawget(self, k, _ .. k)
+		if v ~= nil then return v end
+		return cls[k]
+	else return getter(self) end
 end
 
 function Class:__newindex(k, v)
 	if self.__initializing then
-		rawset(self, k, v)
-		return
+		return rawset(self, k, v)
 	end
-	local cls = getmetatable(self)
-	local setterName = "set_" .. k
-	local selfSetter = rawget(self, setterName)
-	local clsSetter = cls[setterName]
-	if selfSetter then
-		return selfSetter(v)
-	
-	elseif clsSetter then
-		clsSetter(self, v)
-		return self
-	end
-	return rawset(self, k, v)
+	local isObj = rawget(self, __class) == nil
+	local setter = recursiveget(isObj and getmetatable(self) or self, set_ .. k)
+	if setter == nil then return rawset(self, k, v)
+	elseif isObj then return setter(self, v)
+	else return setter(v) end
 end
 
 function Class:extend(type, path)

@@ -12,7 +12,7 @@ function RefCounted:constructor()
     RefCounted.super.constructor(self)
 
     self.references = nil
-    
+
     self._references = 0
 end
 
