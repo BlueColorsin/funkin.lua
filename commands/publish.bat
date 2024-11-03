@@ -19,7 +19,7 @@ copy ..\..\alsoft.ini ..\..\export\%1\alsoft.ini
 @REM Create new Flora.love file
 echo Packaging game (this might take a while!)
 
-7za.exe a Flora.zip ../../ -x!.vscode -x!assets -x!commands -x!export > nul
+7za.exe a Flora.zip ../../ -x!.vscode -x!.git -x!assets -x!commands -x!export > nul
 ren Flora.zip Flora.love
 
 @REM Modify to your needs
