@@ -106,7 +106,7 @@ end
 --- @return flora.Sound
 ---
 function Sound:load(data, stream)
-    stream = stream or false
+    stream = stream or true
 
     if self.source then
         self.source:release()
@@ -186,7 +186,7 @@ end
 ---
 --- @return flora.Sound
 ---
-function Sound:fade_out(duration, to, onComplete)
+function Sound:fadeOut(duration, to, onComplete)
     if self._fadeTween then
         self._fadeTween:dispose()
     end
@@ -287,7 +287,6 @@ end
 ---
 function Sound:set_time(val)
     self.source:seek(val, "seconds")
-    return val
 end
 
 ---
@@ -298,7 +297,6 @@ function Sound:set_volume(val)
     if self.source then
         self.source:setVolume(math.clamp(self.volume * Flora.sound.volume * (not Flora.sound.muted and 1.0 or 0.0), 0.0, 1.0))
     end
-    return self._volume
 end
 
 ---
@@ -309,7 +307,6 @@ function Sound:set_pitch(val)
     if self.source then
         self.source:setPitch(self._pitch)
     end
-    return self._pitch
 end
 
 ---
@@ -319,7 +316,6 @@ function Sound:set_looping(val)
     if self.source then
         self.source:setLooping(val)
     end
-    return val
 end
 
 return Sound

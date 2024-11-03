@@ -79,6 +79,7 @@ function Class:exclude(...)
 end
 
 function Class:is(T)
+	if type(T) == 'string' then return self.__class == T end
 	local mt = self
 	repeat
 		mt = getmetatable(mt)

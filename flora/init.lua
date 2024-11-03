@@ -23,6 +23,7 @@ local function busySleep(time) -- uses more cpu BUT results in more accurate fps
         return
     end
     local duration = os.clock() + time
+    love.timer.sleep(time)
     while os.clock() < duration do end
 end
 if (love.filesystem.isFused() or not love.filesystem.getInfo("assets")) and love.filesystem.mountFullPath then
@@ -360,7 +361,7 @@ function Flora.start()
 
                 love.graphics.present()
             end
-            busySleep(capDt)
+            busySleep(capDt - dt)
             
             if focused then
                 collectgarbage("step")
@@ -433,8 +434,10 @@ function Flora.postDraw()
     if Flora.soundTray and Flora.soundTray.exists and Flora.soundTray.visible then
         Flora.soundTray:draw()
     end
-
     local displayedFPS = love.timer.getFPS()
+    if Flora.config.maxFPS > 0 and displayedFPS > Flora.config.maxFPS then
+        displayedFPS = Flora.config.maxFPS
+    end
     local displayedText = "FPS: " .. displayedFPS .. "\n" ..
         "RAM: " .. math.humanizeBytes(displayedMemory) .. " | " ..
         "VRAM: " .. math.humanizeBytes(displayedVRAM)
@@ -550,6 +553,8 @@ function Flora._switchState()
 
     Flora.signals.preStateCreate:emit(Flora.state)
     Flora.state:ready()
+
+    love.timer.step()
     
     if Flora.config.debugMode then
         Flora.log:success("State switched successfully")
