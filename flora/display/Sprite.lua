@@ -446,7 +446,6 @@ end
 ---
 function Sprite:set_frame(val)
     self._frame = val
-    return self._frame
 end
 
 ---
@@ -465,20 +464,19 @@ function Sprite:set_frames(val)
         self.animation.animations = {}
         self.animation.curAnim = nil
     end
-    return self._frames
 end
 
 ---
 --- @protected
 ---
 function Sprite:set_angle(val)
-    self._angle = val
-
-    local radianAngle = math.rad(val)
-    self._cosAngle = math.cos(radianAngle)
-    self._sinAngle = math.sin(radianAngle)
-
-    return self._angle
+    if val ~= self._angle then
+        self._angle = val
+    
+        local radianAngle = math.rad(val)
+        self._cosAngle = math.cos(radianAngle)
+        self._sinAngle = math.sin(radianAngle)
+    end
 end
 
 ---
@@ -486,7 +484,6 @@ end
 ---
 function Sprite:set_tint(val)
     self._tint = Color:new(val)
-    return self._tint
 end
 
 return Sprite
