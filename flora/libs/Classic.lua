@@ -28,23 +28,39 @@ end
 
 function Class:__index(k)
 	local cls = getmetatable(self)
-	local getter = recursiveget(rawget(self, __class) == nil and cls or self, get_ .. k)
+	local getter = nil
+	if rawget(self, __class) == nil then
+		getter = recursiveget(cls, get_ .. k)
+	else
+		getter = recursiveget(self, get_ .. k)
+	end
 	if getter == nil then
-		local v = rawget(self, k, _ .. k)
+		local v = rawget(self, k)
 		if v ~= nil then return v end
 		return cls[k]
-	else return getter(self) end
+	else
+		return getter(self)
+	end
 end
 
 function Class:__newindex(k, v)
 	if self.__initializing then
 		return rawset(self, k, v)
 	end
+	local setter = nil
 	local isObj = rawget(self, __class) == nil
-	local setter = recursiveget(isObj and getmetatable(self) or self, set_ .. k)
-	if setter == nil then return rawset(self, k, v)
-	elseif isObj then return setter(self, v)
-	else return setter(v) end
+	if isObj then
+		setter = recursiveget(getmetatable(self), set_ .. k)
+	else
+		setter = recursiveget(self, set_ .. k)
+	end
+	if setter == nil then
+		return rawset(self, k, v)
+	elseif isObj then
+		return setter(self, v)
+	else
+		return setter(v)
+	end
 end
 
 function Class:extend(type, path)
