@@ -30,7 +30,7 @@ echo Copying Love2D DLLs to export
 
 copy "%LOVE_PATH%\love.dll" "../../export/%1/love.dll" > nul
 copy "%LOVE_PATH%\lua51.dll" "../../export/%1/lua51.dll" > nul
-copy "%LOVE_PATH%\SDL2.dll" "../../export/%1/SDL2.dll" > nul
+copy "%LOVE_PATH%\SDL3.dll" "../../export/%1/SDL3.dll" > nul
 copy "%LOVE_PATH%\OpenAL32.dll" "../../export/%1/OpenAL32.dll" > nul
 copy "%LOVE_PATH%\mpg123.dll" "../../export/%1/mpg123.dll" > nul
 copy "%LOVE_PATH%\msvcp120.dll" "../../export/%1/msvcp120.dll" > nul
@@ -57,10 +57,10 @@ rcedit.exe temp.exe --set-icon ..\..\export\%1\icon.ico
 rcedit.exe temp.exe --set-file-version 1.0.0
 rcedit.exe temp.exe --set-product-version 1.0.0
 
-rcedit.exe temp.exe --set-version-string "ProductName" "Friday Night Funkin'"
+rcedit.exe temp.exe --set-version-string "ProductName" "funkin.lua"
 rcedit.exe temp.exe --set-version-string "CompanyName" "swordcube"
 rcedit.exe temp.exe --set-version-string "LegalCopyright" "2024-2024 swordcube"
-rcedit.exe temp.exe --set-version-string "FileDescription" "A port of Friday Night Funkin' to Love2D"
+rcedit.exe temp.exe --set-version-string "FileDescription" "funkin.lua"
 
 copy /b temp.exe + Flora.love "../../export/%1/Funkin.exe" > nul
 
