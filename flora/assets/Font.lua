@@ -6,7 +6,7 @@
 --- @class flora.assets.Font : flora.RefCounted
 ---
 local Font = RefCounted:extend("Font", ...)
-Font.oversampling = 2
+Font.oversampling = 1
 
 function Font:constructor(path)
     Font.super.constructor(self)
@@ -30,8 +30,8 @@ end
 ---
 function Font:getDataForSize(size)
     if not self.data[size] then
-        local fnt = love.graphics.newFont(self.path, size * Font.oversampling)
-        fnt:setFilter("linear", "linear", 4)
+        local fnt = love.graphics.newFont(self.path, size * Font.oversampling, "light")
+        fnt:setFilter("nearest", "nearest", 4)
         self.data[size] = fnt
     end
     return self.data[size]
