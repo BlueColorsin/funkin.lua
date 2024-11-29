@@ -1,11 +1,11 @@
 local AtlasFrames = qrequire("chip.animation.frames.AtlasFrames") --- @type chip.animation.frames.AtlasFrames
 
 ---
---- @class funkin.backend.InitState : chip.core.Scene
+--- @class funkin.states.TitleState : chip.core.Scene
 ---
-local InitState = Scene:extend("InitState", ...)
+local TitleState = Scene:extend("TitleState", ...)
 
-function InitState:init()
+function TitleState:init()
     self.spinnies = Group:new() --- @type chip.core.Group
     self:add(self.spinnies)
 
@@ -29,13 +29,13 @@ function InitState:init()
     -- Camera.currentCamera = self.leCam
 end
 
-function InitState:update(delta)
+function TitleState:update(delta)
     local spinnyMembers = self.spinnies:getMembers()
     for i = 1, self.spinnies:getLength() do
         local spinny = spinnyMembers[i] --- @type chip.graphics.Sprite
         spinny:setRotationDegrees(spinny:getRotationDegrees() + (delta * 100))
     end
-    InitState.super.update(self, delta)
+    TitleState.super.update(self, delta)
 end
 
-return InitState
+return TitleState
