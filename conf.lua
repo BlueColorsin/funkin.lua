@@ -3,6 +3,9 @@ function love.conf(t)
     t.version = "12.0"
     t.console = false
 
+    t.gammacorrect = false
+	t.highdpi = false
+
     t.window.title = "funkin.lua"
 
     t.window.width = 1280
