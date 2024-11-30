@@ -14,23 +14,29 @@
     limitations under the License.
 ]]
 
-require("funkin") -- Imports a lot of default stuff
-
-local StatsDisplay = require("funkin.backend.StatsDisplay")
+---
+--- @class funkin.backend.Cache
+---
+local Cache = {}
 
 ---
---- @class funkin.states.InitState : chip.core.Scene
+--- @type table<string, chip.animation.frames.FrameCollection>
 ---
-local InitState = Scene:extend("InitState", ...)
+Cache.atlasCache = {}
+setmetatable(Cache.atlasCache, {
+    __newindex = function(t, k, v)
+        if v:is(RefCounted) then
+            v:reference()
+        end
+        rawset(t, k, v)
+    end
+})
 
-function InitState:init()
-    Options.init()
-    StatsDisplay.init()
-
-    Engine.preSceneSwitch:connect(function()
-        Cache.clear()
-    end)
-    Engine.switchScene(require("funkin.states.TitleState"):new())
+function Cache.clear()
+    for _, value in pairs(Cache.atlasCache) do
+        value:unreference()
+    end
+    Cache.atlasCache = {}
 end
 
-return InitState
+return Cache

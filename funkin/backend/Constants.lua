@@ -14,23 +14,19 @@
     limitations under the License.
 ]]
 
-require("funkin") -- Imports a lot of default stuff
-
-local StatsDisplay = require("funkin.backend.StatsDisplay")
+---
+--- @class funkin.backend.Constants
+---
+local Constants = {}
 
 ---
---- @class funkin.states.InitState : chip.core.Scene
+--- The file extension used for loading image files.
 ---
-local InitState = Scene:extend("InitState", ...)
+Constants.IMAGE_EXT = "png"
 
-function InitState:init()
-    Options.init()
-    StatsDisplay.init()
+---
+--- The file extension used for loading audio files.
+---
+Constants.SOUND_EXT = "ogg"
 
-    Engine.preSceneSwitch:connect(function()
-        Cache.clear()
-    end)
-    Engine.switchScene(require("funkin.states.TitleState"):new())
-end
-
-return InitState
+return Constants

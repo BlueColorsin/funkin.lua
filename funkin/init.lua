@@ -14,23 +14,9 @@
     limitations under the License.
 ]]
 
-require("funkin") -- Imports a lot of default stuff
+Constants = require("funkin.backend.Constants")
 
-local StatsDisplay = require("funkin.backend.StatsDisplay")
+Cache = require("funkin.backend.Cache")
+Paths = require("funkin.backend.Paths")
 
----
---- @class funkin.states.InitState : chip.core.Scene
----
-local InitState = Scene:extend("InitState", ...)
-
-function InitState:init()
-    Options.init()
-    StatsDisplay.init()
-
-    Engine.preSceneSwitch:connect(function()
-        Cache.clear()
-    end)
-    Engine.switchScene(require("funkin.states.TitleState"):new())
-end
-
-return InitState
+Options = require("funkin.backend.Options")
