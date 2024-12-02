@@ -14,7 +14,7 @@ A modding framework for Friday Night Funkin', made *entirely* in the [Lua](https
 
 If you prefer [Lua](https://www.lua.org/) or come from another VSRG with [Lua](https://www.lua.org/) scripting support (i.e. [NotITG](https://www.noti.tg/)), and want to have a go at modding Funkin', you could try this project out!
 
-Funkin' and the small framework (Flora) i've built for this project are separated from each other, meaning if you want to use Flora in other projects, you can freely do that!
+Funkin' and the small framework ([chip.lua](https://github.com/swordcube/chip.lua)) i've built for this project are separated from each other, meaning if you want to use chip in other projects, you can freely do that!
 
 Just give some crediting to me and I'll be perfectly okay with it!
 
@@ -32,5 +32,4 @@ If you're interested in this and *somehow* haven't heard of Funkin' itself alrea
 - lua-discordRPC\* by [Joel Schumacher](https://github.com/pfirsich), & [Semyon](https://github.com/semyon422)  - https://github.com/pfirsich/lua-discordRPC
 - lua-tinyfiledialogs by [Ralty](https://github.com/Raltyro) - https://github.com/Raltyro/lua-tinyfiledialogs
 	- tinyfiledialogs by [Guillaume Vareille](https://sourceforge.net/u/vareille/profile/) aka [u/asparata](https://www.reddit.com/user/asparata/) - https://sourceforge.net/projects/tinyfiledialogs/
-- override\* by [Ralty](https://github.com/Raltyro) - https://github.com/Raltyro/FNF-Aster/blob/main/lib/override.lua
 - native* by [Ralty](https://github.com/Raltyro), & [Fellyn](https://github.com/fellynYukira) - https://github.com/Raltyro/FNF-Aster/tree/main/lib/native
