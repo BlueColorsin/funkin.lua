@@ -14,13 +14,17 @@
     limitations under the License.
 ]]
 
-Constants = require("funkin.backend.Constants")
+---
+--- @class funkin.ui.AtlasText.AtlasFont
+---
+local AtlasFont = {
+    offset = nil, --- @type table<string, number>
+    fps = nil, --- @type number?
+    
+    scale = nil, --- @type number?
+    lineHeight = nil, --- @type number?
 
-Cache = require("funkin.backend.Cache")
-Paths = require("funkin.backend.Paths")
-
-Options = require("funkin.backend.Options")
-Conductor = require("funkin.backend.Conductor")
-
-AtlasText = require("funkin.ui.AtlasText")
-SoundTray = require("funkin.ui.SoundTray")
+    noLowerCase = nil, --- @type boolean?
+    glyphs = nil, --- @type table<string, funkin.ui.AtlasText.AtlasFontGlyph>
+}
+return AtlasFont

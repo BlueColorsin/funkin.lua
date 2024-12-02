@@ -32,11 +32,17 @@ setmetatable(Cache.atlasCache, {
     end
 })
 
+---
+--- @type table<string, funkin.ui.AtlasText.AtlasFont>
+---
+Cache.atlasFontCache = {}
+
 function Cache.clear()
     for _, value in pairs(Cache.atlasCache) do
         value:unreference()
     end
     Cache.atlasCache = {}
+    Cache.atlasFontCache = {}
 end
 
 return Cache

@@ -29,6 +29,24 @@ local Options = {
     _save = Save:new(),
 
     ---
+    --- Controls the master volume multiplier
+    --- of the whole game.
+    ---
+    --- @type number
+    ---
+    masterVolume = nil,
+    _default_masterVolume = 0.3, --- @protected
+
+    ---
+    --- Controls whether or not the whole game
+    --- will be muted.
+    ---
+    --- @type boolean
+    ---
+    muted = nil,
+    _default_muted = false, --- @protected
+
+    ---
     --- Controls whether or not notes vertically
     --- scroll downwards instead of upwards during gameplay.
     ---
@@ -36,6 +54,25 @@ local Options = {
     ---
     downscroll = nil,
     _default_downscroll = false, --- @protected
+
+    ---
+    --- Controls the hit window for notes
+    --- during gameplay.
+    ---
+    --- @type number
+    ---
+    hitWindow = nil,
+    _default_hitWindow = 180, --- @protected
+
+    ---
+    --- Controls the offset of the song during
+    --- gameplay, this is mainly useful for headphones
+    --- or speakers with high latency.
+    ---
+    --- @type number
+    ---
+    songOffset = nil,
+    _default_songOffset = 0, --- @protected
 }
 
 function Options.init()

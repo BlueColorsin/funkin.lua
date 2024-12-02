@@ -14,7 +14,7 @@
     limitations under the License.
 ]]
 
-local AtlasFrames = qrequire("chip.animation.frames.AtlasFrames") --- @type chip.animation.frames.AtlasFrames
+local AtlasFrames = crequire("animation.frames.AtlasFrames") --- @type chip.animation.frames.AtlasFrames
 
 ---
 --- @class funkin.backend.Paths
@@ -38,7 +38,7 @@ function Paths.json(key, dir)
 end
 
 function Paths.music(key, dir)
-    return Paths.getPath((dir or "music") .. "/" .. key .. "." .. Constants.SOUND_EXT)
+    return Paths.getPath((dir or "music") .. "/" .. key .. "/music." .. Constants.SOUND_EXT)
 end
 
 function Paths.sound(key, dir)

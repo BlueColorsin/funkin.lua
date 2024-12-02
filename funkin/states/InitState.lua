@@ -24,8 +24,17 @@ local StatsDisplay = require("funkin.backend.StatsDisplay")
 local InitState = Scene:extend("InitState", ...)
 
 function InitState:init()
+    Sprite.defaultAntialiasing = true
+
     Options.init()
+    AudioBus.master:setVolume(Options.masterVolume)
+    AudioBus.master:setMuted(Options.masterMuted)
+    
+    SoundTray.init()
     StatsDisplay.init()
+
+    Conductor.instance = Conductor:new()
+    Engine.plugins:add(Conductor.instance)
 
     Engine.preSceneSwitch:connect(function()
         Cache.clear()

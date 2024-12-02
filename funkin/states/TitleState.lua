@@ -20,35 +20,41 @@
 local TitleState = Scene:extend("TitleState", ...)
 
 function TitleState:init()
-    self.spinnies = Group:new() --- @type chip.core.Group
-    self:add(self.spinnies)
-    
-    for i = 1, 100 do
-        local spinny = Sprite:new(0 + (i * 30), 0) --- @type chip.graphics.Sprite
-        spinny:setFrames(Paths.getSparrowAtlas("buttons", "images/menus/main"))
-        spinny.animation:addByPrefix("idle", "options selected", 24)
-        spinny.animation:play("idle")
-        self.spinnies:add(spinny)
+    if not BGM.isPlaying() then
+        BGM.play(Paths.music("freakyMenu"))
+        BGM.fade(0, 1, 4)
+
+        local c = Conductor.instance
+        c.music = BGM.audioPlayer
+        c:reset(102)
     end
 
-    self.crying = Text:new(30, 30, 0, "i'm going to shit everywhere") --- @type chip.graphics.Text
-    self.crying:setSize(16)
-    self.crying:setFont("assets/fonts/vcr.ttf")
-    self.crying:setBorderSize(1)
-    self.crying:setBorderColor(Color.BLUE)
-    self:add(self.crying)
+    self.titleGroup = Group:new() --- @type chip.core.Group
+    self.titleGroup:kill()
+    self:add(self.titleGroup)
 
-    -- self.leCam = Camera:new() --- @type chip.graphics.Camera
-    -- Camera.currentCamera = self.leCam
-end
+    self.logo = Sprite:new(-150, -100) --- @type chip.graphics.Sprite
+    self.logo:setFrames(Paths.getSparrowAtlas("logo", "images/menus/title"))
+    self.logo.animation:addByPrefix("idle", "logo bumpin", 24, false)
+    self.logo.animation:play("idle")
+    self.titleGroup:add(self.logo)
 
-function TitleState:update(delta)
-    local spinnyMembers = self.spinnies:getMembers()
-    for i = 1, self.spinnies:getLength() do
-        local spinny = spinnyMembers[i] --- @type chip.graphics.Sprite
-        spinny:setRotationDegrees(spinny:getRotationDegrees() + (delta * 100))
-    end
-    TitleState.super.update(self, delta)
+    self.gfDance = Sprite:new(Engine.gameWidth * 0.4, Engine.gameHeight * 0.07) --- @type chip.graphics.Sprite
+    self.gfDance:setFrames(Paths.getSparrowAtlas("gf", "images/menus/title"))
+    self.gfDance.animation:addByPrefix("idle", "gfDance", 24, false)
+    self.gfDance.animation:play("idle")
+    self.titleGroup:add(self.gfDance)
+
+    self.titleText = Sprite:new(100, Engine.gameHeight * 0.8) --- @type chip.graphics.Sprite
+    self.titleText:setFrames(Paths.getSparrowAtlas("enter", "images/menus/title"))
+    self.titleText.animation:addByPrefix("idle", "Press Enter to Begin", 24)
+    self.titleText.animation:addByPrefix("press", "ENTER PRESSED", 24, false)
+    self.titleText.animation:play("idle")
+    self.titleGroup:add(self.titleText)
+
+    self.introText = AtlasText:new(0, 200, "bold", "center", "negative money\nim in credit card debt") --- @type funkin.ui.AtlasText
+    self.introText:screenCenter("x")
+    self:add(self.introText)
 end
 
 return TitleState
