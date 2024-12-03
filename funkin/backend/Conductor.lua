@@ -30,7 +30,7 @@ end
 function Conductor:constructor()
     Conductor.super.constructor(self)
 
-    self.visible = false
+    self:setVisibility(false)
 
     ---
     --- @type chip.utils.Signal
@@ -50,7 +50,7 @@ function Conductor:constructor()
     ---
     --- @type boolean
     ---
-    self.hasMetronome = true
+    self.hasMetronome = false
 
     ---
     --- @type chip.audio.AudioPlayer?
@@ -93,6 +93,11 @@ function Conductor:constructor()
     --- @type number
     ---
     self.rawTime = 0.0
+
+    ---
+    --- @type number
+    ---
+    self.rawMusicTime = 0.0
 
     ---
     --- @type integer
@@ -260,13 +265,16 @@ function Conductor:timeToMeasure(time)
 end
 
 function Conductor:update(dt)
-    local time = self:getTime()
     if self.music and self.music:isPlaying() then
         local musicTime = (self.music:getPlaybackTime() * 1000.0)
-        if math.abs(self.rawTime - musicTime) > 20 then
+        if musicTime ~= self.rawMusicTime then
             self.rawTime = musicTime
+        else
+            self.rawTime = self.rawTime + dt
         end
+        self.rawMusicTime = musicTime
     end
+    local time = self:getTime()
     self._lastBPMChange = self.bpmChanges[1]
     for i = 2, #self.bpmChanges do
         local change = self.bpmChanges[i]
@@ -300,7 +308,7 @@ function Conductor:update(dt)
         end
         if self.hasMetronome then
             local audio = AudioPlayer.playSFX(Paths.sound("metronome"))
-            local measure = self.beatf / self.timeSignature[1]
+            local measure = self.beat % self.timeSignature[1]
             audio:setPitch((measure == 0) and 1.5 or 1.12)
         end
     end

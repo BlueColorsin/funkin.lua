@@ -21,6 +21,7 @@ local TitleState = Scene:extend("TitleState", ...)
 
 function TitleState:init()
     if not BGM.isPlaying() then
+        -- TODO: make some kind of util function for this
         BGM.play(Paths.music("freakyMenu"))
         BGM.fade(0, 1, 4)
 

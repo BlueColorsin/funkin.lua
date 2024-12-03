@@ -4,5 +4,5 @@ Chip.init({
     gameHeight = 720,
     targetFPS = 144,
     initialScene = require("funkin.states.InitState"):new(),
-    showSplashScreen = true
+    showSplashScreen = false
 })
