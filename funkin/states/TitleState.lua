@@ -22,12 +22,9 @@ local TitleState = Scene:extend("TitleState", ...)
 function TitleState:init()
     if not BGM.isPlaying() then
         -- TODO: make some kind of util function for this
-        BGM.play(Paths.music("freakyMenu"))
+        CoolUtil.playMusic("girlfriendsRingtone", 0)
+        Conductor.instance.hasMetronome = true
         BGM.fade(0, 1, 4)
-
-        local c = Conductor.instance
-        c.music = BGM.audioPlayer
-        c:reset(102)
     end
 
     self.titleGroup = Group:new() --- @type chip.core.Group

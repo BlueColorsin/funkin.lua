@@ -22,5 +22,7 @@ Paths = require("funkin.backend.Paths")
 Options = require("funkin.backend.Options")
 Conductor = require("funkin.backend.Conductor")
 
+CoolUtil = require("funkin.backend.CoolUtil")
+
 AtlasText = require("funkin.ui.AtlasText")
 SoundTray = require("funkin.ui.SoundTray")

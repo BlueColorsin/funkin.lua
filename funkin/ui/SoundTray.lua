@@ -199,10 +199,12 @@ function SoundTray.input(event)
     end
     if table.contains(SoundTray._volumeDownKeys, event:getKey()) then
         masterBus:decreaseVolume(0.1, 1)
+        Options.masterVolume = masterBus:getVolume()
         SoundTray.show(false)
     end
     if table.contains(SoundTray._muteKeys, event:getKey()) then
         masterBus:setMuted(not masterBus:isMuted())
+        Options.muted = masterBus:isMuted()
         SoundTray.show(true)
     end
 end
