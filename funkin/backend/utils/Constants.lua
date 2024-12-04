@@ -20,6 +20,11 @@
 local Constants = {}
 
 ---
+--- The version number for this copy of funkin.lua.
+---
+Constants.ENGINE_VERSION = "0.1.0"
+
+---
 --- The file extension used for loading image files.
 ---
 Constants.IMAGE_EXT = "png"
@@ -28,5 +33,13 @@ Constants.IMAGE_EXT = "png"
 --- The file extension used for loading audio files.
 ---
 Constants.SOUND_EXT = "ogg"
+
+---
+--- The commit hash for this copy of funkin.lua.
+--- 
+--- If this value is `nil`, then this is a release copy
+--- of the engine.
+---
+Constants.COMMIT_HASH = nil
 
 return Constants

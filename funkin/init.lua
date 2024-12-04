@@ -14,15 +14,17 @@
     limitations under the License.
 ]]
 
-Constants = require("funkin.backend.Constants")
+Constants = require("funkin.backend.utils.Constants")
+CoolUtil = require("funkin.backend.utils.CoolUtil")
 
 Cache = require("funkin.backend.Cache")
 Paths = require("funkin.backend.Paths")
 
+Controls = require("funkin.backend.input.Controls")
+InputAction = require("funkin.backend.input.InputAction")
+
 Options = require("funkin.backend.Options")
 Conductor = require("funkin.backend.Conductor")
-
-CoolUtil = require("funkin.backend.CoolUtil")
 
 AtlasText = require("funkin.ui.AtlasText")
 SoundTray = require("funkin.ui.SoundTray")

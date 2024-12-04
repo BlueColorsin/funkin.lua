@@ -26,7 +26,24 @@ local InitState = Scene:extend("InitState", ...)
 function InitState:init()
     Sprite.defaultAntialiasing = true
 
+    local gitCmd = "git rev-parse --short HEAD"
+    if love.system.getOS() == "Windows" then
+        gitCmd = gitCmd .. " 2> nul"
+    else
+        gitCmd = gitCmd .. " 2> /dev/null"
+    end
+    local f = io.popen(gitCmd, "r")
+    Constants.COMMIT_HASH = f:read("*l"):trim()
+
+    if Constants.COMMIT_HASH and #Constants.COMMIT_HASH == 0 then
+        -- Commit hash is blank, discard it
+        Constants.COMMIT_HASH = nil
+    end
+    f:close()
+
     Options.init()
+    Controls.init()
+
     AudioBus.master:setVolume(Options.masterVolume)
     AudioBus.master:setMuted(Options.masterMuted)
     

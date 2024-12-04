@@ -157,12 +157,16 @@ function AtlasText:_regenGlyphs()
         self:remove(actor)
     end
     local contents = self._contents
+    local contentsLength = #contents
+    if contentsLength == 0 then
+        return
+    end
     local glyphX, glyphY = 0.0, 0.0
 
     local fontData = self._fontData
     local line = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
 
-    for i = 1, #contents do
+    for i = 1, contentsLength do
         local char = contents:charAt(i)
         if char == "\n" then
             self:add(line)

@@ -322,39 +322,37 @@ function Conductor:update(dt)
             self.measureHit:emit(self.measure)
         end
     end
-    -- local state = Flora.state
-    -- while state do
-    --     if not state.subState or state.persistentUpdate then
-    --         if runStep and state.stepHit then
-    --             if math.abs(self.lastStep - self.step) > 1 then
-    --                 for i = self.lastStep, self.step do
-    --                     state:stepHit(i)
-    --                 end
-    --             else
-    --                 state:stepHit(self.step)
-    --             end
-    --         end
-    --         if runStep and runBeat and state.beatHit then
-    --             if math.abs(self.lastBeat - self.beat) > 1 then
-    --                 for i = self.lastBeat, self.beat do
-    --                     state:beatHit(i)
-    --                 end
-    --             else
-    --                 state:beatHit(self.beat)
-    --             end
-    --         end
-    --         if runStep and runMeasure and state.measureHit then
-    --             if math.abs(self.lastMeasure - self.measure) > 1 then
-    --                 for i = self.lastMeasure, self.measure do
-    --                     state:measureHit(i)
-    --                 end
-    --             else
-    --                 state:measureHit(self.measure)
-    --             end
-    --         end
-    --     end
-    --     state = state.subState
-    -- end
+    local scene = Engine.currentScene
+    if not scene then
+        return
+    end
+    if runStep then
+        if math.abs(self.lastStep - self.step) > 1 then
+            for i = self.lastStep, self.step do
+                Conductor._callOnActor(Engine.currentScene, "stepHit", i)
+            end
+        else
+            Conductor._callOnActor(Engine.currentScene, "stepHit", self.step)
+        end
+    end
+    if runStep and runBeat then
+        if math.abs(self.lastBeat - self.beat) > 1 then
+            for i = self.lastBeat, self.beat do
+                Conductor._callOnActor(Engine.currentScene, "beatHit", i)
+            end
+        else
+            Conductor._callOnActor(Engine.currentScene, "beatHit", self.beat)
+        end
+    end
+    if runStep and runMeasure then
+        if math.abs(self.lastMeasure - self.measure) > 1 then
+            for i = self.lastMeasure, self.measure do
+                Conductor._callOnActor(Engine.currentScene, "measureHit", i)
+            end
+        else
+            Conductor._callOnActor(Engine.currentScene, "measureHit", self.measure)
+        end
+    end
 end
 
 function Conductor:getTime()
@@ -426,6 +424,24 @@ function Conductor:_updateMeasure(newMeasure)
     
     self.measuref = newMeasure
     return updated
+end
+
+---
+--- @protected
+---
+function Conductor._callOnActor(actor, func, ...)
+    if actor.getMembers then
+        local actorMembers = actor:getMembers() --- @type table<chip.core.Actor>
+        for i = 1, actor:getLength() do
+            local member = actorMembers[i] --- @type chip.core.Actor
+            if member and member:isExisting() and member:isActive() then
+                Conductor._callOnActor(member, func, ...)
+            end
+        end
+    end
+    if actor[func] then
+        actor[func](actor, ...)
+    end
 end
 
 return Conductor

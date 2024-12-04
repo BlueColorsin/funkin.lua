@@ -37,12 +37,20 @@ function Paths.json(key, dir)
     return Paths.getPath((dir or "data") .. "/" .. key .. ".json")
 end
 
+function Paths.csv(key, dir)
+    return Paths.getPath((dir or "data") .. "/" .. key .. ".csv")
+end
+
 function Paths.music(key, dir)
     return Paths.getPath((dir or "music") .. "/" .. key .. "/music." .. Constants.SOUND_EXT)
 end
 
 function Paths.sound(key, dir)
     return Paths.getPath((dir or "sounds") .. "/" .. key .. "." .. Constants.SOUND_EXT)
+end
+
+function Paths.font(key, dir)
+    return Paths.getPath((dir or "fonts") .. "/" .. key)
 end
 
 function Paths.getSparrowAtlas(key, dir)
@@ -54,6 +62,7 @@ function Paths.getSparrowAtlas(key, dir)
     
     if not cache[atlasKey] then
         cache[atlasKey] = AtlasFrames.fromSparrow(imgPath, xmlPath)
+        cache[atlasKey]:reference()
     end
     return cache[atlasKey]
 end
