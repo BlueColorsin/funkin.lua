@@ -73,6 +73,19 @@ local Options = {
     ---
     songOffset = nil,
     _default_songOffset = 0, --- @protected
+
+    ---
+    --- Controls whether or not the game will
+    --- display flashing lights in the menus or
+    --- during gameplay.
+    --- 
+    --- If you are sensitive to this kind of
+    --- context, it is recommended to leave this off!
+    ---
+    --- @type boolean
+    ---
+    flashingLights = nil,
+    _default_flashingLights = true, --- @protected
 }
 
 function Options.init()

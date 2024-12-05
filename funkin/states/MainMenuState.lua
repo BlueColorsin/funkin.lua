@@ -28,8 +28,23 @@ function MainMenuState:init()
     self.bg:loadTexture(Paths.image("yellow", "images/menus"))
     self.bg.scale:set(1.17, 1.17)
     self.bg:screenCenter("xy")
-    self.bg.scrollFactor:set(0, 0.17)
+    self.bg.scrollFactor:set(1, 0.17)
     self:add(self.bg)
+
+    self.magenta = Sprite:new() --- @type chip.graphics.Sprite
+    self.magenta:loadTexture(Paths.image("desat", "images/menus"))
+    self.magenta.scale:set(1.17, 1.17)
+    self.magenta:screenCenter("xy")
+    self.magenta.scrollFactor:set(1, 0.17)
+    self.magenta:setTint(0xFFFD719B)
+    self.magenta:setVisibility(false)
+    self:add(self.magenta)
+
+    self.camera = Camera:new() --- @type chip.graphics.Camera
+    self.camera:makeCurrent()
+    self.camera:setSmoothing(3.6)
+    self.camera:snapToTargetPos()
+    self:add(self.camera)
 
     self.uiLayer = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
     self:add(self.uiLayer)
@@ -47,26 +62,66 @@ function MainMenuState:init()
     self.versionText:setY(self.versionText:getY() - self.versionText:getHeight())
     self.uiLayer:add(self.versionText)
 
-    self.itemList = MainMenuList:new() --- @type funkin.ui.mainmenu.MainMenuList
-    self.itemList:addItem("storymode", "Story Mode", function(_)
-        print("i desire penis")
+    self.menuItems = MainMenuList:new() --- @type funkin.ui.mainmenu.MainMenuList
+    self.menuItems:addItem("storymode", "Story Mode", function(_)
+        print("STORY MODE SELECTED, TODO!!!")
+        self:startExitScene(require("funkin.states.StoryMenuState"):new())
     end)
-    self.itemList:addItem("freeplay", "Freeplay", function(_)
-        print("i desire penis")
+    self.menuItems:addItem("freeplay", "Freeplay", function(_)
+        self:startExitScene(require("funkin.states.FreeplayState"):new())
     end)
-    self.itemList:addItem("options", "Options", function(_)
-        print("i desire penis")
+    self.menuItems:addItem("options", "Options", function(_)
+        print("STORY MODE SELECTED, TODO!!!")
+        self:startExitScene(require("funkin.states.OptionsState"):new())
     end)
-    self.itemList:addItem("credits", "Credits", function(_)
-        print("i desire penis")
+    self.menuItems:addItem("credits", "Credits", function(_)
+        print("CREDITS SELECTED, TODO!!!")
+        self:startExitScene(require("funkin.states.CreditsState"):new())
     end)
-    self.itemList:centerItems()
-    self.itemList:selectItem(MainMenuState.lastSelected)
-    self.uiLayer:add(self.itemList)
+    self.menuItems.onChange:connect(function(item)
+        self.camera:setY(item:getY())
+    end)
+    self.menuItems.onAcceptPress:connect(function(item)
+        if Options.flashingLights then
+            FlickerEffect.flicker(self.magenta, 1.1, 0.15, false, true)
+        end
+    end)
+    self.menuItems:centerItems()
+    self.menuItems:selectItem(MainMenuState.lastSelected)
+    self.uiLayer:add(self.menuItems)
+end
+
+function MainMenuState:update(dt)
+    if BGM.audioPlayer:getVolume() < 0.8 then
+        BGM.audioPlayer:setVolume(BGM.audioPlayer:getVolume() + (dt * 0.05))
+    end
+    if Controls.justPressed.BACK then
+        Engine.switchScene(require("funkin.states.TitleState"):new())
+    end
+    MainMenuState.super.update(self, dt)
+end
+
+function MainMenuState:startExitScene(scene)
+    self.menuItems.enabled = false
+
+    local duration = 0.4
+    for i = 1, self.menuItems:getLength() do
+        local item = self.menuItems:getMembers()[i] --- @type funkin.ui.mainmenu.MainMenuButton
+        if i ~= self.menuItems.selectedItem then
+            local t = Tween:new() --- @type chip.tweens.Tween
+            t:tweenProperty(item, "alpha", 0, duration, Ease.quadOut)
+        else
+            item:setVisibility(false)
+        end
+    end
+    local t = Timer:new() --- @type chip.utils.Timer
+    t:start(duration + 0.05, function(_)
+        Engine.switchScene(scene)
+    end)
 end
 
 function MainMenuState:free()
-    MainMenuState.lastSelected = self.itemList.selectedItem
+    MainMenuState.lastSelected = self.menuItems.selectedItem
     MainMenuState.super.free(self)
 end
 

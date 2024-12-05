@@ -4,7 +4,7 @@
     "icon": "bf-pixel",
     "color": "#7BD6F6",
 
-    "variants": ["base"],
+    "variants": [],
     "difficulties": ["normal"],
 
     "bpm": 150,

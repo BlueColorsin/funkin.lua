@@ -108,13 +108,13 @@ function TitleState:init()
     
     if math.random(1.0, 100.0) < 1 then
         self.ngSpr:loadTexture(Paths.image('newgrounds_classic', "images/menus/title"))
-        
+    
     elseif math.random(1.0, 100.0) < 30 then
         self.ngSpr:loadTexture(Paths.image('newgrounds_animated', "images/menus/title"), true, 600)
         self.ngSpr.animation:add('idle', {1, 2}, 8)
         self.ngSpr.animation:play('idle')
         self.ngSpr.scale:set(0.55, 0.55)
-        self.ngSpr:setY(self.ngSpr.y + 15)
+        self.ngSpr:setY(self.ngSpr:getY() + 15)
     else
         self.ngSpr:loadTexture(Paths.image('newgrounds', "images/menus/title"))
         self.ngSpr.scale:set(0.8, 0.8)
