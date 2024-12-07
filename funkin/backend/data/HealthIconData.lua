@@ -14,20 +14,33 @@
     limitations under the License.
 ]]
 
-Constants = require("funkin.backend.utils.Constants")
-CoolUtil = require("funkin.backend.utils.CoolUtil")
+---
+--- @class funkin.backend.data.HealthIconData
+---
+local HealthIconData = {
+    ---
+    --- @type boolean?
+    ---
+    isPixel = nil,
 
-Cache = require("funkin.backend.Cache")
-Paths = require("funkin.backend.Paths")
+    ---
+    --- @type number?
+    ---
+    scale = nil,
 
-Controls = require("funkin.backend.input.Controls")
-InputAction = require("funkin.backend.input.InputAction")
+    ---
+    --- @type table<string, boolean>?
+    ---
+    flip = nil,
 
-Options = require("funkin.backend.Options")
-Highscore = require("funkin.backend.Highscore")
-Conductor = require("funkin.backend.Conductor")
+    ---
+    --- @type table<string, boolean>?
+    ---
+    offset = nil,
 
-AtlasText = require("funkin.ui.AtlasText")
-SoundTray = require("funkin.ui.SoundTray")
-
-Gameplay = require("funkin.scenes.Gameplay")
+    ---
+    --- @type integer|string?
+    ---
+    color = nil
+}
+return HealthIconData

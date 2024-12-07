@@ -14,20 +14,48 @@
     limitations under the License.
 ]]
 
-Constants = require("funkin.backend.utils.Constants")
-CoolUtil = require("funkin.backend.utils.CoolUtil")
+---
+--- @class funkin.backend.data.HighscoreData
+---
+local HighscoreData = {
+    ---
+    --- @type integer
+    ---
+    score = nil,
 
-Cache = require("funkin.backend.Cache")
-Paths = require("funkin.backend.Paths")
+    ---
+    --- @type integer
+    ---
+    misses = nil,
 
-Controls = require("funkin.backend.input.Controls")
-InputAction = require("funkin.backend.input.InputAction")
+    ---
+    --- @type integer
+    ---
+    maxCombo = nil,
 
-Options = require("funkin.backend.Options")
-Highscore = require("funkin.backend.Highscore")
-Conductor = require("funkin.backend.Conductor")
+    ---
+    --- @type integer
+    ---
+    totalNotesHit = nil,
 
-AtlasText = require("funkin.ui.AtlasText")
-SoundTray = require("funkin.ui.SoundTray")
+    ---
+    --- @type table<string, integer>
+    ---
+    totalJudgements = nil,
 
-Gameplay = require("funkin.scenes.Gameplay")
+    ---
+    --- @type number
+    ---
+    accuracy = nil,
+
+    ---
+    --- @type string
+    ---
+    rank = nil,
+
+    ---
+    --- @type boolean
+    ---
+    isValid = true
+}
+return HighscoreData

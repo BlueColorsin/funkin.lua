@@ -59,6 +59,19 @@ function AtlasText:constructor(x, y, font, alignment, contents)
     --- @protected
     ---
     self._alignment = nil --- @type "left"|"center"|"right"
+    
+    ---
+    --- @protected
+    ---
+    self._alpha = 1.0 --- @type number
+
+    ---
+    --- @protected
+    ---
+    self._tint = Color:new(Color.WHITE) --- @type chip.utils.Color
+
+    self.isMenuItem = false --- @type boolean
+    self.targetY = 0 --- @type integer
 
     self:setFont(font)
     self:setContents(contents)
@@ -127,10 +140,11 @@ function AtlasText:setAlignment(alignment)
 end
 
 function AtlasText:getTint()
-    return self:getMembers()[1]:getTint()
+    return self._tint
 end
 
 function AtlasText:setTint(tint)
+    self._tint = Color:new(tint)
     local members = self:getMembers()
     for i = 1, self:getLength() do
         local line = members[i] --- @type chip.graphics.CanvasLayer
@@ -139,6 +153,24 @@ function AtlasText:setTint(tint)
         for j = 1, line:getLength() do
             local glyph = lineMembers[j] --- @type funkin.ui.AtlasText.Glyph
             glyph:setTint(tint)
+        end
+    end
+end
+
+function AtlasText:getAlpha()
+    return self._alpha
+end
+
+function AtlasText:setAlpha(alpha)
+    self._alpha = alpha
+    local members = self:getMembers()
+    for i = 1, self:getLength() do
+        local line = members[i] --- @type chip.graphics.CanvasLayer
+        local lineMembers = line:getMembers()
+        
+        for j = 1, line:getLength() do
+            local glyph = lineMembers[j] --- @type funkin.ui.AtlasText.Glyph
+            glyph:setAlpha(alpha)
         end
     end
 end
@@ -154,7 +186,6 @@ function AtlasText:_regenGlyphs()
     while self:getLength() > 0 do
         local actor = self:getMembers()[1] --- @type chip.core.Actor
         actor:free()
-        self:remove(actor)
     end
     local contents = self._contents
     local contentsLength = #contents
@@ -179,6 +210,8 @@ function AtlasText:_regenGlyphs()
         local glyph = Glyph:new(glyphX, glyphY, self, char) --- @type funkin.ui.AtlasText.Glyph
         glyph.scale:set(fontData.scale, fontData.scale)
         glyph:updateOffset()
+        glyph:setTint(self._tint)
+        glyph:setAlpha(self._alpha)
         line:add(glyph)
 
         local glyphData = fontData.glyphs[char]

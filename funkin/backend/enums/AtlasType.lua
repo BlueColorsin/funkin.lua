@@ -14,20 +14,13 @@
     limitations under the License.
 ]]
 
-Constants = require("funkin.backend.utils.Constants")
-CoolUtil = require("funkin.backend.utils.CoolUtil")
-
-Cache = require("funkin.backend.Cache")
-Paths = require("funkin.backend.Paths")
-
-Controls = require("funkin.backend.input.Controls")
-InputAction = require("funkin.backend.input.InputAction")
-
-Options = require("funkin.backend.Options")
-Highscore = require("funkin.backend.Highscore")
-Conductor = require("funkin.backend.Conductor")
-
-AtlasText = require("funkin.ui.AtlasText")
-SoundTray = require("funkin.ui.SoundTray")
-
-Gameplay = require("funkin.scenes.Gameplay")
+---
+--- @enum funkin.backend.enums.AtlasType
+---
+local AtlasType = {
+    SPARROW = "sparrow",
+    PACKER = "packer",
+    GRID = "grid",
+    ANIMATE = "animate"
+}
+return AtlasType

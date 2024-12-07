@@ -14,20 +14,38 @@
     limitations under the License.
 ]]
 
-Constants = require("funkin.backend.utils.Constants")
-CoolUtil = require("funkin.backend.utils.CoolUtil")
+---
+--- @class funkin.backend.data.CharacterAnimationData
+---
+local CharacterAnimationData = {
+    ---
+    --- @type string
+    ---
+    name = nil,
 
-Cache = require("funkin.backend.Cache")
-Paths = require("funkin.backend.Paths")
+    ---
+    --- @type string?
+    ---
+    prefix = nil,
 
-Controls = require("funkin.backend.input.Controls")
-InputAction = require("funkin.backend.input.InputAction")
+    ---
+    --- @type table<integer>?
+    ---
+    indices = nil,
 
-Options = require("funkin.backend.Options")
-Highscore = require("funkin.backend.Highscore")
-Conductor = require("funkin.backend.Conductor")
+    ---
+    --- @type number
+    ---
+    fps = nil,
 
-AtlasText = require("funkin.ui.AtlasText")
-SoundTray = require("funkin.ui.SoundTray")
+    ---
+    --- @type boolean
+    ---
+    looped = nil,
 
-Gameplay = require("funkin.scenes.Gameplay")
+    ---
+    --- @type table<string, integer>
+    ---
+    offset = nil
+}
+return CharacterAnimationData

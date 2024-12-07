@@ -19,11 +19,11 @@ require("funkin") -- Imports a lot of default stuff
 local StatsDisplay = require("funkin.backend.StatsDisplay")
 
 ---
---- @class funkin.states.InitState : chip.core.Scene
+--- @class funkin.scenes.InitScene : chip.core.Scene
 ---
-local InitState = Scene:extend("InitState", ...)
+local InitScene = Scene:extend("InitScene", ...)
 
-function InitState:init()
+function InitScene:init()
     Sprite.defaultAntialiasing = true
 
     local gitCmd = "git rev-parse --short HEAD"
@@ -43,6 +43,7 @@ function InitState:init()
 
     Options.init()
     Controls.init()
+    Highscore.init()
 
     AudioBus.master:setVolume(Options.masterVolume)
     AudioBus.master:setMuted(Options.masterMuted)
@@ -56,7 +57,7 @@ function InitState:init()
     Engine.preSceneSwitch:connect(function()
         Cache.clear()
     end)
-    Engine.switchScene(require("funkin.states.TitleState"):new())
+    Engine.switchScene(require("funkin.scenes.TitleScreen"):new())
 end
 
-return InitState
+return InitScene

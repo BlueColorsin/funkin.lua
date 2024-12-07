@@ -23,6 +23,11 @@ local SongMetadata = {
     icon = nil, --- @type string
     color = nil, --- @type string
 
+    ---
+    --- @protected
+    ---
+    _parsedColor = nil, --- @type chip.utils.Color
+
     variants = nil, --- @type table<string>
     difficulties = nil, --- @type table<string>
 

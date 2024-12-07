@@ -14,20 +14,28 @@
     limitations under the License.
 ]]
 
-Constants = require("funkin.backend.utils.Constants")
-CoolUtil = require("funkin.backend.utils.CoolUtil")
+---
+--- @class funkin.scenes.Gameplay : chip.core.Scene
+---
+local Gameplay = Scene:extend("Gameplay", ...)
 
-Cache = require("funkin.backend.Cache")
-Paths = require("funkin.backend.Paths")
+function Gameplay:constructor(params)
+    Gameplay.super.constructor(self)
 
-Controls = require("funkin.backend.input.Controls")
-InputAction = require("funkin.backend.input.InputAction")
+    ---
+    --- @protected
+    --- @type funkin.backend.data.GameplayParams
+    ---
+    self._params = params or {
+        song = "test",
+        difficulty = "normal"
+    }
+end
 
-Options = require("funkin.backend.Options")
-Highscore = require("funkin.backend.Highscore")
-Conductor = require("funkin.backend.Conductor")
+function Gameplay:init()
+    if BGM.isPlaying() then
+        BGM.stop()
+    end
+end
 
-AtlasText = require("funkin.ui.AtlasText")
-SoundTray = require("funkin.ui.SoundTray")
-
-Gameplay = require("funkin.scenes.Gameplay")
+return Gameplay

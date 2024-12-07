@@ -15,11 +15,11 @@
 ]]
 
 ---
---- @class funkin.states.TitleState : chip.core.Scene
+--- @class funkin.scenes.TitleScreen : chip.core.Scene
 ---
-local TitleState = Scene:extend("TitleState", ...)
+local TitleScreen = Scene:extend("TitleScreen", ...)
 
-function TitleState:init()
+function TitleScreen:init()
     self.beatCallbacks = {
         [1] = function()
             self:createCoolText({"The", "Funkin Crew Inc"})
@@ -131,11 +131,11 @@ function TitleState:init()
     self.flashTween = nil --- @type chip.tweens.Tween
 end
 
-function TitleState:deleteCoolText()
+function TitleScreen:deleteCoolText()
     self.introText:kill()
 end
 
-function TitleState:createCoolText(lines)
+function TitleScreen:createCoolText(lines)
     if #lines == 0 then
         self.introText:kill()
         return
@@ -150,7 +150,7 @@ function TitleState:createCoolText(lines)
     self.introText:screenCenter("x")
 end
 
-function TitleState:skipIntro()
+function TitleScreen:skipIntro()
     if self.skippedIntro then
         return
     end
@@ -174,7 +174,7 @@ function TitleState:skipIntro()
     end)
 end
 
-function TitleState:update(dt)
+function TitleScreen:update(dt)
     if Controls.justPressed.ACCEPT then
         if not self.skippedIntro then
             self:skipIntro()
@@ -193,7 +193,7 @@ function TitleState:update(dt)
                     end)
                 end
                 self._acceptTimer = Timer:new():start(2, function(_)
-                    Engine.switchScene(require("funkin.states.MainMenuState"):new())
+                    Engine.switchScene(require("funkin.scenes.MainMenu"):new())
                 end)
                 self.titleText.animation:play("press")
                 AudioPlayer.playSFX(Paths.sound("select", "sounds/menus"))
@@ -202,14 +202,14 @@ function TitleState:update(dt)
                     self._acceptTimer:free()
                     self._acceptTimer = nil
                 end
-                Engine.switchScene(require("funkin.states.MainMenuState"):new())
+                Engine.switchScene(require("funkin.scenes.MainMenu"):new())
             end
         end
     end
-    TitleState.super.update(self, dt)
+    TitleScreen.super.update(self, dt)
 end
 
-function TitleState:beatHit(beat)
+function TitleScreen:beatHit(beat)
     if not self.skippedIntro then
         if self.beatCallbacks[beat] then
             self.beatCallbacks[beat]()
@@ -227,4 +227,4 @@ function TitleState:beatHit(beat)
     self.logoBl.animation:play("idle", true)
 end
 
-return TitleState
+return TitleScreen

@@ -35,6 +35,11 @@ Constants.IMAGE_EXT = "png"
 Constants.SOUND_EXT = "ogg"
 
 ---
+--- The default health icon used as fallback.
+---
+Constants.DEFAULT_HEALTH_ICON = "face"
+
+---
 --- The commit hash for this copy of funkin.lua.
 --- 
 --- If this value is `nil`, then this is a release copy

@@ -49,6 +49,14 @@ function Paths.sound(key, dir)
     return Paths.getPath((dir or "sounds") .. "/" .. key .. "." .. Constants.SOUND_EXT)
 end
 
+function Paths.inst(song, dir)
+    return Paths.getPath((dir or "songs") .. "/" .. song:lower() .. "/song/Inst." .. Constants.SOUND_EXT)
+end
+
+function Paths.voices(song, character, dir)
+    return Paths.getPath((dir or "songs") .. "/" .. song:lower() .. "/song/Voices" .. ((character and #character > 0) and ("-" .. character) or "") .. "." .. Constants.SOUND_EXT)
+end
+
 function Paths.font(key, dir)
     return Paths.getPath((dir or "fonts") .. "/" .. key)
 end

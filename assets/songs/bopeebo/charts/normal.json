@@ -1,0 +1,65 @@
+{"notes": [{"time": 0,"lane": 2,"length": 0,"type": "Default"},{"time": 600,"lane": 3,"length": 675,"type": "Default"},{"time": 1200,"lane": 3,"length": 675,"type": "Default"},{"time": 2400,"lane": 6,"length": 0,"type": "Default"},{"time": 3000,"lane": 7,"length": 675,"type": "Default"},{"time": 3600,"lane": 7,"length": 675,"type": "Default"},{"time": 4800,"lane": 1,"length": 375,"type": "Default"},{"time": 5400,"lane": 0,"length": 375,"type": "Default"},{"time": 6000,"lane": 3,"length": 675,"type": "Default"},{"time": 7200,"lane": 5,"length": 375,"type": "Default"},{"time": 7800,"lane": 4,"length": 375,"type": "Default"},{"time": 8400,"lane": 7,"length": 675,"type": "Default"},{"time": 9600,"lane": 1,"length": 375,"type": "Default"},{"time": 10200,"lane": 3,"length": 0,"type": "Default"},{"time": 10500,"lane": 0,"length": 0,"type": "Default"},{"time": 10800,"lane": 1,"length": 675,"type": "Default"},{"time": 12000,"lane": 5,"length": 375,"type": "Default"},{"time": 12600,"lane": 7,"length": 0,"type": "Default"},{"time": 12900,"lane": 4,"length": 0,"type": "Default"},{"time": 13200,"lane": 5,"length": 675,"type": "Default"},{"time": 14400,"lane": 3,"length": 0,"type": "Default"},{"time": 14700,"lane": 1,"length": 0,"type": "Default"},{"time": 15300,"lane": 0,"length": 0,"type": "Default"},{"time": 15600,"lane": 2,"length": 675,"type": "Default"},{"time": 16800,"lane": 7,"length": 0,"type": "Default"},{"time": 17100,"lane": 5,"length": 0,"type": "Default"},{"time": 17700,"lane": 4,"length": 0,"type": "Default"},{"time": 18000,"lane": 6,"length": 675,"type": "Default"},{"time": 19200,"lane": 0,"length": 0,"type": "Default"},{"time": 19500,"lane": 3,"length": 0,"type": "Default"},{"time": 19800,"lane": 1,"length": 975,"type": "Default"},{"time": 21600,"lane": 4,"length": 0,"type": "Default"},{"time": 21900,"lane": 7,"length": 0,"type": "Default"},{"time": 22200,"lane": 5,"length": 975,"type": "Default"},{"time": 24000,"lane": 1,"length": 0,"type": "Default"},{"time": 24300,"lane": 3,"length": 0,"type": "Default"},{"time": 24600,"lane": 0,"length": 975,"type": "Default"},{"time": 26400,"lane": 5,"length": 0,"type": "Default"},{"time": 26700,"lane": 7,"length": 0,"type": "Default"},{"time": 27000,"lane": 4,"length": 975,"type": "Default"},{"time": 28800,"lane": 2,"length": 0,"type": "Default"},{"time": 29100,"lane": 3,"length": 0,"type": "Default"},{"time": 29400,"lane": 0,"length": 1275,"type": "Default"},{"time": 31200,"lane": 6,"length": 0,"type": "Default"},{"time": 31500,"lane": 7,"length": 0,"type": "Default"},{"time": 31800,"lane": 4,"length": 1275,"type": "Default"},{"time": 33300,"lane": 2,"length": 0,"type": "Default"},{"time": 33600,"lane": 0,"length": 0,"type": "Default"},{"time": 33900,"lane": 3,"length": 0,"type": "Default"},{"time": 34500,"lane": 2,"length": 0,"type": "Default"},{"time": 34800,"lane": 1,"length": 675,"type": "Default"},{"time": 35700,"lane": 6,"length": 0,"type": "Default"},{"time": 36000,"lane": 4,"length": 0,"type": "Default"},{"time": 36300,"lane": 7,"length": 0,"type": "Default"},{"time": 36900,"lane": 6,"length": 0,"type": "Default"},{"time": 37200,"lane": 5,"length": 675,"type": "Default"},{"time": 38400,"lane": 2,"length": 525,"type": "Default"},{"time": 39000,"lane": 3,"length": 375,"type": "Default"},{"time": 39600,"lane": 0,"length": 675,"type": "Default"},{"time": 40800,"lane": 6,"length": 525,"type": "Default"},{"time": 41400,"lane": 7,"length": 375,"type": "Default"},{"time": 42000,"lane": 4,"length": 675,"type": "Default"},{"time": 43200,"lane": 1,"length": 0,"type": "Default"},{"time": 43800,"lane": 2,"length": 0,"type": "Default"},{"time": 44400,"lane": 1,"length": 0,"type": "Default"},{"time": 44550,"lane": 1,"length": 0,"type": "Default"},{"time": 44700,"lane": 1,"length": 0,"type": "Default"},{"time": 45000,"lane": 2,"length": 0,"type": "Default"},{"time": 45600,"lane": 5,"length": 0,"type": "Default"},{"time": 46200,"lane": 6,"length": 0,"type": "Default"},{"time": 46800,"lane": 5,"length": 0,"type": "Default"},{"time": 46950,"lane": 5,"length": 0,"type": "Default"},{"time": 47100,"lane": 5,"length": 0,"type": "Default"},{"time": 47400,"lane": 6,"length": 0,"type": "Default"},{"time": 48000,"lane": 2,"length": 525,"type": "Default"},{"time": 48600,"lane": 3,"length": 375,"type": "Default"},{"time": 49200,"lane": 0,"length": 525,"type": "Default"},{"time": 50400,"lane": 6,"length": 525,"type": "Default"},{"time": 51000,"lane": 7,"length": 375,"type": "Default"},{"time": 51600,"lane": 4,"length": 525,"type": "Default"},{"time": 52800,"lane": 3,"length": 1875,"type": "Default"},{"time": 55200,"lane": 7,"length": 1875,"type": "Default"},{"time": 57600,"lane": 2,"length": 0,"type": "Default"},{"time": 57900,"lane": 3,"length": 0,"type": "Default"},{"time": 58200,"lane": 0,"length": 1275,"type": "Default"},{"time": 60000,"lane": 6,"length": 0,"type": "Default"},{"time": 60300,"lane": 7,"length": 0,"type": "Default"},{"time": 60600,"lane": 4,"length": 1275,"type": "Default"},{"time": 62100,"lane": 2,"length": 0,"type": "Default"},{"time": 62400,"lane": 0,"length": 0,"type": "Default"},{"time": 62700,"lane": 3,"length": 0,"type": "Default"},{"time": 63300,"lane": 2,"length": 0,"type": "Default"},{"time": 63600,"lane": 1,"length": 675,"type": "Default"},{"time": 64500,"lane": 6,"length": 0,"type": "Default"},{"time": 64800,"lane": 4,"length": 0,"type": "Default"},{"time": 65100,"lane": 7,"length": 0,"type": "Default"},{"time": 65700,"lane": 6,"length": 0,"type": "Default"},{"time": 66000,"lane": 5,"length": 675,"type": "Default"},{"time": 67200,"lane": 2,"length": 0,"type": "Default"},{"time": 67500,"lane": 3,"length": 0,"type": "Default"},{"time": 67800,"lane": 0,"length": 0,"type": "Default"},{"time": 68100,"lane": 2,"length": 0,"type": "Default"},{"time": 68400,"lane": 1,"length": 675,"type": "Default"},{"time": 69600,"lane": 6,"length": 0,"type": "Default"},{"time": 69900,"lane": 7,"length": 0,"type": "Default"},{"time": 70200,"lane": 4,"length": 0,"type": "Default"},{"time": 70500,"lane": 6,"length": 0,"type": "Default"},{"time": 70800,"lane": 5,"length": 675,"type": "Default"},{"time": 71700,"lane": 2,"length": 0,"type": "Default"},{"time": 72000,"lane": 0,"length": 0,"type": "Default"},{"time": 72300,"lane": 3,"length": 0,"type": "Default"},{"time": 72900,"lane": 2,"length": 0,"type": "Default"},{"time": 73200,"lane": 1,"length": 675,"type": "Default"},{"time": 74100,"lane": 6,"length": 0,"type": "Default"},{"time": 74400,"lane": 4,"length": 0,"type": "Default"},{"time": 74700,"lane": 7,"length": 0,"type": "Default"},{"time": 75300,"lane": 6,"length": 0,"type": "Default"},{"time": 75600,"lane": 5,"length": 675,"type": "Default"}],"events": [{"time": 0,"params": 1,"type": "FocusCamera"},{"time": 2400,"params": 0,"type": "FocusCamera"},{"time": 4200,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 4800,"params": 1,"type": "FocusCamera"},{"time": 7200,"params": 0,"type": "FocusCamera"},{"time": 9000,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 9600,"params": 1,"type": "FocusCamera"},{"time": 12000,"params": 0,"type": "FocusCamera"},{"time": 13800,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 14400,"params": 1,"type": "FocusCamera"},{"time": 16800,"params": 0,"type": "FocusCamera"},{"time": 18600,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 19200,"params": 1,"type": "FocusCamera"},{"time": 21600,"params": 0,"type": "FocusCamera"},{"time": 23400,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 24000,"params": 1,"type": "FocusCamera"},{"time": 26400,"params": 0,"type": "FocusCamera"},{"time": 28200,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 28800,"params": 1,"type": "FocusCamera"},{"time": 31200,"params": 0,"type": "FocusCamera"},{"time": 33000,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 33600,"params": 1,"type": "FocusCamera"},{"time": 36000,"params": 0,"type": "FocusCamera"},{"time": 37800,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 38400,"params": 1,"type": "FocusCamera"},{"time": 40800,"params": 0,"type": "FocusCamera"},{"time": 42600,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 43200,"params": 1,"type": "FocusCamera"},{"time": 45600,"params": 0,"type": "FocusCamera"},{"time": 47400,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 48000,"params": 1,"type": "FocusCamera"},{"time": 50400,"params": 0,"type": "FocusCamera"},{"time": 52200,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 52800,"params": 1,"type": "FocusCamera"},{"time": 55200,"params": 0,"type": "FocusCamera"},{"time": 57000,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 57600,"params": 1,"type": "FocusCamera"},{"time": 60000,"params": 0,"type": "FocusCamera"},{"time": 61800,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 62400,"params": 1,"type": "FocusCamera"},{"time": 64800,"params": 0,"type": "FocusCamera"},{"time": 66600,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 67200,"params": 1,"type": "FocusCamera"},{"time": 69600,"params": 0,"type": "FocusCamera"},{"time": 71400,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"},{"time": 72000,"params": 1,"type": "FocusCamera"},{"time": 74400,"params": 0,"type": "FocusCamera"},{"time": 76200,"params": {
+	"force": true,
+	"anim": "hey",
+	"target": "bf"
+},"type": "PlayAnimation"}]}

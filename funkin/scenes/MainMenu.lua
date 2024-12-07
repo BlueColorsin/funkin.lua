@@ -18,12 +18,12 @@ local MainMenuList = require("funkin.ui.mainmenu.MainMenuList") --- @type funkin
 local MainMenuButton = require("funkin.ui.mainmenu.MainMenuButton") --- @type funkin.ui.mainmenu.MainMenuButton
 
 ---
---- @class funkin.states.MainMenuState : chip.core.Scene
+--- @class funkin.scenes.MainMenu : chip.core.Scene
 ---
-local MainMenuState = Scene:extend("MainMenuState", ...)
-MainMenuState.lastSelected = 1
+local MainMenu = Scene:extend("MainMenu", ...)
+MainMenu.lastSelected = 1
 
-function MainMenuState:init()
+function MainMenu:init()
     self.bg = Sprite:new() --- @type chip.graphics.Sprite
     self.bg:loadTexture(Paths.image("yellow", "images/menus"))
     self.bg.scale:set(1.17, 1.17)
@@ -65,18 +65,18 @@ function MainMenuState:init()
     self.menuItems = MainMenuList:new() --- @type funkin.ui.mainmenu.MainMenuList
     self.menuItems:addItem("storymode", "Story Mode", function(_)
         print("STORY MODE SELECTED, TODO!!!")
-        self:startExitScene(require("funkin.states.StoryMenuState"):new())
+        self:startExitScene(require("funkin.scenes.StoryMenuState"):new())
     end)
     self.menuItems:addItem("freeplay", "Freeplay", function(_)
-        self:startExitScene(require("funkin.states.FreeplayState"):new())
+        self:startExitScene(require("funkin.scenes.FreeplayMenu"):new())
     end)
     self.menuItems:addItem("options", "Options", function(_)
         print("STORY MODE SELECTED, TODO!!!")
-        self:startExitScene(require("funkin.states.OptionsState"):new())
+        self:startExitScene(require("funkin.scenes.OptionsState"):new())
     end)
     self.menuItems:addItem("credits", "Credits", function(_)
         print("CREDITS SELECTED, TODO!!!")
-        self:startExitScene(require("funkin.states.CreditsState"):new())
+        self:startExitScene(require("funkin.scenes.CreditsState"):new())
     end)
     self.menuItems.onChange:connect(function(item)
         self.camera:setY(item:getY())
@@ -87,21 +87,21 @@ function MainMenuState:init()
         end
     end)
     self.menuItems:centerItems()
-    self.menuItems:selectItem(MainMenuState.lastSelected)
+    self.menuItems:selectItem(MainMenu.lastSelected)
     self.uiLayer:add(self.menuItems)
 end
 
-function MainMenuState:update(dt)
+function MainMenu:update(dt)
     if BGM.audioPlayer:getVolume() < 0.8 then
         BGM.audioPlayer:setVolume(BGM.audioPlayer:getVolume() + (dt * 0.05))
     end
     if Controls.justPressed.BACK then
-        Engine.switchScene(require("funkin.states.TitleState"):new())
+        Engine.switchScene(require("funkin.scenes.TitleState"):new())
     end
-    MainMenuState.super.update(self, dt)
+    MainMenu.super.update(self, dt)
 end
 
-function MainMenuState:startExitScene(scene)
+function MainMenu:startExitScene(scene)
     self.menuItems.enabled = false
 
     local duration = 0.4
@@ -120,9 +120,9 @@ function MainMenuState:startExitScene(scene)
     end)
 end
 
-function MainMenuState:free()
-    MainMenuState.lastSelected = self.menuItems.selectedItem
-    MainMenuState.super.free(self)
+function MainMenu:free()
+    MainMenu.lastSelected = self.menuItems.selectedItem
+    MainMenu.super.free(self)
 end
 
-return MainMenuState
+return MainMenu
