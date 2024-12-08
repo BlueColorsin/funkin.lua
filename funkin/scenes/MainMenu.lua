@@ -92,11 +92,8 @@ function MainMenu:init()
 end
 
 function MainMenu:update(dt)
-    if BGM.audioPlayer:getVolume() < 0.8 then
-        BGM.audioPlayer:setVolume(BGM.audioPlayer:getVolume() + (dt * 0.05))
-    end
     if Controls.justPressed.BACK then
-        Engine.switchScene(require("funkin.scenes.TitleState"):new())
+        Engine.switchScene(require("funkin.scenes.TitleScreen"):new())
     end
     MainMenu.super.update(self, dt)
 end

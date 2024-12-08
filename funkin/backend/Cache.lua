@@ -37,12 +37,18 @@ setmetatable(Cache.atlasCache, {
 ---
 Cache.atlasFontCache = {}
 
+---
+--- @type table<string, funkin.backend.data.NoteSkin>
+---
+Cache.noteSkinCache = {}
+
 function Cache.clear()
     for _, value in pairs(Cache.atlasCache) do
         value:unreference()
     end
     Cache.atlasCache = {}
     Cache.atlasFontCache = {}
+    Cache.noteSkinCache = {}
 end
 
 return Cache

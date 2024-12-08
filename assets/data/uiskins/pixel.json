@@ -1,0 +1,154 @@
+{
+    "judgements": {
+        "scale": 6,
+        "antialiasing": false,
+
+        "folder": "game/ui/pixel/combo",
+        "texture": "judgements",
+
+        "atlasType": "sparrow",
+        "animations": [
+            {
+                "name": "killer",
+                "prefix": "killer",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "sick",
+                "prefix": "sick",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "good",
+                "prefix": "good",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "bad",
+                "prefix": "bad",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "shit",
+                "prefix": "shit",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "miss",
+                "prefix": "miss",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 0, "y": 0}
+    },
+    "combo": {
+        "scale": 5,
+        "antialiasing": false,
+
+        "folder": "game/ui/pixel/combo",
+        "texture": "numbers",
+
+        "atlasType": "sparrow",
+        "animations": [
+            {
+                "name": "-",
+                "prefix": "-",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "0",
+                "prefix": "0",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "1",
+                "prefix": "1",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "2",
+                "prefix": "2",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "3",
+                "prefix": "3",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "4",
+                "prefix": "4",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "5",
+                "prefix": "5",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "6",
+                "prefix": "6",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "7",
+                "prefix": "7",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "8",
+                "prefix": "8",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "9",
+                "prefix": "9",
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 0, "y": 0}
+    },
+    "healthBar": {
+        "scale": 1,
+        
+        "folder": "game/ui/default",
+        "texture": "healthBar",
+
+        "padding": {"x": 8, "y": 8},
+        "offset": {"x": 0, "y": 0}
+    }
+}

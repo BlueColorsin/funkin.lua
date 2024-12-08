@@ -1,0 +1,112 @@
+{
+    "receptors": {
+        "scale": 6,
+        "spacing": 112,
+
+        "antialiasing": false,
+
+        "folder": "game/ui/pixel/notes",
+        "texture": "notes", 
+        
+        "atlasType": "grid",
+        "gridSize": {"x": 17, "y": 17},
+
+        "animations": [
+            {
+                "name": "static",
+                "indices": [
+                    [0],
+                    [1],
+                    [2],
+                    [3]
+                ],
+                "fps": 12,
+                "looped": false
+            },
+            {
+                "name": "press",
+                "indices": [
+                    [4, 8],
+                    [5, 9],
+                    [6, 10],
+                    [7, 11]
+                ],
+                "fps": 12,
+                "looped": false
+            },
+            {
+                "name": "confirm",
+                "indices": [
+                    [12, 16],
+                    [13, 17],
+                    [14, 18],
+                    [15, 19]
+                ],
+                "fps": 12,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 0, "y": 0}
+    },
+    "notes": {
+        "scale": 6,
+        "antialiasing": false,
+
+        "folder": "game/ui/pixel/notes",
+        "texture": "notes",
+
+        "atlasType": "grid",
+        "gridSize": {"x": 17, "y": 17},
+
+        "animations": [
+            {
+                "name": "scroll",
+                "indices": [
+                    [4],
+                    [5],
+                    [6],
+                    [7]
+                ],
+                "fps": 12,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 0, "y": 0}
+    },
+    "sustains": {
+        "scale": 6,
+        "antialiasing": false,
+
+        "folder": "game/ui/pixel/notes",
+        "texture": "sustains",
+
+        "atlasType": "grid",
+        "gridSize": {"x": 17, "y": 17},
+
+        "animations": [
+            {
+                "name": "hold",
+                "indices": [
+                    [0],
+                    [1],
+                    [2],
+                    [3]
+                ],
+                "fps": 12,
+                "looped": false
+            },
+            {
+                "name": "tail",
+                "indices": [
+                    [4],
+                    [5],
+                    [6],
+                    [7]
+                ],
+                "fps": 12,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 0, "y": 0}
+    }
+}

@@ -57,6 +57,14 @@ function Paths.voices(song, character, dir)
     return Paths.getPath((dir or "songs") .. "/" .. song:lower() .. "/song/Voices" .. ((character and #character > 0) and ("-" .. character) or "") .. "." .. Constants.SOUND_EXT)
 end
 
+function Paths.chart(song, difficulty, dir)
+    return Paths.getPath((dir or "songs") .. "/" .. song:lower() .. "/charts/" .. difficulty:lower() .. ".json")
+end
+
+function Paths.songMeta(song, dir)
+    return Paths.getPath((dir or "songs") .. "/" .. song:lower() .. "/meta.json")
+end
+
 function Paths.font(key, dir)
     return Paths.getPath((dir or "fonts") .. "/" .. key)
 end

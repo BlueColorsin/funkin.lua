@@ -54,10 +54,11 @@ local SongMetadata = {
 --- @return funkin.backend.song.SongMetadata?
 ---
 function SongMetadata.get(song)
-    if not File.exists(Paths.json("meta", "songs/" .. song)) then
+    local metaPath = Paths.songMeta(song)
+    if not File.exists(metaPath) then
         return nil
     end
-    return Json.parse(File.read(Paths.json("meta", "songs/" .. song)))
+    return Json.parse(File.read(metaPath))
 end
 
 return SongMetadata

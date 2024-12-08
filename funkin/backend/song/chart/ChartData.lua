@@ -18,6 +18,7 @@
 --- @class funkin.backend.song.chart.ChartData
 ---
 local ChartData = {
+    meta = nil, --- @type funkin.backend.song.SongMetadata?
     notes = nil, --- @type table<number, funkin.backend.song.chart.NoteData>
     events = nil, --- @type table<number, funkin.backend.song.chart.EventData>
 }

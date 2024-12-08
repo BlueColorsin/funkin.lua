@@ -311,9 +311,6 @@ function FreeplayMenu:update(dt)
         self._playingSong = song
     end
     if Controls.justPressed.BACK then
-        CoolUtil.playMenuMusic(0.0, true)
-        BGM.fade(0, 1, 2)
-
         Engine.switchScene(require("funkin.scenes.MainMenu"):new())
     end
     local wheel = -Input:getMouseWheelY()

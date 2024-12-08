@@ -19,7 +19,6 @@
 ---
 local AtlasType = {
     SPARROW = "sparrow",
-    PACKER = "packer",
     GRID = "grid",
     ANIMATE = "animate"
 }

@@ -190,33 +190,33 @@ function Conductor:reset(bpm)
     self.bpm = bpm
 end
 
-function Conductor:setupFromMap(map)
+function Conductor:setupFromChart(chart)
     self:reset()
-    self.timeSignature = Conductor.timeSignatureFromString(map.meta.timeSignature)
+    self.timeSignature = Conductor.timeSignatureFromString(chart.meta.timeSignature)
 
-    self.bpm = map.meta.bpm
-    self:setupBPMChanges(map)
+    self.bpm = chart.meta.bpm
+    self:setupBPMChanges(chart)
 end
 
-function Conductor:setupBPMChanges(map)
+function Conductor:setupBPMChanges(chart)
     self.bpmChanges = {
         {
             time = 0.0,
             step = 0,
-            bpm = map.meta.bpm
+            bpm = chart.meta.bpm
         }
     }
-    if not map.events or #map.events == 0 then
+    if not chart.events or #chart.events == 0 then
         return
     end
-    local timeSig = Conductor.timeSignatureFromString(map.meta.timeSignature)
+    local timeSig = Conductor.timeSignatureFromString(chart.meta.timeSignature)
 
     local curBPM = 0.0
     local time = 0.0
     local steps = 0.0
 
-    for i = 1, #map.events do
-        local event = map.events[i]
+    for i = 1, #chart.events do
+        local event = chart.events[i]
         if event.type == "BPM Change" and event.params and type(event.params.bpm) == "number" then
             local eventBPM = event.params.bpm
             if eventBPM ~= curBPM then
@@ -369,6 +369,10 @@ function Conductor:update(dt)
             Conductor._callOnActor(Engine.currentScene, "measureHit", self.measure)
         end
     end
+end
+
+function Conductor:getRawTime()
+    return self.rawTime
 end
 
 function Conductor:getTime()

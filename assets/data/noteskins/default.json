@@ -1,0 +1,108 @@
+{
+    "receptors": {
+        "scale": 0.7,
+        "spacing": 112,
+
+        "folder": "game/noteskins/default",
+        "texture": "notes", 
+        
+        "atlasType": "sparrow",
+        "animations": [
+            {
+                "name": "static",
+                "prefixes": [
+                    "left static0",
+                    "down static0",
+                    "up static0",
+                    "right static0"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "press",
+                "prefixes": [
+                    "left press0",
+                    "down press0",
+                    "up press0",
+                    "right press0"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "confirm",
+                "prefixes": [
+                    "left confirm0",
+                    "down confirm0",
+                    "up confirm0",
+                    "right confirm0"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 0, "y": 0}
+    },
+    "notes": {
+        "scale": 0.7,
+
+        "folder": "game/ui/default/notes",
+        "texture": "notes",
+
+        "atlasType": "sparrow",
+        "animations": [
+            {
+                "name": "scroll",
+                "prefixes": [
+                    "left scroll",
+                    "down scroll",
+                    "up scroll",
+                    "right scroll"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 0, "y": 0}
+    },
+    "sustains": {
+        "scale": 0.7,
+
+        "folder": "game/ui/default/notes",
+        "texture": "notes",
+
+        "atlasType": "sparrow",
+        "animations": [
+            {
+                "name": "hold",
+                "prefixes": [
+                    "left hold",
+                    "down hold",
+                    "up hold",
+                    "right hold"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "tail",
+                "prefixes": [
+                    "left tail",
+                    "down tail",
+                    "up tail",
+                    "right tail"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 0, "y": 0}
+    }
+}
