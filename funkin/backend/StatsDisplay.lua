@@ -19,6 +19,9 @@ local window = love.window
 
 local peakMemUsage = 0.0
 
+local floor = math.floor
+local humanizeBytes = math.humanizeBytes
+
 local fpsFonts = {
     big = gfx.newFont("assets/fonts/montserrat/semibold.ttf", 16, "light"),
     small = gfx.newFont("assets/fonts/montserrat/semibold.ttf", 12, "light")
@@ -46,7 +49,7 @@ local function draw()
         peakMemUsage = memUsage
     end
     local fpsColor = Color.WHITE
-    if cap > 0 and currentFPS < math.floor(cap * 0.5) then
+    if cap > 0 and currentFPS < floor(cap * 0.5) then
         fpsColor = Color.RED
     end
     local fpsText = tostring(currentFPS)
@@ -59,8 +62,8 @@ local function draw()
     local smallTPSText = " / " .. currentTPS .. " TPS"
     drawFPSText(smallFPSTextX + fpsFonts.small:getWidth(smallFPSText), 7, smallTPSText, fpsFonts.small, fpsColor, 0.5)
 
-    local memText = math.humanizeBytes(memUsage)
-    local memPeakText = " / " .. math.humanizeBytes(peakMemUsage)
+    local memText = humanizeBytes(memUsage)
+    local memPeakText = " / " .. humanizeBytes(peakMemUsage)
 
     drawFPSText(10, 22, memText, fpsFonts.small, fpsColor, 1)
     drawFPSText(10 + fpsFonts.small:getWidth(memText), 22, memPeakText, fpsFonts.small, fpsColor, 0.5)

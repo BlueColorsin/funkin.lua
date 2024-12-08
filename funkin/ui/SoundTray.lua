@@ -14,6 +14,14 @@
     limitations under the License.
 ]]
 
+local lerp = math.lerp
+local random = math.random
+
+local floor = math.floor
+
+local min = math.min
+local max = math.max
+
 -- TODO: Clean this up later
 -- This is just a port of the one from legacy branch,
 -- just suited for chip instead of flora
@@ -129,29 +137,29 @@ function SoundTray.update(dt)
     SoundTray._timer = SoundTray._timer + dt
     
     if SoundTray._timer > 1.5 then
-        SoundTray.y = math.lerp(SoundTray.y, -(SoundTray.height + 20), dt * 9.0)
-        SoundTray.alpha = math.lerp(SoundTray.alpha, 0.0, dt * 9.0)
+        SoundTray.y = lerp(SoundTray.y, -(SoundTray.height + 20), dt * 9.0)
+        SoundTray.alpha = lerp(SoundTray.alpha, 0.0, dt * 9.0)
 
         if SoundTray.y <= -SoundTray.height then
             SoundTray.visible = false
         end
     else
-        SoundTray.y = math.lerp(SoundTray.y, 10, dt * 9.0)
-        SoundTray.alpha = math.lerp(SoundTray.alpha, 1.0, dt * 9.0)
+        SoundTray.y = lerp(SoundTray.y, 10, dt * 9.0)
+        SoundTray.alpha = lerp(SoundTray.alpha, 1.0, dt * 9.0)
         SoundTray.visible = true
     end
 
     local ww = love.graphics.getWidth()
     SoundTray.x = ((ww - SoundTray.width) * 0.5)
 
-    SoundTray.offsetX = (math.random(-2.0, 2.0) * SoundTray._shakeMult)
-    SoundTray.offsetY = (math.random(-2.0, 2.0) * SoundTray._shakeMult)
+    SoundTray.offsetX = (random(-2.0, 2.0) * SoundTray._shakeMult)
+    SoundTray.offsetY = (random(-2.0, 2.0) * SoundTray._shakeMult)
     
-    SoundTray._shakeMult = math.max(SoundTray._shakeMult - (dt * 3), 0)
+    SoundTray._shakeMult = max(SoundTray._shakeMult - (dt * 3), 0)
     SoundTray._elapsedAnimTime = SoundTray._elapsedAnimTime + dt
 
     if SoundTray._elapsedAnimTime >= (1.0 / curAnim.fps) then
-        SoundTray.curFrame = math.min(SoundTray.curFrame + 1, #curAnim.frames)
+        SoundTray.curFrame = min(SoundTray.curFrame + 1, #curAnim.frames)
         SoundTray._elapsedAnimTime = 0.0
     end
 end
@@ -177,7 +185,7 @@ function SoundTray.draw()
 
     local vol = masterBus:getVolume()
     if vol > 0 and not masterBus:isMuted() then
-        love.graphics.draw(SoundTray.bars[math.floor(vol * barCount)], barX, barY, 0, SoundTray.scale.x, SoundTray.scale.y)
+        love.graphics.draw(SoundTray.bars[floor(vol * barCount)], barX, barY, 0, SoundTray.scale.x, SoundTray.scale.y)
     end
     love.graphics.setColor(pr, pg, pb, pa)
 end

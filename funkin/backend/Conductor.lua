@@ -14,6 +14,9 @@
     limitations under the License.
 ]]
 
+local abs = math.abs
+local floor = math.floor
+
 ---
 --- @class funkin.backend.Conductor : chip.core.Actor
 ---
@@ -305,7 +308,7 @@ function Conductor:update(dt)
     end
     local runStep = self:_updateStep(((time - self._lastBPMChange.time) / self:getStepCrotchet()) + self._lastBPMChange.step)
     if runStep then
-        if math.abs(self.lastStep - self.step) > 1 then
+        if abs(self.lastStep - self.step) > 1 then
             for i = self.lastStep, self.step do
                 self.stepHit:emit(i)
             end
@@ -315,7 +318,7 @@ function Conductor:update(dt)
     end
     local runBeat = self:_updateBeat(self.stepf / self.timeSignature[2])
     if runStep and runBeat then
-        if math.abs(self.lastBeat - self.beat) > 1 then
+        if abs(self.lastBeat - self.beat) > 1 then
             for i = self.lastBeat, self.beat do
                 self.beatHit:emit(i)
             end
@@ -330,7 +333,7 @@ function Conductor:update(dt)
     end
     local runMeasure = self:_updateMeasure(self.beatf / self.timeSignature[1])
     if runStep and runMeasure then
-        if math.abs(self.lastMeasure - self.measure) > 1 then
+        if abs(self.lastMeasure - self.measure) > 1 then
             for i = self.lastMeasure, self.measure do
                 self.measureHit:emit(i)
             end
@@ -343,7 +346,7 @@ function Conductor:update(dt)
         return
     end
     if runStep then
-        if math.abs(self.lastStep - self.step) > 1 then
+        if abs(self.lastStep - self.step) > 1 then
             for i = self.lastStep, self.step do
                 Conductor._callOnActor(Engine.currentScene, "stepHit", i)
             end
@@ -352,7 +355,7 @@ function Conductor:update(dt)
         end
     end
     if runStep and runBeat then
-        if math.abs(self.lastBeat - self.beat) > 1 then
+        if abs(self.lastBeat - self.beat) > 1 then
             for i = self.lastBeat, self.beat do
                 Conductor._callOnActor(Engine.currentScene, "beatHit", i)
             end
@@ -361,7 +364,7 @@ function Conductor:update(dt)
         end
     end
     if runStep and runMeasure then
-        if math.abs(self.lastMeasure - self.measure) > 1 then
+        if abs(self.lastMeasure - self.measure) > 1 then
             for i = self.lastMeasure, self.measure do
                 Conductor._callOnActor(Engine.currentScene, "measureHit", i)
             end
@@ -400,7 +403,7 @@ end
 ---
 function Conductor:_updateStep(newStep)
     local updated = false
-    local newStepFloored = math.floor(newStep)
+    local newStepFloored = floor(newStep)
 
     if self.step ~= newStepFloored then
         self.lastStep = self.step
@@ -417,7 +420,7 @@ end
 ---
 function Conductor:_updateBeat(newBeat)
     local updated = false
-    local newBeatFloored = math.floor(newBeat)
+    local newBeatFloored = floor(newBeat)
 
     if self.beat ~= newBeatFloored then
         self.lastBeat = self.beat
@@ -434,7 +437,7 @@ end
 ---
 function Conductor:_updateMeasure(newMeasure)
     local updated = false
-    local newMeasureFloored = math.floor(newMeasure)
+    local newMeasureFloored = floor(newMeasure)
 
     if self.measure ~= newMeasureFloored then
         self.lastMeasure = self.measure

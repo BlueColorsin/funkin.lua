@@ -1,3 +1,21 @@
+--[[
+    Copyright 2024 swordcube
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+]]
+
+local lerp = math.lerp
+
 ---
 --- @type funkin.backend.utils.TrackingSprite
 ---
@@ -121,9 +139,9 @@ function HealthIcon:update(dt)
     self:_updateHealth(self.health)
     if self.canBop then
         if self.width > self.height then
-            self:setGraphicSize(math.lerp(self.width, HealthIcon.HEALTH_ICON_SIZE * self.size.x, dt * 60 * HealthIcon.ICON_SPEED), 0)
+            self:setGraphicSize(lerp(self.width, HealthIcon.HEALTH_ICON_SIZE * self.size.x, dt * 60 * HealthIcon.ICON_SPEED), 0)
         else
-            self:setGraphicSize(0, math.lerp(self.height, HealthIcon.HEALTH_ICON_SIZE * self.size.y, dt * 60 * HealthIcon.ICON_SPEED))
+            self:setGraphicSize(0, lerp(self.height, HealthIcon.HEALTH_ICON_SIZE * self.size.y, dt * 60 * HealthIcon.ICON_SPEED))
         end
     end
     HealthIcon.super.update(self, dt)

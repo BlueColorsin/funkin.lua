@@ -14,6 +14,15 @@
     limitations under the License.
 ]]
 
+local wrap = math.wrap
+local lerp = math.lerp
+
+local round = math.round
+local floor = math.floor
+
+local min = math.min
+local max = math.max
+
 ---@diagnostic disable: invisible
 
 local _disabled_, _inherit_ = "disabled", "inherit"
@@ -189,7 +198,7 @@ function FreeplayMenu:changeSelection(by, force)
         return
     end
     local songCount = #self.songList
-    self.curSelected = math.wrap(self.curSelected + by, 1, songCount)
+    self.curSelected = wrap(self.curSelected + by, 1, songCount)
 
     for i = 1, songCount do
         local text = self.grpSongs:getMembers()[i] --- @type funkin.ui.AtlasText
@@ -217,7 +226,7 @@ function FreeplayMenu:changeDifficulty(by, force)
     self.curDifficulty = difficulties[curDifficultyIndex]
     
     if curDifficultyIndex < 1 then
-        local curVariantIndex = math.wrap(prevVariantIndex + by, 1, #songMetas.default.variants)
+        local curVariantIndex = wrap(prevVariantIndex + by, 1, #songMetas.default.variants)
         self.curVariant = songMetas.default.variants[curVariantIndex]
         
         difficulties = songMetas[self.curVariant].difficulties
@@ -228,7 +237,7 @@ function FreeplayMenu:changeDifficulty(by, force)
     elseif curDifficultyIndex > #difficulties then
         curDifficultyIndex = 1
 
-        local curVariantIndex = math.wrap(prevVariantIndex + by, 1, #songMetas.default.variants)
+        local curVariantIndex = wrap(prevVariantIndex + by, 1, #songMetas.default.variants)
         self.curVariant = songMetas.default.variants[curVariantIndex]
         
         difficulties = songMetas[self.curVariant].difficulties
@@ -256,7 +265,7 @@ function FreeplayMenu:update(dt)
     local songCount = #self.songList
 
     local lerpRatio = dt * 9.6
-    self.lerpSelected = math.lerp(self.lerpSelected, self.curSelected, lerpRatio)
+    self.lerpSelected = lerp(self.lerpSelected, self.curSelected, lerpRatio)
     
     for i = 1, #self._lastVisibles do
         local j = self._lastVisibles[i]
@@ -271,16 +280,16 @@ function FreeplayMenu:update(dt)
     end
     self._lastVisibles = {}
 
-    local min = math.round(math.max(1, math.min(songCount, self.lerpSelected - 4)))
-	local max = math.round(math.max(1, math.min(songCount, self.lerpSelected + 4)))
+    local minv = round(max(1, min(songCount, self.lerpSelected - 4)))
+	local maxv = round(max(1, min(songCount, self.lerpSelected + 4)))
 
-    for i = min, max do
+    for i = minv, maxv do
         local text = self.grpSongs:getMembers()[i] --- @type funkin.ui.AtlasText
         text:setUpdateMode(_inherit_)
         text:setVisibility(true)
 
-        text:setX(math.lerp(text:getX(), (text.targetY * 20) + 90, lerpRatio))
-        text:setY(math.lerp(text:getY(), (text.targetY * 156) + (Engine.gameHeight * 0.45), lerpRatio))
+        text:setX(lerp(text:getX(), (text.targetY * 20) + 90, lerpRatio))
+        text:setY(lerp(text:getY(), (text.targetY * 156) + (Engine.gameHeight * 0.45), lerpRatio))
 
         local icon = self.grpIcons:getMembers()[i] --- @type funkin.ui.HealthIcon
         icon:setUpdateMode(_inherit_)
@@ -294,9 +303,9 @@ function FreeplayMenu:update(dt)
     self.bg:setTint(bgColor:interpolate(songMetas[self.curVariant]._parsedColor, dt * 2.7))
 
     local scoreData = Highscore.getScoreData(self.songList[self.curSelected], self.curDifficulty) --- @type funkin.backend.data.HighscoreData
-    self.lerpScore = math.lerp(self.lerpScore, scoreData.score, dt * 24.0)
+    self.lerpScore = lerp(self.lerpScore, scoreData.score, dt * 24.0)
 
-    self.scoreText:setContents("PERSONAL BEST:" .. math.floor(self.lerpScore))
+    self.scoreText:setContents("PERSONAL BEST:" .. floor(self.lerpScore))
     self:positionHighscore()
 
     local info = thread.getChannel("fi2"):pop()
