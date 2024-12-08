@@ -286,7 +286,7 @@ function Conductor:update(dt)
         if musicTime ~= self.rawMusicTime then
             self.rawTime = musicTime
         else
-            self.rawTime = self.rawTime + dt
+            self.rawTime = self.rawTime + (dt * 1000.0)
         end
         self.rawMusicTime = musicTime
     end

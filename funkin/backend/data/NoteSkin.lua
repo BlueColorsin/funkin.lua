@@ -41,6 +41,8 @@ local NoteSkinData = {
 
     animations = nil, --- @type table<funkin.backend.data.NoteSkinAnimationData>
     offset = nil, --- @type table<string, number>
+
+    antialiasing = nil --- @type boolean?
 }
 
 ---

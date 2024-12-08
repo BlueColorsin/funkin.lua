@@ -15,7 +15,9 @@
 ]]
 
 local NoteSkin = require("funkin.backend.data.NoteSkin") --- @type funkin.backend.data.NoteSkin
+
 local Receptor = require("funkin.gameplay.Receptor") --- @type funkin.gameplay.Receptor
+local Note = require("funkin.gameplay.Note") --- @type funkin.gameplay.Note
 
 ---
 --- @class funkin.gameplay.StrumLine : chip.graphics.CanvasLayer
@@ -25,12 +27,49 @@ local StrumLine = CanvasLayer:extend("StrumLine", ...)
 function StrumLine:constructor(x, y, downscroll, skin)
     StrumLine.super.constructor(self, x, y, downscroll, skin)
 
-    self._downscroll = downscroll
+    ---
+    --- @protected
+    ---
+    self._downscroll = downscroll --- @type boolean
+
+    ---
+    --- @protected
+    ---
+    self._skin = skin --- @type string
+
+    ---
+    --- @protected
+    ---
+    self._attachedNotes = {} --- @type table<funkin.backend.song.chart.NoteData>
+
+    ---
+    --- @protected
+    --- @type integer
+    ---
+    self._spawnedNotes = 0
+
+    ---
+    --- @protected
+    --- @type number
+    ---
+    self._scrollSpeed = 1.0
+
+    self.receptors = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
+    self:add(self.receptors)
 
     local json = NoteSkin.get(skin) --- @type funkin.backend.data.NoteSkin?
-    for i = 1, 4 do
-        local receptor = Receptor:new((i - 3) * 112, 0, i, "default") --- @type funkin.gameplay.Receptor
-        self:add(receptor)
+    for i = 0, 3 do
+        local receptor = Receptor:new((i - 2) * json.receptors.spacing, 0, i, "default") --- @type funkin.gameplay.Receptor
+        self.receptors:add(receptor)
+    end
+    self.notes = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
+    self:add(self.notes)
+
+    for i = 1, 64 do
+        local note = Note:new() --- @type funkin.gameplay.Note
+        note:setup(self, 0.0, i % 4, 0.0, "Default", skin)
+        note:kill()
+        self.notes:add(note)
     end
 end
 
@@ -40,6 +79,61 @@ end
 
 function StrumLine:setDownscroll(downscroll)
     self._downscroll = downscroll
+end
+
+function StrumLine:getAttachedNotes()
+    return self._attachedNotes
+end
+
+---
+--- @param  notes  table<funkin.backend.song.chart.NoteData>
+---
+function StrumLine:attachNotes(notes)
+    self._attachedNotes = notes
+    table.sort(self._attachedNotes, function(a, b)
+        return a.time < b.time
+    end)
+end
+
+function StrumLine:getSkin()
+    return self._skin
+end
+
+---
+--- @param  skin  string
+---
+function StrumLine:setSkin(skin)
+    self._skin = skin
+
+    local members = self.receptors:getMembers()
+    for i = 1, self.receptor:getLength() do
+        local receptor = members[i] --- @type funkin.gameplay.Receptor
+        receptor:setSkin(skin)
+    end
+    local noteMembers = self.notes:getMembers()
+    for i = 1, self.notes:getLength() do
+        local note = noteMembers[i] --- @type funkin.gameplay.Note
+        note:setSkin(skin)
+    end
+end
+
+function StrumLine:getSpawnedNotes()
+    return self._spawnedNotes
+end
+
+function StrumLine:resetSpawnedNotes()
+    self._spawnedNotes = 1
+end
+
+function StrumLine:getScrollSpeed()
+    return self._scrollSpeed
+end
+
+---
+--- @param  scrollSpeed  number
+---
+function StrumLine:setScrollSpeed(scrollSpeed)
+    self._scrollSpeed = scrollSpeed
 end
 
 return StrumLine

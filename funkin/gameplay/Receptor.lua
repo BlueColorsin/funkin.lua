@@ -14,6 +14,7 @@
     limitations under the License.
 ]]
 
+local dirs = {"left", "down", "up", "right"}
 local NoteSkin = require("funkin.backend.data.NoteSkin") --- @type funkin.backend.data.NoteSkin
 
 ---
@@ -42,7 +43,8 @@ function Receptor:getLaneID()
 end
 
 function Receptor:setLaneID(id)
-    self._lane = id
+    self._lane = id % 4
+    self.animation:play(dirs[self._lane + 1] .. " static")
 end
 
 function Receptor:getSkin()
@@ -54,7 +56,6 @@ end
 --- @param  json  funkin.backend.data.NoteSkin
 ---
 function Receptor:setSkin(skin)
-    local dirs = {"left", "down", "up", "right"}
     local json = NoteSkin.get(skin) --- @type funkin.backend.data.NoteSkin?
 
     if json.receptors.atlasType == "sparrow" then
@@ -76,7 +77,7 @@ function Receptor:setSkin(skin)
         -- TODO
     end
     self.scale:set(json.receptors.scale, json.receptors.scale)
-    self.animation:play(dirs[self._lane] .. " static")
+    self.animation:play(dirs[self._lane + 1] .. " static")
 
     self._skin = skin
 end

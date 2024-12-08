@@ -25,7 +25,7 @@ HealthIcon.ICON_SPEED = 0.25
 HealthIcon.HEALTH_ICON_SIZE = 150
 HealthIcon.PIXEL_ICON_SIZE = 32
 
-HealthIcon.BUMP_AMOUNT = 0.2
+HealthIcon.BOP_AMOUNT = 0.2
 
 ---
 --- @param  character  string
@@ -91,6 +91,12 @@ function HealthIcon:constructor(character, isPlayer)
     ---
     self._characterID = nil
 
+    ---
+    --- @protected
+    --- @type chip.tweens.Tween
+    ---
+    self._bopTween = nil
+
     self.__initializing = false
     self:set_characterID(character or "face")
 end
@@ -121,6 +127,25 @@ function HealthIcon:update(dt)
         end
     end
     HealthIcon.super.update(self, dt)
+end
+
+function HealthIcon:bop()
+    if self._bopTween then
+        self._bopTween:free()
+    end
+    local finalSize = 0.0
+    if self:getWidth() > self:getHeight() then
+        self:setGraphicSize((HealthIcon.HEALTH_ICON_SIZE * self.size.x) * (1 + HealthIcon.BOP_AMOUNT), 0)
+        finalSize = HealthIcon.HEALTH_ICON_SIZE * self.size.x
+    else
+        self:setGraphicSize(0, (HealthIcon.HEALTH_ICON_SIZE * self.size.y) * (1 + HealthIcon.BOP_AMOUNT))
+        finalSize = HealthIcon.HEALTH_ICON_SIZE * self.size.y
+    end
+    self._bopTween = Tween:new() --- @type chip.tweens.Tween
+    self._bopTween:tweenProperty(self, "scale", Point:new(finalSize / self:getFrameWidth(), finalSize / self:getFrameHeight()), 0.15, Ease.sineOut)
+    self._bopTween:setCompletionCallback(function(_)
+        self._bopTween = nil
+    end)
 end
 
 -----------------------

@@ -50,7 +50,7 @@
     "notes": {
         "scale": 0.7,
 
-        "folder": "game/ui/default/notes",
+        "folder": "game/noteskins/default",
         "texture": "notes",
 
         "atlasType": "sparrow",
@@ -73,7 +73,7 @@
     "sustains": {
         "scale": 0.7,
 
-        "folder": "game/ui/default/notes",
+        "folder": "game/noteskins/default",
         "texture": "notes",
 
         "atlasType": "sparrow",

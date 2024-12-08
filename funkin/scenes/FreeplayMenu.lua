@@ -205,6 +205,9 @@ function FreeplayMenu:changeDifficulty(by, force)
         return
     end
     local songMetas = self.songMetas[self.songList[self.curSelected]] --- @type table<string, funkin.backend.song.SongMetadata>
+    if not songMetas[self.curVariant] then
+        self.curVariant = "default"
+    end
     local difficulties = songMetas[self.curVariant].difficulties --- @type table<string>
     
     local prevDifficultyIndex = table.indexOf(difficulties, self.curDifficulty)
