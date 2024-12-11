@@ -1,0 +1,66 @@
+{
+    "contributors": [
+        {
+            "name": "swordcube",
+            "desc": "The creator of this project!! That's me :D\nI'm the main programmer, along with being an artist for minor things like icons",
+            "url": "https://github.com/swordcube",
+
+            "icon": "swordcube",
+            "color": "#9ec8ff",
+
+            "roles": ["creator", "artist", "programmer"]
+        },
+        {
+            "name": "cherry",
+            "desc": "Made the initial alphabet implementation for legacy branch\nand helped out with optimizations for legacy branch",
+            "url": "https://github.com/what-is-a-git",
+
+            "icon": "cherry",
+            "color": "#7c0407",
+
+            "roles": ["programmer"]
+        },
+        {
+            "name": "SrtHero278",
+            "desc": "Optimizations for chip.lua and legacy branch",
+            "url": "https://github.com/SrtHero278",
+
+            "icon": "srthero278",
+            "color": "#093a6b",
+
+            "roles": ["programmer"]
+        }
+    ],
+    "specialThanks": [
+        {
+            "name": "The Funkin' Crew",
+            "desc": "Made the original game, go check it out!\nWithout them, this project wouldn't be possible!",
+            "url": "github.com/FunkinCrew/Funkin",
+            
+            "icon": "swordcube",
+            "color": "#26a6f8",
+            
+            "roles": ["artist", "programmer", "composer"]
+        },
+        {
+            "name": "TheConcealedCow",
+            "desc": "Made the Killer!!! judgement asset",
+            "url": "https://gamebanana.com/members/1739194",
+
+            "icon": "concow",
+            "color": "#e3e3e3",
+
+            "roles": ["artist"]
+        },
+        {
+            "name": "You",
+            "desc": "Thank you for trying out funkin.lua!",
+            "url": "https://pointerpointer.com/",
+
+            "icon": "you",
+            "color": "#bb8b68",
+
+            "roles": ["player"]
+        }
+    ]
+}

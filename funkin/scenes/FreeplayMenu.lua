@@ -30,6 +30,7 @@ local thread = love.thread
 
 local SongMetadata = require("funkin.backend.song.SongMetadata") --- @type funkin.backend.song.SongMetadata
 local HealthIcon = require("funkin.ui.HealthIcon") --- @type funkin.ui.HealthIcon
+local MainMenu = require("funkin.scenes.MainMenu") --- @type funkin.scenes.MainMenu
 
 ---
 --- @class funkin.scenes.FreeplayMenu : chip.core.Scene
@@ -323,6 +324,7 @@ function FreeplayMenu:update(dt)
         self._playingSong = song
     end
     if Controls.justPressed.BACK then
+        AudioPlayer.playSFX(Paths.sound("cancel", "sounds/menus"))
         Engine.switchScene(require("funkin.scenes.MainMenu"):new())
     end
     local wheel = -Input:getMouseWheelY()
@@ -337,6 +339,9 @@ function FreeplayMenu:update(dt)
     end
     if Controls.justPressed.UI_RIGHT then
         self:changeDifficulty(1)
+    end
+    if Controls.justPressed.BACK then
+        Engine.switchScene(MainMenu:new())
     end
     if Controls.justPressed.ACCEPT then
         Engine.switchScene(Gameplay:new({

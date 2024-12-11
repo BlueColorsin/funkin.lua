@@ -53,7 +53,6 @@ function Gameplay:init()
 
     -- setup conductor
     self.mainConductor = Conductor.instance
-    self.mainConductor.hasMetronome = true
     self.mainConductor:setupFromChart(self.currentChart)
     self.mainConductor:setTime(self.mainConductor:getCrotchet() * -5.0)
 

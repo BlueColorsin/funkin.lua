@@ -1,52 +1,48 @@
 {
     "judgements": {
-        "scale": 6,
+        "scale": 4.7,
         "antialiasing": false,
 
-        "folder": "game/ui/pixel/combo",
+        "folder": "game/uiskins/pixel",
         "texture": "judgements",
 
-        "atlasType": "sparrow",
+        "atlasType": "grid",
+        "gridSize": {"x": 70, "y": 24},
+
         "animations": [
             {
                 "name": "killer",
-                "prefix": "killer",
-                "indices": null,
+                "indices": [0],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "sick",
-                "prefix": "sick",
-                "indices": null,
+                "indices": [1],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "good",
-                "prefix": "good",
-                "indices": null,
+                "indices": [2],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "bad",
-                "prefix": "bad",
-                "indices": null,
+                "indices": [3],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "shit",
-                "prefix": "shit",
-                "indices": null,
+                "indices": [4],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "miss",
-                "prefix": "miss",
-                "indices": null,
+                "indices": [5],
                 "fps": 24,
                 "looped": false
             }
@@ -54,88 +50,119 @@
         "offset": {"x": 0, "y": 0}
     },
     "combo": {
-        "scale": 5,
+        "scale": 4.7,
         "antialiasing": false,
 
-        "folder": "game/ui/pixel/combo",
-        "texture": "numbers",
+        "folder": "game/uiskins/pixel",
+        "texture": "combo",
 
-        "atlasType": "sparrow",
+        "atlasType": "grid",
+        "gridSize": {"x": 10, "y": 12},
+
         "animations": [
             {
                 "name": "-",
-                "prefix": "-",
-                "indices": null,
+                "indices": [0],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "0",
-                "prefix": "0",
-                "indices": null,
+                "indices": [1],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "1",
-                "prefix": "1",
-                "indices": null,
+                "indices": [2],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "2",
-                "prefix": "2",
-                "indices": null,
+                "indices": [3],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "3",
-                "prefix": "3",
-                "indices": null,
+                "indices": [4],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "4",
-                "prefix": "4",
-                "indices": null,
+                "indices": [5],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "5",
-                "prefix": "5",
-                "indices": null,
+                "indices": [6],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "6",
-                "prefix": "6",
-                "indices": null,
+                "indices": [7],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "7",
-                "prefix": "7",
-                "indices": null,
+                "indices": [8],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "8",
-                "prefix": "8",
-                "indices": null,
+                "indices": [9],
                 "fps": 24,
                 "looped": false
             },
             {
                 "name": "9",
-                "prefix": "9",
-                "indices": null,
+                "indices": [10],
+                "fps": 24,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 0, "y": 0}
+    },
+    "countdown": {
+        "scale": 6,
+
+        "textureFolder": "game/uiskins/pixel",
+        "texture": "countdown",
+        
+        "soundFolder": "game/uiskins/pixel",
+        "sounds": ["intro3", "intro2", "intro1", "introGo"],
+
+        "atlasType": "grid",
+        "gridSize": {"x": 96, "y": 44},
+
+        "animations": [
+            {
+                "name": "prepare",
+                "indices": [0],
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "ready",
+                "indices": [0],
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "set",
+                "indices": [1],
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "go",
+                "indices": [2],
                 "fps": 24,
                 "looped": false
             }

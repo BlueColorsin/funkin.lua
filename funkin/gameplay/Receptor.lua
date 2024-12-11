@@ -35,6 +35,21 @@ function Receptor:constructor(x, y, lane, skin)
     ---
     self._lane = lane --- @type integer
 
+    ---
+    --- @protected
+    ---
+    self._initialWidth = 0.0 --- @type integer
+
+    ---
+    --- @protected
+    ---
+    self._initialHeight = 0.0 --- @type integer
+
+    ---
+    --- @protected
+    ---
+    self._confirmTimer = nil --- @type chip.utils.Timer?
+
     self:setSkin(skin)
 end
 
@@ -45,6 +60,9 @@ end
 function Receptor:setLaneID(id)
     self._lane = id % 4
     self.animation:play(dirs[self._lane + 1] .. " static")
+
+    self._initialWidth = self:getFrameWidth()
+    self._initialHeight = self:getFrameHeight()
 end
 
 function Receptor:getSkin()
@@ -69,6 +87,9 @@ function Receptor:setSkin(skin)
                 else
                     self.animation:addByPrefix(animName, animData.prefixes[j], animData.fps, animData.looped)
                 end
+                if animData.offsets then
+                    self.animation:setOffset(animName, animData.offsets[j].x, animData.offsets[j].y)
+                end
             end
         end
     elseif json.receptors.atlasType == "grid" then
@@ -77,9 +98,35 @@ function Receptor:setSkin(skin)
         -- TODO
     end
     self.scale:set(json.receptors.scale, json.receptors.scale)
-    self.animation:play(dirs[self._lane + 1] .. " static")
+    self:setLaneID(self:getLaneID())
 
+    self.offset:set(json.receptors.offset.x, json.receptors.offset.y)
     self._skin = skin
+end
+
+---
+--- @param  confirm    boolean
+--- @param  duration?  number
+---
+function Receptor:press(confirm, duration)
+    if duration and self._confirmTimer then
+        return
+    end
+    self.animation:play(dirs[self._lane + 1] .. (confirm and " confirm" or " press"))
+    self.frameOffset:set((self:getFrameWidth() - self._initialWidth) * 0.5, (self:getFrameHeight() - self._initialHeight) * 0.5)
+    
+    if duration and not self._confirmTimer then
+        self._confirmTimer = Timer:new() --- @type chip.utils.Timer
+        self._confirmTimer:start(duration / 1000.0, function()
+            self:release()
+            self._confirmTimer = nil
+        end)
+    end
+end
+
+function Receptor:release()
+    self.animation:play(dirs[self._lane + 1] .. " static")
+    self.frameOffset:set((self:getFrameWidth() - self._initialWidth) * 0.5, (self:getFrameHeight() - self._initialHeight) * 0.5)
 end
 
 return Receptor

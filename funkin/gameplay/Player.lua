@@ -14,6 +14,10 @@
     limitations under the License.
 ]]
 
+local function noteSort(a, b)
+    return a:getTime() < b:getTime()
+end
+
 ---
 --- @class funkin.gameplay.Player : chip.core.Actor
 ---
@@ -28,6 +32,17 @@ function Player:constructor(cpu)
     --- @protected
     ---
     self._attachedStrumLines = {} --- @type table<funkin.gameplay.StrumLine>
+
+    ---
+    --- @protected
+    --- @type table<funkin.backend.input.InputAction>
+    ---
+    self._inputActions = {
+        Controls.list.NOTE_LEFT,
+        Controls.list.NOTE_DOWN,
+        Controls.list.NOTE_UP,
+        Controls.list.NOTE_RIGHT
+    }
 end
 
 function Player:getAttachedStrumLines()
@@ -48,10 +63,13 @@ function Player:processOpponent(strumLine)
     local notes = strumLine.notes --- @type chip.graphics.CanvasLayer
     local noteMembers = notes:getMembers() --- @type table<funkin.gameplay.Note>
 
+    local receptors = strumLine.receptors:getMembers() --- @type table<funkin.gameplay.Receptor>
     for i = 1, notes:getLength() do
         local note = noteMembers[i] --- @type funkin.gameplay.Note
         if note:isExisting() and note:isActive() then
             if note:getTime() < note:getAttachedConductor():getTime() then
+                local receptor = receptors[note:getLaneID() + 1] --- @type funkin.gameplay.Receptor
+                receptor:press(true, note:getAttachedConductor():getStepCrotchet() + 100)
                 note:kill()
             end
         end
@@ -68,9 +86,10 @@ function Player:processPlayer(strumLine)
     for i = 1, notes:getLength() do
         local note = noteMembers[i] --- @type funkin.gameplay.Note
         if note:isExisting() and note:isActive() then
-            local strumLine = note:getStrumLine() --- @type funkin.gameplay.StrumLine
-    
-            if note:getTime() < note:getAttachedConductor():getTime() - (300 / strumLine:getScrollSpeed()) then
+            if note:isTooLate() and not note:wasMissed() then
+                note:miss()
+            end
+            if note:wasMissed() and note:getTime() < note:getAttachedConductor():getTime() - (320 / strumLine:getScrollSpeed()) then
                 note:kill()
             end
         end
@@ -86,6 +105,45 @@ function Player:update(dt)
             self:processPlayer(strumLine)
         end
     end
+end
+
+function Player:input(_)
+    if self.cpu then
+        return
+    end
+    local actions = self._inputActions --- @type table<funkin.backend.input.InputAction>
+    for i = 1, #actions do
+        local action = actions[i] --- @type funkin.backend.input.InputAction
+        if action:check(InputState.JUST_PRESSED) then
+            for j = 1, #self._attachedStrumLines do
+                local strumLine = self._attachedStrumLines[j] --- @type funkin.gameplay.StrumLine
+                local receptors = strumLine.receptors:getMembers() --- @type table<funkin.gameplay.Receptor>
+
+                local receptor = receptors[i] --- @type funkin.gameplay.Receptor
+                local availableNotes = table.filter(strumLine.notes:getMembers(), function(n)
+                    return n:getLaneID() == i - 1 and n:isExisting() and n:isActive() and n:canBeHit() and not n:isTooLate()
+                end)
+                table.sort(availableNotes, noteSort)
+
+                if #availableNotes > 0 then
+                    local note = availableNotes[1] --- @type funkin.gameplay.Note
+                    note:kill()
+                    receptor:press(true)
+                else
+                    receptor:press(false)
+                end
+            end
+        elseif action:check(InputState.JUST_RELEASED) then
+            for j = 1, #self._attachedStrumLines do
+                local strumLine = self._attachedStrumLines[j] --- @type funkin.gameplay.StrumLine
+                local receptors = strumLine.receptors:getMembers() --- @type table<funkin.gameplay.Receptor>
+
+                local receptor = receptors[i] --- @type funkin.gameplay.Receptor
+                receptor:release()
+            end
+        end
+    end
+    Player.super.input(self)
 end
 
 return Player

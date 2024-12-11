@@ -30,7 +30,13 @@
                 ],
                 "indices": null,
                 "fps": 24,
-                "looped": false
+                "looped": false,
+                "offsets": [
+                    {"x": -3, "y": -2},
+                    {"x": -3, "y": -2},
+                    {"x": -3, "y": -2},
+                    {"x": -3, "y": -2}
+                ]
             },
             {
                 "name": "confirm",
@@ -42,7 +48,13 @@
                 ],
                 "indices": null,
                 "fps": 24,
-                "looped": false
+                "looped": false,
+                "offsets": [
+                    {"x": -3, "y": -2},
+                    {"x": -3, "y": -2},
+                    {"x": -3, "y": -2},
+                    {"x": -3, "y": -2}
+                ]
             }
         ],
         "offset": {"x": 0, "y": 0}

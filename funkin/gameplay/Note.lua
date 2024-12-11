@@ -17,6 +17,8 @@
 local dirs = {"left", "down", "up", "right"}
 local _inherit_ = "inherit"
 
+local abs = math.abs
+
 local NoteSkin = require("funkin.backend.data.NoteSkin") --- @type funkin.backend.data.NoteSkin
 
 ---
@@ -61,6 +63,11 @@ function Note:constructor(x, y)
     --- @protected
     ---
     self._attachedConductor = Conductor.instance --- @type funkin.backend.Conductor
+
+    ---
+    --- @protected
+    ---
+    self._missed = false --- @type boolean
 end
 
 function Note:getTime()
@@ -168,6 +175,15 @@ function Note:attachConductor(conductor)
     self._attachedConductor = conductor
 end
 
+function Note:wasMissed()
+    return self._missed
+end
+
+function Note:miss()
+    self._missed = true
+    self:setAlpha(0.3)
+end
+
 ---
 --- @param  strumLine  funkin.gameplay.StrumLine  The strumline that this note belongs to.
 --- @param  time       number                     The time at which the note should spawn. (in milliseconds)
@@ -194,6 +210,8 @@ function Note:setup(strumLine, time, lane, length, type, skin)
 
     self:setSkin(skin)
     self:setLaneID(lane)
+
+    self._missed = false
 end
 
 function Note:updatePosition(songPos)
@@ -202,6 +220,16 @@ function Note:updatePosition(songPos)
 
     self:setX(receptor:getX())
     self:setY(receptor:getY() + (0.45 * (self._time - songPos) * strumLine:getScrollSpeed()))
+end
+
+function Note:canBeHit()
+    local conductor = self._attachedConductor
+    return abs(self:getTime() - conductor:getTime()) < conductor.safeZoneOffset * 1.2
+end
+
+function Note:isTooLate()
+    local conductor = self._attachedConductor
+    return (self:getTime() - conductor:getTime()) < -conductor.safeZoneOffset
 end
 
 function Note:update(dt)

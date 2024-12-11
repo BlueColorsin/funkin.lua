@@ -65,7 +65,7 @@ function StrumLine:constructor(x, y, downscroll, skin)
     self.notes = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
     self:add(self.notes)
 
-    for i = 1, 64 do
+    for i = 1, 16 do
         local note = Note:new() --- @type funkin.gameplay.Note
         note:setup(self, 0.0, i % 4, 0.0, "Default", skin)
         note:kill()
