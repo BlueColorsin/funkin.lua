@@ -218,8 +218,15 @@ function Note:updatePosition(songPos)
     local strumLine = self._strumLine
     local receptor = strumLine.receptors:getMembers()[self._lane + 1]
 
+    local scrollSpeed = strumLine:getScrollSpeed() / Engine.timeScale
+    local absScrollSpeed = abs(scrollSpeed)
+    
+    local scrollMult = (scrollSpeed < 0.0 and -1.0 or 1.0)
+    if strumLine:isDownscroll() then
+        scrollMult = -scrollMult
+    end
     self:setX(receptor:getX())
-    self:setY(receptor:getY() + (0.45 * (self._time - songPos) * strumLine:getScrollSpeed()))
+    self:setY(receptor:getY() + (0.45 * (self._time - songPos) * absScrollSpeed * scrollMult))
 end
 
 function Note:canBeHit()

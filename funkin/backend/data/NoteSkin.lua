@@ -27,6 +27,17 @@ local NoteSkinAnimationData = {
 }
 
 ---
+--- @class funkin.backend.data.NoteSkinSplashAnimationData
+---
+local NoteSkinSplashAnimationData = {
+    prefixes = nil, --- @type table<table<string>>?
+    indices = nil, --- @type table<table<table<integer>>>?
+    fps = nil, --- @type integer
+    looped = nil, --- @type boolean
+    offsets = nil, --- @type table<table<table<string, number>>>
+}
+
+---
 --- @class funkin.backend.data.NoteSkinData
 ---
 local NoteSkinData = {
@@ -46,12 +57,34 @@ local NoteSkinData = {
 }
 
 ---
+--- @class funkin.backend.data.NoteSkinSplashData
+---
+local NoteSkinSplashData = {
+    alpha = nil, --- @type number
+
+    scale = nil, --- @type number
+    spacing = nil, --- @type number
+
+    folder = nil, --- @type string
+    texture = nil, --- @type string
+
+    atlasType = nil, --- @type funkin.backend.enums.AtlasType
+    gridSize = nil, --- @type table<string, number>?
+
+    animations = nil, --- @type table<funkin.backend.data.NoteSkinSplashAnimationData>
+    offset = nil, --- @type table<string, number>
+
+    antialiasing = nil --- @type boolean?
+}
+
+---
 --- @class funkin.backend.data.NoteSkin
 ---
 local NoteSkin = {
     receptors = nil, --- @type funkin.backend.data.NoteSkinData
     notes = nil, --- @type funkin.backend.data.NoteSkinData
-    sustains = nil --- @type funkin.backend.data.NoteSkinData
+    sustains = nil, --- @type funkin.backend.data.NoteSkinData
+    splashes = nil --- @type funkin.backend.data.NoteSkinSplashData
 }
 
 ---

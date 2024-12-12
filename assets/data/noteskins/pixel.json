@@ -108,5 +108,28 @@
             }
         ],
         "offset": {"x": 0, "y": 0}
+    },
+    "splashes": {
+        "alpha": 0.6,
+        "scale": 6,
+
+        "folder": "game/noteskins/pixel",
+        "texture": "splashes",
+
+        "atlasType": "sparrow",
+        "animations": [
+            {
+                "prefixes": [
+                    ["note splash 1 left", "note splash 2 left"],
+                    ["note splash 1 down", "note splash 2 down"],
+                    ["note splash 1 up", "note splash 2 up"],
+                    ["note splash 1 right", "note splash 2 right"]
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            }
+        ],
+        "offset": {"x": -20, "y": -40}
     }
 }

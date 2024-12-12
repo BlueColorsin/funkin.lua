@@ -17,6 +17,8 @@
 local NoteSkin = require("funkin.backend.data.NoteSkin") --- @type funkin.backend.data.NoteSkin
 
 local Receptor = require("funkin.gameplay.Receptor") --- @type funkin.gameplay.Receptor
+local NoteSplash = require("funkin.gameplay.NoteSplash") --- @type funkin.gameplay.NoteSplash
+
 local Note = require("funkin.gameplay.Note") --- @type funkin.gameplay.Note
 
 ---
@@ -35,7 +37,7 @@ function StrumLine:constructor(x, y, downscroll, skin)
     ---
     --- @protected
     ---
-    self._skin = skin --- @type string
+    self._skin = skin or "default" --- @type string
 
     ---
     --- @protected
@@ -57,19 +59,28 @@ function StrumLine:constructor(x, y, downscroll, skin)
     self.receptors = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
     self:add(self.receptors)
 
-    local json = NoteSkin.get(skin) --- @type funkin.backend.data.NoteSkin?
+    local json = NoteSkin.get(self._skin) --- @type funkin.backend.data.NoteSkin?
     for i = 0, 3 do
-        local receptor = Receptor:new((i - 2) * json.receptors.spacing, 0, i, "default") --- @type funkin.gameplay.Receptor
+        local receptor = Receptor:new((i - 2) * json.receptors.spacing, 0, i, self._skin) --- @type funkin.gameplay.Receptor
         self.receptors:add(receptor)
     end
     self.notes = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
     self:add(self.notes)
 
+    self.splashes = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
+    self:add(self.splashes)
+
     for i = 1, 16 do
         local note = Note:new() --- @type funkin.gameplay.Note
-        note:setup(self, 0.0, i % 4, 0.0, "Default", skin)
+        note:setup(self, 0.0, (i - 1) % 4, 0.0, "Default", self._skin)
         note:kill()
         self.notes:add(note)
+    end
+    for i = 1, 8 do
+        local splash = NoteSplash:new(0, 0, (i - 1) % 4, self._skin) --- @type funkin.gameplay.NoteSplash
+        splash:setup(self, (i - 1) % 4, self._skin)
+        splash:kill()
+        self.splashes:add(splash)
     end
 end
 

@@ -346,7 +346,8 @@ function FreeplayMenu:update(dt)
     if Controls.justPressed.ACCEPT then
         Engine.switchScene(Gameplay:new({
             song = self.songList[self.curSelected] .. (self.curVariant ~= "default" and ("-" .. self.curVariant) or ""),
-            difficulty = self.curDifficulty
+            difficulty = self.curDifficulty,
+            gameMode = "freeplay"
         }))
     end
     FreeplayMenu.super.update(self, dt)

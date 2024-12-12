@@ -55,6 +55,7 @@ function NoteSpawner:attachConductor(conductor)
 end
 
 function NoteSpawner:update(dt)
+    local timeScale = Engine.timeScale
     for i = 1, #self._attachedStrumLines do
         local strumLine = self._attachedStrumLines[i] --- @type funkin.gameplay.StrumLine
         local attachedNotes = strumLine._attachedNotes --- @type table<funkin.backend.song.chart.NoteData>
@@ -63,7 +64,7 @@ function NoteSpawner:update(dt)
         if attachedNotesCount == 0 then
             goto continue
         end
-        while strumLine._spawnedNotes < attachedNotesCount and attachedNotes[strumLine._spawnedNotes + 1].time < self._attachedConductor:getTime() + (1500 / strumLine:getScrollSpeed()) do
+        while strumLine._spawnedNotes < attachedNotesCount and attachedNotes[strumLine._spawnedNotes + 1].time < self._attachedConductor:getTime() + (1500 / (strumLine:getScrollSpeed() / timeScale)) do
             strumLine._spawnedNotes = strumLine._spawnedNotes + 1
             local noteData = attachedNotes[strumLine._spawnedNotes] --- @type funkin.backend.song.chart.NoteData
             

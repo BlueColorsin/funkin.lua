@@ -14,6 +14,9 @@
     limitations under the License.
 ]]
 
+local Scoring = require("funkin.gameplay.scoring.Scoring") --- @type funkin.gameplay.scoring.Scoring
+local NoteSplash = require("funkin.gameplay.NoteSplash") --- @type funkin.gameplay.NoteSplash
+
 local function noteSort(a, b)
     return a:getTime() < b:getTime()
 end
@@ -125,13 +128,23 @@ function Player:input(_)
                 end)
                 table.sort(availableNotes, noteSort)
 
-                if #availableNotes > 0 then
+                local canHitNote = #availableNotes > 0
+                if canHitNote then
                     local note = availableNotes[1] --- @type funkin.gameplay.Note
                     note:kill()
-                    receptor:press(true)
-                else
-                    receptor:press(false)
+
+                    local judgement = Scoring.judgeNote(note, note:getAttachedConductor():getTime())
+                    -- TODO: show the judgement you got, and your combo too
+
+                    if Scoring.splashAllowed(judgement) then
+                        --- @type funkin.gameplay.NoteSplash
+                        local splash = strumLine.splashes:recycle(NoteSplash, function()
+                            return NoteSplash:new(-999999, -999999, note:getLaneID())
+                        end)
+                        splash:setup(strumLine, note:getLaneID(), note:getSkin())
+                    end
                 end
+                receptor:press(canHitNote)
             end
         elseif action:check(InputState.JUST_RELEASED) then
             for j = 1, #self._attachedStrumLines do

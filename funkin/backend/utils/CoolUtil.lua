@@ -25,7 +25,10 @@ local CoolUtil = {}
 --- @param  loop    boolean?  Whether or not the music should loop. (defaults to `true`)
 ---
 function CoolUtil.playMusic(name, volume, loop)
-    BGM.play(Paths.music(name), loop ~= nil and loop or true)
+    if loop == nil then
+        loop = true
+    end
+    BGM.play(Paths.music(name), loop)
     BGM.audioPlayer:setVolume(volume and volume or 1.0)
 
     local json = Json.decode(File.read(Paths.json("meta", "music/" .. name)))
@@ -35,7 +38,7 @@ function CoolUtil.playMusic(name, volume, loop)
 end
 
 ---
---- @param  volume  number    The volume to play the music at. (defaults to `1.0`)
+--- @param  volume  number?   The volume to play the music at. (defaults to `1.0`)
 --- @param  loop    boolean?  Whether or not the music should loop. (defaults to `true`)
 ---
 function CoolUtil.playMenuMusic(volume, loop)

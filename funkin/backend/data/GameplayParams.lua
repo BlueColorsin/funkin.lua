@@ -26,6 +26,11 @@ local GameplayParams = {
     ---
     --- @type string
     ---
-    difficulty = nil
+    difficulty = nil,
+
+    ---
+    --- @type "story"|"freeplay"
+    ---
+    gameMode = nil
 }
 return GameplayParams
