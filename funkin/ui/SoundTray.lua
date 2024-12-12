@@ -22,6 +22,8 @@ local floor = math.floor
 local min = math.min
 local max = math.max
 
+local tblContains = table.contains
+
 -- TODO: Clean this up later
 -- This is just a port of the one from legacy branch,
 -- just suited for chip instead of flora
@@ -200,17 +202,17 @@ function SoundTray.input(event)
     end
     local masterBus = AudioBus.master --- @type chip.audio.AudioBus
 
-    if table.contains(SoundTray._volumeUpKeys, event:getKey()) then
+    if tblContains(SoundTray._volumeUpKeys, event:getKey()) then
         masterBus:increaseVolume(0.1, 1)
         Options.masterVolume = masterBus:getVolume()
         SoundTray.show(true)
     end
-    if table.contains(SoundTray._volumeDownKeys, event:getKey()) then
+    if tblContains(SoundTray._volumeDownKeys, event:getKey()) then
         masterBus:decreaseVolume(0.1, 1)
         Options.masterVolume = masterBus:getVolume()
         SoundTray.show(false)
     end
-    if table.contains(SoundTray._muteKeys, event:getKey()) then
+    if tblContains(SoundTray._muteKeys, event:getKey()) then
         masterBus:setMuted(not masterBus:isMuted())
         Options.muted = masterBus:isMuted()
         SoundTray.show(true)

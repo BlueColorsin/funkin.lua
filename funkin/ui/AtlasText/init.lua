@@ -14,6 +14,8 @@
     limitations under the License.
 ]]
 
+local tblContains = table.contains
+
 local File = crequire("utils.File") --- @type chip.utils.File
 local Glyph = require("funkin.ui.AtlasText.Glyph") --- @type funkin.ui.AtlasText.Glyph
 
@@ -222,7 +224,7 @@ function AtlasText:_regenGlyphs()
         end
         ::continue::
     end
-    if not table.contains(self:getMembers(), line) then
+    if not tblContains(self:getMembers(), line) then
         self:add(line)
     end
 end

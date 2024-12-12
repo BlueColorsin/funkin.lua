@@ -40,6 +40,11 @@ function NoteSplash:constructor(x, y, lane, skin)
     ---
     self._strumLine = nil --- @type funkin.gameplay.StrumLine
 
+    ---
+    --- @protected
+    ---
+    self._totalAnims = 0 --- @type integer
+
     self.animation:setCompletionCallback(function(_)
         self:kill()
     end)
@@ -52,7 +57,7 @@ end
 
 function NoteSplash:setLaneID(id)
     self._lane = id % 4
-    self.animation:play(dirs[self._lane + 1] .. " splash" .. math.random(1, #self.animation._animations))
+    self.animation:play(dirs[self._lane + 1] .. " splash" .. math.random(1, self._totalAnims))
 end
 
 function NoteSplash:getSkin()
@@ -85,6 +90,7 @@ function NoteSplash:setSkin(skin)
                         self.animation:setOffset(animName, animData.offsets[j][k].x, animData.offsets[j][k].y)
                     end
                 end
+                self._totalAnims = #prefixes
             end
         end
     elseif json.splashes.atlasType == "grid" then

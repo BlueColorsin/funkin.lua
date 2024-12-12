@@ -14,6 +14,8 @@
     limitations under the License.
 ]]
 
+local tblContains = table.contains
+
 ---
 --- @class funkin.ui.AtlasText.Glyph : chip.graphics.Sprite
 ---
@@ -35,7 +37,7 @@ function Glyph:constructor(x, y, parent, character)
     self:setFrames(Paths.getSparrowAtlas(p:getFont(), "images/fonts"))
 
     local prefix = character .. "0"
-    if not fontData.noLowerCase and table.contains(Glyph.allLetters, character:upper()) then
+    if not fontData.noLowerCase and tblContains(Glyph.allLetters, character:upper()) then
         local lowercase = character:upper() ~= character
         prefix = (lowercase and character:lower() .. " lowercase" or character:upper() .. " capital") .. "0"
     end

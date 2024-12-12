@@ -23,6 +23,9 @@ local floor = math.floor
 local min = math.min
 local max = math.max
 
+local tblInsert = table.insert
+local tblContains = table.contains
+
 ---@diagnostic disable: invisible
 
 local _disabled_, _inherit_ = "disabled", "inherit"
@@ -60,7 +63,7 @@ function FreeplayMenu:init()
             local songMeta = SongMetadata.get(songID) --- @type funkin.backend.song.SongMetadata?
             if not songMeta then
                 -- if it doesn't exist, skip
-                table.insert(failedSongs, songID)
+                tblInsert(failedSongs, songID)
                 goto songContinue
             end
             songMeta._parsedColor = Color:new(songMeta.color)
@@ -83,10 +86,10 @@ function FreeplayMenu:init()
                     Log.info({text = "[FREEPLAY] ", fgColor = Native.ConsoleColor.CYAN}, nil, nil, "Metadata found for " .. songID .. " [" .. variant .. "]")
                 end
             end
-            table.insert(songMeta.variants, "default")
+            tblInsert(songMeta.variants, "default")
             self.songMetas[songID] = data
 
-            table.insert(self.songList, songID)
+            tblInsert(self.songList, songID)
             ::songContinue::
         end
         ::levelContinue::
@@ -251,13 +254,13 @@ function FreeplayMenu:changeDifficulty(by, force)
     end
     local song = self.songList[self.curSelected] .. (self.curVariant:lower() ~= "default" and ("-" .. self.curVariant:lower()) or "")
     local stream = self._loadedSongInsts[song]
-    if not stream and not table.contains(self._loadedSongList, song) then
+    if not stream and not tblContains(self._loadedSongList, song) then
         thread.getChannel("fi1"):push({
             song = song,
             instPath = Paths.inst(song),
             doBreak = false
         })
-        table.insert(self._loadedSongList, song)
+        tblInsert(self._loadedSongList, song)
     end
     self:positionHighscore()
 end
@@ -296,7 +299,7 @@ function FreeplayMenu:update(dt)
         icon:setUpdateMode(_inherit_)
         icon:setVisibility(true)
 
-        table.insert(self._lastVisibles, i)
+        tblInsert(self._lastVisibles, i)
     end
     local songMetas = self.songMetas[self.songList[self.curSelected]] --- @type table<string, funkin.backend.song.SongMetadata>
     

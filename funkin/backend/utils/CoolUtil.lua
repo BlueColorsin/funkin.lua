@@ -14,6 +14,8 @@
     limitations under the License.
 ]]
 
+local tblInsert = table.insert
+
 ---
 --- @class funkin.backend.CoolUtil
 ---
@@ -58,7 +60,7 @@ function CoolUtil.parseCSV(csv)
         --- @type string
         ---
         local line = splitCSV[i]
-        table.insert(list, line:split(","))
+        tblInsert(list, line:split(","))
     end
     return list
 end

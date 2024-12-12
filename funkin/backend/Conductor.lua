@@ -16,6 +16,7 @@
 
 local abs = math.abs
 local floor = math.floor
+local tblInsert = table.insert
 
 ---
 --- @class funkin.backend.Conductor : chip.core.Actor
@@ -228,7 +229,7 @@ function Conductor:setupBPMChanges(chart)
                 time = event.time
                 curBPM = eventBPM
 
-                table.insert(self.bpmChanges, {
+                tblInsert(self.bpmChanges, {
                     time = time,
                     step = steps,
                     bpm = curBPM
@@ -285,7 +286,7 @@ end
 
 function Conductor:update(dt)
     if self.music and self.music:isPlaying() then
-        local musicTime = (self.music:getPlaybackTime() * 1000.0)
+        local musicTime = floor(self.music:getPlaybackTime() * 1000.0)
         if musicTime ~= self.rawMusicTime then
             self.rawTime = musicTime
         else

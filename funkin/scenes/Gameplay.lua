@@ -14,6 +14,8 @@
     limitations under the License.
 ]]
 
+local tblInsert = table.insert
+
 local SongMetadata = require("funkin.backend.song.SongMetadata") --- @type funkin.backend.song.SongMetadata
 
 local StrumLine = require("funkin.gameplay.StrumLine") --- @type funkin.gameplay.StrumLine
@@ -51,6 +53,29 @@ function Gameplay:init()
     -- load inst
     BGM.audioPlayer:setVolume(1.0)
     BGM.load(Paths.inst(self._params.song))
+
+    -- load vocal tracks
+    local meta = self.currentChart.meta
+    self.vocalTracks = {} --- @type table<string, chip.audio.AudioPlayer>
+    
+    if File.exists(Paths.voices(self._params.song, meta.characters.spectator)) then
+        local spectatorVocals = AudioPlayer:new() --- @type chip.audio.AudioPlayer
+        spectatorVocals:load(Paths.voices(self._params.song, meta.characters.spectator))
+        self.vocalTracks[meta.characters.spectator] = spectatorVocals
+        self:add(spectatorVocals)
+    end
+    if File.exists(Paths.voices(self._params.song, meta.characters.opponent)) then
+        local opponentVocals = AudioPlayer:new() --- @type chip.audio.AudioPlayer
+        opponentVocals:load(Paths.voices(self._params.song, meta.characters.opponent))
+        self.vocalTracks[meta.characters.opponent] = opponentVocals
+        self:add(opponentVocals)
+    end
+    if File.exists(Paths.voices(self._params.song, meta.characters.player)) then
+        local playerVocals = AudioPlayer:new() --- @type chip.audio.AudioPlayer
+        playerVocals:load(Paths.voices(self._params.song, meta.characters.player))
+        self.vocalTracks[meta.characters.player] = playerVocals
+        self:add(playerVocals)
+    end
 
     -- setup conductor
     self.mainConductor = Conductor.instance
@@ -99,8 +124,6 @@ function Gameplay:init()
     self.noteSpawner = NoteSpawner:new() --- @type funkin.gameplay.NoteSpawner
     self.noteSpawner:attachStrumLines({self.opponentStrumLine, self.playerStrumLine})
     self:add(self.noteSpawner)
-
-    self:setPlaybackRate(1.25)
 end
 
 function Gameplay:update(dt)
@@ -123,11 +146,16 @@ function Gameplay:update(dt)
 end
 
 function Gameplay:startSong()
+    local pb = self:getPlaybackRate()
     self.startingSong = false
 
     BGM.play(nil, false)
-    BGM.audioPlayer:setPitch(self:getPlaybackRate())
+    BGM.audioPlayer:setPitch(pb)
 
+    for _, value in pairs(self.vocalTracks) do
+        value:setPitch(pb)
+        value:play()
+    end
     self.mainConductor.music = BGM.audioPlayer
 end
 
@@ -160,6 +188,10 @@ end
 function Gameplay:setPlaybackRate(newRate)
     Engine.timeScale = newRate
     BGM.audioPlayer:setPitch(newRate)
+
+    for _, value in pairs(self.vocalTracks) do
+        value:setPitch(newRate)
+    end
 end
 
 return Gameplay
