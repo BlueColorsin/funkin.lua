@@ -1,0 +1,1398 @@
+{"notes": [{"time": 468.75,"lane": 2,"length": 0,"type": "Default"},{"time": 843.75,"lane": 1,"length": 0,"type": "Default"},{"time": 937.5,"lane": 3,"length": 0,"type": "Default"},{"time": 1218.75,"lane": 0,"length": 0,"type": "Default"},{"time": 1500,"lane": 1,"length": 0,"type": "Default"},{"time": 1640.625,"lane": 2,"length": 0,"type": "Default"},{"time": 2062.5,"lane": 3,"length": 0,"type": "Default"},{"time": 2531.25,"lane": 0,"length": 468.75,"type": "Default"},{"time": 3281.25,"lane": 1,"length": 281.25,"type": "Default"},{"time": 3750,"lane": 2,"length": 0,"type": "Default"},{"time": 3937.5,"lane": 0,"length": 0,"type": "Default"},{"time": 4218.75,"lane": 3,"length": 562.5,"type": "Default"},{"time": 5250,"lane": 1,"length": 0,"type": "Default"},{"time": 5484.375,"lane": 3,"length": 0,"type": "Default"},{"time": 5812.5,"lane": 1,"length": 0,"type": "Default"},{"time": 6000,"lane": 0,"length": 0,"type": "Default"},{"time": 6375,"lane": 3,"length": 656.25,"type": "Default"},{"time": 7218.75,"lane": 5,"length": 0,"type": "Default"},{"time": 7500,"lane": 7,"length": 0,"type": "Default"},{"time": 7781.25,"lane": 6,"length": 0,"type": "Default"},{"time": 8062.5,"lane": 5,"length": 0,"type": "Default"},{"time": 8156.25,"lane": 4,"length": 0,"type": "Default"},{"time": 8343.75,"lane": 7,"length": 0,"type": "Default"},{"time": 8625,"lane": 6,"length": 0,"type": "Default"},{"time": 8906.25,"lane": 5,"length": 0,"type": "Default"},{"time": 9375,"lane": 2,"length": 0,"type": "Default"},{"time": 9562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 9750,"lane": 2,"length": 0,"type": "Default"},{"time": 10125,"lane": 3,"length": 375,"type": "Default"},{"time": 10500,"lane": 1,"length": 0,"type": "Default"},{"time": 10687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 10968.75,"lane": 3,"length": 0,"type": "Default"},{"time": 11250,"lane": 1,"length": 375,"type": "Default"},{"time": 11625,"lane": 1,"length": 0,"type": "Default"},{"time": 11718.75,"lane": 1,"length": 0,"type": "Default"},{"time": 11812.5,"lane": 1,"length": 0,"type": "Default"},{"time": 11906.25,"lane": 1,"length": 0,"type": "Default"},{"time": 12000,"lane": 1,"length": 0,"type": "Default"},{"time": 12187.5,"lane": 1,"length": 0,"type": "Default"},{"time": 12281.25,"lane": 1,"length": 0,"type": "Default"},{"time": 12375,"lane": 3,"length": 0,"type": "Default"},{"time": 12562.5,"lane": 1,"length": 0,"type": "Default"},{"time": 12750,"lane": 0,"length": 0,"type": "Default"},{"time": 12796.875,"lane": 1,"length": 0,"type": "Default"},{"time": 12937.5,"lane": 2,"length": 0,"type": "Default"},{"time": 13031.25,"lane": 1,"length": 0,"type": "Default"},{"time": 13125,"lane": 2,"length": 0,"type": "Default"},{"time": 13312.5,"lane": 1,"length": 0,"type": "Default"},{"time": 13500,"lane": 1,"length": 0,"type": "Default"},{"time": 13546.875,"lane": 1,"length": 0,"type": "Default"},{"time": 13593.75,"lane": 1,"length": 0,"type": "Default"},{"time": 13687.5,"lane": 0,"length": 0,"type": "Default"},{"time": 13875,"lane": 2,"length": 0,"type": "Default"},{"time": 14062.5,"lane": 1,"length": 0,"type": "Default"},{"time": 14156.25,"lane": 1,"length": 0,"type": "Default"},{"time": 14250,"lane": 3,"length": 0,"type": "Default"},{"time": 14296.875,"lane": 2,"length": 0,"type": "Default"},{"time": 14437.5,"lane": 0,"length": 0,"type": "Default"},{"time": 14625,"lane": 2,"length": 0,"type": "Default"},{"time": 14812.5,"lane": 1,"length": 0,"type": "Default"},{"time": 15000,"lane": 1,"length": 0,"type": "Default"},{"time": 15187.5,"lane": 1,"length": 0,"type": "Default"},{"time": 15281.25,"lane": 1,"length": 0,"type": "Default"},{"time": 15375,"lane": 0,"length": 0,"type": "Default"},{"time": 15562.5,"lane": 1,"length": 0,"type": "Default"},{"time": 15750,"lane": 3,"length": 0,"type": "Default"},{"time": 15796.875,"lane": 2,"length": 0,"type": "Default"},{"time": 15937.5,"lane": 0,"length": 0,"type": "Default"},{"time": 16031.25,"lane": 0,"length": 0,"type": "Default"},{"time": 16125,"lane": 1,"length": 0,"type": "Default"},{"time": 16312.5,"lane": 3,"length": 0,"type": "Default"},{"time": 16500,"lane": 1,"length": 0,"type": "Default"},{"time": 16546.875,"lane": 1,"length": 0,"type": "Default"},{"time": 16593.75,"lane": 1,"length": 0,"type": "Default"},{"time": 16687.5,"lane": 0,"length": 0,"type": "Default"},{"time": 16781.25,"lane": 2,"length": 0,"type": "Default"},{"time": 16968.75,"lane": 1,"length": 0,"type": "Default"},{"time": 17015.625,"lane": 1,"length": 0,"type": "Default"},{"time": 17062.5,"lane": 0,"length": 0,"type": "Default"},{"time": 17156.25,"lane": 2,"length": 0,"type": "Default"},{"time": 17250,"lane": 1,"length": 0,"type": "Default"},{"time": 17250,"lane": 5,"length": 0,"type": "Default"},{"time": 17296.875,"lane": 2,"length": 0,"type": "Default"},{"time": 17343.75,"lane": 5,"length": 0,"type": "Default"},{"time": 17437.5,"lane": 3,"length": 0,"type": "Default"},{"time": 17437.5,"lane": 6,"length": 0,"type": "Default"},{"time": 17531.25,"lane": 5,"length": 281.25,"type": "Default"},{"time": 17625,"lane": 2,"length": 0,"type": "Default"},{"time": 17812.5,"lane": 0,"length": 0,"type": "Default"},{"time": 17812.5,"lane": 6,"length": 0,"type": "Default"},{"time": 17906.25,"lane": 6,"length": 0,"type": "Default"},{"time": 18000,"lane": 4,"length": 0,"type": "lasagna"},{"time": 18187.5,"lane": 5,"length": 0,"type": "Default"},{"time": 18281.25,"lane": 4,"length": 0,"type": "Default"},{"time": 18375,"lane": 7,"length": 0,"type": "Default"},{"time": 18375,"lane": 6,"length": 0,"type": "Default"},{"time": 18562.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 18750,"lane": 5,"length": 0,"type": "Default"},{"time": 18796.875,"lane": 6,"length": 0,"type": "Default"},{"time": 18937.5,"lane": 5,"length": 0,"type": "Default"},{"time": 19031.25,"lane": 6,"length": 0,"type": "Default"},{"time": 19125,"lane": 4,"length": 0,"type": "Default"},{"time": 19125,"lane": 7,"length": 0,"type": "Default"},{"time": 19312.5,"lane": 5,"length": 0,"type": "Default"},{"time": 19500,"lane": 6,"length": 0,"type": "lasagna"},{"time": 19546.875,"lane": 5,"length": 0,"type": "Default"},{"time": 19593.75,"lane": 4,"length": 0,"type": "Default"},{"time": 19687.5,"lane": 7,"length": 0,"type": "Default"},{"time": 19875,"lane": 6,"length": 0,"type": "Default"},{"time": 19875,"lane": 5,"length": 0,"type": "Default"},{"time": 20062.5,"lane": 7,"length": 0,"type": "Default"},{"time": 20156.25,"lane": 4,"length": 0,"type": "Default"},{"time": 20250,"lane": 5,"length": 0,"type": "lasagna"},{"time": 20296.875,"lane": 7,"length": 0,"type": "Default"},{"time": 20437.5,"lane": 6,"length": 0,"type": "Default"},{"time": 20625,"lane": 4,"length": 0,"type": "Default"},{"time": 20625,"lane": 7,"length": 0,"type": "Default"},{"time": 20812.5,"lane": 5,"length": 0,"type": "Default"},{"time": 21000,"lane": 7,"length": 0,"type": "Default"},{"time": 21187.5,"lane": 6,"length": 0,"type": "Default"},{"time": 21281.25,"lane": 7,"length": 0,"type": "Default"},{"time": 21375,"lane": 4,"length": 0,"type": "Default"},{"time": 21375,"lane": 5,"length": 0,"type": "lasagna"},{"time": 21562.5,"lane": 7,"length": 0,"type": "Default"},{"time": 21750,"lane": 5,"length": 0,"type": "Default"},{"time": 21796.875,"lane": 6,"length": 0,"type": "Default"},{"time": 21937.5,"lane": 4,"length": 0,"type": "Default"},{"time": 22031.25,"lane": 7,"length": 0,"type": "Default"},{"time": 22125,"lane": 5,"length": 0,"type": "Default"},{"time": 22125,"lane": 6,"length": 0,"type": "lasagna"},{"time": 22312.5,"lane": 4,"length": 0,"type": "Default"},{"time": 22500,"lane": 7,"length": 0,"type": "Default"},{"time": 22546.875,"lane": 6,"length": 0,"type": "Default"},{"time": 22593.75,"lane": 4,"length": 0,"type": "Default"},{"time": 22687.5,"lane": 5,"length": 0,"type": "Default"},{"time": 22781.25,"lane": 7,"length": 0,"type": "Default"},{"time": 22968.75,"lane": 6,"length": 0,"type": "Default"},{"time": 23015.625,"lane": 5,"length": 0,"type": "Default"},{"time": 23062.5,"lane": 4,"length": 0,"type": "Default"},{"time": 23156.25,"lane": 5,"length": 0,"type": "Default"},{"time": 23250,"lane": 1,"length": 0,"type": "Default"},{"time": 23250,"lane": 6,"length": 0,"type": "lasagna"},{"time": 23296.875,"lane": 7,"length": 0,"type": "Default"},{"time": 23343.75,"lane": 1,"length": 0,"type": "Default"},{"time": 23437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 23437.5,"lane": 3,"length": 0,"type": "Default"},{"time": 23531.25,"lane": 1,"length": 281.25,"type": "Default"},{"time": 23625,"lane": 4,"length": 0,"type": "Default"},{"time": 23671.875,"lane": 6,"length": 0,"type": "Default"},{"time": 23812.5,"lane": 3,"length": 0,"type": "Default"},{"time": 23812.5,"lane": 7,"length": 0,"type": "Default"},{"time": 23906.25,"lane": 3,"length": 0,"type": "Default"},{"time": 24000,"lane": 0,"length": 0,"type": "Default"},{"time": 24000,"lane": 5,"length": 0,"type": "Default"},{"time": 24093.75,"lane": 3,"length": 0,"type": "Default"},{"time": 24093.75,"lane": 6,"length": 0,"type": "Default"},{"time": 24187.5,"lane": 0,"length": 0,"type": "Default"},{"time": 24187.5,"lane": 5,"length": 0,"type": "Default"},{"time": 24281.25,"lane": 3,"length": 0,"type": "Default"},{"time": 24281.25,"lane": 6,"length": 0,"type": "Default"},{"time": 24375,"lane": 4,"length": 0,"type": "Default"},{"time": 24375,"lane": 5,"length": 0,"type": "Default"},{"time": 24375,"lane": 1,"length": 0,"type": "Default"},{"time": 24562.5,"lane": 1,"length": 0,"type": "Default"},{"time": 24562.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 24937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 24937.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 25031.25,"lane": 3,"length": 0,"type": "Default"},{"time": 25125,"lane": 6,"length": 0,"type": "Default"},{"time": 25125,"lane": 7,"length": 0,"type": "Default"},{"time": 25125,"lane": 1,"length": 0,"type": "Default"},{"time": 25218.75,"lane": 1,"length": 0,"type": "Default"},{"time": 25312.5,"lane": 5,"length": 0,"type": "Default"},{"time": 25312.5,"lane": 0,"length": 0,"type": "Default"},{"time": 25406.25,"lane": 2,"length": 0,"type": "Default"},{"time": 25500,"lane": 3,"length": 0,"type": "Default"},{"time": 25593.75,"lane": 0,"length": 0,"type": "Default"},{"time": 25687.5,"lane": 3,"length": 0,"type": "Default"},{"time": 25781.25,"lane": 2,"length": 281.25,"type": "Default"},{"time": 26062.5,"lane": 1,"length": 0,"type": "Default"},{"time": 26156.25,"lane": 3,"length": 0,"type": "Default"},{"time": 26203.125,"lane": 2,"length": 0,"type": "Default"},{"time": 26250,"lane": 0,"length": 0,"type": "Default"},{"time": 26437.5,"lane": 0,"length": 0,"type": "Default"},{"time": 26531.25,"lane": 2,"length": 0,"type": "Default"},{"time": 26625,"lane": 1,"length": 0,"type": "Default"},{"time": 26718.75,"lane": 1,"length": 0,"type": "Default"},{"time": 26812.5,"lane": 2,"length": 0,"type": "Default"},{"time": 27000,"lane": 1,"length": 0,"type": "Default"},{"time": 27187.5,"lane": 2,"length": 0,"type": "Default"},{"time": 27281.25,"lane": 2,"length": 0,"type": "Default"},{"time": 27375,"lane": 0,"length": 0,"type": "Default"},{"time": 27562.5,"lane": 1,"length": 375,"type": "Default"},{"time": 27937.5,"lane": 0,"length": 0,"type": "Default"},{"time": 28125,"lane": 0,"length": 0,"type": "Default"},{"time": 28218.75,"lane": 0,"length": 0,"type": "Default"},{"time": 28312.5,"lane": 0,"length": 0,"type": "Default"},{"time": 28359.375,"lane": 0,"length": 0,"type": "Default"},{"time": 28406.25,"lane": 0,"length": 0,"type": "Default"},{"time": 28453.125,"lane": 0,"length": 0,"type": "Default"},{"time": 28500,"lane": 1,"length": 0,"type": "Default"},{"time": 28687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 28781.25,"lane": 2,"length": 0,"type": "Default"},{"time": 28875,"lane": 1,"length": 0,"type": "Default"},{"time": 29062.5,"lane": 3,"length": 0,"type": "Default"},{"time": 29250,"lane": 2,"length": 0,"type": "Default"},{"time": 29437.5,"lane": 2,"length": 0,"type": "Default"},{"time": 29531.25,"lane": 1,"length": 0,"type": "Default"},{"time": 29625,"lane": 1,"length": 0,"type": "Default"},{"time": 29812.5,"lane": 0,"length": 0,"type": "Default"},{"time": 30000,"lane": 7,"length": 0,"type": "Default"},{"time": 30000,"lane": 3,"length": 0,"type": "Default"},{"time": 30093.75,"lane": 0,"length": 0,"type": "Default"},{"time": 30093.75,"lane": 5,"length": 0,"type": "Default"},{"time": 30187.5,"lane": 3,"length": 0,"type": "Default"},{"time": 30187.5,"lane": 6,"length": 0,"type": "Default"},{"time": 30281.25,"lane": 0,"length": 0,"type": "Default"},{"time": 30281.25,"lane": 4,"length": 0,"type": "Default"},{"time": 30375,"lane": 1,"length": 0,"type": "Default"},{"time": 30375,"lane": 7,"length": 0,"type": "Default"},{"time": 30375,"lane": 5,"length": 0,"type": "Default"},{"time": 30562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 30562.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 30937.5,"lane": 0,"length": 0,"type": "Default"},{"time": 30937.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 31031.25,"lane": 6,"length": 0,"type": "Default"},{"time": 31125,"lane": 2,"length": 0,"type": "Default"},{"time": 31125,"lane": 4,"length": 0,"type": "Default"},{"time": 31125,"lane": 5,"length": 0,"type": "Default"},{"time": 31218.75,"lane": 7,"length": 0,"type": "Default"},{"time": 31312.5,"lane": 0,"length": 0,"type": "Default"},{"time": 31312.5,"lane": 6,"length": 0,"type": "Default"},{"time": 31406.25,"lane": 4,"length": 0,"type": "Default"},{"time": 31500,"lane": 5,"length": 0,"type": "Default"},{"time": 31593.75,"lane": 7,"length": 0,"type": "Default"},{"time": 31687.5,"lane": 5,"length": 0,"type": "Default"},{"time": 31781.25,"lane": 4,"length": 281.25,"type": "Default"},{"time": 32062.5,"lane": 7,"length": 0,"type": "Default"},{"time": 32156.25,"lane": 5,"length": 0,"type": "Default"},{"time": 32203.125,"lane": 4,"length": 0,"type": "Default"},{"time": 32250,"lane": 6,"length": 0,"type": "lasagna"},{"time": 32437.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 32531.25,"lane": 7,"length": 0,"type": "Default"},{"time": 32625,"lane": 4,"length": 0,"type": "Default"},{"time": 32625,"lane": 5,"length": 0,"type": "Default"},{"time": 32718.75,"lane": 7,"length": 0,"type": "Default"},{"time": 32812.5,"lane": 6,"length": 0,"type": "Default"},{"time": 33000,"lane": 4,"length": 0,"type": "Default"},{"time": 33187.5,"lane": 6,"length": 0,"type": "Default"},{"time": 33281.25,"lane": 7,"length": 0,"type": "Default"},{"time": 33375,"lane": 5,"length": 0,"type": "Default"},{"time": 33375,"lane": 4,"length": 0,"type": "Default"},{"time": 33562.5,"lane": 6,"length": 375,"type": "lasagna"},{"time": 33937.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 34125,"lane": 6,"length": 0,"type": "Default"},{"time": 34125,"lane": 7,"length": 0,"type": "Default"},{"time": 34218.75,"lane": 4,"length": 0,"type": "Default"},{"time": 34312.5,"lane": 7,"length": 0,"type": "Default"},{"time": 34359.375,"lane": 6,"length": 0,"type": "Default"},{"time": 34406.25,"lane": 5,"length": 0,"type": "Default"},{"time": 34453.125,"lane": 4,"length": 0,"type": "Default"},{"time": 34500,"lane": 2,"length": 0,"type": "Default"},{"time": 34500,"lane": 7,"length": 0,"type": "Default"},{"time": 34687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 34687.5,"lane": 5,"length": 0,"type": "Default"},{"time": 34781.25,"lane": 4,"length": 0,"type": "Default"},{"time": 34875,"lane": 2,"length": 0,"type": "Default"},{"time": 34875,"lane": 6,"length": 0,"type": "Default"},{"time": 34875,"lane": 7,"length": 0,"type": "Default"},{"time": 35062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 35062.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 35250,"lane": 6,"length": 0,"type": "lasagna"},{"time": 35343.75,"lane": 0,"length": 0,"type": "Default"},{"time": 35437.5,"lane": 1,"length": 0,"type": "Default"},{"time": 35437.5,"lane": 4,"length": 0,"type": "Default"},{"time": 35531.25,"lane": 7,"length": 0,"type": "Default"},{"time": 35625,"lane": 5,"length": 0,"type": "Default"},{"time": 35625,"lane": 4,"length": 0,"type": "Default"},{"time": 35625,"lane": 3,"length": 187.5,"type": "Default"},{"time": 35812.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 36000,"lane": 1,"length": 0,"type": "Default"},{"time": 36046.875,"lane": 3,"length": 0,"type": "Default"},{"time": 36281.25,"lane": 0,"length": 0,"type": "Default"},{"time": 36562.5,"lane": 3,"length": 0,"type": "Default"},{"time": 36609.375,"lane": 0,"length": 0,"type": "Default"},{"time": 36656.25,"lane": 1,"length": 0,"type": "Default"},{"time": 36750,"lane": 3,"length": 0,"type": "Default"},{"time": 36937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 37031.25,"lane": 1,"length": 0,"type": "Default"},{"time": 37125,"lane": 0,"length": 0,"type": "Default"},{"time": 37312.5,"lane": 0,"length": 0,"type": "Default"},{"time": 37500,"lane": 1,"length": 0,"type": "Default"},{"time": 37546.875,"lane": 3,"length": 0,"type": "Default"},{"time": 37687.5,"lane": 3,"length": 0,"type": "Default"},{"time": 37781.25,"lane": 0,"length": 0,"type": "Default"},{"time": 37875,"lane": 0,"length": 0,"type": "Default"},{"time": 37968.75,"lane": 0,"length": 0,"type": "Default"},{"time": 38109.375,"lane": 2,"length": 0,"type": "Default"},{"time": 38156.25,"lane": 3,"length": 0,"type": "Default"},{"time": 38250,"lane": 1,"length": 0,"type": "Default"},{"time": 38437.5,"lane": 2,"length": 0,"type": "Default"},{"time": 38531.25,"lane": 0,"length": 0,"type": "Default"},{"time": 38625,"lane": 2,"length": 0,"type": "Default"},{"time": 38625,"lane": 4,"length": 0,"type": "lasagna"},{"time": 38718.75,"lane": 2,"length": 0,"type": "Default"},{"time": 38718.75,"lane": 7,"length": 0,"type": "Default"},{"time": 38812.5,"lane": 3,"length": 0,"type": "Default"},{"time": 38812.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 38859.375,"lane": 5,"length": 0,"type": "Default"},{"time": 38906.25,"lane": 1,"length": 140.625,"type": "Default"},{"time": 38906.25,"lane": 4,"length": 0,"type": "Default"},{"time": 39000,"lane": 6,"length": 0,"type": "Default"},{"time": 39000,"lane": 0,"length": 468.75,"type": "Default"},{"time": 39000,"lane": 7,"length": 0,"type": "lasagna"},{"time": 39093.75,"lane": 4,"length": 0,"type": "Default"},{"time": 39187.5,"lane": 6,"length": 0,"type": "Default"},{"time": 39281.25,"lane": 5,"length": 0,"type": "Default"},{"time": 39375,"lane": 7,"length": 0,"type": "Default"},{"time": 39375,"lane": 2,"length": 187.5,"type": "Default"},{"time": 39562.5,"lane": 4,"length": 0,"type": "Default"},{"time": 39562.5,"lane": 5,"length": 0,"type": "Default"},{"time": 39656.25,"lane": 6,"length": 281.25,"type": "lasagna"},{"time": 39937.5,"lane": 7,"length": 0,"type": "Default"},{"time": 40031.25,"lane": 7,"length": 0,"type": "Default"},{"time": 40125,"lane": 5,"length": 0,"type": "lasagna"},{"time": 40218.75,"lane": 4,"length": 0,"type": "Default"},{"time": 40312.5,"lane": 5,"length": 0,"type": "Default"},{"time": 40359.375,"lane": 6,"length": 0,"type": "Default"},{"time": 40406.25,"lane": 7,"length": 0,"type": "Default"},{"time": 40500,"lane": 1,"length": 0,"type": "Default"},{"time": 40500,"lane": 5,"length": 0,"type": "Default"},{"time": 40500,"lane": 4,"length": 0,"type": "lasagna"},{"time": 40593.75,"lane": 7,"length": 0,"type": "Default"},{"time": 40687.5,"lane": 0,"length": 0,"type": "Default"},{"time": 40687.5,"lane": 5,"length": 0,"type": "Default"},{"time": 40781.25,"lane": 6,"length": 0,"type": "Default"},{"time": 40875,"lane": 1,"length": 0,"type": "Default"},{"time": 40875,"lane": 4,"length": 0,"type": "Default"},{"time": 41062.5,"lane": 0,"length": 0,"type": "Default"},{"time": 41062.5,"lane": 7,"length": 0,"type": "Default"},{"time": 41062.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 41156.25,"lane": 5,"length": 281.25,"type": "lasagna"},{"time": 41250,"lane": 2,"length": 0,"type": "Default"},{"time": 41343.75,"lane": 2,"length": 0,"type": "Default"},{"time": 41437.5,"lane": 1,"length": 0,"type": "Default"},{"time": 41437.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 41531.25,"lane": 1,"length": 0,"type": "Default"},{"time": 41531.25,"lane": 5,"length": 0,"type": "Default"},{"time": 41625,"lane": 2,"length": 0,"type": "Default"},{"time": 41625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 41671.875,"lane": 3,"length": 0,"type": "Default"},{"time": 41718.75,"lane": 6,"length": 0,"type": "Default"},{"time": 41765.625,"lane": 5,"length": 0,"type": "Default"},{"time": 41765.625,"lane": 1,"length": 0,"type": "Default"},{"time": 41812.5,"lane": 0,"length": 0,"type": "Default"},{"time": 41812.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 41906.25,"lane": 6,"length": 0,"type": "Default"},{"time": 41906.25,"lane": 2,"length": 0,"type": "Default"},{"time": 42000,"lane": 4,"length": 0,"type": "Default"},{"time": 42000,"lane": 1,"length": 0,"type": "Default"},{"time": 42000,"lane": 7,"length": 281.25,"type": "Default"},{"time": 42093.75,"lane": 2,"length": 0,"type": "Default"},{"time": 42187.5,"lane": 3,"length": 0,"type": "Default"},{"time": 42375,"lane": 3,"length": 0,"type": "Default"},{"time": 42562.5,"lane": 1,"length": 0,"type": "Default"},{"time": 42656.25,"lane": 3,"length": 281.25,"type": "Default"},{"time": 42937.5,"lane": 3,"length": 0,"type": "Default"},{"time": 43125,"lane": 1,"length": 0,"type": "Default"},{"time": 43218.75,"lane": 1,"length": 0,"type": "Default"},{"time": 43312.5,"lane": 2,"length": 0,"type": "Default"},{"time": 43406.25,"lane": 2,"length": 0,"type": "Default"},{"time": 43500,"lane": 1,"length": 0,"type": "Default"},{"time": 43500,"lane": 6,"length": 0,"type": "Default"},{"time": 43500,"lane": 5,"length": 0,"type": "lasagna"},{"time": 43593.75,"lane": 0,"length": 0,"type": "Default"},{"time": 43687.5,"lane": 5,"length": 0,"type": "Default"},{"time": 43687.5,"lane": 0,"length": 0,"type": "Default"},{"time": 43687.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 43875,"lane": 6,"length": 0,"type": "Default"},{"time": 43875,"lane": 0,"length": 0,"type": "Default"},{"time": 43875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 44062.5,"lane": 4,"length": 0,"type": "Default"},{"time": 44062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 44062.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 44156.25,"lane": 1,"length": 281.25,"type": "Default"},{"time": 44250,"lane": 6,"length": 0,"type": "Default"},{"time": 44343.75,"lane": 4,"length": 0,"type": "Default"},{"time": 44390.625,"lane": 5,"length": 0,"type": "Default"},{"time": 44437.5,"lane": 6,"length": 0,"type": "Default"},{"time": 44437.5,"lane": 0,"length": 0,"type": "Default"},{"time": 44531.25,"lane": 1,"length": 0,"type": "Default"},{"time": 44531.25,"lane": 4,"length": 0,"type": "Default"},{"time": 44625,"lane": 3,"length": 0,"type": "Default"},{"time": 44625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 44671.875,"lane": 7,"length": 0,"type": "Default"},{"time": 44765.625,"lane": 6,"length": 0,"type": "Default"},{"time": 44812.5,"lane": 5,"length": 0,"type": "Default"},{"time": 44812.5,"lane": 1,"length": 0,"type": "Default"},{"time": 44906.25,"lane": 4,"length": 0,"type": "Default"},{"time": 45000,"lane": 6,"length": 0,"type": "Default"},{"time": 45000,"lane": 7,"length": 0,"type": "Default"},{"time": 45000,"lane": 1,"length": 0,"type": "Default"},{"time": 45093.75,"lane": 5,"length": 0,"type": "Default"},{"time": 45187.5,"lane": 0,"length": 0,"type": "Default"},{"time": 45187.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 45375,"lane": 1,"length": 0,"type": "Default"},{"time": 45375,"lane": 4,"length": 0,"type": "lasagna"},{"time": 45468.75,"lane": 1,"length": 0,"type": "Default"},{"time": 45562.5,"lane": 0,"length": 0,"type": "Default"},{"time": 45562.5,"lane": 6,"length": 0,"type": "Default"},{"time": 45562.5,"lane": 7,"length": 0,"type": "Default"},{"time": 45656.25,"lane": 4,"length": 281.25,"type": "lasagna"},{"time": 45937.5,"lane": 5,"length": 0,"type": "Default"},{"time": 45937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 45937.5,"lane": 7,"length": 0,"type": "Default"},{"time": 46125,"lane": 6,"length": 0,"type": "Default"},{"time": 46125,"lane": 1,"length": 0,"type": "Default"},{"time": 46125,"lane": 4,"length": 0,"type": "Default"},{"time": 46218.75,"lane": 1,"length": 0,"type": "Default"},{"time": 46218.75,"lane": 5,"length": 0,"type": "lasagna"},{"time": 46312.5,"lane": 1,"length": 0,"type": "Default"},{"time": 46312.5,"lane": 7,"length": 0,"type": "Default"},{"time": 46359.375,"lane": 1,"length": 0,"type": "Default"},{"time": 46406.25,"lane": 1,"length": 0,"type": "Default"},{"time": 46406.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 46453.125,"lane": 1,"length": 0,"type": "Default"},{"time": 46500,"lane": 5,"length": 0,"type": "Default"},{"time": 46500,"lane": 2,"length": 0,"type": "Default"},{"time": 46500,"lane": 4,"length": 0,"type": "Default"},{"time": 46593.75,"lane": 6,"length": 0,"type": "Default"},{"time": 46593.75,"lane": 1,"length": 0,"type": "Default"},{"time": 46687.5,"lane": 3,"length": 0,"type": "Default"},{"time": 46687.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 46875,"lane": 3,"length": 0,"type": "Default"},{"time": 46875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 47062.5,"lane": 4,"length": 0,"type": "Default"},{"time": 47062.5,"lane": 1,"length": 0,"type": "Default"},{"time": 47062.5,"lane": 5,"length": 0,"type": "Default"},{"time": 47156.25,"lane": 3,"length": 281.25,"type": "Default"},{"time": 47156.25,"lane": 7,"length": 281.25,"type": "lasagna"},{"time": 47437.5,"lane": 6,"length": 0,"type": "Default"},{"time": 47437.5,"lane": 4,"length": 0,"type": "Default"},{"time": 47437.5,"lane": 0,"length": 0,"type": "Default"},{"time": 47531.25,"lane": 7,"length": 0,"type": "Default"},{"time": 47531.25,"lane": 0,"length": 0,"type": "Default"},{"time": 47625,"lane": 1,"length": 0,"type": "Default"},{"time": 47625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 47812.5,"lane": 3,"length": 0,"type": "Default"},{"time": 47812.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 48000,"lane": 2,"length": 281.25,"type": "Default"},{"time": 48187.5,"lane": 0,"length": 0,"type": "Default"},{"time": 48375,"lane": 1,"length": 0,"type": "Default"},{"time": 48421.875,"lane": 1,"length": 0,"type": "Default"},{"time": 48468.75,"lane": 1,"length": 0,"type": "Default"},{"time": 48562.5,"lane": 3,"length": 0,"type": "Default"},{"time": 48656.25,"lane": 3,"length": 0,"type": "Default"},{"time": 48750,"lane": 2,"length": 0,"type": "Default"},{"time": 48937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 49125,"lane": 0,"length": 0,"type": "Default"},{"time": 49218.75,"lane": 2,"length": 0,"type": "Default"},{"time": 49312.5,"lane": 1,"length": 187.5,"type": "Default"},{"time": 49500,"lane": 1,"length": 187.5,"type": "Default"},{"time": 49687.5,"lane": 1,"length": 0,"type": "Default"},{"time": 49781.25,"lane": 1,"length": 0,"type": "Default"},{"time": 49875,"lane": 3,"length": 0,"type": "Default"},{"time": 50062.5,"lane": 1,"length": 0,"type": "Default"},{"time": 50156.25,"lane": 2,"length": 0,"type": "Default"},{"time": 50343.75,"lane": 1,"length": 0,"type": "Default"},{"time": 50390.625,"lane": 0,"length": 0,"type": "Default"},{"time": 50437.5,"lane": 3,"length": 0,"type": "Default"},{"time": 50484.375,"lane": 1,"length": 0,"type": "Default"},{"time": 50531.25,"lane": 2,"length": 0,"type": "Default"},{"time": 50625,"lane": 0,"length": 0,"type": "Default"},{"time": 50812.5,"lane": 3,"length": 0,"type": "Default"},{"time": 51000,"lane": 6,"length": 281.25,"type": "Default"},{"time": 51000,"lane": 1,"length": 281.25,"type": "Default"},{"time": 51000,"lane": 7,"length": 0,"type": "lasagna"},{"time": 51000,"lane": 4,"length": 0,"type": "lasagna"},{"time": 51187.5,"lane": 5,"length": 187.5,"type": "Default"},{"time": 51375,"lane": 7,"length": 0,"type": "Default"},{"time": 51421.875,"lane": 6,"length": 0,"type": "Default"},{"time": 51468.75,"lane": 5,"length": 0,"type": "Default"},{"time": 51562.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 51656.25,"lane": 6,"length": 0,"type": "Default"},{"time": 51750,"lane": 7,"length": 0,"type": "lasagna"},{"time": 51937.5,"lane": 6,"length": 0,"type": "Default"},{"time": 51937.5,"lane": 5,"length": 0,"type": "Default"},{"time": 52125,"lane": 4,"length": 0,"type": "lasagna"},{"time": 52218.75,"lane": 5,"length": 0,"type": "Default"},{"time": 52312.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 52500,"lane": 5,"length": 0,"type": "Default"},{"time": 52500,"lane": 6,"length": 0,"type": "lasagna"},{"time": 52500,"lane": 4,"length": 0,"type": "lasagna"},{"time": 52687.5,"lane": 7,"length": 0,"type": "Default"},{"time": 52781.25,"lane": 5,"length": 0,"type": "Default"},{"time": 52875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 53062.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 53062.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 53156.25,"lane": 4,"length": 0,"type": "Default"},{"time": 53343.75,"lane": 4,"length": 0,"type": "Default"},{"time": 53437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 53484.375,"lane": 6,"length": 0,"type": "Default"},{"time": 53531.25,"lane": 7,"length": 0,"type": "Default"},{"time": 53625,"lane": 4,"length": 0,"type": "lasagna"},{"time": 53625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 53812.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 53812.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 54000,"lane": 5,"length": 0,"type": "Default"},{"time": 54000,"lane": 4,"length": 0,"type": "Default"},{"time": 54000,"lane": 6,"length": 0,"type": "Default"},{"time": 54000,"lane": 1,"length": 0,"type": "Default"},{"time": 54187.5,"lane": 1,"length": 0,"type": "Default"},{"time": 54281.25,"lane": 0,"length": 0,"type": "Default"},{"time": 54468.75,"lane": 0,"length": 0,"type": "Default"},{"time": 54562.5,"lane": 2,"length": 375,"type": "Default"},{"time": 54937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 55125,"lane": 2,"length": 0,"type": "Default"},{"time": 55218.75,"lane": 2,"length": 0,"type": "Default"},{"time": 55265.625,"lane": 2,"length": 0,"type": "Default"},{"time": 55312.5,"lane": 3,"length": 0,"type": "Default"},{"time": 55406.25,"lane": 3,"length": 0,"type": "Default"},{"time": 55500,"lane": 3,"length": 0,"type": "Default"},{"time": 55593.75,"lane": 1,"length": 0,"type": "Default"},{"time": 55687.5,"lane": 1,"length": 0,"type": "Default"},{"time": 55781.25,"lane": 0,"length": 281.25,"type": "Default"},{"time": 56062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 56156.25,"lane": 1,"length": 0,"type": "Default"},{"time": 56250,"lane": 3,"length": 0,"type": "Default"},{"time": 56296.875,"lane": 0,"length": 0,"type": "Default"},{"time": 56343.75,"lane": 3,"length": 0,"type": "Default"},{"time": 56437.5,"lane": 0,"length": 0,"type": "Default"},{"time": 56531.25,"lane": 0,"length": 0,"type": "Default"},{"time": 56625,"lane": 2,"length": 0,"type": "Default"},{"time": 56671.875,"lane": 3,"length": 0,"type": "Default"},{"time": 56718.75,"lane": 2,"length": 0,"type": "Default"},{"time": 56812.5,"lane": 1,"length": 0,"type": "Default"},{"time": 56906.25,"lane": 2,"length": 0,"type": "Default"},{"time": 57000,"lane": 5,"length": 0,"type": "Default"},{"time": 57000,"lane": 6,"length": 0,"type": "Default"},{"time": 57000,"lane": 1,"length": 281.25,"type": "Default"},{"time": 57000,"lane": 4,"length": 0,"type": "lasagna"},{"time": 57187.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 57281.25,"lane": 4,"length": 0,"type": "lasagna"},{"time": 57468.75,"lane": 6,"length": 0,"type": "Default"},{"time": 57562.5,"lane": 4,"length": 375,"type": "Default"},{"time": 57562.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 57937.5,"lane": 5,"length": 0,"type": "Default"},{"time": 57937.5,"lane": 6,"length": 0,"type": "Default"},{"time": 58125,"lane": 7,"length": 0,"type": "lasagna"},{"time": 58218.75,"lane": 5,"length": 0,"type": "Default"},{"time": 58265.625,"lane": 4,"length": 0,"type": "Default"},{"time": 58312.5,"lane": 7,"length": 0,"type": "Default"},{"time": 58406.25,"lane": 5,"length": 0,"type": "Default"},{"time": 58500,"lane": 7,"length": 0,"type": "Default"},{"time": 58500,"lane": 4,"length": 0,"type": "Default"},{"time": 58500,"lane": 6,"length": 0,"type": "Default"},{"time": 58593.75,"lane": 5,"length": 0,"type": "Default"},{"time": 58687.5,"lane": 6,"length": 0,"type": "Default"},{"time": 58781.25,"lane": 4,"length": 281.25,"type": "Default"},{"time": 59062.5,"lane": 5,"length": 0,"type": "Default"},{"time": 59062.5,"lane": 6,"length": 0,"type": "Default"},{"time": 59156.25,"lane": 7,"length": 0,"type": "Default"},{"time": 59250,"lane": 4,"length": 0,"type": "lasagna"},{"time": 59296.875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 59343.75,"lane": 7,"length": 0,"type": "lasagna"},{"time": 59437.5,"lane": 6,"length": 0,"type": "Default"},{"time": 59531.25,"lane": 5,"length": 0,"type": "Default"},{"time": 59625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 59671.875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 59718.75,"lane": 4,"length": 0,"type": "lasagna"},{"time": 59812.5,"lane": 5,"length": 0,"type": "Default"},{"time": 59906.25,"lane": 6,"length": 0,"type": "Default"},{"time": 60000,"lane": 2,"length": 0,"type": "Default"},{"time": 60000,"lane": 4,"length": 281.25,"type": "Default"},{"time": 60093.75,"lane": 1,"length": 0,"type": "Default"},{"time": 60187.5,"lane": 1,"length": 0,"type": "Default"},{"time": 60281.25,"lane": 1,"length": 281.25,"type": "Default"},{"time": 60562.5,"lane": 1,"length": 0,"type": "Default"},{"time": 60750,"lane": 0,"length": 0,"type": "Default"},{"time": 60937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 61031.25,"lane": 3,"length": 0,"type": "Default"},{"time": 61125,"lane": 1,"length": 0,"type": "Default"},{"time": 61312.5,"lane": 0,"length": 0,"type": "Default"},{"time": 61500,"lane": 1,"length": 0,"type": "Default"},{"time": 61593.75,"lane": 2,"length": 0,"type": "Default"},{"time": 61640.625,"lane": 3,"length": 0,"type": "Default"},{"time": 61687.5,"lane": 1,"length": 0,"type": "Default"},{"time": 61781.25,"lane": 2,"length": 281.25,"type": "Default"},{"time": 62062.5,"lane": 0,"length": 0,"type": "Default"},{"time": 62156.25,"lane": 0,"length": 0,"type": "Default"},{"time": 62250,"lane": 1,"length": 0,"type": "Default"},{"time": 62437.5,"lane": 1,"length": 0,"type": "Default"},{"time": 62531.25,"lane": 3,"length": 0,"type": "Default"},{"time": 62625,"lane": 1,"length": 0,"type": "Default"},{"time": 62812.5,"lane": 3,"length": 0,"type": "Default"},{"time": 63000,"lane": 0,"length": 0,"type": "Default"},{"time": 63093.75,"lane": 1,"length": 0,"type": "Default"},{"time": 63187.5,"lane": 0,"length": 0,"type": "Default"},{"time": 63281.25,"lane": 2,"length": 281.25,"type": "Default"},{"time": 63562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 63656.25,"lane": 3,"length": 0,"type": "Default"},{"time": 63750,"lane": 1,"length": 0,"type": "Default"},{"time": 63937.5,"lane": 0,"length": 0,"type": "Default"},{"time": 64031.25,"lane": 1,"length": 0,"type": "Default"},{"time": 64125,"lane": 0,"length": 0,"type": "Default"},{"time": 64312.5,"lane": 1,"length": 0,"type": "Default"},{"time": 64500,"lane": 1,"length": 0,"type": "Default"},{"time": 64593.75,"lane": 1,"length": 0,"type": "Default"},{"time": 64640.625,"lane": 1,"length": 0,"type": "Default"},{"time": 64687.5,"lane": 1,"length": 0,"type": "Default"},{"time": 64781.25,"lane": 3,"length": 281.25,"type": "Default"},{"time": 65062.5,"lane": 1,"length": 0,"type": "Default"},{"time": 65156.25,"lane": 1,"length": 0,"type": "Default"},{"time": 65250,"lane": 0,"length": 0,"type": "Default"},{"time": 65437.5,"lane": 1,"length": 0,"type": "Default"},{"time": 65625,"lane": 3,"length": 0,"type": "Default"},{"time": 65812.5,"lane": 2,"length": 0,"type": "Default"},{"time": 66000,"lane": 2,"length": 0,"type": "Default"},{"time": 66000,"lane": 6,"length": 0,"type": "lasagna"},{"time": 66093.75,"lane": 5,"length": 0,"type": "lasagna"},{"time": 66187.5,"lane": 2,"length": 0,"type": "Default"},{"time": 66187.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 66281.25,"lane": 0,"length": 0,"type": "Default"},{"time": 66281.25,"lane": 7,"length": 281.25,"type": "lasagna"},{"time": 66468.75,"lane": 0,"length": 0,"type": "Default"},{"time": 66562.5,"lane": 5,"length": 0,"type": "Default"},{"time": 66562.5,"lane": 3,"length": 375,"type": "Default"},{"time": 66750,"lane": 6,"length": 0,"type": "Default"},{"time": 66937.5,"lane": 5,"length": 0,"type": "Default"},{"time": 66937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 67031.25,"lane": 4,"length": 0,"type": "Default"},{"time": 67125,"lane": 7,"length": 0,"type": "Default"},{"time": 67125,"lane": 1,"length": 0,"type": "Default"},{"time": 67218.75,"lane": 1,"length": 0,"type": "Default"},{"time": 67312.5,"lane": 6,"length": 0,"type": "Default"},{"time": 67312.5,"lane": 2,"length": 562.5,"type": "Default"},{"time": 67500,"lane": 5,"length": 0,"type": "lasagna"},{"time": 67593.75,"lane": 6,"length": 0,"type": "lasagna"},{"time": 67640.625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 67687.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 67781.25,"lane": 4,"length": 281.25,"type": "lasagna"},{"time": 67875,"lane": 1,"length": 0,"type": "Default"},{"time": 68062.5,"lane": 6,"length": 0,"type": "Default"},{"time": 68062.5,"lane": 1,"length": 375,"type": "Default"},{"time": 68156.25,"lane": 5,"length": 0,"type": "Default"},{"time": 68250,"lane": 7,"length": 0,"type": "Default"},{"time": 68437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 68437.5,"lane": 3,"length": 0,"type": "Default"},{"time": 68531.25,"lane": 0,"length": 0,"type": "Default"},{"time": 68531.25,"lane": 6,"length": 0,"type": "Default"},{"time": 68625,"lane": 4,"length": 0,"type": "Default"},{"time": 68625,"lane": 3,"length": 0,"type": "Default"},{"time": 68812.5,"lane": 7,"length": 0,"type": "Default"},{"time": 68812.5,"lane": 0,"length": 0,"type": "Default"},{"time": 68906.25,"lane": 3,"length": 0,"type": "Default"},{"time": 69000,"lane": 0,"length": 0,"type": "Default"},{"time": 69000,"lane": 5,"length": 0,"type": "lasagna"},{"time": 69093.75,"lane": 4,"length": 0,"type": "lasagna"},{"time": 69187.5,"lane": 0,"length": 0,"type": "Default"},{"time": 69187.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 69281.25,"lane": 0,"length": 0,"type": "Default"},{"time": 69281.25,"lane": 7,"length": 281.25,"type": "lasagna"},{"time": 69468.75,"lane": 1,"length": 0,"type": "Default"},{"time": 69562.5,"lane": 6,"length": 0,"type": "Default"},{"time": 69562.5,"lane": 2,"length": 562.5,"type": "Default"},{"time": 69656.25,"lane": 7,"length": 0,"type": "Default"},{"time": 69750,"lane": 5,"length": 0,"type": "Default"},{"time": 69937.5,"lane": 4,"length": 0,"type": "Default"},{"time": 70031.25,"lane": 5,"length": 0,"type": "Default"},{"time": 70125,"lane": 7,"length": 0,"type": "Default"},{"time": 70125,"lane": 1,"length": 375,"type": "Default"},{"time": 70312.5,"lane": 4,"length": 0,"type": "Default"},{"time": 70500,"lane": 0,"length": 375,"type": "Default"},{"time": 70500,"lane": 6,"length": 0,"type": "lasagna"},{"time": 70593.75,"lane": 5,"length": 0,"type": "lasagna"},{"time": 70640.625,"lane": 4,"length": 0,"type": "lasagna"},{"time": 70687.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 70781.25,"lane": 6,"length": 281.25,"type": "lasagna"},{"time": 70875,"lane": 1,"length": 0,"type": "Default"},{"time": 71062.5,"lane": 4,"length": 0,"type": "Default"},{"time": 71062.5,"lane": 2,"length": 562.5,"type": "Default"},{"time": 71156.25,"lane": 6,"length": 0,"type": "Default"},{"time": 71250,"lane": 7,"length": 0,"type": "Default"},{"time": 71437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 71625,"lane": 4,"length": 0,"type": "Default"},{"time": 71625,"lane": 1,"length": 375,"type": "Default"},{"time": 71812.5,"lane": 7,"length": 0,"type": "Default"},{"time": 72187.5,"lane": 0,"length": 0,"type": "Default"},{"time": 72375,"lane": 0,"length": 0,"type": "Default"},{"time": 72562.5,"lane": 1,"length": 0,"type": "Default"},{"time": 72656.25,"lane": 0,"length": 281.25,"type": "Default"},{"time": 72937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 73031.25,"lane": 1,"length": 0,"type": "Default"},{"time": 73125,"lane": 2,"length": 0,"type": "Default"},{"time": 73312.5,"lane": 0,"length": 0,"type": "Default"},{"time": 73687.5,"lane": 6,"length": 0,"type": "Default"},{"time": 73875,"lane": 6,"length": 0,"type": "Default"},{"time": 74062.5,"lane": 4,"length": 0,"type": "Default"},{"time": 74156.25,"lane": 6,"length": 281.25,"type": "Default"},{"time": 74437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 74531.25,"lane": 5,"length": 0,"type": "Default"},{"time": 74625,"lane": 7,"length": 0,"type": "Default"},{"time": 74812.5,"lane": 4,"length": 0,"type": "Default"},{"time": 75000,"lane": 2,"length": 0,"type": "Default"},{"time": 75093.75,"lane": 2,"length": 0,"type": "Default"},{"time": 75187.5,"lane": 2,"length": 375,"type": "Default"},{"time": 75562.5,"lane": 0,"length": 0,"type": "Default"},{"time": 75656.25,"lane": 0,"length": 0,"type": "Default"},{"time": 75750,"lane": 2,"length": 0,"type": "Default"},{"time": 75937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 76031.25,"lane": 1,"length": 0,"type": "Default"},{"time": 76125,"lane": 3,"length": 0,"type": "Default"},{"time": 76312.5,"lane": 1,"length": 0,"type": "Default"},{"time": 76500,"lane": 2,"length": 0,"type": "Default"},{"time": 76593.75,"lane": 2,"length": 0,"type": "Default"},{"time": 76687.5,"lane": 1,"length": 375,"type": "Default"},{"time": 77062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 77156.25,"lane": 3,"length": 0,"type": "Default"},{"time": 77250,"lane": 1,"length": 0,"type": "Default"},{"time": 77437.5,"lane": 0,"length": 0,"type": "Default"},{"time": 77625,"lane": 0,"length": 0,"type": "Default"},{"time": 77718.75,"lane": 0,"length": 0,"type": "Default"},{"time": 77812.5,"lane": 2,"length": 0,"type": "Default"},{"time": 78000,"lane": 1,"length": 0,"type": "Default"},{"time": 78093.75,"lane": 1,"length": 0,"type": "Default"},{"time": 78187.5,"lane": 3,"length": 468.75,"type": "Default"},{"time": 78562.5,"lane": 1,"length": 0,"type": "Default"},{"time": 78656.25,"lane": 1,"length": 0,"type": "Default"},{"time": 78750,"lane": 2,"length": 0,"type": "Default"},{"time": 78937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 79031.25,"lane": 1,"length": 0,"type": "Default"},{"time": 79125,"lane": 0,"length": 0,"type": "Default"},{"time": 79312.5,"lane": 1,"length": 0,"type": "Default"},{"time": 79500,"lane": 2,"length": 0,"type": "Default"},{"time": 79593.75,"lane": 2,"length": 0,"type": "Default"},{"time": 79687.5,"lane": 1,"length": 375,"type": "Default"},{"time": 80062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 80156.25,"lane": 2,"length": 0,"type": "Default"},{"time": 80250,"lane": 0,"length": 0,"type": "Default"},{"time": 80437.5,"lane": 0,"length": 0,"type": "Default"},{"time": 80625,"lane": 2,"length": 0,"type": "Default"},{"time": 80718.75,"lane": 0,"length": 0,"type": "Default"},{"time": 80812.5,"lane": 3,"length": 281.25,"type": "Default"},{"time": 81000,"lane": 2,"length": 750,"type": "Default"},{"time": 81000,"lane": 7,"length": 0,"type": "lasagna"},{"time": 81093.75,"lane": 7,"length": 0,"type": "lasagna"},{"time": 81187.5,"lane": 5,"length": 468.75,"type": "Default"},{"time": 81562.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 81656.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 81750,"lane": 4,"length": 0,"type": "Default"},{"time": 81937.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 82031.25,"lane": 7,"length": 0,"type": "Default"},{"time": 82125,"lane": 6,"length": 0,"type": "lasagna"},{"time": 82312.5,"lane": 4,"length": 0,"type": "Default"},{"time": 82500,"lane": 5,"length": 0,"type": "lasagna"},{"time": 82593.75,"lane": 5,"length": 0,"type": "lasagna"},{"time": 82687.5,"lane": 7,"length": 468.75,"type": "Default"},{"time": 83062.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 83156.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 83250,"lane": 4,"length": 0,"type": "lasagna"},{"time": 83437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 83625,"lane": 6,"length": 0,"type": "lasagna"},{"time": 83718.75,"lane": 5,"length": 0,"type": "lasagna"},{"time": 83812.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 84000,"lane": 4,"length": 0,"type": "Default"},{"time": 84093.75,"lane": 6,"length": 0,"type": "lasagna"},{"time": 84187.5,"lane": 7,"length": 375,"type": "Default"},{"time": 84562.5,"lane": 4,"length": 0,"type": "Default"},{"time": 84656.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 84750,"lane": 6,"length": 0,"type": "Default"},{"time": 84937.5,"lane": 4,"length": 0,"type": "Default"},{"time": 85031.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 85125,"lane": 7,"length": 0,"type": "Default"},{"time": 85312.5,"lane": 5,"length": 0,"type": "Default"},{"time": 85500,"lane": 7,"length": 0,"type": "Default"},{"time": 85593.75,"lane": 6,"length": 0,"type": "lasagna"},{"time": 85687.5,"lane": 4,"length": 375,"type": "Default"},{"time": 86062.5,"lane": 7,"length": 0,"type": "Default"},{"time": 86156.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 86250,"lane": 4,"length": 0,"type": "Default"},{"time": 86437.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 86625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 86718.75,"lane": 6,"length": 0,"type": "lasagna"},{"time": 86812.5,"lane": 1,"length": 0,"type": "Default"},{"time": 86812.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 87000,"lane": 2,"length": 0,"type": "Default"},{"time": 87375,"lane": 1,"length": 0,"type": "Default"},{"time": 87562.5,"lane": 0,"length": 0,"type": "Default"},{"time": 87750,"lane": 3,"length": 0,"type": "Default"},{"time": 87937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 88312.5,"lane": 2,"length": 0,"type": "Default"},{"time": 88687.5,"lane": 3,"length": 0,"type": "Default"},{"time": 89015.625,"lane": 0,"length": 0,"type": "Default"},{"time": 89250,"lane": 2,"length": 281.25,"type": "Default"},{"time": 89625,"lane": 3,"length": 0,"type": "Default"},{"time": 89718.75,"lane": 3,"length": 0,"type": "Default"},{"time": 89812.5,"lane": 3,"length": 0,"type": "Default"},{"time": 89906.25,"lane": 3,"length": 0,"type": "Default"},{"time": 90000,"lane": 3,"length": 0,"type": "Default"},{"time": 90250,"lane": 1,"length": 0,"type": "Default"},{"time": 90500,"lane": 1,"length": 0,"type": "Default"},{"time": 90687.5,"lane": 0,"length": 375,"type": "Default"},{"time": 91062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 91250,"lane": 3,"length": 0,"type": "Default"},{"time": 91500,"lane": 0,"length": 0,"type": "Default"},{"time": 91875,"lane": 2,"length": 0,"type": "Default"},{"time": 92250,"lane": 3,"length": 0,"type": "Default"},{"time": 92250,"lane": 1,"length": 0,"type": "Default"},{"time": 92765.625,"lane": 1,"length": 0,"type": "Default"},{"time": 93000,"lane": 3,"length": 0,"type": "Default"},{"time": 93328.125,"lane": 1,"length": 0,"type": "Default"},{"time": 93515.625,"lane": 0,"length": 0,"type": "Default"},{"time": 93750,"lane": 2,"length": 0,"type": "Default"},{"time": 94500,"lane": 0,"length": 0,"type": "Default"},{"time": 94687.5,"lane": 1,"length": 0,"type": "Default"},{"time": 94875,"lane": 2,"length": 0,"type": "Default"},{"time": 95250,"lane": 3,"length": 0,"type": "Default"},{"time": 95437.5,"lane": 0,"length": 0,"type": "Default"},{"time": 95625,"lane": 2,"length": 0,"type": "Default"},{"time": 95718.75,"lane": 2,"length": 0,"type": "Default"},{"time": 95812.5,"lane": 2,"length": 0,"type": "Default"},{"time": 95906.25,"lane": 2,"length": 0,"type": "Default"},{"time": 96000,"lane": 2,"length": 0,"type": "Default"},{"time": 96187.5,"lane": 3,"length": 0,"type": "Default"},{"time": 96375,"lane": 1,"length": 0,"type": "Default"},{"time": 96562.5,"lane": 2,"length": 468.75,"type": "Default"},{"time": 97125,"lane": 0,"length": 0,"type": "Default"},{"time": 97218.75,"lane": 3,"length": 0,"type": "Default"},{"time": 97500,"lane": 1,"length": 0,"type": "Default"},{"time": 97687.5,"lane": 0,"length": 0,"type": "Default"},{"time": 97875,"lane": 3,"length": 0,"type": "Default"},{"time": 98250,"lane": 1,"length": 0,"type": "Default"},{"time": 98437.5,"lane": 2,"length": 562.5,"type": "Default"},{"time": 99000,"lane": 0,"length": 0,"type": "Default"},{"time": 99187.5,"lane": 2,"length": 1031.25,"type": "Default"},{"time": 99187.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 99281.25,"lane": 4,"length": 0,"type": "lasagna"},{"time": 99375,"lane": 7,"length": 0,"type": "Default"},{"time": 99375,"lane": 6,"length": 0,"type": "Default"},{"time": 99562.5,"lane": 5,"length": 375,"type": "Default"},{"time": 99750,"lane": 3,"length": 750,"type": "Default"},{"time": 99937.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 100031.25,"lane": 7,"length": 0,"type": "lasagna"},{"time": 100125,"lane": 5,"length": 0,"type": "Default"},{"time": 100125,"lane": 6,"length": 0,"type": "Default"},{"time": 100218.75,"lane": 4,"length": 0,"type": "lasagna"},{"time": 100312.5,"lane": 7,"length": 375,"type": "Default"},{"time": 100500,"lane": 6,"length": 187.5,"type": "lasagna"},{"time": 100500,"lane": 0,"length": 375,"type": "Default"},{"time": 100687.5,"lane": 4,"length": 0,"type": "Default"},{"time": 100781.25,"lane": 7,"length": 0,"type": "Default"},{"time": 100875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 100875,"lane": 4,"length": 0,"type": "lasagna"},{"time": 101062.5,"lane": 7,"length": 0,"type": "Default"},{"time": 101109.375,"lane": 6,"length": 0,"type": "Default"},{"time": 101156.25,"lane": 5,"length": 0,"type": "Default"},{"time": 101203.125,"lane": 4,"length": 0,"type": "Default"},{"time": 101250,"lane": 7,"length": 0,"type": "lasagna"},{"time": 101437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 101531.25,"lane": 4,"length": 0,"type": "Default"},{"time": 101625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 101625,"lane": 6,"length": 0,"type": "lasagna"},{"time": 101718.75,"lane": 7,"length": 0,"type": "Default"},{"time": 101812.5,"lane": 6,"length": 0,"type": "Default"},{"time": 102000,"lane": 7,"length": 0,"type": "lasagna"},{"time": 102187.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 102375,"lane": 4,"length": 0,"type": "Default"},{"time": 102375,"lane": 7,"length": 0,"type": "Default"},{"time": 102468.75,"lane": 6,"length": 0,"type": "Default"},{"time": 102562.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 102656.25,"lane": 6,"length": 0,"type": "Default"},{"time": 102750,"lane": 4,"length": 0,"type": "lasagna"},{"time": 102937.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 103125,"lane": 5,"length": 0,"type": "Default"},{"time": 103125,"lane": 6,"length": 0,"type": "lasagna"},{"time": 103218.75,"lane": 7,"length": 0,"type": "Default"},{"time": 103312.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 103687.5,"lane": 6,"length": 0,"type": "Default"},{"time": 103781.25,"lane": 5,"length": 0,"type": "Default"},{"time": 103875,"lane": 4,"length": 0,"type": "Default"},{"time": 103875,"lane": 7,"length": 0,"type": "Default"},{"time": 104062.5,"lane": 5,"length": 0,"type": "Default"},{"time": 104156.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 104250,"lane": 4,"length": 0,"type": "Default"},{"time": 104296.875,"lane": 5,"length": 0,"type": "Default"},{"time": 104343.75,"lane": 7,"length": 0,"type": "lasagna"},{"time": 104437.5,"lane": 6,"length": 0,"type": "Default"},{"time": 104531.25,"lane": 4,"length": 0,"type": "lasagna"},{"time": 104625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 104625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 104812.5,"lane": 4,"length": 0,"type": "Default"},{"time": 105187.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 105281.25,"lane": 7,"length": 0,"type": "lasagna"},{"time": 105375,"lane": 4,"length": 0,"type": "Default"},{"time": 105375,"lane": 5,"length": 0,"type": "Default"},{"time": 105562.5,"lane": 6,"length": 375,"type": "Default"},{"time": 105937.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 106031.25,"lane": 7,"length": 0,"type": "lasagna"},{"time": 106125,"lane": 6,"length": 0,"type": "Default"},{"time": 106125,"lane": 4,"length": 0,"type": "Default"},{"time": 106218.75,"lane": 7,"length": 0,"type": "Default"},{"time": 106312.5,"lane": 5,"length": 375,"type": "lasagna"},{"time": 106687.5,"lane": 7,"length": 0,"type": "Default"},{"time": 106781.25,"lane": 4,"length": 0,"type": "Default"},{"time": 106875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 106875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 107062.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 107109.375,"lane": 6,"length": 0,"type": "lasagna"},{"time": 107156.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 107203.125,"lane": 4,"length": 0,"type": "lasagna"},{"time": 107250,"lane": 7,"length": 0,"type": "Default"},{"time": 107437.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 107531.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 107625,"lane": 4,"length": 0,"type": "Default"},{"time": 107625,"lane": 5,"length": 0,"type": "Default"},{"time": 107718.75,"lane": 7,"length": 0,"type": "Default"},{"time": 107812.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 108000,"lane": 7,"length": 0,"type": "lasagna"},{"time": 108093.75,"lane": 7,"length": 0,"type": "lasagna"},{"time": 108187.5,"lane": 4,"length": 375,"type": "Default"},{"time": 108562.5,"lane": 6,"length": 0,"type": "Default"},{"time": 108656.25,"lane": 7,"length": 0,"type": "Default"},{"time": 108750,"lane": 4,"length": 0,"type": "lasagna"},{"time": 108937.5,"lane": 5,"length": 0,"type": "Default"},{"time": 109031.25,"lane": 6,"length": 0,"type": "Default"},{"time": 109125,"lane": 4,"length": 0,"type": "Default"},{"time": 109125,"lane": 5,"length": 0,"type": "lasagna"},{"time": 109218.75,"lane": 7,"length": 0,"type": "Default"},{"time": 109312.5,"lane": 6,"length": 375,"type": "Default"},{"time": 109687.5,"lane": 4,"length": 0,"type": "Default"},{"time": 109781.25,"lane": 7,"length": 0,"type": "Default"},{"time": 109875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 109875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 110062.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 110156.25,"lane": 6,"length": 0,"type": "Default"},{"time": 110250,"lane": 7,"length": 0,"type": "lasagna"},{"time": 110437.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 110531.25,"lane": 4,"length": 0,"type": "lasagna"},{"time": 110625,"lane": 6,"length": 0,"type": "lasagna"},{"time": 110625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 110812.5,"lane": 5,"length": 0,"type": "Default"},{"time": 111187.5,"lane": 0,"length": 0,"type": "Default"},{"time": 111375,"lane": 1,"length": 375,"type": "Default"},{"time": 111750,"lane": 2,"length": 375,"type": "Default"},{"time": 112125,"lane": 0,"length": 375,"type": "Default"},{"time": 112500,"lane": 2,"length": 0,"type": "Default"},{"time": 112687.5,"lane": 1,"length": 0,"type": "Default"},{"time": 112781.25,"lane": 2,"length": 0,"type": "Default"},{"time": 112875,"lane": 0,"length": 0,"type": "Default"},{"time": 112968.75,"lane": 0,"length": 0,"type": "Default"},{"time": 113062.5,"lane": 2,"length": 562.5,"type": "Default"},{"time": 113625,"lane": 0,"length": 375,"type": "Default"},{"time": 114000,"lane": 2,"length": 0,"type": "Default"},{"time": 114187.5,"lane": 2,"length": 0,"type": "Default"},{"time": 114281.25,"lane": 2,"length": 0,"type": "Default"},{"time": 114375,"lane": 0,"length": 0,"type": "Default"},{"time": 114468.75,"lane": 2,"length": 0,"type": "Default"},{"time": 114515.625,"lane": 2,"length": 0,"type": "Default"},{"time": 114562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 114656.25,"lane": 0,"length": 0,"type": "Default"},{"time": 114750,"lane": 1,"length": 0,"type": "Default"},{"time": 114937.5,"lane": 2,"length": 0,"type": "Default"},{"time": 115125,"lane": 2,"length": 0,"type": "Default"},{"time": 115312.5,"lane": 0,"length": 0,"type": "Default"},{"time": 115500,"lane": 1,"length": 375,"type": "Default"},{"time": 115875,"lane": 2,"length": 375,"type": "Default"},{"time": 116250,"lane": 1,"length": 0,"type": "Default"},{"time": 116437.5,"lane": 2,"length": 0,"type": "Default"},{"time": 116625,"lane": 2,"length": 375,"type": "Default"},{"time": 117000,"lane": 2,"length": 0,"type": "Default"},{"time": 117187.5,"lane": 2,"length": 0,"type": "Default"},{"time": 117234.375,"lane": 2,"length": 0,"type": "Default"},{"time": 117281.25,"lane": 2,"length": 0,"type": "Default"},{"time": 117375,"lane": 3,"length": 0,"type": "Default"},{"time": 117468.75,"lane": 3,"length": 0,"type": "Default"},{"time": 117562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 117656.25,"lane": 1,"length": 281.25,"type": "Default"},{"time": 117937.5,"lane": 3,"length": 0,"type": "Default"},{"time": 118125,"lane": 0,"length": 0,"type": "Default"},{"time": 118312.5,"lane": 2,"length": 0,"type": "Default"},{"time": 118406.25,"lane": 2,"length": 0,"type": "Default"},{"time": 118500,"lane": 0,"length": 0,"type": "Default"},{"time": 118687.5,"lane": 0,"length": 0,"type": "Default"},{"time": 118781.25,"lane": 0,"length": 0,"type": "Default"},{"time": 118828.125,"lane": 0,"length": 0,"type": "Default"},{"time": 118875,"lane": 2,"length": 0,"type": "Default"},{"time": 118968.75,"lane": 2,"length": 0,"type": "Default"},{"time": 119062.5,"lane": 0,"length": 0,"type": "Default"},{"time": 119156.25,"lane": 1,"length": 281.25,"type": "Default"},{"time": 119437.5,"lane": 3,"length": 0,"type": "Default"},{"time": 119625,"lane": 0,"length": 0,"type": "Default"},{"time": 119812.5,"lane": 2,"length": 0,"type": "Default"},{"time": 119906.25,"lane": 2,"length": 0,"type": "Default"},{"time": 120000,"lane": 3,"length": 0,"type": "Default"},{"time": 120187.5,"lane": 3,"length": 0,"type": "Default"},{"time": 120234.375,"lane": 3,"length": 0,"type": "Default"},{"time": 120281.25,"lane": 3,"length": 0,"type": "Default"},{"time": 120375,"lane": 1,"length": 0,"type": "Default"},{"time": 120468.75,"lane": 1,"length": 0,"type": "Default"},{"time": 120562.5,"lane": 0,"length": 0,"type": "Default"},{"time": 120656.25,"lane": 1,"length": 281.25,"type": "Default"},{"time": 120937.5,"lane": 3,"length": 0,"type": "Default"},{"time": 121125,"lane": 0,"length": 0,"type": "Default"},{"time": 121312.5,"lane": 2,"length": 0,"type": "Default"},{"time": 121406.25,"lane": 2,"length": 0,"type": "Default"},{"time": 121500,"lane": 1,"length": 0,"type": "Default"},{"time": 121687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 121875,"lane": 3,"length": 0,"type": "Default"},{"time": 122062.5,"lane": 0,"length": 375,"type": "Default"},{"time": 122437.5,"lane": 1,"length": 0,"type": "Default"},{"time": 122531.25,"lane": 1,"length": 0,"type": "Default"},{"time": 122625,"lane": 2,"length": 0,"type": "Default"},{"time": 122812.5,"lane": 0,"length": 0,"type": "Default"},{"time": 123000,"lane": 2,"length": 750,"type": "Default"},{"time": 123187.5,"lane": 4,"length": 0,"type": "Default"},{"time": 123375,"lane": 6,"length": 375,"type": "lasagna"},{"time": 123750,"lane": 5,"length": 375,"type": "Default"},{"time": 124125,"lane": 7,"length": 375,"type": "lasagna"},{"time": 124500,"lane": 6,"length": 0,"type": "Default"},{"time": 124687.5,"lane": 7,"length": 0,"type": "Default"},{"time": 124781.25,"lane": 6,"length": 0,"type": "Default"},{"time": 124875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 124968.75,"lane": 4,"length": 0,"type": "lasagna"},{"time": 125062.5,"lane": 6,"length": 562.5,"type": "Default"},{"time": 125625,"lane": 4,"length": 375,"type": "lasagna"},{"time": 126000,"lane": 5,"length": 0,"type": "Default"},{"time": 126187.5,"lane": 6,"length": 0,"type": "Default"},{"time": 126281.25,"lane": 5,"length": 0,"type": "Default"},{"time": 126375,"lane": 4,"length": 0,"type": "Default"},{"time": 126468.75,"lane": 7,"length": 0,"type": "lasagna"},{"time": 126515.625,"lane": 6,"length": 0,"type": "lasagna"},{"time": 126562.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 126656.25,"lane": 4,"length": 0,"type": "Default"},{"time": 126750,"lane": 5,"length": 0,"type": "Default"},{"time": 126937.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 127125,"lane": 6,"length": 0,"type": "Default"},{"time": 127312.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 127500,"lane": 7,"length": 375,"type": "lasagna"},{"time": 127875,"lane": 5,"length": 375,"type": "lasagna"},{"time": 128250,"lane": 4,"length": 0,"type": "Default"},{"time": 128437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 128625,"lane": 6,"length": 375,"type": "lasagna"},{"time": 129000,"lane": 7,"length": 0,"type": "Default"},{"time": 129187.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 129281.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 129328.125,"lane": 7,"length": 0,"type": "lasagna"},{"time": 129375,"lane": 5,"length": 0,"type": "lasagna"},{"time": 129468.75,"lane": 4,"length": 0,"type": "lasagna"},{"time": 129562.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 129656.25,"lane": 7,"length": 281.25,"type": "Default"},{"time": 129937.5,"lane": 5,"length": 0,"type": "Default"},{"time": 130125,"lane": 6,"length": 0,"type": "lasagna"},{"time": 130312.5,"lane": 7,"length": 0,"type": "Default"},{"time": 130406.25,"lane": 5,"length": 0,"type": "Default"},{"time": 130500,"lane": 4,"length": 0,"type": "Default"},{"time": 130687.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 130781.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 130828.125,"lane": 4,"length": 0,"type": "lasagna"},{"time": 130875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 130968.75,"lane": 7,"length": 0,"type": "lasagna"},{"time": 131062.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 131156.25,"lane": 4,"length": 281.25,"type": "Default"},{"time": 131437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 131625,"lane": 6,"length": 0,"type": "lasagna"},{"time": 131812.5,"lane": 7,"length": 0,"type": "Default"},{"time": 131906.25,"lane": 5,"length": 0,"type": "Default"},{"time": 132000,"lane": 6,"length": 0,"type": "Default"},{"time": 132187.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 132234.375,"lane": 6,"length": 0,"type": "lasagna"},{"time": 132281.25,"lane": 4,"length": 0,"type": "lasagna"},{"time": 132375,"lane": 5,"length": 0,"type": "lasagna"},{"time": 132468.75,"lane": 6,"length": 0,"type": "lasagna"},{"time": 132562.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 132656.25,"lane": 7,"length": 281.25,"type": "Default"},{"time": 132937.5,"lane": 5,"length": 0,"type": "Default"},{"time": 133125,"lane": 6,"length": 0,"type": "lasagna"},{"time": 133312.5,"lane": 4,"length": 0,"type": "Default"},{"time": 133406.25,"lane": 5,"length": 0,"type": "Default"},{"time": 133500,"lane": 7,"length": 0,"type": "lasagna"},{"time": 133687.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 133875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 134062.5,"lane": 4,"length": 375,"type": "Default"},{"time": 134437.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 134625,"lane": 7,"length": 375,"type": "Default"},{"time": 135093.75,"lane": 0,"length": 657.75,"type": "Default"},{"time": 136125,"lane": 1,"length": 657.75,"type": "Default"},{"time": 137250,"lane": 3,"length": 0,"type": "Default"},{"time": 137718.75,"lane": 2,"length": 1409.75,"type": "Default"},{"time": 139500,"lane": 3,"length": 0,"type": "Default"},{"time": 139500,"lane": 0,"length": 0,"type": "Default"},{"time": 139500,"lane": 1,"length": 0,"type": "Default"},{"time": 139687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 139875,"lane": 3,"length": 0,"type": "Default"},{"time": 139875,"lane": 0,"length": 0,"type": "Default"},{"time": 139875,"lane": 1,"length": 0,"type": "Default"},{"time": 140062.5,"lane": 1,"length": 0,"type": "Default"},{"time": 140250,"lane": 3,"length": 0,"type": "Default"},{"time": 140250,"lane": 0,"length": 0,"type": "Default"},{"time": 140250,"lane": 1,"length": 0,"type": "Default"},{"time": 140343.75,"lane": 3,"length": 0,"type": "Default"},{"time": 140437.5,"lane": 1,"length": 0,"type": "Default"},{"time": 140625,"lane": 0,"length": 0,"type": "Default"},{"time": 140625,"lane": 3,"length": 0,"type": "Default"},{"time": 140625,"lane": 1,"length": 0,"type": "Default"},{"time": 140812.5,"lane": 2,"length": 0,"type": "Default"},{"time": 141000,"lane": 1,"length": 0,"type": "Default"},{"time": 141000,"lane": 3,"length": 0,"type": "Default"},{"time": 141187.5,"lane": 0,"length": 0,"type": "Default"},{"time": 141281.25,"lane": 0,"length": 0,"type": "Default"},{"time": 141375,"lane": 1,"length": 0,"type": "Default"},{"time": 141375,"lane": 3,"length": 0,"type": "Default"},{"time": 141562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 141656.25,"lane": 3,"length": 0,"type": "Default"},{"time": 141750,"lane": 0,"length": 0,"type": "Default"},{"time": 141750,"lane": 1,"length": 0,"type": "Default"},{"time": 141750,"lane": 2,"length": 0,"type": "Default"},{"time": 141843.75,"lane": 0,"length": 0,"type": "Default"},{"time": 141843.75,"lane": 1,"length": 0,"type": "Default"},{"time": 141937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 141937.5,"lane": 2,"length": 0,"type": "Default"},{"time": 142125,"lane": 0,"length": 0,"type": "Default"},{"time": 142125,"lane": 1,"length": 0,"type": "Default"},{"time": 142125,"lane": 2,"length": 0,"type": "Default"},{"time": 142125,"lane": 3,"length": 0,"type": "Default"},{"time": 142312.5,"lane": 2,"length": 0,"type": "Default"},{"time": 142500,"lane": 3,"length": 0,"type": "Default"},{"time": 142500,"lane": 1,"length": 0,"type": "Default"},{"time": 142500,"lane": 0,"length": 0,"type": "Default"},{"time": 142687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 142875,"lane": 3,"length": 0,"type": "Default"},{"time": 142875,"lane": 1,"length": 0,"type": "Default"},{"time": 142875,"lane": 0,"length": 0,"type": "Default"},{"time": 142968.75,"lane": 1,"length": 0,"type": "Default"},{"time": 143062.5,"lane": 3,"length": 0,"type": "Default"},{"time": 143156.25,"lane": 0,"length": 0,"type": "Default"},{"time": 143156.25,"lane": 1,"length": 0,"type": "Default"},{"time": 143156.25,"lane": 3,"length": 0,"type": "Default"},{"time": 143343.75,"lane": 1,"length": 0,"type": "Default"},{"time": 143437.5,"lane": 2,"length": 0,"type": "Default"},{"time": 143531.25,"lane": 2,"length": 0,"type": "Default"},{"time": 143625,"lane": 3,"length": 0,"type": "Default"},{"time": 143625,"lane": 0,"length": 0,"type": "Default"},{"time": 143625,"lane": 1,"length": 0,"type": "Default"},{"time": 143718.75,"lane": 2,"length": 0,"type": "Default"},{"time": 143812.5,"lane": 0,"length": 0,"type": "Default"},{"time": 143906.25,"lane": 1,"length": 0,"type": "Default"},{"time": 144000,"lane": 3,"length": 0,"type": "Default"},{"time": 144000,"lane": 0,"length": 0,"type": "Default"},{"time": 144187.5,"lane": 1,"length": 0,"type": "Default"},{"time": 144281.25,"lane": 3,"length": 0,"type": "Default"},{"time": 144281.25,"lane": 0,"length": 0,"type": "Default"},{"time": 144468.75,"lane": 3,"length": 0,"type": "Default"},{"time": 144562.5,"lane": 0,"length": 0,"type": "Default"},{"time": 144656.25,"lane": 1,"length": 0,"type": "Default"},{"time": 144750,"lane": 2,"length": 0,"type": "Default"},{"time": 144843.75,"lane": 1,"length": 0,"type": "Default"},{"time": 144890.625,"lane": 1,"length": 0,"type": "Default"},{"time": 144937.5,"lane": 0,"length": 0,"type": "Default"},{"time": 145031.25,"lane": 1,"length": 0,"type": "Default"},{"time": 145125,"lane": 2,"length": 0,"type": "Default"},{"time": 145312.5,"lane": 3,"length": 0,"type": "Default"},{"time": 145500,"lane": 2,"length": 656.25,"type": "Default"},{"time": 145500,"lane": 5,"length": 0,"type": "lasagna"},{"time": 145500,"lane": 6,"length": 0,"type": "lasagna"},{"time": 145687.5,"lane": 7,"length": 0,"type": "Default"},{"time": 145781.25,"lane": 4,"length": 0,"type": "Default"},{"time": 145875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 145875,"lane": 7,"length": 0,"type": "lasagna"},{"time": 146015.625,"lane": 1,"length": 234.375,"type": "Default"},{"time": 146062.5,"lane": 4,"length": 0,"type": "Default"},{"time": 146250,"lane": 5,"length": 0,"type": "lasagna"},{"time": 146296.875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 146343.75,"lane": 7,"length": 0,"type": "lasagna"},{"time": 146437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 146531.25,"lane": 4,"length": 0,"type": "Default"},{"time": 146625,"lane": 0,"length": 0,"type": "Default"},{"time": 146625,"lane": 6,"length": 0,"type": "lasagna"},{"time": 146625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 146718.75,"lane": 0,"length": 0,"type": "Default"},{"time": 146718.75,"lane": 5,"length": 0,"type": "Default"},{"time": 146812.5,"lane": 2,"length": 0,"type": "Default"},{"time": 146812.5,"lane": 7,"length": 0,"type": "Default"},{"time": 147000,"lane": 3,"length": 0,"type": "Default"},{"time": 147000,"lane": 5,"length": 0,"type": "lasagna"},{"time": 147000,"lane": 6,"length": 0,"type": "lasagna"},{"time": 147187.5,"lane": 7,"length": 0,"type": "Default"},{"time": 147281.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 147328.125,"lane": 6,"length": 0,"type": "lasagna"},{"time": 147375,"lane": 0,"length": 0,"type": "Default"},{"time": 147375,"lane": 7,"length": 0,"type": "lasagna"},{"time": 147468.75,"lane": 2,"length": 0,"type": "Default"},{"time": 147468.75,"lane": 4,"length": 0,"type": "Default"},{"time": 147562.5,"lane": 0,"length": 0,"type": "Default"},{"time": 147562.5,"lane": 5,"length": 0,"type": "Default"},{"time": 147656.25,"lane": 1,"length": 0,"type": "Default"},{"time": 147656.25,"lane": 4,"length": 0,"type": "Default"},{"time": 147750,"lane": 2,"length": 0,"type": "Default"},{"time": 147750,"lane": 6,"length": 0,"type": "lasagna"},{"time": 147750,"lane": 7,"length": 0,"type": "lasagna"},{"time": 147843.75,"lane": 5,"length": 0,"type": "Default"},{"time": 147937.5,"lane": 2,"length": 0,"type": "Default"},{"time": 147937.5,"lane": 4,"length": 0,"type": "Default"},{"time": 147984.375,"lane": 6,"length": 0,"type": "Default"},{"time": 148031.25,"lane": 7,"length": 0,"type": "Default"},{"time": 148031.25,"lane": 2,"length": 0,"type": "Default"},{"time": 148125,"lane": 0,"length": 0,"type": "Default"},{"time": 148125,"lane": 5,"length": 0,"type": "lasagna"},{"time": 148125,"lane": 4,"length": 0,"type": "lasagna"},{"time": 148218.75,"lane": 0,"length": 0,"type": "Default"},{"time": 148312.5,"lane": 3,"length": 0,"type": "Default"},{"time": 148312.5,"lane": 7,"length": 0,"type": "Default"},{"time": 148406.25,"lane": 3,"length": 0,"type": "Default"},{"time": 148500,"lane": 2,"length": 750,"type": "Default"},{"time": 148500,"lane": 5,"length": 0,"type": "lasagna"},{"time": 148500,"lane": 6,"length": 0,"type": "lasagna"},{"time": 148593.75,"lane": 4,"length": 0,"type": "Default"},{"time": 148687.5,"lane": 5,"length": 0,"type": "Default"},{"time": 148781.25,"lane": 7,"length": 0,"type": "Default"},{"time": 148875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 148875,"lane": 4,"length": 0,"type": "lasagna"},{"time": 148968.75,"lane": 7,"length": 0,"type": "Default"},{"time": 149062.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 149156.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 149343.75,"lane": 7,"length": 0,"type": "lasagna"},{"time": 149437.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 149531.25,"lane": 4,"length": 0,"type": "Default"},{"time": 149625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 149625,"lane": 6,"length": 0,"type": "lasagna"},{"time": 149718.75,"lane": 4,"length": 0,"type": "Default"},{"time": 149812.5,"lane": 7,"length": 0,"type": "Default"},{"time": 149906.25,"lane": 5,"length": 0,"type": "Default"},{"time": 150000,"lane": 6,"length": 0,"type": "lasagna"},{"time": 150000,"lane": 7,"length": 0,"type": "lasagna"},{"time": 150093.75,"lane": 4,"length": 0,"type": "Default"},{"time": 150187.5,"lane": 5,"length": 0,"type": "Default"},{"time": 150281.25,"lane": 7,"length": 0,"type": "Default"},{"time": 150375,"lane": 4,"length": 0,"type": "lasagna"},{"time": 150421.875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 150468.75,"lane": 7,"length": 0,"type": "lasagna"},{"time": 150562.5,"lane": 5,"length": 0,"type": "Default"},{"time": 150656.25,"lane": 4,"length": 0,"type": "lasagna"},{"time": 150843.75,"lane": 5,"length": 0,"type": "lasagna"},{"time": 150937.5,"lane": 6,"length": 0,"type": "Default"},{"time": 151125,"lane": 5,"length": 0,"type": "lasagna"},{"time": 151125,"lane": 7,"length": 0,"type": "lasagna"},{"time": 151218.75,"lane": 6,"length": 0,"type": "Default"},{"time": 151312.5,"lane": 4,"length": 187.75,"type": "lasagna"},{"time": 151500,"lane": 5,"length": 0,"type": "lasagna"},{"time": 151500,"lane": 6,"length": 0,"type": "lasagna"},{"time": 151593.75,"lane": 7,"length": 0,"type": "Default"},{"time": 151687.5,"lane": 5,"length": 0,"type": "Default"},{"time": 151781.25,"lane": 4,"length": 0,"type": "Default"},{"time": 151875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 151875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 151875,"lane": 7,"length": 0,"type": "lasagna"},{"time": 152062.5,"lane": 0,"length": 0,"type": "Default"},{"time": 152250,"lane": 2,"length": 0,"type": "Default"},{"time": 152437.5,"lane": 6,"length": 0,"type": "Default"},{"time": 152625,"lane": 3,"length": 0,"type": "Default"},{"time": 152625,"lane": 4,"length": 375,"type": "lasagna"},{"time": 152625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 152625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 152718.75,"lane": 3,"length": 0,"type": "Default"},{"time": 152765.625,"lane": 3,"length": 0,"type": "Default"},{"time": 152812.5,"lane": 3,"length": 0,"type": "Default"},{"time": 152906.25,"lane": 3,"length": 0,"type": "Default"},{"time": 153000,"lane": 2,"length": 0,"type": "Default"},{"time": 153093.75,"lane": 2,"length": 0,"type": "Default"},{"time": 153187.5,"lane": 0,"length": 0,"type": "Default"},{"time": 153281.25,"lane": 1,"length": 0,"type": "Default"},{"time": 153375,"lane": 2,"length": 0,"type": "Default"},{"time": 153562.5,"lane": 5,"length": 375,"type": "lasagna"},{"time": 153937.5,"lane": 4,"length": 0,"type": "Default"},{"time": 153984.375,"lane": 6,"length": 0,"type": "Default"},{"time": 154031.25,"lane": 7,"length": 0,"type": "Default"},{"time": 154125,"lane": 4,"length": 0,"type": "lasagna"},{"time": 154125,"lane": 5,"length": 0,"type": "lasagna"},{"time": 154125,"lane": 6,"length": 0,"type": "lasagna"},{"time": 154218.75,"lane": 7,"length": 0,"type": "Default"},{"time": 154312.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 154406.25,"lane": 4,"length": 0,"type": "Default"},{"time": 154500,"lane": 3,"length": 0,"type": "Default"},{"time": 154500,"lane": 6,"length": 281.25,"type": "lasagna"},{"time": 154500,"lane": 7,"length": 0,"type": "lasagna"},{"time": 154593.75,"lane": 3,"length": 0,"type": "Default"},{"time": 154687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 154781.25,"lane": 0,"length": 0,"type": "Default"},{"time": 154875,"lane": 2,"length": 375,"type": "Default"},{"time": 155062.5,"lane": 4,"length": 0,"type": "Default"},{"time": 155250,"lane": 5,"length": 0,"type": "lasagna"},{"time": 155250,"lane": 7,"length": 0,"type": "lasagna"},{"time": 155437.5,"lane": 2,"length": 0,"type": "Default"},{"time": 155625,"lane": 0,"length": 375,"type": "Default"},{"time": 155625,"lane": 6,"length": 0,"type": "lasagna"},{"time": 155625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 155625,"lane": 4,"length": 0,"type": "lasagna"},{"time": 155718.75,"lane": 7,"length": 0,"type": "Default"},{"time": 155765.625,"lane": 6,"length": 0,"type": "Default"},{"time": 155812.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 155906.25,"lane": 5,"length": 0,"type": "Default"},{"time": 156000,"lane": 6,"length": 0,"type": "lasagna"},{"time": 156000,"lane": 7,"length": 0,"type": "lasagna"},{"time": 156093.75,"lane": 4,"length": 0,"type": "Default"},{"time": 156187.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 156281.25,"lane": 7,"length": 0,"type": "Default"},{"time": 156375,"lane": 5,"length": 0,"type": "lasagna"},{"time": 156375,"lane": 4,"length": 0,"type": "lasagna"},{"time": 156562.5,"lane": 0,"length": 375,"type": "Default"},{"time": 156937.5,"lane": 1,"length": 0,"type": "Default"},{"time": 156984.375,"lane": 1,"length": 0,"type": "Default"},{"time": 157031.25,"lane": 1,"length": 0,"type": "Default"},{"time": 157125,"lane": 2,"length": 0,"type": "Default"},{"time": 157218.75,"lane": 2,"length": 0,"type": "Default"},{"time": 157312.5,"lane": 0,"length": 0,"type": "Default"},{"time": 157406.25,"lane": 2,"length": 0,"type": "Default"},{"time": 157500,"lane": 1,"length": 375.75,"type": "Default"},{"time": 157500,"lane": 5,"length": 0,"type": "lasagna"},{"time": 157500,"lane": 4,"length": 0,"type": "lasagna"},{"time": 157593.75,"lane": 6,"length": 0,"type": "Default"},{"time": 157687.5,"lane": 5,"length": 0,"type": "Default"},{"time": 157781.25,"lane": 7,"length": 0,"type": "Default"},{"time": 157875,"lane": 4,"length": 0,"type": "lasagna"},{"time": 157875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 157875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 157968.75,"lane": 7,"length": 0,"type": "Default"},{"time": 158062.5,"lane": 6,"length": 0,"type": "Default"},{"time": 158109.375,"lane": 5,"length": 0,"type": "Default"},{"time": 158156.25,"lane": 4,"length": 0,"type": "Default"},{"time": 158250,"lane": 0,"length": 0,"type": "Default"},{"time": 158250,"lane": 6,"length": 281.25,"type": "lasagna"},{"time": 158250,"lane": 7,"length": 0,"type": "lasagna"},{"time": 158437.5,"lane": 4,"length": 187.5,"type": "lasagna"},{"time": 158437.5,"lane": 2,"length": 0,"type": "Default"},{"time": 158625,"lane": 0,"length": 0,"type": "Default"},{"time": 158625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 158625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 158718.75,"lane": 0,"length": 0,"type": "Default"},{"time": 158718.75,"lane": 4,"length": 0,"type": "Default"},{"time": 158765.625,"lane": 6,"length": 0,"type": "Default"},{"time": 158812.5,"lane": 2,"length": 0,"type": "Default"},{"time": 158812.5,"lane": 7,"length": 281.25,"type": "lasagna"},{"time": 159000,"lane": 4,"length": 187.5,"type": "lasagna"},{"time": 159000,"lane": 3,"length": 0,"type": "Default"},{"time": 159187.5,"lane": 2,"length": 0,"type": "Default"},{"time": 159281.25,"lane": 3,"length": 0,"type": "Default"},{"time": 159375,"lane": 3,"length": 0,"type": "Default"},{"time": 159562.5,"lane": 0,"length": 0,"type": "Default"},{"time": 159609.375,"lane": 0,"length": 0,"type": "Default"},{"time": 159656.25,"lane": 0,"length": 0,"type": "Default"},{"time": 159750,"lane": 5,"length": 281.75,"type": "lasagna"},{"time": 159750,"lane": 0,"length": 0,"type": "Default"},{"time": 159750,"lane": 4,"length": 0,"type": "lasagna"},{"time": 159843.75,"lane": 2,"length": 0,"type": "Default"},{"time": 159937.5,"lane": 2,"length": 0,"type": "Default"},{"time": 160031.25,"lane": 6,"length": 0,"type": "Default"},{"time": 160031.25,"lane": 0,"length": 0,"type": "Default"},{"time": 160125,"lane": 2,"length": 0,"type": "Default"},{"time": 160218.75,"lane": 3,"length": 0,"type": "Default"},{"time": 160218.75,"lane": 4,"length": 0,"type": "lasagna"},{"time": 160312.5,"lane": 1,"length": 0,"type": "Default"},{"time": 160312.5,"lane": 7,"length": 187.5,"type": "lasagna"},{"time": 160406.25,"lane": 2,"length": 0,"type": "Default"},{"time": 160500,"lane": 3,"length": 0,"type": "Default"},{"time": 160500,"lane": 5,"length": 0,"type": "lasagna"},{"time": 160500,"lane": 6,"length": 0,"type": "lasagna"},{"time": 160593.75,"lane": 3,"length": 0,"type": "Default"},{"time": 160687.5,"lane": 0,"length": 0,"type": "Default"},{"time": 160687.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 160781.25,"lane": 7,"length": 0,"type": "Default"},{"time": 160875,"lane": 1,"length": 0,"type": "Default"},{"time": 160875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 160875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 160875,"lane": 4,"length": 0,"type": "lasagna"},{"time": 160968.75,"lane": 2,"length": 0,"type": "Default"},{"time": 161062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 161062.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 161109.375,"lane": 0,"length": 0,"type": "Default"},{"time": 161156.25,"lane": 3,"length": 0,"type": "Default"},{"time": 161250,"lane": 2,"length": 281.25,"type": "Default"},{"time": 161437.5,"lane": 1,"length": 187.5,"type": "Default"},{"time": 161625,"lane": 0,"length": 0,"type": "Default"},{"time": 161625,"lane": 6,"length": 375,"type": "lasagna"},{"time": 161625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 161625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 161718.75,"lane": 0,"length": 0,"type": "Default"},{"time": 161765.625,"lane": 0,"length": 0,"type": "Default"},{"time": 161812.5,"lane": 0,"length": 281.25,"type": "Default"},{"time": 162000,"lane": 3,"length": 187.5,"type": "Default"},{"time": 162000,"lane": 5,"length": 0,"type": "lasagna"},{"time": 162000,"lane": 4,"length": 0,"type": "lasagna"},{"time": 162093.75,"lane": 6,"length": 0,"type": "Default"},{"time": 162187.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 162281.25,"lane": 7,"length": 0,"type": "Default"},{"time": 162375,"lane": 6,"length": 0,"type": "lasagna"},{"time": 162375,"lane": 5,"length": 0,"type": "lasagna"},{"time": 162375,"lane": 4,"length": 0,"type": "lasagna"},{"time": 162562.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 162609.375,"lane": 5,"length": 0,"type": "lasagna"},{"time": 162656.25,"lane": 4,"length": 0,"type": "lasagna"},{"time": 162750,"lane": 6,"length": 0,"type": "lasagna"},{"time": 162750,"lane": 7,"length": 0,"type": "lasagna"},{"time": 162843.75,"lane": 5,"length": 0,"type": "Default"},{"time": 162937.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 163031.25,"lane": 4,"length": 0,"type": "Default"},{"time": 163078.125,"lane": 5,"length": 0,"type": "Default"},{"time": 163125,"lane": 6,"length": 0,"type": "lasagna"},{"time": 163125,"lane": 7,"length": 0,"type": "lasagna"},{"time": 163218.75,"lane": 4,"length": 0,"type": "Default"},{"time": 163265.625,"lane": 5,"length": 0,"type": "Default"},{"time": 163312.5,"lane": 7,"length": 187.5,"type": "lasagna"},{"time": 163406.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 163500,"lane": 4,"length": 0,"type": "Default"},{"time": 163687.5,"lane": 4,"length": 0,"type": "Default"},{"time": 163781.25,"lane": 4,"length": 0,"type": "Default"},{"time": 163875,"lane": 7,"length": 0,"type": "lasagna"},{"time": 164062.5,"lane": 4,"length": 0,"type": "Default"},{"time": 164250,"lane": 5,"length": 0,"type": "lasagna"},{"time": 164296.875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 164437.5,"lane": 4,"length": 0,"type": "Default"},{"time": 164531.25,"lane": 6,"length": 0,"type": "Default"},{"time": 164625,"lane": 5,"length": 0,"type": "lasagna"},{"time": 164812.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 165000,"lane": 7,"length": 0,"type": "Default"},{"time": 165046.875,"lane": 5,"length": 0,"type": "Default"},{"time": 165093.75,"lane": 4,"length": 0,"type": "Default"},{"time": 165187.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 165375,"lane": 7,"length": 0,"type": "lasagna"},{"time": 165562.5,"lane": 4,"length": 0,"type": "Default"},{"time": 165656.25,"lane": 4,"length": 0,"type": "Default"},{"time": 165750,"lane": 0,"length": 0,"type": "Default"},{"time": 165750,"lane": 6,"length": 0,"type": "lasagna"},{"time": 165796.875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 165937.5,"lane": 7,"length": 0,"type": "Default"},{"time": 166125,"lane": 5,"length": 0,"type": "lasagna"},{"time": 166312.5,"lane": 6,"length": 187.5,"type": "lasagna"},{"time": 166406.25,"lane": 4,"length": 0,"type": "Default"},{"time": 166500,"lane": 7,"length": 0,"type": "Default"},{"time": 166687.5,"lane": 7,"length": 0,"type": "Default"},{"time": 166781.25,"lane": 7,"length": 0,"type": "Default"},{"time": 166875,"lane": 4,"length": 0,"type": "lasagna"},{"time": 167062.5,"lane": 7,"length": 0,"type": "Default"},{"time": 167250,"lane": 6,"length": 0,"type": "lasagna"},{"time": 167296.875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 167437.5,"lane": 4,"length": 0,"type": "Default"},{"time": 167531.25,"lane": 4,"length": 0,"type": "Default"},{"time": 167625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 167812.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 168000,"lane": 4,"length": 0,"type": "Default"},{"time": 168046.875,"lane": 5,"length": 0,"type": "Default"},{"time": 168093.75,"lane": 7,"length": 0,"type": "Default"},{"time": 168187.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 168281.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 168468.75,"lane": 7,"length": 0,"type": "Default"},{"time": 168515.625,"lane": 6,"length": 0,"type": "Default"},{"time": 168562.5,"lane": 4,"length": 0,"type": "Default"},{"time": 168656.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 168750,"lane": 1,"length": 0,"type": "Default"},{"time": 168750,"lane": 6,"length": 0,"type": "lasagna"},{"time": 168796.875,"lane": 7,"length": 0,"type": "Default"},{"time": 168843.75,"lane": 1,"length": 0,"type": "Default"},{"time": 168937.5,"lane": 2,"length": 0,"type": "Default"},{"time": 168937.5,"lane": 5,"length": 0,"type": "Default"},{"time": 169031.25,"lane": 1,"length": 281.25,"type": "Default"},{"time": 169125,"lane": 7,"length": 0,"type": "lasagna"},{"time": 169312.5,"lane": 2,"length": 0,"type": "Default"},{"time": 169312.5,"lane": 6,"length": 0,"type": "Default"},{"time": 169406.25,"lane": 1,"length": 0,"type": "Default"},{"time": 169500,"lane": 2,"length": 0,"type": "Default"},{"time": 169687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 169781.25,"lane": 2,"length": 0,"type": "Default"},{"time": 169875,"lane": 1,"length": 0,"type": "Default"},{"time": 169875,"lane": 7,"length": 0,"type": "Default"},{"time": 169921.875,"lane": 4,"length": 0,"type": "lasagna"},{"time": 170062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 170250,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 170296.875,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 170484.375,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 170531.25,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 170625,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 170625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 170671.875,"lane": 4,"length": 0,"type": "Default"},{"time": 170812.5,"lane": 0,"length": 187.5,"type": "Default"},{"time": 171000,"lane": 2,"length": 0,"type": "Default"},{"time": 171046.875,"lane": 2,"length": 0,"type": "Default"},{"time": 171093.75,"lane": 2,"length": 0,"type": "Default"},{"time": 171187.5,"lane": 1,"length": 0,"type": "Default"},{"time": 171375,"lane": 3,"length": 0,"type": "Default"},{"time": 171375,"lane": 7,"length": 0,"type": "Default"},{"time": 171421.875,"lane": 4,"length": 0,"type": "lasagna"},{"time": 171562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 171656.25,"lane": 2,"length": 0,"type": "Default"},{"time": 171750,"lane": 0,"length": 0,"type": "Default"},{"time": 171796.875,"lane": 1,"length": 0,"type": "Default"},{"time": 171937.5,"lane": 2,"length": 0,"type": "Default"},{"time": 171937.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 172125,"lane": 0,"length": 0,"type": "Default"},{"time": 172125,"lane": 4,"length": 0,"type": "Default"},{"time": 172312.5,"lane": 6,"length": 375,"type": "lasagna"},{"time": 172312.5,"lane": 1,"length": 0,"type": "Default"},{"time": 172500,"lane": 2,"length": 0,"type": "Default"},{"time": 172687.5,"lane": 6,"length": 0,"type": "Default"},{"time": 172687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 172781.25,"lane": 2,"length": 0,"type": "Default"},{"time": 172781.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 172875,"lane": 2,"length": 0,"type": "Default"},{"time": 172875,"lane": 7,"length": 0,"type": "Default"},{"time": 172921.875,"lane": 4,"length": 0,"type": "lasagna"},{"time": 173062.5,"lane": 1,"length": 0,"type": "Default"},{"time": 173250,"lane": 2,"length": 0,"type": "Default"},{"time": 173250,"lane": 4,"length": 0,"type": "Default"},{"time": 173296.875,"lane": 1,"length": 0,"type": "Default"},{"time": 173437.5,"lane": 2,"length": 0,"type": "Default"},{"time": 173437.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 173531.25,"lane": 2,"length": 0,"type": "Default"},{"time": 173531.25,"lane": 4,"length": 0,"type": "lasagna"},{"time": 173625,"lane": 1,"length": 0,"type": "Default"},{"time": 173625,"lane": 6,"length": 0,"type": "lasagna"},{"time": 173812.5,"lane": 2,"length": 0,"type": "Default"},{"time": 173812.5,"lane": 5,"length": 0,"type": "Default"},{"time": 173906.25,"lane": 6,"length": 0,"type": "Default"},{"time": 174000,"lane": 1,"length": 0,"type": "Default"},{"time": 174000,"lane": 4,"length": 0,"type": "lasagna"},{"time": 174046.875,"lane": 1,"length": 0,"type": "Default"},{"time": 174093.75,"lane": 1,"length": 0,"type": "Default"},{"time": 174187.5,"lane": 5,"length": 0,"type": "Default"},{"time": 174187.5,"lane": 2,"length": 0,"type": "Default"},{"time": 174281.25,"lane": 3,"length": 0,"type": "Default"},{"time": 174375,"lane": 6,"length": 0,"type": "lasagna"},{"time": 174468.75,"lane": 1,"length": 0,"type": "Default"},{"time": 174515.625,"lane": 1,"length": 0,"type": "Default"},{"time": 174562.5,"lane": 7,"length": 0,"type": "Default"},{"time": 174562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 174656.25,"lane": 4,"length": 0,"type": "Default"},{"time": 174656.25,"lane": 3,"length": 0,"type": "Default"},{"time": 174750,"lane": 1,"length": 0,"type": "Default"},{"time": 174750,"lane": 6,"length": 0,"type": "lasagna"},{"time": 174875,"lane": 0,"length": 0,"type": "Default"},{"time": 174937.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 175000,"lane": 2,"length": 0,"type": "Default"},{"time": 175031.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 175125,"lane": 3,"length": 375,"type": "Default"},{"time": 175125,"lane": 4,"length": 0,"type": "lasagna"},{"time": 175218.75,"lane": 7,"length": 0,"type": "Default"},{"time": 175312.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 175406.25,"lane": 6,"length": 0,"type": "Default"},{"time": 175500,"lane": 4,"length": 0,"type": "Default"},{"time": 175500,"lane": 0,"length": 0,"type": "Default"},{"time": 175546.875,"lane": 7,"length": 0,"type": "lasagna"},{"time": 175687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 175687.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 175781.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 175875,"lane": 0,"length": 0,"type": "Default"},{"time": 175875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 176062.5,"lane": 7,"length": 0,"type": "Default"},{"time": 176062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 176250,"lane": 6,"length": 0,"type": "Default"},{"time": 176437.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 176531.25,"lane": 4,"length": 0,"type": "lasagna"},{"time": 176625,"lane": 0,"length": 0,"type": "Default"},{"time": 176625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 176671.875,"lane": 6,"length": 0,"type": "Default"},{"time": 176718.75,"lane": 5,"length": 0,"type": "Default"},{"time": 176812.5,"lane": 4,"length": 0,"type": "Default"},{"time": 176812.5,"lane": 0,"length": 0,"type": "Default"},{"time": 176859.375,"lane": 5,"length": 0,"type": "Default"},{"time": 176906.25,"lane": 6,"length": 0,"type": "Default"},{"time": 176906.25,"lane": 0,"length": 0,"type": "Default"},{"time": 177000,"lane": 0,"length": 0,"type": "Default"},{"time": 177000,"lane": 4,"length": 0,"type": "lasagna"},{"time": 177187.5,"lane": 2,"length": 0,"type": "Default"},{"time": 177187.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 177375,"lane": 0,"length": 0,"type": "Default"},{"time": 177375,"lane": 7,"length": 750,"type": "Default"},{"time": 177562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 178125,"lane": 0,"length": 0,"type": "Default"},{"time": 178125,"lane": 5,"length": 0,"type": "lasagna"},{"time": 178218.75,"lane": 0,"length": 0,"type": "Default"},{"time": 178218.75,"lane": 5,"length": 0,"type": "lasagna"},{"time": 178312.5,"lane": 0,"length": 0,"type": "Default"},{"time": 178312.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 178359.375,"lane": 0,"length": 0,"type": "Default"},{"time": 178406.25,"lane": 0,"length": 0,"type": "Default"},{"time": 178406.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 178453.125,"lane": 0,"length": 0,"type": "Default"},{"time": 178500,"lane": 0,"length": 0,"type": "Default"},{"time": 178500,"lane": 4,"length": 0,"type": "lasagna"},{"time": 178546.875,"lane": 7,"length": 0,"type": "Default"},{"time": 178687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 178687.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 178781.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 178875,"lane": 0,"length": 0,"type": "Default"},{"time": 178875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 179062.5,"lane": 7,"length": 0,"type": "Default"},{"time": 179062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 179156.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 179250,"lane": 4,"length": 0,"type": "Default"},{"time": 179296.875,"lane": 7,"length": 0,"type": "lasagna"},{"time": 179437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 179531.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 179625,"lane": 0,"length": 0,"type": "Default"},{"time": 179625,"lane": 4,"length": 0,"type": "Default"},{"time": 179671.875,"lane": 5,"length": 0,"type": "Default"},{"time": 179718.75,"lane": 6,"length": 0,"type": "lasagna"},{"time": 179812.5,"lane": 0,"length": 0,"type": "Default"},{"time": 179812.5,"lane": 7,"length": 0,"type": "Default"},{"time": 179859.375,"lane": 6,"length": 0,"type": "Default"},{"time": 179906.25,"lane": 0,"length": 0,"type": "Default"},{"time": 179906.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 180000,"lane": 0,"length": 0,"type": "Default"},{"time": 180000,"lane": 7,"length": 0,"type": "lasagna"},{"time": 180187.5,"lane": 2,"length": 0,"type": "Default"},{"time": 180187.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 180375,"lane": 4,"length": 562.5,"type": "Default"},{"time": 180375,"lane": 0,"length": 0,"type": "Default"},{"time": 180562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 180937.5,"lane": 5,"length": 0,"type": "Default"},{"time": 181125,"lane": 0,"length": 0,"type": "Default"},{"time": 181125,"lane": 6,"length": 0,"type": "lasagna"},{"time": 181218.75,"lane": 0,"length": 0,"type": "Default"},{"time": 181218.75,"lane": 7,"length": 0,"type": "lasagna"},{"time": 181312.5,"lane": 5,"length": 0,"type": "Default"},{"time": 181312.5,"lane": 0,"length": 0,"type": "Default"},{"time": 181359.375,"lane": 0,"length": 0,"type": "Default"},{"time": 181406.25,"lane": 0,"length": 0,"type": "Default"},{"time": 181453.125,"lane": 0,"length": 0,"type": "Default"},{"time": 181500,"lane": 0,"length": 0,"type": "Default"},{"time": 181500,"lane": 4,"length": 0,"type": "lasagna"},{"time": 181546.875,"lane": 7,"length": 0,"type": "Default"},{"time": 181687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 181687.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 181781.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 181875,"lane": 0,"length": 0,"type": "Default"},{"time": 181875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 182062.5,"lane": 7,"length": 0,"type": "Default"},{"time": 182062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 182250,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 182250,"lane": 6,"length": 0,"type": "lasagna"},{"time": 182437.5,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 182437.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 182531.25,"lane": 4,"length": 0,"type": "Default"},{"time": 182625,"lane": 0,"length": 0,"type": "Default"},{"time": 182625,"lane": 7,"length": 0,"type": "lasagna"},{"time": 182671.875,"lane": 0,"length": 0,"type": "Default"},{"time": 182671.875,"lane": 6,"length": 0,"type": "lasagna"},{"time": 182718.75,"lane": 2,"length": 0,"type": "Default"},{"time": 182718.75,"lane": 5,"length": 0,"type": "lasagna"},{"time": 182765.625,"lane": 2,"length": 0,"type": "Default"},{"time": 182812.5,"lane": 0,"length": 0,"type": "Default"},{"time": 182812.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 182859.375,"lane": 5,"length": 0,"type": "lasagna"},{"time": 182906.25,"lane": 0,"length": 0,"type": "Default"},{"time": 182906.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 183000,"lane": 2,"length": 0,"type": "Default"},{"time": 183000,"lane": 4,"length": 0,"type": "lasagna"},{"time": 183093.75,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 183187.5,"lane": 0,"length": 0,"type": "Default"},{"time": 183187.5,"lane": 5,"length": 0,"type": "lasagna"},{"time": 183281.25,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 183375,"lane": 7,"length": 375,"type": "Default"},{"time": 183375,"lane": 3,"length": 0,"type": "Default"},{"time": 183468.75,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 183562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 183562.5,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 183703.125,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 183750,"lane": 4,"length": 281.25,"type": "Default"},{"time": 183796.875,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 183937.5,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 183937.5,"lane": 6,"length": 187.5,"type": "lasagna"},{"time": 184031.25,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 184125,"lane": 7,"length": 375,"type": "Default"},{"time": 184125,"lane": 0,"length": 0,"type": "Default"},{"time": 184125,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 184218.75,"lane": 2,"length": 0,"type": "Default"},{"time": 184265.625,"lane": 0,"length": 0,"type": "Default"},{"time": 184265.625,"lane": 2,"length": 0,"type": "Default"},{"time": 184312.5,"lane": 2,"length": 0,"type": "Default"},{"time": 184359.375,"lane": 0,"length": 0,"type": "Default"},{"time": 184359.375,"lane": 2,"length": 0,"type": "Default"},{"time": 184406.25,"lane": 2,"length": 0,"type": "Default"},{"time": 184453.125,"lane": 0,"length": 0,"type": "Default"},{"time": 184500,"lane": 5,"length": 0,"type": "Default"},{"time": 184500,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 184500,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 184500,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 184546.875,"lane": 0,"length": 0,"type": "lasagna"},{"time": 184593.75,"lane": 0,"length": 0,"type": "Default"},{"time": 184593.75,"lane": 2,"length": 0,"type": "Default"},{"time": 184687.5,"lane": 2,"length": 0,"type": "Default"},{"time": 184687.5,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 184687.5,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 184687.5,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 184687.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 184781.25,"lane": 3,"length": 0,"type": "lasagna"},{"time": 184781.25,"lane": 7,"length": 0,"type": "lasagna"},{"time": 184828.125,"lane": 1,"length": 0,"type": "Default"},{"time": 184875,"lane": 0,"length": 0,"type": "Default"},{"time": 184875,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 184875,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 184875,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 184875,"lane": 5,"length": 0,"type": "Default"},{"time": 184968.75,"lane": 0,"length": 0,"type": "Default"},{"time": 184968.75,"lane": 1,"length": 0,"type": "lasagna"},{"time": 185015.625,"lane": 2,"length": 0,"type": "Default"},{"time": 185062.5,"lane": 2,"length": 0,"type": "Default"},{"time": 185062.5,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 185062.5,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 185062.5,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 185062.5,"lane": 4,"length": 0,"type": "lasagna"},{"time": 185156.25,"lane": 3,"length": 0,"type": "Default"},{"time": 185156.25,"lane": 6,"length": 0,"type": "lasagna"},{"time": 185203.125,"lane": 1,"length": 0,"type": "lasagna"},{"time": 185250,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 185250,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 185250,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 185250,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 185250,"lane": 4,"length": 0,"type": "Default"},{"time": 185343.75,"lane": 2,"length": 0,"type": "lasagna"},{"time": 185390.625,"lane": 1,"length": 0,"type": "lasagna"},{"time": 185437.5,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 185437.5,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 185437.5,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 185437.5,"lane": 5,"length": 0,"type": "Default"},{"time": 185484.375,"lane": 3,"length": 0,"type": "Default"},{"time": 185531.25,"lane": 2,"length": 0,"type": "Default"},{"time": 185531.25,"lane": 0,"length": 0,"type": "lasagna"},{"time": 185531.25,"lane": 7,"length": 0,"type": "Default"},{"time": 185578.125,"lane": 1,"length": 0,"type": "lasagna"},{"time": 185625,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 185625,"lane": 1,"length": 0,"type": "lasagna"},{"time": 185625,"lane": 2,"length": 0,"type": "lasagna"},{"time": 185625,"lane": 6,"length": 0,"type": "lasagna"},{"time": 185671.875,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 185671.875,"lane": 0,"length": 0,"type": "lasagna"},{"time": 185671.875,"lane": 1,"length": 0,"type": "lasagna"},{"time": 185671.875,"lane": 5,"length": 0,"type": "lasagna"},{"time": 185718.75,"lane": 0,"length": 0,"type": "Default"},{"time": 185718.75,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 185718.75,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 185718.75,"lane": 2,"length": 0,"type": "lasagna"},{"time": 185718.75,"lane": 4,"length": 0,"type": "lasagna"},{"time": 185765.625,"lane": 2,"length": 0,"type": "Default"},{"time": 185765.625,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 185812.5,"lane": 0,"length": 0,"type": "Default"},{"time": 185812.5,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 185812.5,"lane": 1,"length": 0,"type": "lasagna"},{"time": 185812.5,"lane": 3,"length": 0,"type": "lasagna"},{"time": 185812.5,"lane": 7,"length": 0,"type": "lasagna"},{"time": 185859.375,"lane": 2,"length": 0,"type": "Default"},{"time": 185859.375,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 185859.375,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 185859.375,"lane": 6,"length": 0,"type": "lasagna"},{"time": 185906.25,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 185906.25,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 185906.25,"lane": 3,"length": 0,"type": "lasagna"},{"time": 185906.25,"lane": 5,"length": 0,"type": "lasagna"},{"time": 185953.125,"lane": 2,"length": 0,"type": "Default"},{"time": 185953.125,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 185953.125,"lane": 3,"length": 0,"type": "lasagna"},{"time": 185953.125,"lane": 0,"length": 0,"type": "lasagna"},{"time": 186000,"lane": 0,"length": 0,"type": "Default"},{"time": 186000,"lane": 4,"length": 0,"type": "Default"},{"time": 186046.875,"lane": 2,"length": 0,"type": "lasagna"},{"time": 186093.75,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 186093.75,"lane": 3,"length": 0,"type": "Default"},{"time": 186140.625,"lane": 1,"length": 0,"type": "lasagna"},{"time": 186187.5,"lane": 2,"length": 0,"type": "Default"},{"time": 186187.5,"lane": 7,"length": 0,"type": "Default"},{"time": 186234.375,"lane": 0,"length": 0,"type": "lasagna"},{"time": 186281.25,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 186281.25,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 186328.125,"lane": 1,"length": 0,"type": "lasagna"},{"time": 186375,"lane": 0,"length": 0,"type": "Default"},{"time": 186375,"lane": 6,"length": 375,"type": "lasagna"},{"time": 186421.875,"lane": 3,"length": 0,"type": "lasagna"},{"time": 186468.75,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 186468.75,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 186515.625,"lane": 0,"length": 0,"type": "Default"},{"time": 186562.5,"lane": 2,"length": 0,"type": "Default"},{"time": 186609.375,"lane": 1,"length": 0,"type": "lasagna"},{"time": 186656.25,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 186656.25,"lane": 0,"length": 0,"type": "Unhittable"},{"time": 186750,"lane": 2,"length": 0,"type": "Unhittable"},{"time": 186750,"lane": 5,"length": 0,"type": "lasagna"},{"time": 186796.875,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 186820.3125,"lane": 1,"length": 0,"type": "lasagna"},{"time": 186820.3125,"lane": 0,"length": 0,"type": "lasagna"},{"time": 186843.75,"lane": 3,"length": 0,"type": "Unhittable"},{"time": 186843.75,"lane": 1,"length": 0,"type": "lasagna"},{"time": 186867.1875,"lane": 2,"length": 0,"type": "lasagna"},{"time": 186914.0625,"lane": 0,"length": 0,"type": "lasagna"},{"time": 186937.5,"lane": 6,"length": 0,"type": "lasagna"},{"time": 186960.9375,"lane": 1,"length": 0,"type": "Unhittable"},{"time": 186968.75,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187007.8125,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187031.25,"lane": 2,"length": 0,"type": "lasagna"},{"time": 187062.5,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187078.125,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187078.125,"lane": 1,"length": 0,"type": "lasagna"},{"time": 187125,"lane": 4,"length": 375,"type": "lasagna"},{"time": 187125,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187132.8125,"lane": 1,"length": 0,"type": "lasagna"},{"time": 187132.8125,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187148.4375,"lane": 2,"length": 0,"type": "lasagna"},{"time": 187156.25,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187164.0625,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187195.3125,"lane": 2,"length": 0,"type": "lasagna"},{"time": 187203.125,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187203.125,"lane": 1,"length": 0,"type": "lasagna"},{"time": 187226.5625,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187234.375,"lane": 2,"length": 0,"type": "lasagna"},{"time": 187250,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187257.8125,"lane": 1,"length": 0,"type": "lasagna"},{"time": 187281.25,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187289.0625,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187289.0625,"lane": 2,"length": 0,"type": "lasagna"},{"time": 187296.875,"lane": 1,"length": 0,"type": "lasagna"},{"time": 187312.5,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187320.3125,"lane": 2,"length": 0,"type": "lasagna"},{"time": 187335.9375,"lane": 2,"length": 0,"type": "lasagna"},{"time": 187343.75,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187343.75,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187367.1875,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187367.1875,"lane": 1,"length": 0,"type": "lasagna"},{"time": 187367.1875,"lane": 2,"length": 0,"type": "lasagna"},{"time": 187382.8125,"lane": 1,"length": 0,"type": "lasagna"},{"time": 187382.8125,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187398.4375,"lane": 2,"length": 101.5625,"type": "lasagna"},{"time": 187406.25,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187421.875,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187437.5,"lane": 1,"length": 0,"type": "lasagna"},{"time": 187437.5,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187460.9375,"lane": 2,"length": 0,"type": "lasagna"},{"time": 187468.75,"lane": 3,"length": 0,"type": "lasagna"},{"time": 187468.75,"lane": 2,"length": 109.375,"type": "lasagna"},{"time": 187484.375,"lane": 0,"length": 0,"type": "lasagna"},{"time": 187500,"lane": 7,"length": 281.25,"type": "Default"},{"time": 187687.5,"lane": 4,"length": 187.5,"type": "Default"},{"time": 187875,"lane": 1,"length": 0,"type": "No Animation"}],"events": [{"time": 0,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 7500,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 9000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 11625,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 11718.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 11812.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 11906.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 12000,"params": {
+	"VALUE_1": "112",
+	"VALUE_2": "2"
+},"type": "Black Bars"},{"time": 12000,"params": {
+	"VALUE_1": "daStart",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 12000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 12562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 12937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 13125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 13218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 13312.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 13500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 14062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 14437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 14625,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 14718.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 14812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 15000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 15562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 15937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 16125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 16218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 16312.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 16500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 17062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 17437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 17625,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 17718.75,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 17812.5,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 17906.25,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 18000,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 18000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 18000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 18562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 18937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 19125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 19218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 19312.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 19500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 20062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 20437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 20625,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 20718.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 20812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 21000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 21562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 21937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 22125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 22218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 22312.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 22500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 23062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 23437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 23625,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 23718.75,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 23812.5,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 23906.25,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 24000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 24000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 24000,"params": {
+	"VALUE_1": "0.5",
+	"VALUE_2": ""
+},"type": "Set Camera Alignment"},{"time": 24000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 24562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 24937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 25125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 25218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 25312.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 25500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 25500,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Set Camera Alignment"},{"time": 26062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 26437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 26625,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 26718.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 26812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 27000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 27562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 27937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 28125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 28218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 28312.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 28500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 29062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 29437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 30000,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 30000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 30000,"params": {
+	"VALUE_1": "0.5",
+	"VALUE_2": ""
+},"type": "Set Camera Alignment"},{"time": 30562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 30937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 31125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 31218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 31312.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 31500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 31500,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Set Camera Alignment"},{"time": 32062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 32437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 32625,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 32718.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 32812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 33000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 33562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 33937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 34125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 34218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 34312.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 34500,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 34500,"params": {
+	"VALUE_1": "-0.25",
+	"VALUE_2": "2"
+},"type": "Set Camera Alignment Instant"},{"time": 34500,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": "1"
+},"type": "Tween Zoom"},{"time": 34500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 35062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 35250,"params": {
+	"VALUE_1": "1.25",
+	"VALUE_2": "0.125"
+},"type": "Tween Zoom"},{"time": 35437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 35625,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 35718.75,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 35812.5,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 35906.25,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 36000,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 36000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 36000,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": "1"
+},"type": "Set Camera Alignment Instant"},{"time": 36000,"params": {
+	"VALUE_1": "defaultCamZoom",
+	"VALUE_2": "1"
+},"type": "Set Property"},{"time": 36562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 36937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 37125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 37218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 37312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 37359.375,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 37406.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 37453.125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 37500,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 37593.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 37687.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 37875,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 38062.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 38156.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 38437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 38625,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 38718.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 38812.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 38859.375,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 38906.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 38953.125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 39000,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 39000,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 39000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 39000,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": "1"
+},"type": "Set Camera Alignment Instant"},{"time": 39562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 39937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 40125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 40218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 40312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 40359.375,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 40406.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 40453.125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 40500,"params": {
+	"VALUE_1": "0.5",
+	"VALUE_2": "1"
+},"type": "Set Camera Alignment Instant"},{"time": 40500,"params": {
+	"VALUE_1": "cameraSpeed",
+	"VALUE_2": "1.25"
+},"type": "Set Property"},{"time": 40500,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 40593.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 40687.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 40875,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 41062.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 41156.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 41437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 41625,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 41718.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 41812.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 41859.375,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 41906.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 41953.125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 42000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 42000,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 42000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 42000,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": "1"
+},"type": "Set Camera Alignment Instant"},{"time": 42562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 42937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 43125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 43218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 43312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 43359.375,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 43406.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 43453.125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 43500,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 43500,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 43500,"params": {
+	"VALUE_1": "0.5",
+	"VALUE_2": "1"
+},"type": "Set Camera Alignment Instant"},{"time": 43593.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 43687.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 43875,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 44062.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 44156.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 44437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 44625,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 44718.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 44812.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 44859.375,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 44906.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 44953.125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 45000,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 45000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 45000,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": "1"
+},"type": "Set Camera Alignment Instant"},{"time": 45562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 45937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 46125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 46218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 46312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 46359.375,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 46406.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 46453.125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 46500,"params": {
+	"VALUE_1": "0.5",
+	"VALUE_2": "1"
+},"type": "Set Camera Alignment Instant"},{"time": 46500,"params": {
+	"VALUE_1": "cameraSpeed",
+	"VALUE_2": "1.25"
+},"type": "Set Property"},{"time": 46500,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 46593.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 46687.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 46875,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 47062.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 47156.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 47437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 47625,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 47718.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 47812.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 47859.375,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 47906.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 47953.125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 48000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 48000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Set Camera Alignment Instant"},{"time": 48000,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": "0.25"
+},"type": "Tween Zoom"},{"time": 48000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 48000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 48281.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 48468.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 48562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 48937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 49125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 49218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 49312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 49406.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 49500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 49781.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 49875,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 49968.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 50062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 50343.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 50531.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 50625,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 50812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 51000,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 51000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 51281.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 51468.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 51562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 51937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 52125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 52218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 52312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 52406.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 52500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 52781.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 52875,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 52968.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 53062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 53343.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 53531.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 53625,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 53625,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 53812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 53812.5,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 54000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 54000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 54281.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 54468.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 54562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 54937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 55125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 55218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 55312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 55406.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 55500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 55781.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 55875,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 55968.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 56062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 56343.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 56531.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 56625,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 56812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 57000,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 57000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 57281.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 57468.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 57562.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 57937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 58125,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 58218.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 58312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 58406.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 58500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 58781.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 58875,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 58968.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 59062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 59343.75,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 59531.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 59625,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 59625,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 59812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 59812.5,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.0125"
+},"type": "Game Flash"},{"time": 60000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 60000,"params": {
+	"VALUE_1": "solo",
+	"VALUE_2": "true"
+},"type": "Song Event"},{"time": 60000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.5"
+},"type": "Tween Zoom"},{"time": 60000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 66000,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 71625,"params": {
+	"VALUE_1": "1.25",
+	"VALUE_2": "1"
+},"type": "Tween Zoom"},{"time": 72000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 72000,"params": {
+	"VALUE_1": "solo",
+	"VALUE_2": "false"
+},"type": "Song Event"},{"time": 72000,"params": {
+	"VALUE_1": "2.5",
+	"VALUE_2": ""
+},"type": "Constant SV"},{"time": 73125,"params": {
+	"VALUE_1": "3",
+	"VALUE_2": ""
+},"type": "Constant SV"},{"time": 73500,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 73500,"params": {
+	"VALUE_1": "2.5",
+	"VALUE_2": ""
+},"type": "Constant SV"},{"time": 74625,"params": {
+	"VALUE_1": "3",
+	"VALUE_2": ""
+},"type": "Constant SV"},{"time": 74625,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "1"
+},"type": "Tween Zoom"},{"time": 75000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 75000,"params": {
+	"VALUE_1": "perspective",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 75000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.5"
+},"type": "Game Flash"},{"time": 81000,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 87000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 87000,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 87000,"params": {
+	"VALUE_1": "120",
+	"VALUE_2": "2"
+},"type": "Black Bars"},{"time": 87000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 87937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 88500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 89437.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 89531.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 89625,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 89625,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 89703.125,"params": {
+	"VALUE_1": "6",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 89718.75,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 89796.875,"params": {
+	"VALUE_1": "6",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 89812.5,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 89890.625,"params": {
+	"VALUE_1": "6",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 89906.25,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 89984.375,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 90000,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 90000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 90937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 91500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 92062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 92156.25,"params": {
+	"VALUE_1": "1.05",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 92250,"params": {
+	"VALUE_1": "0.25",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 92437.5,"params": {
+	"VALUE_1": "0.7",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 92437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 92625,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 92625,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 93000,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 93000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 93937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 94500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 95437.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 95531.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 95625,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 95625,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 95703.125,"params": {
+	"VALUE_1": "6",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 95718.75,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 95796.875,"params": {
+	"VALUE_1": "6",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 95812.5,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 95890.625,"params": {
+	"VALUE_1": "6",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 95906.25,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 95984.375,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 96000,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 96000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 96937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 97500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 98062.5,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 98250,"params": {
+	"VALUE_1": "1.2",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 98437.5,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": ""
+},"type": "Mult SV"},{"time": 98437.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 98625,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 99000,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 99000,"params": {
+	"VALUE_1": "0.125",
+	"VALUE_2": "0.0625"
+},"type": "Add Camera Zoom"},{"time": 99000,"params": {
+	"VALUE_1": "60",
+	"VALUE_2": "2"
+},"type": "Black Bars"},{"time": 99562.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 99656.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 99750,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 99937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 100312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 100500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 100687.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 100781.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 101062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 101437.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 101531.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 101812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 102000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 102562.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 102656.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 102750,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 102937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 103312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 103500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 103687.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 103781.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 104062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 104437.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 104531.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 104812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 105000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 105562.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 105656.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 105750,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 105937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 106312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 106500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 106687.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 106781.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 107062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 107437.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 107531.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 107812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 108000,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 108562.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 108656.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 108750,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 108937.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 109312.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 109500,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 109687.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 109781.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 110062.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 110437.5,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 110531.25,"params": {
+	"VALUE_1": "0.03125",
+	"VALUE_2": "0.015625"
+},"type": "Add Camera Zoom"},{"time": 110812.5,"params": {
+	"VALUE_1": "0.0625",
+	"VALUE_2": "0.03125"
+},"type": "Add Camera Zoom"},{"time": 111000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 111000,"params": {
+	"VALUE_1": "final_esc",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 111000,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "1"
+},"type": "Game Flash"},{"time": 123000,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 135000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 135000,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": "2"
+},"type": "Black Bars"},{"time": 139031.25,"params": {
+	"VALUE_1": "scare",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 139125,"params": {
+	"VALUE_1": "scare",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 139218.75,"params": {
+	"VALUE_1": "scare",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 139312.5,"params": {
+	"VALUE_1": "scare",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 139406.25,"params": {
+	"VALUE_1": "scare",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 139500,"params": {
+	"VALUE_1": "final_end",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 139500,"params": {
+	"VALUE_1": "1",
+	"VALUE_2": "1.125"
+},"type": "Cam Zoom Interval"},{"time": 139500,"params": {
+	"VALUE_1": "scare",
+	"VALUE_2": "true"
+},"type": "Song Event"},{"time": 139500,"params": {
+	"VALUE_1": "gamebreaker",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 139500,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 145500,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 151125,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.125"
+},"type": "Game Flash"},{"time": 151312.5,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.25"
+},"type": "Game Flash"},{"time": 151500,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 156000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 157500,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 163125,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.125"
+},"type": "Game Flash"},{"time": 163218.75,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.125"
+},"type": "Game Flash"},{"time": 163312.5,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.125"
+},"type": "Game Flash"},{"time": 163406.25,"params": {
+	"VALUE_1": "",
+	"VALUE_2": "0.125"
+},"type": "Game Flash"},{"time": 163500,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Cam Zoom Interval"},{"time": 163500,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 169500,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 175500,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 187500,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 187500,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": "2"
+},"type": "Black Bars"},{"time": 187500,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Game Flash"},{"time": 187781.25,"params": {
+	"VALUE_1": "dad.voicelining",
+	"VALUE_2": "true"
+},"type": "Set Property"},{"time": 187875,"params": {
+	"VALUE_1": "ough",
+	"VALUE_2": "dad"
+},"type": "Play Animation"},{"time": 189281.25,"params": {
+	"VALUE_1": "cough",
+	"VALUE_2": "dad"
+},"type": "Play Animation"},{"time": 189750,"params": {
+	"VALUE_1": "fuck",
+	"VALUE_2": "dad"
+},"type": "Play Animation"},{"time": 190500,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 190500,"params": {
+	"VALUE_1": "end",
+	"VALUE_2": "bf"
+},"type": "Play Animation"},{"time": 190500,"params": {
+	"VALUE_1": "boyfriend.voicelining",
+	"VALUE_2": "true"
+},"type": "Set Property"},{"time": 192000,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 192750,"params": {
+	"VALUE_1": "uhoh",
+	"VALUE_2": "dad"
+},"type": "Play Animation"},{"time": 193500,"params": {
+	"VALUE_1": "0",
+	"VALUE_2": "1"
+},"type": "Cam Zoom Interval"},{"time": 193500,"params": {
+	"VALUE_1": "die",
+	"VALUE_2": "dad"
+},"type": "Play Animation"},{"time": 193500,"params": {
+	"VALUE_1": "rip",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 193593.75,"params": {
+	"VALUE_1": "ded",
+	"VALUE_2": ""
+},"type": "Song Event"},{"time": 199500,"params": {
+	"char": 1
+},"type": "Camera Pan"}]}

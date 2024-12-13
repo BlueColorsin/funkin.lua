@@ -147,6 +147,11 @@ function Note:setSkin(skin)
     elseif json.notes.atlasType == "animate" then
         -- TODO
     end
+    if json.receptors.antialiasing ~= nil then
+        self:setAntialiasing(json.receptors.antialiasing)
+    else
+        self:setAntialiasing(true)
+    end
     self.scale:set(json.notes.scale, json.notes.scale)
     self.animation:play(dirs[self._lane + 1] .. " scroll")
 

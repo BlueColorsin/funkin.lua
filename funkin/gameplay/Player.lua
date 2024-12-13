@@ -15,6 +15,8 @@
 ]]
 
 local Scoring = require("funkin.gameplay.scoring.Scoring") --- @type funkin.gameplay.scoring.Scoring
+local PlayerStats = require("funkin.gameplay.PlayerStats") --- @type funkin.gameplay.PlayerStats
+
 local NoteSplash = require("funkin.gameplay.NoteSplash") --- @type funkin.gameplay.NoteSplash
 
 local function noteSort(a, b)
@@ -30,6 +32,8 @@ function Player:constructor(cpu)
     Player.super.constructor(self)
 
     self.cpu = cpu --- @type boolean
+
+    self.stats = PlayerStats:new() --- @type funkin.gameplay.PlayerStats
 
     ---
     --- @protected
@@ -60,6 +64,48 @@ function Player:attachStrumLines(strumLines)
 end
 
 ---
+--- @param  note  funkin.gameplay.Note
+---
+function Player:missNote(note)
+    note:miss()
+
+    self.stats:resetCombo()
+    self.stats:increaseMissCombo()
+end
+
+---
+--- @param  note  funkin.gameplay.Note
+---
+function Player:hitNote(note)
+    note:kill()
+    
+    self.stats:resetMissCombo()
+    self.stats:increaseCombo()
+
+    if self.cpu then
+        return
+    end
+    local strumLine = note:getStrumLine() --- @type funkin.gameplay.StrumLine
+    local judgement = Scoring.judgeNote(note, note:getAttachedConductor():getRawTime())
+
+    -- TODO: make a signal that gameplay hooks to instead
+    local game = Gameplay.instance --- @type funkin.scenes.Gameplay
+    if not Options.comboStacking then
+        game.comboPopups:killAllSprites()
+    end
+    game.comboPopups:showJudgement(judgement, note:getSkin())
+    game.comboPopups:showCombo(self.stats.combo, note:getSkin())
+
+    if Scoring.splashAllowed(judgement) then
+        --- @type funkin.gameplay.NoteSplash
+        local splash = strumLine.splashes:recycle(NoteSplash, function()
+            return NoteSplash:new(-999999, -999999, note:getLaneID())
+        end)
+        splash:setup(strumLine, note:getLaneID(), note:getSkin())
+    end
+end
+
+---
 --- @param  strumLine  funkin.gameplay.StrumLine
 ---
 function Player:processOpponent(strumLine)
@@ -73,7 +119,7 @@ function Player:processOpponent(strumLine)
             if note:getTime() < note:getAttachedConductor():getTime() then
                 local receptor = receptors[note:getLaneID() + 1] --- @type funkin.gameplay.Receptor
                 receptor:press(true, note:getAttachedConductor():getStepCrotchet() + 100)
-                note:kill()
+                self:hitNote(note)
             end
         end
     end
@@ -90,7 +136,7 @@ function Player:processPlayer(strumLine)
         local note = noteMembers[i] --- @type funkin.gameplay.Note
         if note:isExisting() and note:isActive() then
             if note:isTooLate() and not note:wasMissed() then
-                note:miss()
+                self:missNote(note)
             end
             if note:wasMissed() and note:getTime() < note:getAttachedConductor():getTime() - (320 / strumLine:getScrollSpeed()) then
                 note:kill()
@@ -131,18 +177,7 @@ function Player:input(_)
                 local canHitNote = #availableNotes > 0
                 if canHitNote then
                     local note = availableNotes[1] --- @type funkin.gameplay.Note
-                    note:kill()
-
-                    local judgement = Scoring.judgeNote(note, note:getAttachedConductor():getTime())
-                    -- TODO: show the judgement you got, and your combo too
-
-                    if Scoring.splashAllowed(judgement) then
-                        --- @type funkin.gameplay.NoteSplash
-                        local splash = strumLine.splashes:recycle(NoteSplash, function()
-                            return NoteSplash:new(-999999, -999999, note:getLaneID())
-                        end)
-                        splash:setup(strumLine, note:getLaneID(), note:getSkin())
-                    end
+                    self:hitNote(note)
                 end
                 receptor:press(canHitNote)
             end

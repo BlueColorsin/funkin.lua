@@ -38,9 +38,9 @@ local NoteSkinSplashAnimationData = {
 }
 
 ---
---- @class funkin.backend.data.NoteSkinData
+--- @class funkin.backend.data.NoteSkinGenericData
 ---
-local NoteSkinData = {
+local NoteSkinGenericData = {
     scale = nil, --- @type number
     spacing = nil, --- @type number
 
@@ -81,9 +81,9 @@ local NoteSkinSplashData = {
 --- @class funkin.backend.data.NoteSkin
 ---
 local NoteSkin = {
-    receptors = nil, --- @type funkin.backend.data.NoteSkinData
-    notes = nil, --- @type funkin.backend.data.NoteSkinData
-    sustains = nil, --- @type funkin.backend.data.NoteSkinData
+    receptors = nil, --- @type funkin.backend.data.NoteSkinGenericData
+    notes = nil, --- @type funkin.backend.data.NoteSkinGenericData
+    sustains = nil, --- @type funkin.backend.data.NoteSkinGenericData
     splashes = nil --- @type funkin.backend.data.NoteSkinSplashData
 }
 

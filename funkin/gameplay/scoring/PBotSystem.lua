@@ -108,15 +108,12 @@ function PBotSystem:judgeNote(note, timestamp)
     local judgements = PBotSystem._judgements
     local diff = abs(note:getTime() - timestamp)
 
-    local t = self:getJudgementTiming(judgements[1])
-    if diff < t then
-        diff = t
-    end
     local result = judgements[#judgements]
     for i = 1, #judgements do
         local judgement = judgements[i]
-        if diff >= self:getJudgementTiming(judgement) then
+        if diff <= self:getJudgementTiming(judgement) then
             result = judgement
+            break
         end
     end
     return result

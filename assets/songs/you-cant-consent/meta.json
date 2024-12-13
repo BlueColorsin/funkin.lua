@@ -1,0 +1,27 @@
+{
+	"title": "You Can't Consent",
+	"icon": "bf",
+	"album": "vol1",
+	"variants": [
+		"default"
+	],
+	"difficulties": [
+		"normal"
+	],
+	"ratings": {},
+	"freeplayData": null,
+	"bpm": 160,
+	"timeSignature": "4/4",
+	"artist": "Unknown",
+	"charter": "Unknown",
+	"characters": {
+		"opponent": "dot-tgt",
+		"spectator": "empty",
+		"player": "evil-sonic"
+	},
+	"stage": "hell",
+	"uiSkin": "default",
+	"scrollSpeed": {
+		"normal": 3
+	}
+}

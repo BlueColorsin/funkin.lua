@@ -22,10 +22,14 @@ local StrumLine = require("funkin.gameplay.StrumLine") --- @type funkin.gameplay
 local Player = require("funkin.gameplay.Player") --- @type funkin.gameplay.Player
 local NoteSpawner = require("funkin.gameplay.NoteSpawner") --- @type funkin.gameplay.NoteSpawner
 
+local ComboPopups = require("funkin.gameplay.combo.ComboPopups") --- @type funkin.gameplay.combo.ComboPopups
+
 ---
 --- @class funkin.scenes.Gameplay : chip.core.Scene
 ---
 local Gameplay = Scene:extend("Gameplay", ...)
+
+Gameplay.instance = nil --- @type funkin.scenes.Gameplay
 
 function Gameplay:constructor(params)
     Gameplay.super.constructor(self)
@@ -42,6 +46,8 @@ function Gameplay:constructor(params)
 end
 
 function Gameplay:init()
+    Gameplay.instance = self
+
     -- stop any playing music
     if BGM.isPlaying() then
         BGM.stop()
@@ -90,20 +96,23 @@ function Gameplay:init()
     -- setup misc variables
     self.startingSong = true
     self.endingSong = false
+
+    -- scroll speed stuff
+    local scrollSpeed = self.currentChart.meta.scrollSpeed
     
     -- make strumlines
-    self.opponentStrumLine = StrumLine:new(Engine.gameWidth * 0.25, 50, Options.downscroll, "default") --- @type funkin.gameplay.StrumLine
+    self.opponentStrumLine = StrumLine:new(Engine.gameWidth * 0.25, 50, Options.downscroll, self.currentChart.meta.uiSkin) --- @type funkin.gameplay.StrumLine
     self.opponentStrumLine:attachNotes(table.filter(self.currentChart.notes, function(note)
         return note.lane < 4
     end))
-    self.opponentStrumLine:setScrollSpeed(self.currentChart.meta.scrollSpeed[self._params.difficulty])
+    self.opponentStrumLine:setScrollSpeed(scrollSpeed[self._params.difficulty] or scrollSpeed.default)
     self:add(self.opponentStrumLine)
     
-    self.playerStrumLine = StrumLine:new(Engine.gameWidth * 0.75, 50, Options.downscroll, "default") --- @type funkin.gameplay.StrumLine
+    self.playerStrumLine = StrumLine:new(Engine.gameWidth * 0.75, 50, Options.downscroll, self.currentChart.meta.uiSkin) --- @type funkin.gameplay.StrumLine
     self.playerStrumLine:attachNotes(table.filter(self.currentChart.notes, function(note)
         return note.lane > 3
     end))
-    self.playerStrumLine:setScrollSpeed(self.currentChart.meta.scrollSpeed[self._params.difficulty])
+    self.playerStrumLine:setScrollSpeed(scrollSpeed[self._params.difficulty] or scrollSpeed.default)
     self:add(self.playerStrumLine)
 
     -- position strumlines on downscroll
@@ -124,6 +133,10 @@ function Gameplay:init()
     self.noteSpawner = NoteSpawner:new() --- @type funkin.gameplay.NoteSpawner
     self.noteSpawner:attachStrumLines({self.opponentStrumLine, self.playerStrumLine})
     self:add(self.noteSpawner)
+
+    -- combo popups
+    self.comboPopups = ComboPopups:new(0, 0, self.currentChart.meta.uiSkin) --- @type funkin.gameplay.combo.ComboPopups
+    self:add(self.comboPopups)
 end
 
 function Gameplay:update(dt)

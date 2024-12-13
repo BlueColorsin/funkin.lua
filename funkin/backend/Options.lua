@@ -86,6 +86,18 @@ local Options = {
     ---
     flashingLights = nil,
     _default_flashingLights = true, --- @protected
+
+    ---
+    --- Controls whether or not your judgements
+    --- and combo will visually stack.
+    --- 
+    --- Turn this off if you have performance problems,
+    --- it might help!
+    ---
+    --- @type boolean
+    ---
+    comboStacking = nil,
+    _default_comboStacking = true, --- @protected
 }
 
 function Options.init()

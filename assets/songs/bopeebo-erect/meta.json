@@ -23,7 +23,7 @@
 		"erect": 2.2
 	},
 	"stage": "stage",
-	"uiSkin": "base",
+	"uiSkin": "default",
 
 	"generatedBy": "funkin.lua - Chart Converter"
 }

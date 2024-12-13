@@ -97,6 +97,11 @@ function Receptor:setSkin(skin)
     elseif json.receptors.atlasType == "animate" then
         -- TODO
     end
+    if json.receptors.antialiasing ~= nil then
+        self:setAntialiasing(json.receptors.antialiasing)
+    else
+        self:setAntialiasing(true)
+    end
     self.scale:set(json.receptors.scale, json.receptors.scale)
     self:setLaneID(self:getLaneID())
 
@@ -109,13 +114,13 @@ end
 --- @param  duration?  number
 ---
 function Receptor:press(confirm, duration)
-    if duration and self._confirmTimer then
-        return
-    end
-    self.animation:play(dirs[self._lane + 1] .. (confirm and " confirm" or " press"))
+    self.animation:play(dirs[self._lane + 1] .. (confirm and " confirm" or " press"), true)
     self.frameOffset:set((self:getFrameWidth() - self._initialWidth) * 0.5, (self:getFrameHeight() - self._initialHeight) * 0.5)
     
-    if duration and not self._confirmTimer then
+    if duration then
+        if self._confirmTimer then
+            self._confirmTimer:free()
+        end
         self._confirmTimer = Timer:new() --- @type chip.utils.Timer
         self._confirmTimer:start(duration / 1000.0, function()
             self:release()

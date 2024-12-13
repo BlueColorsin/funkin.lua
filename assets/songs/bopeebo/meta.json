@@ -24,7 +24,7 @@
 	},
 
 	"stage": "stage",
-	"uiSkin": "base",
+	"uiSkin": "default",
 
 	"generatedBy": "funkin.lua - Chart Converter"
 }

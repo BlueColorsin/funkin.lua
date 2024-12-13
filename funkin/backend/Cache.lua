@@ -42,13 +42,20 @@ Cache.atlasFontCache = {}
 ---
 Cache.noteSkinCache = {}
 
+---
+--- @type table<string, funkin.backend.data.UISkin>
+---
+Cache.uiSkinCache = {}
+
 function Cache.clear()
     for _, value in pairs(Cache.atlasCache) do
         value:unreference()
     end
     Cache.atlasCache = {}
     Cache.atlasFontCache = {}
+    
     Cache.noteSkinCache = {}
+    Cache.uiSkinCache = {}
 end
 
 return Cache
