@@ -71,22 +71,44 @@ function Player:missNote(note)
 
     self.stats:resetCombo()
     self.stats:increaseMissCombo()
+
+    self.stats:increaseScore(-10)
+    self.stats:increaseHealth(-0.0475)
+
+    if self.cpu then
+        return
+    end
+    -- TODO: make a signal that gameplay hooks to instead
+    local game = Gameplay.instance --- @type funkin.scenes.Gameplay
+    if not Options.comboStacking then
+        game.comboPopups:killAllSprites()
+    end
+    game.comboPopups:showJudgement("miss", note:getSkin())
+    game.comboPopups:showCombo(-self.stats.missCombo, note:getSkin(), true)
+    game:updateScoreText()
 end
 
 ---
 --- @param  note  funkin.gameplay.Note
 ---
 function Player:hitNote(note)
-    note:kill()
+    local songPos = note:getAttachedConductor():getTime()
+
+    local judgement = Scoring.judgeNote(note, songPos)
+    local score = Scoring.scoreNote(note, songPos)
     
     self.stats:resetMissCombo()
     self.stats:increaseCombo()
 
+    self.stats:increaseScore(score)
+    self.stats:increaseHealth(0.023)
+
+    note:kill()
+    
     if self.cpu then
         return
     end
     local strumLine = note:getStrumLine() --- @type funkin.gameplay.StrumLine
-    local judgement = Scoring.judgeNote(note, note:getAttachedConductor():getRawTime())
 
     -- TODO: make a signal that gameplay hooks to instead
     local game = Gameplay.instance --- @type funkin.scenes.Gameplay
@@ -95,6 +117,7 @@ function Player:hitNote(note)
     end
     game.comboPopups:showJudgement(judgement, note:getSkin())
     game.comboPopups:showCombo(self.stats.combo, note:getSkin())
+    game:updateScoreText()
 
     if Scoring.splashAllowed(judgement) then
         --- @type funkin.gameplay.NoteSplash
@@ -156,38 +179,45 @@ function Player:update(dt)
     end
 end
 
-function Player:input(_)
+---
+--- @param  event  chip.input.InputEvent
+---
+function Player:input(event)
     if self.cpu then
         return
     end
     local actions = self._inputActions --- @type table<funkin.backend.input.InputAction>
     for i = 1, #actions do
         local action = actions[i] --- @type funkin.backend.input.InputAction
-        if action:check(InputState.JUST_PRESSED) then
-            for j = 1, #self._attachedStrumLines do
-                local strumLine = self._attachedStrumLines[j] --- @type funkin.gameplay.StrumLine
-                local receptors = strumLine.receptors:getMembers() --- @type table<funkin.gameplay.Receptor>
-
-                local receptor = receptors[i] --- @type funkin.gameplay.Receptor
-                local availableNotes = table.filter(strumLine.notes:getMembers(), function(n)
-                    return n:getLaneID() == i - 1 and n:isExisting() and n:isActive() and n:canBeHit() and not n:isTooLate()
-                end)
-                table.sort(availableNotes, noteSort)
-
-                local canHitNote = #availableNotes > 0
-                if canHitNote then
-                    local note = availableNotes[1] --- @type funkin.gameplay.Note
-                    self:hitNote(note)
+        if event:isPressed() then
+            if action:check(InputState.JUST_PRESSED) then
+                for j = 1, #self._attachedStrumLines do
+                    local strumLine = self._attachedStrumLines[j] --- @type funkin.gameplay.StrumLine
+                    local receptors = strumLine.receptors:getMembers() --- @type table<funkin.gameplay.Receptor>
+    
+                    local receptor = receptors[i] --- @type funkin.gameplay.Receptor
+                    local availableNotes = table.filter(strumLine.notes:getMembers(), function(n)
+                        return n:getLaneID() == i - 1 and n:isExisting() and n:isActive() and n:canBeHit() and not n:isTooLate()
+                    end)
+                    table.sort(availableNotes, noteSort)
+    
+                    local canHitNote = #availableNotes > 0
+                    if canHitNote then
+                        local note = availableNotes[1] --- @type funkin.gameplay.Note
+                        self:hitNote(note)
+                    end
+                    receptor:press(canHitNote)
                 end
-                receptor:press(canHitNote)
             end
-        elseif action:check(InputState.JUST_RELEASED) then
-            for j = 1, #self._attachedStrumLines do
-                local strumLine = self._attachedStrumLines[j] --- @type funkin.gameplay.StrumLine
-                local receptors = strumLine.receptors:getMembers() --- @type table<funkin.gameplay.Receptor>
-
-                local receptor = receptors[i] --- @type funkin.gameplay.Receptor
-                receptor:release()
+        else
+            if action:check(InputState.JUST_RELEASED) then
+                for j = 1, #self._attachedStrumLines do
+                    local strumLine = self._attachedStrumLines[j] --- @type funkin.gameplay.StrumLine
+                    local receptors = strumLine.receptors:getMembers() --- @type table<funkin.gameplay.Receptor>
+    
+                    local receptor = receptors[i] --- @type funkin.gameplay.Receptor
+                    receptor:release()
+                end
             end
         end
     end

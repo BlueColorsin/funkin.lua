@@ -192,7 +192,7 @@ function HealthIcon:_correctCharacterID(characterID)
         characterID = characterID:sub(1, characterID:indexOf("-"))
     end
     if not File.exists(Paths.image(characterID, "images/game/icons")) then
-        Log.warn(nil, nil, nil, "Health icon for " .. characterID " doesn't exist!")
+        Log.warn(nil, nil, nil, "Health icon for " .. characterID .. " doesn't exist!")
         return Constants.DEFAULT_HEALTH_ICON
     end
     return characterID

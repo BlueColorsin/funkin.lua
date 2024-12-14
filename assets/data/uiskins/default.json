@@ -170,10 +170,10 @@
     "healthBar": {
         "scale": 1,
         
-        "folder": "game/ui/default",
+        "folder": "game/uiskins/default",
         "texture": "healthBar",
 
-        "padding": {"x": 5, "y": 3},
+        "padding": {"x": 4, "y": 4},
         "offset": {"x": 0, "y": 0}
     }
 }

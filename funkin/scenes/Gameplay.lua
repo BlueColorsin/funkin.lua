@@ -16,12 +16,14 @@
 
 local tblInsert = table.insert
 
+local UISkin = require("funkin.backend.data.UISkin") --- @type funkin.backend.data.UISkin
 local SongMetadata = require("funkin.backend.song.SongMetadata") --- @type funkin.backend.song.SongMetadata
 
 local StrumLine = require("funkin.gameplay.StrumLine") --- @type funkin.gameplay.StrumLine
 local Player = require("funkin.gameplay.Player") --- @type funkin.gameplay.Player
 local NoteSpawner = require("funkin.gameplay.NoteSpawner") --- @type funkin.gameplay.NoteSpawner
 
+local HealthIcon = require("funkin.ui.HealthIcon") --- @type funkin.ui.HealthIcon
 local ComboPopups = require("funkin.gameplay.combo.ComboPopups") --- @type funkin.gameplay.combo.ComboPopups
 
 ---
@@ -85,6 +87,7 @@ function Gameplay:init()
 
     -- setup conductor
     self.mainConductor = Conductor.instance
+    self.mainConductor.allowSongOffset = true
     self.mainConductor:setupFromChart(self.currentChart)
     self.mainConductor:setTime(self.mainConductor:getCrotchet() * -5.0)
 
@@ -134,6 +137,46 @@ function Gameplay:init()
     self.noteSpawner:attachStrumLines({self.opponentStrumLine, self.playerStrumLine})
     self:add(self.noteSpawner)
 
+    -- health bar
+    self.healthBarBG = Sprite:new(0, Options.downscroll and Engine.gameHeight * 0.1 or Engine.gameHeight * 0.9) --- @type chip.graphics.Sprite
+    
+    local json = UISkin.get(self.currentChart.meta.uiSkin) --- @type funkin.backend.data.UISkin?
+    self.healthBarBG:loadTexture(Paths.image(json.healthBar.texture, "images/" .. json.healthBar.folder))
+    
+    self.healthBarBG:screenCenter("x")
+    self.healthBarBG.offset:set(json.healthBar.offset.x, json.healthBar.offset.y)
+
+    self.healthBarBG.scale:set(json.healthBar.scale, json.healthBar.scale)
+    self:add(self.healthBarBG)
+
+    self.healthBar = ProgressBar:new() --- @type chip.graphics.ProgressBar
+    self.healthBar:setColors(0xFFFF0000, 0xFF66FF33)
+    self.healthBar:setFillDirection("right_to_left")
+
+    self.healthBar:setBounds(self.player.stats.minHealth, self.player.stats.maxHealth)
+    self.healthBar:setPosition(self.healthBarBG:getX() + json.healthBar.padding.x, self.healthBarBG:getY() + json.healthBar.padding.y)
+    
+    self.healthBar:resize(self.healthBarBG:getWidth() - (json.healthBar.padding.x * 2), self.healthBarBG:getHeight() - (json.healthBar.padding.y * 2))
+    self:add(self.healthBar)
+
+    -- icons
+    self.iconP2 = HealthIcon:new(self.currentChart.meta.characters.opponent, false) --- @type funkin.ui.HealthIcon
+    self:add(self.iconP2)
+
+    self.iconP1 = HealthIcon:new(self.currentChart.meta.characters.player, true) --- @type funkin.ui.HealthIcon
+    self.iconP1.flipX = true
+    self:add(self.iconP1)
+
+    self:updateIconPositions()
+
+    -- score text
+    local healthBarBG = self.healthBarBG
+    self.scoreText = Text:new(healthBarBG:getX() + (healthBarBG:getWidth() - 190), healthBarBG:getY() + 30, 0, "Score: 0", 16) --- @type chip.graphics.Text
+    self.scoreText:setFont(Paths.font("vcr.ttf"))
+    self.scoreText:setBorderSize(1)
+    self.scoreText:setBorderColor(Color.BLACK)
+    self:add(self.scoreText)
+
     -- combo popups
     self.comboPopups = ComboPopups:new(0, 0, self.currentChart.meta.uiSkin) --- @type funkin.gameplay.combo.ComboPopups
     self:add(self.comboPopups)
@@ -155,7 +198,31 @@ function Gameplay:update(dt)
             Engine.switchScene(require("funkin.scenes.FreeplayMenu"):new())
         end
     end
+    local healthBar = self.healthBar
+    healthBar:setBounds(self.player.stats.minHealth, self.player.stats.maxHealth)
+    healthBar:setValue(self.player.stats.health)
+
+    self.iconP2.health = 1.0 - healthBar:getProgress()
+    self.iconP1.health = healthBar:getProgress()
+
+    self:updateIconPositions()
     Gameplay.super.update(self, dt)
+end
+
+function Gameplay:updateIconPositions()
+    local iconOffset, healthBar, iconP2, iconP1 = 26.0, self.healthBar, self.iconP2, self.iconP1
+    iconP2:setPosition(
+        healthBar:getX() + (healthBar:getWidth() * (1 - healthBar:getProgress())) - (iconP2:getWidth() - iconOffset),
+        healthBar:getY() + (healthBar:getHeight() * 0.5) - (iconP2:getHeight() * 0.5)
+    )
+    iconP1:setPosition(
+        healthBar:getX() + (healthBar:getWidth() * (1 - healthBar:getProgress())) - iconOffset,
+        healthBar:getY() + (healthBar:getHeight() * 0.5) - (iconP1:getHeight() * 0.5)
+    )
+end
+
+function Gameplay:updateScoreText()
+    self.scoreText:setContents("Score: " .. math.formatMoney(self.player.stats.score, false, true))
 end
 
 function Gameplay:startSong()
@@ -194,6 +261,12 @@ function Gameplay:endSong()
     end
 end
 
+function Gameplay:beatHit(beat)
+    local iconP2, iconP1 = self.iconP2, self.iconP1
+    iconP2:bop()
+    iconP1:bop()
+end
+
 function Gameplay:getPlaybackRate()
     return Engine.timeScale
 end
@@ -205,6 +278,11 @@ function Gameplay:setPlaybackRate(newRate)
     for _, value in pairs(self.vocalTracks) do
         value:setPitch(newRate)
     end
+end
+
+function Gameplay:free()
+    self.mainConductor.allowSongOffset = false
+    Gameplay.super.free(self)
 end
 
 return Gameplay

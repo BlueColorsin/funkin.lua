@@ -14,6 +14,8 @@
     limitations under the License.
 ]]
 
+local clamp = math.clamp
+
 ---
 --- @class funkin.gameplay.PlayerStats
 ---
@@ -32,6 +34,11 @@ function PlayerStats:constructor()
 
     self.totalNotesHit = 0 --- @type integer
     self.accuracyScore = 0.0 --- @type number
+
+    self.health = 1.0 --- @type number
+
+    self.minHealth = 0.0 --- @type number
+    self.maxHealth = 2.0 --- @type number
 end
 
 function PlayerStats:reset()
@@ -47,6 +54,11 @@ function PlayerStats:reset()
 
     self.totalNotesHit = 0
     self.accuracyScore = 0.0
+
+    self.health = 1.0
+
+    self.minHealth = 0.0
+    self.maxHealth = 2.0
 end
 
 function PlayerStats:increaseScore(by)
@@ -75,6 +87,10 @@ end
 
 function PlayerStats:resetMissCombo()
     self.missCombo = 0
+end
+
+function PlayerStats:increaseHealth(by)
+    self.health = clamp(self.health + by, self.minHealth, self.maxHealth)
 end
 
 return PlayerStats

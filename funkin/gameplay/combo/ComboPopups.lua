@@ -17,6 +17,7 @@
 local function killActor(a)
     a:kill()
 end
+local abs = math.abs
 
 local UISkin = require("funkin.backend.data.UISkin") --- @type funkin.backend.data.UISkin\
 local ComboSprite = require("funkin.gameplay.combo.ComboSprite") --- @type funkin.gameplay.combo.ComboSprite
@@ -94,17 +95,21 @@ end
 ---
 --- @param  combo  integer
 --- @param  skin   string
+--- @param  miss?  boolean
 ---
-function ComboPopups:showCombo(combo, skin)
-    local separatedCombo = tostring(combo)
+function ComboPopups:showCombo(combo, skin, miss)
+    local separatedCombo = tostring(abs(combo))
     while #separatedCombo < 3 do
         separatedCombo = "0" .. separatedCombo
+    end
+    if combo < 0 then
+        separatedCombo = "-" .. separatedCombo
     end
     local digitCount = #separatedCombo
     for i = 1, digitCount do
         local sprite = self:recycle(ComboSprite) --- @type funkin.gameplay.combo.ComboSprite
         sprite:setAlpha(1.0)
-        sprite:setTint(Color.WHITE)
+        sprite:setTint(miss and 0xFFb73c3c or Color.WHITE)
 
         sprite:setPosition((Engine.gameWidth * 0.474) - (36 * (i - 1)) - 65, (Engine.gameHeight * 0.52) - 60)
         sprite:setRotation(0.0)

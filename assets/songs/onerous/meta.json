@@ -1,0 +1,27 @@
+{
+	"title": "Onerous",
+	"icon": "bf",
+	"album": "vol1",
+	"variants": [
+		"default"
+	],
+	"difficulties": [
+		"normal"
+	],
+	"ratings": {},
+	"freeplayData": null,
+	"bpm": 140,
+	"timeSignature": "4/4",
+	"artist": "Unknown",
+	"charter": "Unknown",
+	"characters": {
+		"opponent": "cube",
+		"spectator": "gf-tankmen",
+		"player": "bfcube"
+	},
+	"stage": "hardgame",
+	"uiSkin": "default",
+	"scrollSpeed": {
+		"normal": 2.5
+	}
+}
