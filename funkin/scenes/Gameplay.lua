@@ -19,6 +19,8 @@ local tblInsert = table.insert
 local UISkin = require("funkin.backend.data.UISkin") --- @type funkin.backend.data.UISkin
 local SongMetadata = require("funkin.backend.song.SongMetadata") --- @type funkin.backend.song.SongMetadata
 
+local Scoring = require("funkin.gameplay.scoring.Scoring") --- @type funkin.gameplay.scoring.Scoring
+
 local StrumLine = require("funkin.gameplay.StrumLine") --- @type funkin.gameplay.StrumLine
 local Player = require("funkin.gameplay.Player") --- @type funkin.gameplay.Player
 local NoteSpawner = require("funkin.gameplay.NoteSpawner") --- @type funkin.gameplay.NoteSpawner
@@ -247,6 +249,26 @@ function Gameplay:endSong()
 
     BGM.stop()
     self.mainConductor.music = nil
+
+    local stats = self.player.stats
+    local scoreData = Highscore.getScoreData(self._params.song, self._params.difficulty)
+    
+    if stats.score > scoreData.score or stats:getAccuracy() > scoreData.accuracy then
+        Highscore.setScoreData(self._params.song, self._params.difficulty, {
+            score = stats.score,
+            misses = stats.misses,
+            maxCombo = stats.maxCombo,
+
+            totalNotesHit = stats.totalNotesHit,
+            totalJudgements = stats.judgementHits,
+
+            accuracy = stats:getAccuracy(),
+            rank = Scoring.getRank(stats:getAccuracy()),
+
+            isValid = true
+        })
+        Highscore.save()
+    end
 
     if self._params.gameMode == "story" then
         -- TODO: story mode in general lol!!

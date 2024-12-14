@@ -84,4 +84,15 @@ function ScoringSystem:splashAllowed(judgement)
     return false
 end
 
+---
+--- Returns the rank of a given accuracy.
+---
+--- @param  accuracy  number  The accuracy to get the rank of.
+--- 
+--- @return string
+---
+function ScoringSystem:getRank(accuracy)
+    return "N/A"
+end
+
 return ScoringSystem

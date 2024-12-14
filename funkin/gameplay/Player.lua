@@ -95,13 +95,18 @@ function Player:hitNote(note)
     local songPos = note:getAttachedConductor():getTime()
 
     local judgement = Scoring.judgeNote(note, songPos)
-    local score = Scoring.scoreNote(note, songPos)
+    local accScore = Scoring.getAccuracyScore(judgement)
     
-    self.stats:resetMissCombo()
-    self.stats:increaseCombo()
+    local stats = self.stats
+    stats:resetMissCombo()
+    stats:increaseCombo()
+    
+    local score = Scoring.scoreNote(note, songPos)
+    stats:increaseScore(score)
+    stats:increaseHealth(0.023)
 
-    self.stats:increaseScore(score)
-    self.stats:increaseHealth(0.023)
+    stats:increaseTotalNotesHit()
+    stats:increaseAccuracyScore(accScore)
 
     note:kill()
     

@@ -150,4 +150,27 @@ function PBotSystem:splashAllowed(judgement)
     return judgement == "killer" or judgement == "sick"
 end
 
+---
+--- Returns the rank of a given accuracy.
+---
+--- @param  accuracy  number  The accuracy to get the rank of.
+--- 
+--- @return string
+---
+function PBotSystem:getRank(accuracy)
+    if accuracy == 1.0 then
+        return "P" -- perfect
+
+    elseif accuracy >= 0.9 then
+        return "E" -- excellent
+
+    elseif accuracy >= 0.8 then
+        return "GG" -- great
+
+    elseif accuracy >= 0.6 then
+        return "G" -- good
+    end
+    return "F" -- loss
+end
+
 return PBotSystem

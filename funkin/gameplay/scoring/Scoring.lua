@@ -98,4 +98,16 @@ function Scoring.splashAllowed(judgement)
     return system:splashAllowed(judgement)
 end
 
+---
+--- Returns the rank of a given accuracy.
+---
+--- @param  accuracy  number  The accuracy to get the rank of.
+--- 
+--- @return string
+---
+function Scoring.getRank(accuracy)
+    local system = Scoring.currentSystem
+    return system:getRank(accuracy)
+end
+
 return Scoring
