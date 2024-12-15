@@ -158,6 +158,7 @@ function Gameplay:init()
     self.healthBar:setBounds(self.player.stats.minHealth, self.player.stats.maxHealth)
     self.healthBar:setPosition(self.healthBarBG:getX() + json.healthBar.padding.x, self.healthBarBG:getY() + json.healthBar.padding.y)
     
+    self.healthBar:setValue(self.player.stats.health)
     self.healthBar:resize(self.healthBarBG:getWidth() - (json.healthBar.padding.x * 2), self.healthBarBG:getHeight() - (json.healthBar.padding.y * 2))
     self:add(self.healthBar)
 

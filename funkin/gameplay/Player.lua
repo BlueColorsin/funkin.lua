@@ -75,7 +75,7 @@ function Player:missNote(note)
     self.stats:increaseMissCombo()
 
     self.stats:increaseScore(-10)
-    self.stats:increaseHealth(-(0.0475 + math.min(note:getLength() * 0.001, 0.1)))
+    self.stats:increaseHealth(-(0.0475 + math.min(note:getLength() * 0.001, 0.15)))
 
     if self.cpu then
         return
@@ -186,7 +186,6 @@ function Player:processPlayer(strumLine)
             local length = note:getLength()
 
             local songPos = note:getAttachedConductor():getTime()
-            local stepCrotchet = note:getAttachedConductor():getStepCrotchet()
 
             -- if note is too late, miss it
             if note:isTooLate() and not wasHit and not wasMissed then
@@ -211,7 +210,6 @@ function Player:processPlayer(strumLine)
             if wasMissed and time < songPos - ((length + 320) / strumLine:getScrollSpeed()) then
                 note:kill()
                 note:getSustain():kill()
-                print("A")
             end
         end
     end
@@ -246,7 +244,7 @@ function Player:input(event)
     
                     local receptor = receptors[i] --- @type funkin.gameplay.Receptor
                     local availableNotes = table.filter(strumLine.notes:getMembers(), function(n)
-                        return n:getLaneID() == i - 1 and n:isExisting() and n:isActive() and n:canBeHit() and not n:isTooLate()
+                        return n:getLaneID() == i - 1 and n:isExisting() and n:isActive() and n:canBeHit() and not n:wasHit() and not n:wasMissed() and not n:isTooLate()
                     end)
                     table.sort(availableNotes, noteSort)
     
