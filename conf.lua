@@ -17,5 +17,5 @@ function love.conf(t)
     t.window.resizable = true
     t.window.vsync = false
 
-    t.renderers = {"metal", "opengl"}
+    t.renderers = {"metal", "opengl"} -- NOTE: vulkan instantly crashes, so do NOT use it!!
 end
