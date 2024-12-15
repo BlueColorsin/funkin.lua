@@ -64,6 +64,9 @@ function StrumLine:constructor(x, y, downscroll, skin)
         local receptor = Receptor:new((i - 2) * json.receptors.spacing, 0, i, self._skin) --- @type funkin.gameplay.Receptor
         self.receptors:add(receptor)
     end
+    self.sustains = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
+    self:add(self.sustains)
+
     self.notes = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
     self:add(self.notes)
 
@@ -75,6 +78,10 @@ function StrumLine:constructor(x, y, downscroll, skin)
         note:setup(self, 0.0, (i - 1) % 4, 0.0, "Default", self._skin)
         note:kill()
         self.notes:add(note)
+        
+        local sustain = note:getSustain() --- @type funkin.gameplay.Sustain
+        sustain:kill()
+        self.sustains:add(sustain)
     end
     for i = 1, 8 do
         local splash = NoteSplash:new(0, 0, (i - 1) % 4, self._skin) --- @type funkin.gameplay.NoteSplash

@@ -15,10 +15,12 @@
 ]]
 
 local dirs = {"left", "down", "up", "right"}
-local _inherit_ = "inherit"
 
 local abs = math.abs
+local max = math.max
+local _inherit_ = "inherit"
 
+local Sustain = require("funkin.gameplay.Sustain") --- @type funkin.gameplay.Sustain
 local NoteSkin = require("funkin.backend.data.NoteSkin") --- @type funkin.backend.data.NoteSkin
 
 ---
@@ -67,7 +69,17 @@ function Note:constructor(x, y)
     ---
     --- @protected
     ---
+    self._wasHit = false --- @type boolean
+
+    ---
+    --- @protected
+    ---
     self._missed = false --- @type boolean
+
+    ---
+    --- @protected
+    ---
+    self._sustain = Sustain:new() --- @type funkin.gameplay.Sustain
 end
 
 function Note:getTime()
@@ -180,6 +192,19 @@ function Note:attachConductor(conductor)
     self._attachedConductor = conductor
 end
 
+function Note:wasHit()
+    return self._wasHit
+end
+
+function Note:hit()
+    self._wasHit = true
+    if self._length > 0.0 then
+        self:setVisibility(false)
+    else
+        self:kill()
+    end
+end
+
 function Note:wasMissed()
     return self._missed
 end
@@ -187,6 +212,13 @@ end
 function Note:miss()
     self._missed = true
     self:setAlpha(0.3)
+    
+    self._sustain:getBody():setAlpha(0.3)
+    self._sustain:getTail():setAlpha(0.3)
+end
+
+function Note:getSustain()
+    return self._sustain
 end
 
 ---
@@ -216,7 +248,10 @@ function Note:setup(strumLine, time, lane, length, type, skin)
     self:setSkin(skin)
     self:setLaneID(lane)
 
+    self._wasHit = false
     self._missed = false
+    
+    self._sustain:setup(self, skin)
 end
 
 function Note:updatePosition(songPos)
@@ -232,6 +267,21 @@ function Note:updatePosition(songPos)
     end
     self:setX(receptor:getX())
     self:setY(receptor:getY() + (0.45 * (self._time - songPos) * absScrollSpeed * scrollMult))
+    
+    local receptor = strumLine.receptors:getMembers()[self:getLaneID() + 1]
+    local conductor = self._attachedConductor --- @type funkin.backend.Conductor
+
+    local wasHit = self._wasHit and not self._missed
+    local sexo = wasHit and 0.45 * (conductor:getTime() - self._time) * absScrollSpeed or 0.0
+    
+    local sustain = self._sustain --- @type funkin.gameplay.Sustain
+    local calcHeight = max((0.45 * (self._length - conductor:getStepCrotchet()) * absScrollSpeed) - sexo)
+
+    sustain:setLength(calcHeight)
+    sustain:setPosition(
+        self:getX() + ((self:getWidth() - sustain:getBody():getHorizontalLength()) * 0.5),
+        (wasHit and receptor:getY() or self:getY()) + (scrollMult < 0.0 and ((receptor._initialHeight * receptor.scale.y) * 0.35) - sustain:getLength() or ((receptor._initialHeight * receptor.scale.y) * 0.5))
+    )
 end
 
 function Note:canBeHit()
@@ -247,6 +297,16 @@ end
 function Note:update(dt)
     self:updatePosition(self._attachedConductor:getTime())
     Note.super.update(self, dt)
+end
+
+function Note:free()
+    if self._sustain then
+        if not self._sustain:getParent() then
+            self._sustain:free()
+        end
+        self._sustain = nil
+    end
+    Note.super.free(self)
 end
 
 return Note

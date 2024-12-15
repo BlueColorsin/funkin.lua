@@ -24,7 +24,10 @@ local Scoring = require("funkin.gameplay.scoring.Scoring") --- @type funkin.game
 local PlayerStats = Class:extend("PlayerStats", ...)
 
 function PlayerStats:constructor()
-    self.score = 0 --- @type integer
+    ---
+    --- @protected
+    ---
+    self._score = 0 --- @type integer
 
     self.misses = 0 --- @type integer
     self.comboBreaks = 0 --- @type integer
@@ -49,7 +52,7 @@ function PlayerStats:constructor()
 end
 
 function PlayerStats:reset()
-    self.score = 0
+    self._score = 0
 
     self.misses = 0
     self.comboBreaks = 0
@@ -70,7 +73,7 @@ function PlayerStats:reset()
 end
 
 function PlayerStats:increaseScore(by)
-    self.score = self.score + by
+    self._score = self._score + by
 end
 
 function PlayerStats:increaseMisses()
@@ -112,6 +115,13 @@ end
 
 function PlayerStats:increaseAccuracyScore(by)
     self.accuracyScore = self.accuracyScore + by
+end
+
+---
+--- @return  number  integer  Your current score.
+---
+function PlayerStats:getScore()
+    return math.floor(self._score)
 end
 
 ---

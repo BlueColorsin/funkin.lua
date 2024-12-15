@@ -14,7 +14,7 @@
     limitations under the License.
 ]]
 
-local tblInsert = table.insert
+local lerp = math.lerp
 
 local UISkin = require("funkin.backend.data.UISkin") --- @type funkin.backend.data.UISkin
 local SongMetadata = require("funkin.backend.song.SongMetadata") --- @type funkin.backend.song.SongMetadata
@@ -202,7 +202,7 @@ function Gameplay:update(dt)
     end
     local healthBar = self.healthBar
     healthBar:setBounds(self.player.stats.minHealth, self.player.stats.maxHealth)
-    healthBar:setValue(self.player.stats.health)
+    healthBar:setValue(lerp(healthBar:getValue(), self.player.stats.health, dt * 15))
 
     self.iconP2.health = 1.0 - healthBar:getProgress()
     self.iconP1.health = healthBar:getProgress()
@@ -224,7 +224,7 @@ function Gameplay:updateIconPositions()
 end
 
 function Gameplay:updateScoreText()
-    self.scoreText:setContents("Score: " .. math.formatMoney(self.player.stats.score, false, true))
+    self.scoreText:setContents("Score: " .. math.formatMoney(self.player.stats:getScore(), false, true))
 end
 
 function Gameplay:startSong()
@@ -253,17 +253,20 @@ function Gameplay:endSong()
     local stats = self.player.stats
     local scoreData = Highscore.getScoreData(self._params.song, self._params.difficulty)
     
-    if stats.score > scoreData.score or stats:getAccuracy() > scoreData.accuracy then
+    local score = stats:getScore()
+    local accuracy = stats:getAccuracy()
+
+    if score > scoreData.score or accuracy > scoreData.accuracy then
         Highscore.setScoreData(self._params.song, self._params.difficulty, {
-            score = stats.score,
+            score = score,
             misses = stats.misses,
             maxCombo = stats.maxCombo,
 
             totalNotesHit = stats.totalNotesHit,
             totalJudgements = stats.judgementHits,
 
-            accuracy = stats:getAccuracy(),
-            rank = Scoring.getRank(stats:getAccuracy()),
+            accuracy = accuracy,
+            rank = Scoring.getRank(accuracy),
 
             isValid = true
         })

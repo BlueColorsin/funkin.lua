@@ -14,6 +14,8 @@
     limitations under the License.
 ]]
 
+local max = math.max
+
 local Scoring = require("funkin.gameplay.scoring.Scoring") --- @type funkin.gameplay.scoring.Scoring
 local PlayerStats = require("funkin.gameplay.PlayerStats") --- @type funkin.gameplay.PlayerStats
 
@@ -73,7 +75,7 @@ function Player:missNote(note)
     self.stats:increaseMissCombo()
 
     self.stats:increaseScore(-10)
-    self.stats:increaseHealth(-0.0475)
+    self.stats:increaseHealth(-(0.0475 + math.min(note:getLength() * 0.001, 0.1)))
 
     if self.cpu then
         return
@@ -108,7 +110,7 @@ function Player:hitNote(note)
     stats:increaseTotalNotesHit()
     stats:increaseAccuracyScore(accScore)
 
-    note:kill()
+    note:hit()
     
     if self.cpu then
         return
@@ -144,10 +146,24 @@ function Player:processOpponent(strumLine)
     for i = 1, notes:getLength() do
         local note = noteMembers[i] --- @type funkin.gameplay.Note
         if note:isExisting() and note:isActive() then
-            if note:getTime() < note:getAttachedConductor():getTime() then
+            local wasHit = note:wasHit()
+            local wasMissed = note:wasMissed()
+
+            local time = note:getTime()
+            local length = note:getLength()
+
+            local songPos = note:getAttachedConductor():getTime()
+
+            -- if the note is able to be hit, hit it
+            if not wasHit and time < songPos then
                 local receptor = receptors[note:getLaneID() + 1] --- @type funkin.gameplay.Receptor
-                receptor:press(true, note:getAttachedConductor():getStepCrotchet() + 100)
+                receptor:press(true, max(length, note:getAttachedConductor():getStepCrotchet()))
                 self:hitNote(note)
+            end
+            -- kill note if it was held fully
+            if wasHit and not wasMissed and time < songPos - length then
+                note:kill()
+                note:getSustain():kill()
             end
         end
     end
@@ -163,11 +179,39 @@ function Player:processPlayer(strumLine)
     for i = 1, notes:getLength() do
         local note = noteMembers[i] --- @type funkin.gameplay.Note
         if note:isExisting() and note:isActive() then
-            if note:isTooLate() and not note:wasMissed() then
+            local wasHit = note:wasHit()
+            local wasMissed = note:wasMissed()
+
+            local time = note:getTime()
+            local length = note:getLength()
+
+            local songPos = note:getAttachedConductor():getTime()
+            local stepCrotchet = note:getAttachedConductor():getStepCrotchet()
+
+            -- if note is too late, miss it
+            if note:isTooLate() and not wasHit and not wasMissed then
                 self:missNote(note)
             end
-            if note:wasMissed() and note:getTime() < note:getAttachedConductor():getTime() - (320 / strumLine:getScrollSpeed()) then
+            -- give points for sustains
+            if wasHit and not wasMissed and length > 0 then
+                local dt = Engine.deltaTime
+                self.stats:increaseHealth(dt * 0.125)
+                self.stats:increaseScore(dt * 250.0)
+
+                -- TODO: make a signal that gameplay hooks to instead
+                local game = Gameplay.instance --- @type funkin.scenes.Gameplay
+                game:updateScoreText()
+            end
+            -- kill note if it was held fully
+            if wasHit and not wasMissed and time < songPos - length then
                 note:kill()
+                note:getSustain():kill()
+            end
+            -- kill note if it was missed and is off screen
+            if wasMissed and time < songPos - ((length + 320) / strumLine:getScrollSpeed()) then
+                note:kill()
+                note:getSustain():kill()
+                print("A")
             end
         end
     end
@@ -222,6 +266,14 @@ function Player:input(event)
     
                     local receptor = receptors[i] --- @type funkin.gameplay.Receptor
                     receptor:release()
+
+                    local noteMembers = strumLine.notes:getMembers() --- @type table<funkin.gameplay.Note>
+                    for k = 1, strumLine.notes:getLength() do
+                        local note = noteMembers[k] --- @type funkin.gameplay.Note
+                        if note:isExisting() and note:isActive() and note:getLaneID() == i - 1 and note:wasHit() and not note:wasMissed() and note:getTime() > note:getAttachedConductor():getTime() - (note:getLength() - 200) then
+                            self:missNote(note)
+                        end
+                    end
                 end
             end
         end
