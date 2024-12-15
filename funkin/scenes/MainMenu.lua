@@ -96,6 +96,9 @@ function MainMenu:update(dt)
         AudioPlayer.playSFX(Paths.sound("cancel", "sounds/menus"))
         Engine.switchScene(require("funkin.scenes.TitleScreen"):new())
     end
+    if Input.wasKeyJustPressed(KeyCode.SEVEN) then
+        Engine.switchScene(require("funkin.scenes.TestingScene"):new())
+    end
     MainMenu.super.update(self, dt)
 end
 

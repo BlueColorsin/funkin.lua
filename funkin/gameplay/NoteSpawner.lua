@@ -14,6 +14,8 @@
     limitations under the License.
 ]]
 
+---@diagnostic disable: invisible
+
 local Note = require("funkin.gameplay.Note") --- @type funkin.gameplay.Note
 
 ---
