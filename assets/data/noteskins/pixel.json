@@ -5,7 +5,7 @@
 
         "antialiasing": false,
 
-        "folder": "game/ui/pixel/notes",
+        "folder": "game/noteskins/pixel",
         "texture": "notes", 
         
         "atlasType": "grid",
@@ -15,10 +15,10 @@
             {
                 "name": "static",
                 "indices": [
-                    [0],
                     [1],
                     [2],
-                    [3]
+                    [3],
+                    [4]
                 ],
                 "fps": 12,
                 "looped": false
@@ -26,10 +26,10 @@
             {
                 "name": "press",
                 "indices": [
-                    [4, 8],
                     [5, 9],
                     [6, 10],
-                    [7, 11]
+                    [7, 11],
+                    [8, 12]
                 ],
                 "fps": 12,
                 "looped": false
@@ -37,10 +37,10 @@
             {
                 "name": "confirm",
                 "indices": [
-                    [12, 16],
                     [13, 17],
                     [14, 18],
-                    [15, 19]
+                    [15, 19],
+                    [16, 20]
                 ],
                 "fps": 12,
                 "looped": false
@@ -52,7 +52,7 @@
         "scale": 6,
         "antialiasing": false,
 
-        "folder": "game/ui/pixel/notes",
+        "folder": "game/noteskins/pixel",
         "texture": "notes",
 
         "atlasType": "grid",
@@ -62,10 +62,10 @@
             {
                 "name": "scroll",
                 "indices": [
-                    [4],
                     [5],
                     [6],
-                    [7]
+                    [7],
+                    [8]
                 ],
                 "fps": 12,
                 "looped": false
@@ -77,20 +77,20 @@
         "scale": 6,
         "antialiasing": false,
 
-        "folder": "game/ui/pixel/notes",
+        "folder": "game/noteskins/pixel",
         "texture": "sustains",
 
         "atlasType": "grid",
-        "gridSize": {"x": 17, "y": 17},
+        "gridSize": {"x": 7, "y": 6},
 
         "animations": [
             {
                 "name": "hold",
                 "indices": [
-                    [0],
                     [1],
                     [2],
-                    [3]
+                    [3],
+                    [4]
                 ],
                 "fps": 12,
                 "looped": false
@@ -98,10 +98,10 @@
             {
                 "name": "tail",
                 "indices": [
-                    [4],
                     [5],
                     [6],
-                    [7]
+                    [7],
+                    [8]
                 ],
                 "fps": 12,
                 "looped": false

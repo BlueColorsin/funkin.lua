@@ -95,13 +95,24 @@ function Sustain:setSkin(skin)
             end
         end
     elseif json.sustains.atlasType == "grid" then
-        -- TODO
+        self._body:loadTexture(Paths.image(json.sustains.texture, "images/" .. json.sustains.folder), true, json.sustains.gridSize.x, json.sustains.gridSize.y)
+        self._tail:loadTexture(Paths.image(json.sustains.texture, "images/" .. json.sustains.folder), true, json.sustains.gridSize.x, json.sustains.gridSize.y)
+        
+        for i = 1, #json.sustains.animations do
+            local animData = json.sustains.animations[i] --- @type funkin.backend.data.NoteSkinAnimationData
+            for j = 1, 4 do
+                local animName = dirs[j] .. " " .. animData.name --- @type string
+                self._body.animation:add(animName, animData.indices[j], animData.fps, animData.looped)
+                self._tail.animation:add(animName, animData.indices[j], animData.fps, animData.looped)
+            end
+        end
+    
     elseif json.sustains.atlasType == "animate" then
         -- TODO
     end
-    if json.receptors.antialiasing ~= nil then
-        self._body:setAntialiasing(json.receptors.antialiasing)
-        self._tail:setAntialiasing(json.receptors.antialiasing)
+    if json.sustains.antialiasing ~= nil then
+        self._body:setAntialiasing(json.sustains.antialiasing)
+        self._tail:setAntialiasing(json.sustains.antialiasing)
     else
         self._body:setAntialiasing(true)
         self._tail:setAntialiasing(true)
@@ -138,15 +149,20 @@ function Sustain:setup(note, skin)
     self._body:setVisibility(true)
     self._tail:setVisibility(true)
 
-    self._body:setAlpha(1.0)
-    self._tail:setAlpha(1.0)
+    self._body:setAlpha(0.6)
+    self._tail:setAlpha(0.6)
 
     self._body:setTint(Color.WHITE)
     self._tail:setTint(Color.WHITE)
 
     local json = NoteSkin.get(skin) --- @type funkin.backend.data.NoteSkin?
-    self._body:setAntialiasing((json.sustains.antialiasing ~= nil) and json.sustains.antialiasing or true)
-    self._tail:setAntialiasing((json.sustains.antialiasing ~= nil) and json.sustains.antialiasing or true)
+    if json.sustains.antialiasing ~= nil then
+        self._body:setAntialiasing(json.sustains.antialiasing)
+        self._tail:setAntialiasing(json.sustains.antialiasing)
+    else
+        self._body:setAntialiasing(true)
+        self._tail:setAntialiasing(true)
+    end
 end
 
 function Sustain:getBody()
@@ -171,7 +187,7 @@ function Sustain:setLength(value)
     value = max(value, 0.0)
     self._length = value
     
-    body:setVerticalLength((value / body.scale.y) - tail:getHeight())
+    body:setVerticalLength((value - tail:getHeight()) / body.scale.y)
     
     local note = self._note --- @type funkin.gameplay.Note
     local strumLine = note:getStrumLine() --- @type funkin.gameplay.StrumLine
@@ -190,10 +206,10 @@ function Sustain:setLength(value)
 
     if downscroll then
         body:setY(tail:getHeight())
-        tail:setY(2.0)
+        tail:setY(0.0)
     else
         body:setY(0.0)
-        tail:setY(calcHeight - 2)
+        tail:setY(calcHeight)
     end
     if note:wasHit() and not note:wasMissed() then
         local receptor = strumLine.receptors:getMembers()[note:getLaneID() + 1]

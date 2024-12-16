@@ -92,11 +92,21 @@ function Receptor:setSkin(skin)
                 end
             end
         end
+    
     elseif json.receptors.atlasType == "grid" then
-        -- TODO
+        self:loadTexture(Paths.image(json.receptors.texture, "images/" .. json.receptors.folder), true, json.receptors.gridSize.x, json.receptors.gridSize.y)
+        for i = 1, #json.receptors.animations do
+            local animData = json.receptors.animations[i] --- @type funkin.backend.data.NoteSkinAnimationData
+            for j = 1, 4 do
+                local animName = dirs[j] .. " " .. animData.name --- @type string
+                self.animation:add(animName, animData.indices[j], animData.fps, animData.looped)
+            end
+        end
+
     elseif json.receptors.atlasType == "animate" then
         -- TODO
     end
+    -- TODO: fix autobatch.lua to allow this to actually function
     if json.receptors.antialiasing ~= nil then
         self:setAntialiasing(json.receptors.antialiasing)
     else

@@ -155,12 +155,20 @@ function Note:setSkin(skin)
             end
         end
     elseif json.notes.atlasType == "grid" then
-        -- TODO
+        self:loadTexture(Paths.image(json.notes.texture, "images/" .. json.notes.folder), true, json.notes.gridSize.x, json.notes.gridSize.y)
+        for i = 1, #json.notes.animations do
+            local animData = json.notes.animations[i] --- @type funkin.backend.data.NoteSkinAnimationData
+            for j = 1, 4 do
+                local animName = dirs[j] .. " " .. animData.name --- @type string
+                self.animation:add(animName, animData.indices[j], animData.fps, animData.looped)
+            end
+        end
+    
     elseif json.notes.atlasType == "animate" then
         -- TODO
     end
-    if json.receptors.antialiasing ~= nil then
-        self:setAntialiasing(json.receptors.antialiasing)
+    if json.notes.antialiasing ~= nil then
+        self:setAntialiasing(json.notes.antialiasing)
     else
         self:setAntialiasing(true)
     end
@@ -236,8 +244,11 @@ function Note:setup(strumLine, time, lane, length, type, skin)
     self:setTint(Color.WHITE)
 
     local json = NoteSkin.get(skin) --- @type funkin.backend.data.NoteSkin?
-    self:setAntialiasing((json.notes.antialiasing ~= nil) and json.notes.antialiasing or true)
-
+    if json.notes.antialiasing ~= nil then
+        self:setAntialiasing(json.notes.antialiasing)
+    else
+        self:setAntialiasing(true)
+    end
     self:setStrumLine(strumLine)
     self:setPosition(-999999, -999999)
 
@@ -277,11 +288,11 @@ function Note:updatePosition(songPos)
     local sustain = self._sustain --- @type funkin.gameplay.Sustain
     local calcHeight = max((0.45 * (self._length - conductor:getStepCrotchet()) * absScrollSpeed) - sexo)
 
-    sustain:setLength(calcHeight)
     sustain:setPosition(
         self:getX() + ((self:getWidth() - sustain:getBody():getHorizontalLength()) * 0.5),
-        (wasHit and receptor:getY() or self:getY()) + (scrollMult < 0.0 and ((receptor._initialHeight * receptor.scale.y) * 0.35) - sustain:getLength() or ((receptor._initialHeight * receptor.scale.y) * 0.5))
+        (wasHit and receptor:getY() or self:getY()) + (scrollMult < 0.0 and ((receptor._initialHeight * receptor.scale.y) * 0.5) - calcHeight or ((receptor._initialHeight * receptor.scale.y) * 0.5))
     )
+    sustain:setLength(calcHeight)
 end
 
 function Note:canBeHit()
