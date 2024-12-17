@@ -205,11 +205,19 @@ function SoundTray.input(event)
     if tblContains(SoundTray._volumeUpKeys, event:getKey()) then
         masterBus:increaseVolume(0.1, 1)
         Options.masterVolume = masterBus:getVolume()
+
+        masterBus:setMuted(false)
+        Options.muted = false
+
         SoundTray.show(true)
     end
     if tblContains(SoundTray._volumeDownKeys, event:getKey()) then
         masterBus:decreaseVolume(0.1, 1)
         Options.masterVolume = masterBus:getVolume()
+
+        masterBus:setMuted(false)
+        Options.muted = false
+
         SoundTray.show(false)
     end
     if tblContains(SoundTray._muteKeys, event:getKey()) then

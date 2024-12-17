@@ -28,6 +28,8 @@ local NoteSpawner = require("funkin.gameplay.NoteSpawner") --- @type funkin.game
 local HealthIcon = require("funkin.ui.HealthIcon") --- @type funkin.ui.HealthIcon
 local ComboPopups = require("funkin.gameplay.combo.ComboPopups") --- @type funkin.gameplay.combo.ComboPopups
 
+local Stage = require("funkin.gameplay.Stage") --- @type funkin.gameplay.Stage
+
 ---
 --- @class funkin.scenes.Gameplay : chip.core.Scene
 ---
@@ -87,6 +89,10 @@ function Gameplay:init()
         self:add(playerVocals)
     end
 
+    -- setup stage & characters! yay!!
+    self.stage = Stage:new(self.currentChart.meta.stage) --- @type funkin.gameplay.Stage
+    self:add(self.stage)
+
     -- setup conductor
     self.mainConductor = Conductor.instance
     self.mainConductor.allowSongOffset = true
@@ -106,7 +112,7 @@ function Gameplay:init()
     local scrollSpeed = self.currentChart.meta.scrollSpeed
     
     -- make strumlines
-    self.opponentStrumLine = StrumLine:new(Engine.gameWidth * 0.25, 50, Options.downscroll, "pixel") --- @type funkin.gameplay.StrumLine
+    self.opponentStrumLine = StrumLine:new(Engine.gameWidth * 0.25, 50, Options.downscroll, self.currentChart.meta.uiSkin) --- @type funkin.gameplay.StrumLine
     self.opponentStrumLine:attachNotes(table.filter(self.currentChart.notes, function(note)
         return note.lane < 4
     end))
