@@ -79,6 +79,12 @@ function Player:missNote(note)
     self.stats:increaseScore(-10)
     self.stats:increaseHealth(-(0.0475 + math.min(note:getLength() * 0.001, 0.15)))
 
+    local strumLine = note:getStrumLine() --- @type funkin.gameplay.StrumLine
+    local holdCoverMembers = strumLine.holdCovers:getMembers() --- @type table<funkin.gameplay.HoldCover>
+    
+    local holdCover = holdCoverMembers[note:getLaneID() + 1] --- @type funkin.gameplay.HoldCover
+    holdCover:kill()
+
     if self.cpu then
         return
     end

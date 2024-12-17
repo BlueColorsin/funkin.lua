@@ -62,13 +62,6 @@ function HealthIcon:constructor(character, isPlayer)
     self.characterID = nil
 
     ---
-    --- Whether this health icon should bop to the beat.
-    ---
-    --- @type boolean
-    ---
-    self.canBop = false
-
-    ---
     --- Whether this health icon represents the player.
     ---
     --- @type boolean
@@ -137,13 +130,6 @@ end
 
 function HealthIcon:update(dt)
     self:_updateHealth(self.health)
-    if self.canBop then
-        if self.width > self.height then
-            self:setGraphicSize(lerp(self.width, HealthIcon.HEALTH_ICON_SIZE * self.size.x, dt * 60 * HealthIcon.ICON_SPEED), 0)
-        else
-            self:setGraphicSize(0, lerp(self.height, HealthIcon.HEALTH_ICON_SIZE * self.size.y, dt * 60 * HealthIcon.ICON_SPEED))
-        end
-    end
     HealthIcon.super.update(self, dt)
 end
 
@@ -228,7 +214,7 @@ end
 --- @protected
 ---
 function HealthIcon:_updateHealth(health)
-    local animName = self.animation.name
+    local animName = self.animation:getCurrentAnimationName()
     if animName == "idle" then
         if health < HealthIcon.LOSING_THRESHOLD then
             self:playIconAnim("toLosing", "losing")

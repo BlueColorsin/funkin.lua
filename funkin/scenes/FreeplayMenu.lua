@@ -17,6 +17,7 @@
 local wrap = math.wrap
 local lerp = math.lerp
 
+local abs = math.abs
 local round = math.round
 local floor = math.floor
 
@@ -104,6 +105,8 @@ function FreeplayMenu:init()
 
     self.lerpSelected = 1
     self.lerpScore = 0.0
+
+    self.instTimer = 0.0
 
     ---
     --- @protected
@@ -252,17 +255,8 @@ function FreeplayMenu:changeDifficulty(by, force)
     else
         self.diffText:setContents(self.curDifficulty:upper())
     end
-    local song = self.songList[self.curSelected] .. (self.curVariant:lower() ~= "default" and ("-" .. self.curVariant:lower()) or "")
-    local stream = self._loadedSongInsts[song]
-    if not stream and not tblContains(self._loadedSongList, song) then
-        thread.getChannel("fi1"):push({
-            song = song,
-            instPath = Paths.inst(song),
-            doBreak = false
-        })
-        tblInsert(self._loadedSongList, song)
-    end
     self:positionHighscore()
+    self.instTimer = 0.0
 end
 
 function FreeplayMenu:update(dt)
@@ -308,10 +302,27 @@ function FreeplayMenu:update(dt)
 
     local scoreData = Highscore.getScoreData(self.songList[self.curSelected], self.curDifficulty) --- @type funkin.backend.data.HighscoreData
     self.lerpScore = lerp(self.lerpScore, scoreData.score, dt * 24.0)
-
+    
+    if abs(self.lerpScore - scoreData.score) < 10 then
+        self.lerpScore = scoreData.score
+    end
     self.scoreText:setContents("PERSONAL BEST:" .. floor(self.lerpScore))
     self:positionHighscore()
 
+    self.instTimer = self.instTimer + dt
+    if self.instTimer > 1.0 then
+        local song = self.songList[self.curSelected] .. (self.curVariant:lower() ~= "default" and ("-" .. self.curVariant:lower()) or "")
+        local stream = self._loadedSongInsts[song]
+        if not stream and not tblContains(self._loadedSongList, song) then
+            thread.getChannel("fi1"):push({
+                song = song,
+                instPath = Paths.inst(song),
+                doBreak = false
+            })
+            tblInsert(self._loadedSongList, song)
+        end
+        self.instTimer = -math.huge
+    end
     local info = thread.getChannel("fi2"):pop()
     if info then
         local stream = AudioStream:new() --- @type chip.audio.AudioStream
