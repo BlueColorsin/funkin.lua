@@ -149,8 +149,8 @@ function Sustain:setup(note, skin)
     self._body:setVisibility(true)
     self._tail:setVisibility(true)
 
-    self._body:setAlpha(0.6)
-    self._tail:setAlpha(0.6)
+    self._body:setAlpha(1.0)
+    self._tail:setAlpha(1.0)
 
     self._body:setTint(Color.WHITE)
     self._tail:setTint(Color.WHITE)

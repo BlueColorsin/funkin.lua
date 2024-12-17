@@ -122,8 +122,9 @@ end
 ---
 --- @param  confirm    boolean
 --- @param  duration?  number
+--- @param  cpu?       boolean
 ---
-function Receptor:press(confirm, duration)
+function Receptor:press(confirm, duration, cpu)
     self.animation:play(dirs[self._lane + 1] .. (confirm and " confirm" or " press"), true)
     self.frameOffset:set((self:getFrameWidth() - self._initialWidth) * 0.5, (self:getFrameHeight() - self._initialHeight) * 0.5)
     
@@ -133,7 +134,13 @@ function Receptor:press(confirm, duration)
         end
         self._confirmTimer = Timer:new() --- @type chip.utils.Timer
         self._confirmTimer:start(duration / 1000.0, function()
-            self:release()
+            if cpu then
+                self:release()
+            
+            elseif confirm and self.animation:getCurrentAnimationName():endsWith("confirm") then
+                self.animation:play(dirs[self._lane + 1] .. " press", true)
+                self.frameOffset:set((self:getFrameWidth() - self._initialWidth) * 0.5, (self:getFrameHeight() - self._initialHeight) * 0.5)
+            end
             self._confirmTimer = nil
         end)
     end

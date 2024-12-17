@@ -109,9 +109,59 @@
         ],
         "offset": {"x": 0, "y": 0}
     },
-    "splashes": {
-        "alpha": 0.6,
+    "holdCovers": {
         "scale": 6,
+        "antialiasing": false,
+
+        "folder": "game/noteskins/pixel",
+        "texture": "hold-covers",
+
+        "atlasType": "sparrow",
+        "animations": [
+            {
+                "name": "start",
+                "prefixes": [
+                    "start left",
+                    "start down",
+                    "start up",
+                    "start right"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "hold",
+                "prefixes": [
+                    "left",
+                    "down",
+                    "up",
+                    "right"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": true
+            },
+            {
+                "name": "end",
+                "prefixes": [
+                    "end left",
+                    "end down",
+                    "end up",
+                    "end right"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 65, "y": 55}
+    },
+    "splashes": {
+        "scale": 6,
+
+        "alpha": 0.6,
+        "antialiasing": false,
 
         "folder": "game/noteskins/pixel",
         "texture": "splashes",

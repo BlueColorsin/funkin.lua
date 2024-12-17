@@ -117,6 +117,53 @@
         ],
         "offset": {"x": 0, "y": 0}
     },
+    "holdCovers": {
+        "scale": 1,
+
+        "folder": "game/noteskins/default",
+        "texture": "hold-covers",
+
+        "atlasType": "sparrow",
+        "animations": [
+            {
+                "name": "start",
+                "prefixes": [
+                    "start left",
+                    "start down",
+                    "start up",
+                    "start right"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            },
+            {
+                "name": "hold",
+                "prefixes": [
+                    "left",
+                    "down",
+                    "up",
+                    "right"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": true
+            },
+            {
+                "name": "end",
+                "prefixes": [
+                    "end left",
+                    "end down",
+                    "end up",
+                    "end right"
+                ],
+                "indices": null,
+                "fps": 24,
+                "looped": false
+            }
+        ],
+        "offset": {"x": 60, "y": 50}
+    },
     "splashes": {
         "scale": 1,
 

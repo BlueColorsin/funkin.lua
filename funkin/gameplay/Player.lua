@@ -14,6 +14,8 @@
     limitations under the License.
 ]]
 
+---@diagnostic disable: invisible
+
 local max = math.max
 
 local Scoring = require("funkin.gameplay.scoring.Scoring") --- @type funkin.gameplay.scoring.Scoring
@@ -112,11 +114,17 @@ function Player:hitNote(note)
 
     note:hit()
     
+    local strumLine = note:getStrumLine() --- @type funkin.gameplay.StrumLine
+    if note:getLength() > 0.0 then
+        local lane = note:getLaneID()
+        local holdCoverMembers = strumLine.holdCovers:getMembers() --- @type table<funkin.gameplay.HoldCover>
+        
+        local holdCover = holdCoverMembers[lane + 1] --- @type funkin.gameplay.HoldCover
+        holdCover:setup(strumLine, lane, note:getSkin())
+    end
     if self.cpu then
         return
     end
-    local strumLine = note:getStrumLine() --- @type funkin.gameplay.StrumLine
-
     -- TODO: make a signal that gameplay hooks to instead
     local game = Gameplay.instance --- @type funkin.scenes.Gameplay
     if not Options.comboStacking then
@@ -127,11 +135,12 @@ function Player:hitNote(note)
     game:updateScoreText()
 
     if Scoring.splashAllowed(judgement) then
-        --- @type funkin.gameplay.NoteSplash
-        local splash = strumLine.splashes:recycle(NoteSplash, function()
-            return NoteSplash:new(-999999, -999999, note:getLaneID())
-        end)
+        local splashCount = strumLine.splashes:getLength()
+        local splashMembers = strumLine.splashes:getMembers()
+
+        local splash = splashMembers[strumLine._curSplash] --- @type funkin.gameplay.NoteSplash
         splash:setup(strumLine, note:getLaneID(), note:getSkin())
+        strumLine._curSplash = math.wrap(strumLine._curSplash + 1, 1, splashCount)
     end
 end
 
@@ -153,15 +162,21 @@ function Player:processOpponent(strumLine)
             local length = note:getLength()
 
             local songPos = note:getAttachedConductor():getTime()
+            local stepCrotchet = note:getAttachedConductor():getStepCrotchet()
 
             -- if the note is able to be hit, hit it
             if not wasHit and time < songPos then
                 local receptor = receptors[note:getLaneID() + 1] --- @type funkin.gameplay.Receptor
-                receptor:press(true, max(length, note:getAttachedConductor():getStepCrotchet()))
+                receptor:press(true, max(length - stepCrotchet, stepCrotchet), true)
                 self:hitNote(note)
             end
             -- kill note if it was held fully
-            if wasHit and not wasMissed and time < songPos - length then
+            if wasHit and not wasMissed and time < songPos - (length - stepCrotchet) then
+                local holdCoverMembers = strumLine.holdCovers:getMembers() --- @type table<funkin.gameplay.HoldCover>
+                
+                local holdCover = holdCoverMembers[note:getLaneID() + 1] --- @type funkin.gameplay.HoldCover
+                holdCover:kill()
+
                 note:kill()
                 note:getSustain():kill()
             end
@@ -176,6 +191,7 @@ function Player:processPlayer(strumLine)
     local notes = strumLine.notes --- @type chip.graphics.CanvasLayer
     local noteMembers = notes:getMembers() --- @type table<funkin.gameplay.Note>
 
+    local timeScale = Engine.timeScale
     for i = 1, notes:getLength() do
         local note = noteMembers[i] --- @type funkin.gameplay.Note
         if note:isExisting() and note:isActive() then
@@ -186,6 +202,7 @@ function Player:processPlayer(strumLine)
             local length = note:getLength()
 
             local songPos = note:getAttachedConductor():getTime()
+            local stepCrotchet = note:getAttachedConductor():getStepCrotchet()
 
             -- if note is too late, miss it
             if note:isTooLate() and not wasHit and not wasMissed then
@@ -202,12 +219,17 @@ function Player:processPlayer(strumLine)
                 game:updateScoreText()
             end
             -- kill note if it was held fully
-            if wasHit and not wasMissed and time < songPos - length then
+            if wasHit and not wasMissed and time < songPos - (length - stepCrotchet) then
+                local holdCoverMembers = strumLine.holdCovers:getMembers() --- @type table<funkin.gameplay.HoldCover>
+                
+                local holdCover = holdCoverMembers[note:getLaneID() + 1] --- @type funkin.gameplay.HoldCover
+                holdCover:splurge()
+
                 note:kill()
                 note:getSustain():kill()
             end
             -- kill note if it was missed and is off screen
-            if wasMissed and time < songPos - ((length + 320) / strumLine:getScrollSpeed()) then
+            if wasMissed and time < songPos - ((320 / (strumLine:getScrollSpeed() / timeScale)) + length) then
                 note:kill()
                 note:getSustain():kill()
             end
@@ -252,8 +274,10 @@ function Player:input(event)
                     if canHitNote then
                         local note = availableNotes[1] --- @type funkin.gameplay.Note
                         self:hitNote(note)
+                        receptor:press(true, max(note:getLength() - note:getAttachedConductor():getStepCrotchet(), 200))
+                    else
+                        receptor:press(false)
                     end
-                    receptor:press(canHitNote)
                 end
             end
         else

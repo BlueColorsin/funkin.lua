@@ -84,6 +84,7 @@ local NoteSkin = {
     receptors = nil, --- @type funkin.backend.data.NoteSkinGenericData
     notes = nil, --- @type funkin.backend.data.NoteSkinGenericData
     sustains = nil, --- @type funkin.backend.data.NoteSkinGenericData
+    holdCovers = nil, --- @type funkin.backend.data.NoteSkinGenericData
     splashes = nil --- @type funkin.backend.data.NoteSkinSplashData
 }
 

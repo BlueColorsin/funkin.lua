@@ -17,6 +17,7 @@
 local NoteSkin = require("funkin.backend.data.NoteSkin") --- @type funkin.backend.data.NoteSkin
 
 local Receptor = require("funkin.gameplay.Receptor") --- @type funkin.gameplay.Receptor
+local HoldCover = require("funkin.gameplay.HoldCover") --- @type funkin.gameplay.HoldCover
 local NoteSplash = require("funkin.gameplay.NoteSplash") --- @type funkin.gameplay.NoteSplash
 
 local Note = require("funkin.gameplay.Note") --- @type funkin.gameplay.Note
@@ -56,6 +57,12 @@ function StrumLine:constructor(x, y, downscroll, skin)
     ---
     self._scrollSpeed = 1.0
 
+    ---
+    --- @protected
+    --- @type integer
+    ---
+    self._curSplash = 1
+
     self.receptors = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
     self:add(self.receptors)
 
@@ -70,6 +77,9 @@ function StrumLine:constructor(x, y, downscroll, skin)
     self.notes = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
     self:add(self.notes)
 
+    self.holdCovers = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
+    self:add(self.holdCovers)
+
     self.splashes = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
     self:add(self.splashes)
 
@@ -82,6 +92,12 @@ function StrumLine:constructor(x, y, downscroll, skin)
         local sustain = note:getSustain() --- @type funkin.gameplay.Sustain
         sustain:kill()
         self.sustains:add(sustain)
+    end
+    for i = 1, 4 do
+        local holdCover = HoldCover:new(0, 0, (i - 1) % 4, self._skin) --- @type funkin.gameplay.HoldCover
+        holdCover:setup(self, (i - 1) % 4, self._skin)
+        holdCover:kill()
+        self.holdCovers:add(holdCover)
     end
     for i = 1, 8 do
         local splash = NoteSplash:new(0, 0, (i - 1) % 4, self._skin) --- @type funkin.gameplay.NoteSplash
