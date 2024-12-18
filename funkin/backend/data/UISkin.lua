@@ -23,7 +23,7 @@ local UISkinAnimationData = {
     indices = nil, --- @type table<table<integer>>?
     fps = nil, --- @type integer
     looped = nil, --- @type boolean
-    offsets = nil, --- @type table<table<string, number>>
+    offsets = nil, --- @type table<{x: number, y: number}>
 }
 
 ---
@@ -37,10 +37,10 @@ local UISkinGenericData = {
     texture = nil, --- @type string
 
     atlasType = nil, --- @type funkin.backend.enums.AtlasType
-    gridSize = nil, --- @type table<string, number>?
+    gridSize = nil, --- @type {x: number, y: number}?
 
     animations = nil, --- @type table<funkin.backend.data.UISkinAnimationData>
-    offset = nil, --- @type table<string, number>
+    offset = nil, --- @type {x: number, y: number}
 
     antialiasing = nil --- @type boolean?
 }
@@ -58,10 +58,10 @@ local UISkinCountdownData = {
     sounds = nil, --- @type table<string>
 
     atlasType = nil, --- @type funkin.backend.enums.AtlasType
-    gridSize = nil, --- @type table<string, number>?
+    gridSize = nil, --- @type {x: number, y: number}?
 
     animations = nil, --- @type table<funkin.backend.data.UISkinAnimationData>
-    offset = nil, --- @type table<string, number>
+    offset = nil, --- @type {x: number, y: number}
 
     antialiasing = nil --- @type boolean?
 }
@@ -75,8 +75,8 @@ local UISkinHealthBarData = {
     folder = nil, --- @type string
     texture = nil, --- @type string
 
-    padding = nil, --- @type table<string, number>
-    offset = nil --- @type table<string, number>
+    padding = nil, --- @type {x: number, y: number}
+    offset = nil --- @type {x: number, y: number}
 }
 
 ---

@@ -98,6 +98,24 @@ local Options = {
     ---
     comboStacking = nil,
     _default_comboStacking = true, --- @protected
+
+    ---
+    --- Controls whether or not the game will
+    --- automatically pause when the window is unfocused.
+    ---
+    --- @type boolean
+    ---
+    autoPause = nil,
+    _default_autoPause = true, --- @protected
+
+    ---
+    --- Controls whether or not the game will run
+    --- at a maximum of 1000 TPS, saving on CPU power.
+    ---
+    --- @type boolean
+    ---
+    lowPowerMode = nil,
+    _default_lowPowerMode = false, --- @protected
 }
 
 function Options.init()

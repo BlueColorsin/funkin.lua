@@ -49,6 +49,9 @@ function InitScene:init()
     Controls.init()
     Highscore.init()
 
+    Engine.autoPause = Options.autoPause
+    Engine.lowPowerMode = Options.lowPowerMode
+
     AudioBus.master:setVolume(Options.masterVolume)
     AudioBus.master:setMuted(Options.masterMuted)
     

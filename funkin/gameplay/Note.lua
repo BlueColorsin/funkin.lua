@@ -262,7 +262,13 @@ function Note:setup(strumLine, time, lane, length, type, skin)
     self._wasHit = false
     self._missed = false
     
-    self._sustain:setup(self, skin)
+    local sustain = self._sustain --- @type funkin.gameplay.Sustain
+    sustain:setup(self, skin)
+    
+    local sustainGroup = strumLine.sustains --- @type chip.graphics.CanvasLayer
+    if not sustainGroup:contains(sustain) then
+        sustainGroup:add(sustain)
+    end
 end
 
 function Note:updatePosition(songPos)

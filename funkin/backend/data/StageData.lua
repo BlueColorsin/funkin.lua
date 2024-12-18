@@ -15,9 +15,40 @@
 ]]
 
 ---
+--- @enum funkin.backend.data.StageObjectType
+---
+local StageObjectType = {
+    sprite = "sprite",
+    box = "box",
+    spectator = "spectator",
+    gf = "gf",
+    girlfriend = "girlfriend",
+    opponent = "opponent",
+    dad = "dad",
+    player = "player",
+    bf = "bf",
+    boyfriend = "boyfriend",
+}
+
+---
+--- @class funkin.backend.data.StageObjectData
+---
+local StageObjectData = {
+    tag = nil, --- @type string? The tag of the object. (only optional for character types)
+    type = nil, --- @type "sprite"|"box"|"spectator"|"gf"|"girlfriend"|"opponent"|"dad"|"player"|"bf"|"boyfriend"
+
+    properties = nil, --- @type table<string, any>
+}
+
+---
 --- @class funkin.backend.data.StageData
 ---
 local StageData = {
+    zoom = nil, --- @type number
+    folder = nil, --- @type string
+
+    objects = nil, --- @type table<funkin.backend.data.StageObjectData>
+    cameraPosition = nil, --- @type {x: number, y: number}?
 }
 
 ---

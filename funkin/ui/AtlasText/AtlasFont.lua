@@ -18,7 +18,7 @@
 --- @class funkin.ui.AtlasText.AtlasFont
 ---
 local AtlasFont = {
-    offset = nil, --- @type table<string, number>
+    offset = nil, --- @type {x: number, y: number}
     fps = nil, --- @type number?
     
     scale = nil, --- @type number?

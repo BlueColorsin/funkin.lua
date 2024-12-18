@@ -44,12 +44,12 @@ local CharacterData = {
     animations = nil,
 
     ---
-    --- @type table<string, number>?
+    --- @type {x: number, y: number}?
     ---
     position = nil,
 
     ---
-    --- @type table<string, number>?
+    --- @type {x: number, y: number}?
     ---
     camera = nil,
 

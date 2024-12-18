@@ -46,6 +46,11 @@ function Player:constructor(cpu)
 
     ---
     --- @protected
+    ---
+    self._pressed = {false, false, false, false} --- @type table<boolean>
+
+    ---
+    --- @protected
     --- @type table<funkin.backend.input.InputAction>
     ---
     self._inputActions = {
@@ -77,7 +82,7 @@ function Player:missNote(note)
     self.stats:increaseMissCombo()
 
     self.stats:increaseScore(-10)
-    self.stats:increaseHealth(-(0.0475 + math.min(note:getLength() * 0.001, 0.15)))
+    self.stats:increaseHealth(-(0.0475 + math.min(note:getLength() * 0.001, 0.25)))
 
     local strumLine = note:getStrumLine() --- @type funkin.gameplay.StrumLine
     local holdCoverMembers = strumLine.holdCovers:getMembers() --- @type table<funkin.gameplay.HoldCover>
@@ -175,6 +180,20 @@ function Player:processOpponent(strumLine)
                 local receptor = receptors[note:getLaneID() + 1] --- @type funkin.gameplay.Receptor
                 receptor:press(true, max(length - stepCrotchet, stepCrotchet), true)
                 self:hitNote(note)
+
+                -- TODO: make a signal that gameplay hooks to instead
+                local game = Gameplay.instance --- @type funkin.scenes.Gameplay
+                game:updateScoreText()
+            end
+            -- give score and health for sustains
+            if wasHit and not wasMissed and length > 0 then
+                local dt = Engine.deltaTime
+                self.stats:increaseHealth(dt * 0.125)
+                self.stats:increaseScore(dt * 250.0)
+
+                -- TODO: make a signal that gameplay hooks to instead
+                local game = Gameplay.instance --- @type funkin.scenes.Gameplay
+                game:updateScoreText()
             end
             -- kill note if it was held fully
             if wasHit and not wasMissed and time < songPos - (length - stepCrotchet) then
@@ -214,7 +233,7 @@ function Player:processPlayer(strumLine)
             if note:isTooLate() and not wasHit and not wasMissed then
                 self:missNote(note)
             end
-            -- give points for sustains
+            -- give score and health for sustains
             if wasHit and not wasMissed and length > 0 then
                 local dt = Engine.deltaTime
                 self.stats:increaseHealth(dt * 0.125)
@@ -261,11 +280,12 @@ function Player:input(event)
     if self.cpu then
         return
     end
+    local pressed = self._pressed --- @type table<boolean>
     local actions = self._inputActions --- @type table<funkin.backend.input.InputAction>
     for i = 1, #actions do
         local action = actions[i] --- @type funkin.backend.input.InputAction
         if event:isPressed() then
-            if action:check(InputState.JUST_PRESSED) then
+            if not pressed[i] and action:check(InputState.JUST_PRESSED) then
                 for j = 1, #self._attachedStrumLines do
                     local strumLine = self._attachedStrumLines[j] --- @type funkin.gameplay.StrumLine
                     local receptors = strumLine.receptors:getMembers() --- @type table<funkin.gameplay.Receptor>
@@ -285,9 +305,10 @@ function Player:input(event)
                         receptor:press(false)
                     end
                 end
+                pressed[i] = true
             end
         else
-            if action:check(InputState.JUST_RELEASED) then
+            if pressed[i] and action:check(InputState.JUST_RELEASED) then
                 for j = 1, #self._attachedStrumLines do
                     local strumLine = self._attachedStrumLines[j] --- @type funkin.gameplay.StrumLine
                     local receptors = strumLine.receptors:getMembers() --- @type table<funkin.gameplay.Receptor>
@@ -303,6 +324,7 @@ function Player:input(event)
                         end
                     end
                 end
+                pressed[i] = false
             end
         end
     end

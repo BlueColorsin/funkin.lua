@@ -93,6 +93,13 @@ function Gameplay:init()
     self.stage = Stage:new(self.currentChart.meta.stage) --- @type funkin.gameplay.Stage
     self:add(self.stage)
 
+    -- setup camera
+    self.camera = Camera:new() --- @type chip.graphics.Camera
+    self.camera:makeCurrent()
+    self.camera:setZoom(self.stage.zoom)
+    self.camera:setPosition(self.stage.startingCameraPos.x, self.stage.startingCameraPos.y)
+    self:add(self.camera)
+
     -- setup conductor
     self.mainConductor = Conductor.instance
     self.mainConductor.allowSongOffset = true
@@ -111,20 +118,24 @@ function Gameplay:init()
     -- scroll speed stuff
     local scrollSpeed = self.currentChart.meta.scrollSpeed
     
+    -- hud layer!!!!
+    self.hudLayer = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
+    self:add(self.hudLayer)
+
     -- make strumlines
     self.opponentStrumLine = StrumLine:new(Engine.gameWidth * 0.25, 50, Options.downscroll, self.currentChart.meta.uiSkin) --- @type funkin.gameplay.StrumLine
     self.opponentStrumLine:attachNotes(table.filter(self.currentChart.notes, function(note)
         return note.lane < 4
     end))
     self.opponentStrumLine:setScrollSpeed(scrollSpeed[self._params.difficulty] or scrollSpeed.default)
-    self:add(self.opponentStrumLine)
+    self.hudLayer:add(self.opponentStrumLine)
     
     self.playerStrumLine = StrumLine:new(Engine.gameWidth * 0.75, 50, Options.downscroll, self.currentChart.meta.uiSkin) --- @type funkin.gameplay.StrumLine
     self.playerStrumLine:attachNotes(table.filter(self.currentChart.notes, function(note)
         return note.lane > 3
     end))
     self.playerStrumLine:setScrollSpeed(scrollSpeed[self._params.difficulty] or scrollSpeed.default)
-    self:add(self.playerStrumLine)
+    self.hudLayer:add(self.playerStrumLine)
 
     -- position strumlines on downscroll
     if Options.downscroll then
@@ -155,7 +166,7 @@ function Gameplay:init()
     self.healthBarBG.offset:set(json.healthBar.offset.x, json.healthBar.offset.y)
 
     self.healthBarBG.scale:set(json.healthBar.scale, json.healthBar.scale)
-    self:add(self.healthBarBG)
+    self.hudLayer:add(self.healthBarBG)
 
     self.healthBar = ProgressBar:new() --- @type chip.graphics.ProgressBar
     self.healthBar:setColors(0xFFFF0000, 0xFF66FF33)
@@ -166,17 +177,15 @@ function Gameplay:init()
     
     self.healthBar:setValue(self.player.stats.health)
     self.healthBar:resize(self.healthBarBG:getWidth() - (json.healthBar.padding.x * 2), self.healthBarBG:getHeight() - (json.healthBar.padding.y * 2))
-    self:add(self.healthBar)
+    self.hudLayer:add(self.healthBar)
 
     -- icons
     self.iconP2 = HealthIcon:new(self.currentChart.meta.characters.opponent, false) --- @type funkin.ui.HealthIcon
-    self:add(self.iconP2)
+    self.hudLayer:add(self.iconP2)
 
     self.iconP1 = HealthIcon:new(self.currentChart.meta.characters.player, true) --- @type funkin.ui.HealthIcon
     self.iconP1.flipX = true
-    self:add(self.iconP1)
-
-    self:updateIconPositions()
+    self.hudLayer:add(self.iconP1)
 
     -- score text
     local healthBarBG = self.healthBarBG
@@ -184,11 +193,15 @@ function Gameplay:init()
     self.scoreText:setFont(Paths.font("vcr.ttf"))
     self.scoreText:setBorderSize(1)
     self.scoreText:setBorderColor(Color.BLACK)
-    self:add(self.scoreText)
+    self.hudLayer:add(self.scoreText)
+
+    -- update score text and icon positions
+    self:updateScoreText()
+    self:updateIconPositions()
 
     -- combo popups
     self.comboPopups = ComboPopups:new(0, 0, self.currentChart.meta.uiSkin) --- @type funkin.gameplay.combo.ComboPopups
-    self:add(self.comboPopups)
+    self.hudLayer:add(self.comboPopups)
 end
 
 function Gameplay:update(dt)
@@ -209,10 +222,13 @@ function Gameplay:update(dt)
     end
     local healthBar = self.healthBar
     healthBar:setBounds(self.player.stats.minHealth, self.player.stats.maxHealth)
-    healthBar:setValue(lerp(healthBar:getValue(), self.player.stats.health, dt * 15))
+    healthBar:setValue(lerp(healthBar:getValue(), self.player.stats.health, dt * 15.0))
 
     self.iconP2.health = 1.0 - healthBar:getProgress()
     self.iconP1.health = healthBar:getProgress()
+
+    self.camera:setZoom(lerp(self.camera:getZoom(), self.stage.zoom, dt * 3.0))
+    self.hudLayer:setZoom(lerp(self.hudLayer:getZoom(), 1.0, dt * 3.0))
 
     self:updateIconPositions()
     Gameplay.super.update(self, dt)
@@ -231,6 +247,10 @@ function Gameplay:updateIconPositions()
 end
 
 function Gameplay:updateScoreText()
+    if self.player.cpu then
+        self.scoreText:setContents("Botplay Enabled")
+        return
+    end
     self.scoreText:setContents("Score: " .. math.formatMoney(self.player.stats:getScore(), false, true))
 end
 
@@ -297,6 +317,12 @@ function Gameplay:beatHit(beat)
     local iconP2, iconP1 = self.iconP2, self.iconP1
     iconP2:bop()
     iconP1:bop()
+
+    local conductor = self.mainConductor
+    if beat > 0 and beat % conductor.timeSignature[1] == 0 then
+        self.camera:setZoom(self.camera:getZoom() + 0.015)
+        self.hudLayer:setZoom(self.hudLayer:getZoom() + 0.03)
+    end
 end
 
 function Gameplay:getPlaybackRate()

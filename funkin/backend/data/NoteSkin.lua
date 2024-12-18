@@ -23,7 +23,7 @@ local NoteSkinAnimationData = {
     indices = nil, --- @type table<table<integer>>?
     fps = nil, --- @type integer
     looped = nil, --- @type boolean
-    offsets = nil, --- @type table<table<string, number>>
+    offsets = nil, --- @type table<{x: number, y: number}>
 }
 
 ---
@@ -34,7 +34,7 @@ local NoteSkinSplashAnimationData = {
     indices = nil, --- @type table<table<table<integer>>>?
     fps = nil, --- @type integer
     looped = nil, --- @type boolean
-    offsets = nil, --- @type table<table<table<string, number>>>
+    offsets = nil, --- @type table<table<{x: number, y: number}>>
 }
 
 ---
@@ -48,10 +48,10 @@ local NoteSkinGenericData = {
     texture = nil, --- @type string
 
     atlasType = nil, --- @type funkin.backend.enums.AtlasType
-    gridSize = nil, --- @type table<string, number>?
+    gridSize = nil, --- @type {x: number, y: number}?
 
     animations = nil, --- @type table<funkin.backend.data.NoteSkinAnimationData>
-    offset = nil, --- @type table<string, number>
+    offset = nil, --- @type {x: number, y: number}
 
     antialiasing = nil --- @type boolean?
 }
@@ -69,10 +69,10 @@ local NoteSkinSplashData = {
     texture = nil, --- @type string
 
     atlasType = nil, --- @type funkin.backend.enums.AtlasType
-    gridSize = nil, --- @type table<string, number>?
+    gridSize = nil, --- @type {x: number, y: number}?
 
     animations = nil, --- @type table<funkin.backend.data.NoteSkinSplashAnimationData>
-    offset = nil, --- @type table<string, number>
+    offset = nil, --- @type {x: number, y: number}
 
     antialiasing = nil --- @type boolean?
 }

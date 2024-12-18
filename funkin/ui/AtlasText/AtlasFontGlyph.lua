@@ -19,7 +19,7 @@
 ---
 local AtlasFontGlyph = {
     prefix = nil, --- @type string?
-    offset = nil, --- @type table<string, number>?
+    offset = nil, --- @type {x: number, y: number}?
 
     width = nil, --- @type number?
     height = nil, --- @type number?
