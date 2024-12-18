@@ -6,7 +6,7 @@
 > [!IMPORTANT]  
 > To clone this repo, use the following command:
 > ```bat
-> git clone https://github.com/swordcube/funkin.lua funkin-lua
+> git clone --recurse-submodules https://github.com/swordcube/funkin.lua funkin-lua
 > ```
 > Otherwise [LÖVE](https://github.com/love2d/love) will most likely have trouble opening the project!
 
