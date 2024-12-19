@@ -80,6 +80,7 @@ function Player:missNote(note)
 
     self.stats:resetCombo()
     self.stats:increaseMissCombo()
+    self.stats:increaseMisses()
 
     self.stats:increaseScore(-10)
     self.stats:increaseHealth(-(0.0475 + math.min(note:getLength() * 0.001, 0.25)))
