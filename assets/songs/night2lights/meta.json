@@ -1,0 +1,27 @@
+{
+	"title": "Night2Lights",
+	"icon": "bf",
+	"album": "vol1",
+	"variants": [
+		"default"
+	],
+	"difficulties": [
+		"normal"
+	],
+	"ratings": {},
+	"freeplayData": null,
+	"bpm": 167,
+	"timeSignature": "4/4",
+	"artist": "Savour",
+	"charter": "Lem / Viva",
+	"characters": {
+		"opponent": "goonmax",
+		"spectator": "goonie",
+		"player": "bf"
+	},
+	"stage": "n2l",
+	"uiSkin": "default",
+	"scrollSpeed": {
+		"normal": 2.8
+	}
+}
