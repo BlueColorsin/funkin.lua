@@ -145,6 +145,7 @@ function FreeplayMenu:init()
 
         local text = AtlasText:new(0, 30 + (70 * i), "bold", "left", songMetas.default.title) --- @type funkin.ui.AtlasText
         text.targetY = i - 1
+        text.isMenuItem = true
         self.grpSongs:add(text)
 
         local icon = HealthIcon:new(songMetas.default.icon or Constants.DEFAULT_HEALTH_ICON, false) --- @type funkin.ui.HealthIcon
@@ -260,41 +261,6 @@ function FreeplayMenu:changeDifficulty(by, force)
 end
 
 function FreeplayMenu:update(dt)
-    local songCount = #self.songList
-
-    local lerpRatio = dt * 9.6
-    self.lerpSelected = lerp(self.lerpSelected, self.curSelected, lerpRatio)
-    
-    for i = 1, #self._lastVisibles do
-        local j = self._lastVisibles[i]
-
-        local text = self.grpSongs:getMembers()[j] --- @type funkin.ui.AtlasText
-        text:setUpdateMode(_disabled_)
-        text:setVisibility(false)
-
-        local icon = self.grpIcons:getMembers()[j] --- @type funkin.ui.HealthIcon
-        icon:setUpdateMode(_disabled_)
-        icon:setVisibility(false)
-    end
-    self._lastVisibles = {}
-
-    local minv = round(max(1, min(songCount, self.lerpSelected - 4)))
-	local maxv = round(max(1, min(songCount, self.lerpSelected + 4)))
-
-    for i = minv, maxv do
-        local text = self.grpSongs:getMembers()[i] --- @type funkin.ui.AtlasText
-        text:setUpdateMode(_inherit_)
-        text:setVisibility(true)
-
-        text:setX(lerp(text:getX(), (text.targetY * 20) + 90, lerpRatio))
-        text:setY(lerp(text:getY(), (text.targetY * 156) + (Engine.gameHeight * 0.45), lerpRatio))
-
-        local icon = self.grpIcons:getMembers()[i] --- @type funkin.ui.HealthIcon
-        icon:setUpdateMode(_inherit_)
-        icon:setVisibility(true)
-
-        tblInsert(self._lastVisibles, i)
-    end
     local songMetas = self.songMetas[self.songList[self.curSelected]] --- @type table<string, funkin.backend.song.SongMetadata>
     
     local bgColor = self.bg:getTint() --- @type chip.utils.Color

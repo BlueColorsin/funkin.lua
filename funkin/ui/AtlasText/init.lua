@@ -14,6 +14,7 @@
     limitations under the License.
 ]]
 
+local lerp = math.lerp
 local tblContains = table.contains
 
 local File = crequire("utils.File") --- @type chip.utils.File
@@ -78,6 +79,15 @@ function AtlasText:constructor(x, y, font, alignment, contents)
     self:setFont(font)
     self:setContents(contents)
     self:setAlignment(alignment)
+end
+
+function AtlasText:update(dt)
+    if self.isMenuItem then
+        local lerpRatio = dt * 9.6
+        self:setX(lerp(self:getX(), (self.targetY * 20) + 90, lerpRatio))
+        self:setY(lerp(self:getY(), (self.targetY * 156) + (Engine.gameHeight * 0.45), lerpRatio))
+    end
+    AtlasText.super.update(self, dt)
 end
 
 function AtlasText:getFont()
