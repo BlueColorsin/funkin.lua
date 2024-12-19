@@ -19,7 +19,7 @@
 ---
 local ChartData = {
     meta = nil, --- @type funkin.backend.song.SongMetadata?
-    notes = nil, --- @type table<number, funkin.backend.song.chart.NoteData>
-    events = nil, --- @type table<number, funkin.backend.song.chart.EventData>
+    notes = nil, --- @type table<funkin.backend.song.chart.NoteData>
+    events = nil, --- @type table<funkin.backend.song.chart.EventData>
 }
 return ChartData

@@ -17,9 +17,10 @@
 local lerp = math.lerp
 
 local UISkin = require("funkin.backend.data.UISkin") --- @type funkin.backend.data.UISkin
-local SongMetadata = require("funkin.backend.song.SongMetadata") --- @type funkin.backend.song.SongMetadata
-
 local Scoring = require("funkin.gameplay.scoring.Scoring") --- @type funkin.gameplay.scoring.Scoring
+
+local Chart = require("funkin.backend.song.Chart") --- @type funkin.backend.song.Chart
+local SongMetadata = require("funkin.backend.song.SongMetadata") --- @type funkin.backend.song.SongMetadata
 
 local StrumLine = require("funkin.gameplay.StrumLine") --- @type funkin.gameplay.StrumLine
 local Player = require("funkin.gameplay.Player") --- @type funkin.gameplay.Player
@@ -59,8 +60,7 @@ function Gameplay:init()
         BGM.stop()
     end
     -- load chart
-    self.currentChart = Json.parse(File.read(Paths.chart(self._params.song, self._params.difficulty))) --- @type funkin.backend.song.chart.ChartData
-    self.currentChart.meta = SongMetadata.get(self._params.song)
+    self.currentChart = Chart.load(self._params.song, self._params.difficulty) --- @type funkin.backend.song.chart.ChartData
 
     -- load inst
     BGM.audioPlayer:setVolume(1.0)
@@ -218,6 +218,18 @@ function Gameplay:update(dt)
         -- to instantly go to freeplay
         if Controls.justPressed.BACK then
             Engine.switchScene(require("funkin.scenes.FreeplayMenu"):new())
+        end
+    end
+    if Input.wasKeyJustPressed(KeyCode.HOME) then
+        if self.startingSong then
+            self:startSong()
+        end
+        local time = self.currentChart.notes[1].time
+        self.mainConductor:setTime(time)
+
+        BGM.audioPlayer:seek(time / 1000.0)
+        for _, value in pairs(self.vocalTracks) do
+            value:seek(time / 1000.0)
         end
     end
     local healthBar = self.healthBar
