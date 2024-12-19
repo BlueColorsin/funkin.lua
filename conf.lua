@@ -4,7 +4,9 @@ function love.conf(t)
     t.console = false
 
     t.gammacorrect = false
+    
 	t.highdpi = false
+    t.usedpiscale = false
 
     t.window.title = "funkin.lua"
 
