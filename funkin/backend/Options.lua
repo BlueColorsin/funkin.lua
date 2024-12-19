@@ -133,7 +133,7 @@ function Options.init()
     if doFlush then
         Options.save()
     end
-    Engine.postUpdate:connect(function()
+    Engine.onInputReceived:connect(function(e)
         if Controls.justPressed.FULLSCREEN then
             love.window.setFullscreen(not love.window.getFullscreen())
         end
