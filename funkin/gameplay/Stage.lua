@@ -14,7 +14,11 @@
     limitations under the License.
 ]]
 
+local tblInsert = table.insert
+local tblContains = table.contains
+
 local StageData = require("funkin.backend.data.StageData") --- @type funkin.backend.data.StageData
+local Character = require("funkin.gameplay.Character")
 
 ---
 --- @class funkin.gameplay.Stage : chip.core.Group
@@ -50,6 +54,7 @@ function Stage:constructor(stageID)
 
     self.startingCameraPos = json and json.cameraPosition or {x = 100, y = 100} --- @type {x: number, y: number}
 
+    local addedChars = {} --- @type table<string>
     local function addObject(tag, obj)
         -- TODO: utilize tag for stage scripts
         self:add(obj)
@@ -59,18 +64,63 @@ function Stage:constructor(stageID)
     ---
     local function spectatorCase(object)
         print("adding spectator,,")
+        tblInsert(addedChars, "spectator")
+        
+        local spectator = nil --- @type funkin.gameplay.Character
+        local game = Gameplay.instance --- @type funkin.scenes.Gameplay
+        local position = object.properties.position --- @type {x: number, y: number}?
+        if not position then
+            position = {x = 656, y = 738}
+        end
+        if game then
+            spectator = game.spectatorCharacter --- @type funkin.gameplay.Character
+            spectator:setPosition(position.x, position.y)
+        else
+            spectator = Character:new(position.x, position.y, "gf") --- @type funkin.gameplay.Character
+        end
+        addObject("spectatorCharacter", spectator)
     end
     ---
     --- @param  object  funkin.backend.data.StageObjectData
     ---
     local function opponentCase(object)
         print("adding opponent,,")
+        tblInsert(addedChars, "opponent")
+
+        local opponent = nil --- @type funkin.gameplay.Character
+        local game = Gameplay.instance --- @type funkin.scenes.Gameplay
+        local position = object.properties.position --- @type {x: number, y: number}?
+        if not position then
+            position = {x = 244, y = 812}
+        end
+        if game then
+            opponent = game.opponentCharacter --- @type funkin.gameplay.Character
+            opponent:setPosition(position.x, position.y)
+        else
+            opponent = Character:new(position.x, position.y, "dad") --- @type funkin.gameplay.Character
+        end
+        addObject("opponentCharacter", opponent)
     end
     ---
     --- @param  object  funkin.backend.data.StageObjectData
     ---
     local function playerCase(object)
         print("adding player,,")
+        tblInsert(addedChars, "player")
+
+        local player = nil --- @type funkin.gameplay.Character
+        local game = Gameplay.instance --- @type funkin.scenes.Gameplay
+        local position = object.properties.position --- @type {x: number, y: number}?
+        if not position then
+            position = {x = 938, y = 812}
+        end
+        if game then
+            player = game.playerCharacter --- @type funkin.gameplay.Character
+            player:setPosition(position.x, position.y)
+        else
+            player = Character:new(position.x, position.y, "bf") --- @type funkin.gameplay.Character
+        end
+        addObject("playerCharacter", player)
     end
     local cases = {
         ---
@@ -143,6 +193,30 @@ function Stage:constructor(stageID)
         local case = cases[object.type:lower()] --- @type function?
         if case then
             case(object)
+        end
+    end
+    local allChars = {"spectator", "opponent", "player"}
+    for i = 1, #allChars do
+        local char = allChars[i] --- @type string
+        if not tblContains(addedChars, char) then
+            if char == "spectator" then
+                spectatorCase({
+                    type = "spectator",
+                    properties = {}
+                })
+            
+            elseif char == "opponent" then
+                opponentCase({
+                    type = "opponent",
+                    properties = {}
+                })
+                
+            elseif char == "player" then
+                playerCase({
+                    type = "player",
+                    properties = {}
+                })
+            end
         end
     end
 end

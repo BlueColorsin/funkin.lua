@@ -25,15 +25,22 @@
         },
         {
             "type": "spectator",
-            "properties": {}
+            "properties": {
+                "position": {"x": 656, "y": 738},
+                "scroll": 0.95
+            }
         },
         {
             "type": "opponent",
-            "properties": {}
+            "properties": {
+                "position": {"x": 244, "y": 812}
+            }
         },
         {
             "type": "player",
-            "properties": {}
+            "properties": {
+                "position": {"x": 938, "y": 812}
+            }
         },
         {
             "tag": "stageCurtains",
@@ -46,5 +53,5 @@
             }
         }
     ],
-    "cameraPosition": {"x": 1000, "y": 600}
+    "cameraPosition": {"x": 600, "y": 400}
 }

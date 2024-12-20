@@ -30,6 +30,7 @@ local HealthIcon = require("funkin.ui.HealthIcon") --- @type funkin.ui.HealthIco
 local ComboPopups = require("funkin.gameplay.combo.ComboPopups") --- @type funkin.gameplay.combo.ComboPopups
 
 local Stage = require("funkin.gameplay.Stage") --- @type funkin.gameplay.Stage
+local Character = require("funkin.gameplay.Character") --- @type funkin.gameplay.Character
 
 ---
 --- @class funkin.scenes.Gameplay : chip.core.Scene
@@ -90,6 +91,11 @@ function Gameplay:init()
     end
 
     -- setup stage & characters! yay!!
+    local characters = self.currentChart.meta.characters
+    self.spectatorCharacter = Character:new(0, 0, characters.spectator) --- @type funkin.gameplay.Character
+    self.opponentCharacter = Character:new(0, 0, characters.opponent) --- @type funkin.gameplay.Character
+    self.playerCharacter = Character:new(0, 0, characters.player) --- @type funkin.gameplay.Character
+
     self.stage = Stage:new(self.currentChart.meta.stage) --- @type funkin.gameplay.Stage
     self:add(self.stage)
 
