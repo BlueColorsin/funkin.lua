@@ -42,7 +42,7 @@
 				"y": 1
 			},
 			"name": "idle",
-			"looped": false
+			"looped": true
 		},
 		{
 			"fps": 24,
