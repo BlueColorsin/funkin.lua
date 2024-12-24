@@ -295,8 +295,8 @@ function Note:updatePosition(songPos)
     local calcHeight = max((0.45 * (self._length - conductor:getStepCrotchet()) * absScrollSpeed) - sexo)
 
     sustain:setPosition(
-        self:getX() + ((self:getWidth() - sustain:getBody():getHorizontalLength()) * 0.5),
-        (wasHit and receptor:getY() or self:getY()) + (scrollMult < 0.0 and ((receptor._initialHeight * receptor.scale.y) * 0.5) - calcHeight or ((receptor._initialHeight * receptor.scale.y) * 0.5))
+        self:getX(),
+        (wasHit and receptor:getY() or self:getY()) + (scrollMult < 0.0 and -calcHeight or 0.0) + (receptor._initialHeight * 0.5)
     )
     sustain:setLength(calcHeight)
 end

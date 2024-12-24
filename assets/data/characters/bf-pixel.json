@@ -10,6 +10,7 @@
 	"danceSteps": [
 		"idle"
 	],
+	"danceFrequency": 2,
 	"antialiasing": true,
 	"camera": {
 		"x": 0,

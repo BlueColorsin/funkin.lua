@@ -21,10 +21,11 @@ local CharacterData = require("funkin.backend.data.CharacterData") --- @type fun
 ---
 local Character = Sprite:extend("Character", ...)
 
-function Character:constructor(x, y, characterID)
+function Character:constructor(x, y, characterID, isPlayer)
     Character.super.constructor(self, x, y)
 
     self._characterID = characterID
+    self._isPlayer = isPlayer
 
     local json = CharacterData.get(characterID) --- @type funkin.backend.data.CharacterData?
     if not json then
@@ -65,17 +66,63 @@ function Character:constructor(x, y, characterID)
         -- TODO
     end
     self:dance(true)
-    self.offset:set(self:getWidth() * 0.5, self:getHeight() * 0.5)
+    self.offset:set(self:getWidth() * 0.5, self:getHeight())
+
+    self.flipX = json.flip.x
+    self.flipY = json.flip.y
+
+    if isPlayer then
+        self.flipX = not self.flipX
+    end
+
+    ---
+    --- @protected
+    ---
+    self._playerOffsets = json.isPlayer
+
+    ---
+    --- @protected
+    ---
+    self._flipped = false
 end
 
 function Character:getConfig()
     return self._config
 end
 
+function Character:isPlayer()
+    return self._isPlayer
+end
+
 function Character:dance(force)
-    local danceSteps = self._config.danceSteps
+    local danceSteps = self._config.danceSteps or {"idle"}
     self.animation:play(danceSteps[self._curDanceStep], force)
     self._curDanceStep = math.wrap(self._curDanceStep + 1, 1, #danceSteps)
+end
+
+function Character:beatHit(beat)
+    local danceFrequency = self._config.danceFrequency
+    if beat % danceFrequency == 0 then
+        self:dance(true)
+    end
+end
+
+function Character:draw()
+    self:_fixOffsets()
+    Character.super.draw(self)
+    self:_fixOffsets()
+end
+
+--- [ PRIVATE API ] ---
+
+---
+--- @protected
+---
+function Character:_fixOffsets()
+    if self._isPlayer ~= self._playerOffsets then
+        self.scale.x = -self.scale.x
+        self.flipX = not self.flipX
+    end
 end
 
 return Character

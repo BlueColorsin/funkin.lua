@@ -1,0 +1,27 @@
+{
+	"title": "Starburst",
+	"icon": "bf",
+	"album": "vol1",
+	"variants": [
+		"default"
+	],
+	"difficulties": [
+		"hard"
+	],
+	"ratings": {},
+	"freeplayData": null,
+	"bpm": 150,
+	"timeSignature": "4/4",
+	"artist": "caffie",
+	"charter": "swordcube",
+	"characters": {
+		"opponent": "chiplet",
+		"spectator": "cubical_speakers",
+		"player": "bf"
+	},
+	"stage": "chiplet",
+	"uiSkin": "default",
+	"scrollSpeed": {
+		"hard": 2.7
+	}
+}

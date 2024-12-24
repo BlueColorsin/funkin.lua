@@ -63,6 +63,8 @@ function Receptor:setLaneID(id)
 
     self._initialWidth = self:getFrameWidth()
     self._initialHeight = self:getFrameHeight()
+
+    self.frameOffset:set((self:getFrameWidth() - self._initialWidth) * 0.5, (self:getFrameHeight() - self._initialHeight) * 0.5)
 end
 
 function Receptor:getSkin()

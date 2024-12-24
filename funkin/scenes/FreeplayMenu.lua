@@ -337,8 +337,8 @@ function FreeplayMenu:positionHighscore()
     self.scoreText:setX(Engine.gameWidth - self.scoreText:getWidth() - 6)
     self.scoreBG.scale.x = (Engine.gameWidth - self.scoreText:getX()) + 6
     
-    self.scoreBG:setX(Engine.gameWidth - self.scoreBG.scale.x)
-    self.diffText:setX(self.scoreBG:getX() + ((self.scoreBG:getWidth() - self.diffText:getWidth()) * 0.5))
+    self.scoreBG:setX(Engine.gameWidth - (self.scoreBG.scale.x / 2))
+    self.diffText:setX(self.scoreBG:getX() - (self.diffText:getWidth() * 0.5))
 end
 
 function FreeplayMenu:free()

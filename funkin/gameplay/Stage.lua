@@ -72,11 +72,20 @@ function Stage:constructor(stageID)
         if not position then
             position = {x = 656, y = 738}
         end
+        local scroll = object.properties.scroll --- @type number|{x: number, y: number}?
+        if not scroll then
+            scroll = {x = 1, y = 1}
+        end
         if game then
             spectator = game.spectatorCharacter --- @type funkin.gameplay.Character
             spectator:setPosition(position.x, position.y)
         else
             spectator = Character:new(position.x, position.y, "gf") --- @type funkin.gameplay.Character
+        end
+        if type(scroll) == "number" then
+            spectator.scrollFactor:set(scroll, scroll)
+        else
+            spectator.scrollFactor:set(scroll.x, scroll.y)
         end
         addObject("spectatorCharacter", spectator)
     end

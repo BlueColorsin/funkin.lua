@@ -115,7 +115,7 @@
                 "looped": false
             }
         ],
-        "offset": {"x": 0, "y": 0}
+        "offset": {"x": -53, "y": 0}
     },
     "holdCovers": {
         "scale": 1,
@@ -162,7 +162,7 @@
                 "looped": false
             }
         ],
-        "offset": {"x": 60, "y": 50}
+        "offset": {"x": 38, "y": 28}
     },
     "splashes": {
         "scale": 1,
@@ -190,6 +190,6 @@
                 ]
             }
         ],
-        "offset": {"x": -20, "y": -40}
+        "offset": {"x": -40, "y": -60}
     }
 }

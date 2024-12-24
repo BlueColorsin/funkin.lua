@@ -119,9 +119,11 @@ function Sustain:setSkin(skin)
     end
     self._body.animation:play(dirs[self._note:getLaneID() + 1] .. " hold")
     self._body.scale:set(json.sustains.scale, json.sustains.scale)
+    self._body.offset:set(json.sustains.offset.x, json.sustains.offset.y)
     
     self._tail.animation:play(dirs[self._note:getLaneID() + 1] .. " tail")
     self._tail.scale:set(json.sustains.scale, json.sustains.scale)
+    self._tail.offset:set(json.sustains.offset.x, json.sustains.offset.y)
 
     self._skin = skin
 end
@@ -213,7 +215,7 @@ function Sustain:setLength(value)
     end
     if note:wasHit() and not note:wasMissed() then
         local receptor = strumLine.receptors:getMembers()[note:getLaneID() + 1]
-        local receptorCenter = (strumLine:getY() + receptor:getY()) + ((receptor._initialHeight * receptor.scale.y) * 0.5)
+        local receptorCenter = (strumLine:getY() + receptor:getY()) + (receptor._initialHeight * 0.5)
     
         local py = 0.0
         local p = self._parent

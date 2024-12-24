@@ -81,7 +81,12 @@ local CharacterData = {
     ---
     --- @type table<string>?
     ---
-    danceSteps = nil
+    danceSteps = nil,
+
+    ---
+    --- @type integer
+    ---
+    danceFrequency = nil
 }
 
 ---

@@ -1,0 +1,49 @@
+{
+	"atlasPath": "gf/speakers",
+	"position": {
+		"x": 0,
+		"y": 0
+	},
+	"scale": 1,
+	"isPlayer": false,
+	"singDuration": 4,
+	"danceSteps": [
+		"idle"
+	],
+	"danceFrequency": 1,
+	"antialiasing": true,
+	"camera": {
+		"x": 0,
+		"y": 0
+	},
+	"atlasType": "sparrow",
+	"healthIcon": {
+		"isPixel": false,
+		"scale": 1,
+		"flip": {
+			"x": false,
+			"y": false
+		},
+		"offset": {
+			"x": 0,
+			"y": 0
+		},
+		"color": "#A5004D"
+	},
+	"flip": {
+		"x": false,
+		"y": false
+	},
+	"animations": [
+		{
+			"fps": 24,
+			"prefix": "speakers",
+			"offset": {
+				"x": 0,
+				"y": 0
+			},
+			"name": "idle",
+			"looped": false
+		}
+	]
+}

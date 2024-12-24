@@ -111,7 +111,7 @@ function ComboPopups:showCombo(combo, skin, miss)
         sprite:setAlpha(1.0)
         sprite:setTint(miss and 0xFFb73c3c or Color.WHITE)
 
-        sprite:setPosition((Engine.gameWidth * 0.474) - (36 * (i - 1)) - 65, (Engine.gameHeight * 0.52) - 60)
+        sprite:setPosition((Engine.gameWidth * 0.507) - (36 * (i - 1)) - 65, (Engine.gameHeight * 0.5) - 60)
         sprite:setRotation(0.0)
 
         sprite:setComboSkin(skin)

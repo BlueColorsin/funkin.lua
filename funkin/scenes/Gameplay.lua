@@ -92,9 +92,9 @@ function Gameplay:init()
 
     -- setup stage & characters! yay!!
     local characters = self.currentChart.meta.characters
-    self.spectatorCharacter = Character:new(0, 0, characters.spectator) --- @type funkin.gameplay.Character
-    self.opponentCharacter = Character:new(0, 0, characters.opponent) --- @type funkin.gameplay.Character
-    self.playerCharacter = Character:new(0, 0, characters.player) --- @type funkin.gameplay.Character
+    self.spectatorCharacter = Character:new(0, 0, characters.spectator, false) --- @type funkin.gameplay.Character
+    self.opponentCharacter = Character:new(0, 0, characters.opponent, false) --- @type funkin.gameplay.Character
+    self.playerCharacter = Character:new(0, 0, characters.player, true) --- @type funkin.gameplay.Character
 
     self.stage = Stage:new(self.currentChart.meta.stage) --- @type funkin.gameplay.Stage
     self:add(self.stage)
@@ -129,7 +129,7 @@ function Gameplay:init()
     self:add(self.hudLayer)
 
     -- make strumlines
-    self.opponentStrumLine = StrumLine:new(Engine.gameWidth * 0.25, 50, Options.downscroll, self.currentChart.meta.uiSkin) --- @type funkin.gameplay.StrumLine
+    self.opponentStrumLine = StrumLine:new(Engine.gameWidth * 0.25, 50, Options.downscroll, "pixel") --- @type funkin.gameplay.StrumLine
     self.opponentStrumLine:attachNotes(table.filter(self.currentChart.notes, function(note)
         return note.lane < 4
     end))
@@ -255,12 +255,12 @@ end
 function Gameplay:updateIconPositions()
     local iconOffset, healthBar, iconP2, iconP1 = 26.0, self.healthBar, self.iconP2, self.iconP1
     iconP2:setPosition(
-        healthBar:getX() + (healthBar:getWidth() * (1 - healthBar:getProgress())) - (iconP2:getWidth() - iconOffset),
-        healthBar:getY() + (healthBar:getHeight() * 0.5) - (iconP2:getHeight() * 0.5)
+        (healthBar:getX() + (healthBar:getWidth() * (1 - healthBar:getProgress())) - ((iconP2:getWidth() - (iconP2:getFrameWidth() * iconP2.size.x)) * 0.5)) - (HealthIcon.HEALTH_ICON_SIZE - iconOffset),
+        healthBar:getY() - ((iconP2:getFrameHeight() * iconP2.size.y) * 0.5)
     )
     iconP1:setPosition(
-        healthBar:getX() + (healthBar:getWidth() * (1 - healthBar:getProgress())) - iconOffset,
-        healthBar:getY() + (healthBar:getHeight() * 0.5) - (iconP1:getHeight() * 0.5)
+        (healthBar:getX() + (healthBar:getWidth() * (1 - healthBar:getProgress())) + ((iconP1:getWidth() - (iconP1:getFrameWidth() * iconP1.size.x)) * 0.5)) - iconOffset,
+        healthBar:getY() - ((iconP1:getFrameHeight() * iconP1.size.y) * 0.5)
     )
 end
 

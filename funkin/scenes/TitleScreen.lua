@@ -125,6 +125,7 @@ function TitleScreen:init()
 
     self.flashSpr = Sprite:new() --- @type chip.graphics.Sprite
     self.flashSpr:makeSolid(Engine.gameWidth, Engine.gameHeight, Color.WHITE)
+    self.flashSpr:screenCenter("xy")
     self.flashSpr:kill()
     self:add(self.flashSpr)
 

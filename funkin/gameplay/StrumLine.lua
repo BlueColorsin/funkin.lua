@@ -69,6 +69,10 @@ function StrumLine:constructor(x, y, downscroll, skin)
     local json = NoteSkin.get(self._skin) --- @type funkin.backend.data.NoteSkin?
     for i = 0, 3 do
         local receptor = Receptor:new((i - 2) * json.receptors.spacing, 0, i, self._skin) --- @type funkin.gameplay.Receptor
+        receptor:setPosition(
+            receptor:getX() - ((receptor:getFrameWidth() - receptor:getWidth()) * 0.5),
+            receptor:getY() - ((receptor:getFrameHeight() - receptor:getHeight()) * 0.5)
+        )
         self.receptors:add(receptor)
     end
     self.sustains = CanvasLayer:new() --- @type chip.graphics.CanvasLayer
