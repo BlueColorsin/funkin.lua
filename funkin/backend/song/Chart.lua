@@ -15,6 +15,8 @@
 ]]
 
 local abs = math.abs
+
+local tblSort = table.sort
 local tblInsert = table.insert
 
 local SongMetadata = require("funkin.backend.song.SongMetadata") --- @type funkin.backend.song.SongMetadata
@@ -36,7 +38,9 @@ function Chart.load(song, difficulty)
 
     local uniqueNotes = {} --- @type table<funkin.backend.song.chart.NoteData>
     local chartNotes = chart.notes --- @type table<funkin.backend.song.chart.NoteData>
-
+    tblSort(chartNotes, function(a, b)
+        return a.time < b.time
+    end)
     for i = 1, #chartNotes do
         local note = chartNotes[i] --- @type funkin.backend.song.chart.NoteData
         local isStacked = false
@@ -52,6 +56,9 @@ function Chart.load(song, difficulty)
         end
     end
     chart.notes = uniqueNotes
+    tblSort(chart.events, function(a, b)
+        return a.time < b.time
+    end)
     return chart
 end
 

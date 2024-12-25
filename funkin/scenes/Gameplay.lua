@@ -106,6 +106,8 @@ function Gameplay:init()
     self.camera:setPosition(self.stage.startingCameraPos.x, self.stage.startingCameraPos.y)
     self:add(self.camera)
 
+    self.curCameraTarget = 0 --- @type integer
+
     -- setup conductor
     self.mainConductor = Conductor.instance
     self.mainConductor.allowSongOffset = true
@@ -120,6 +122,24 @@ function Gameplay:init()
     -- setup misc variables
     self.startingSong = true
     self.endingSong = false
+
+    ---
+    --- @protected
+    ---
+    self._currentEvent = 1 --- @type integer
+
+    local panEvents = self.currentChart.events
+    table.filter(panEvents, function(e)
+        return e.time <= 20 and e.type == "Camera Pan"
+    end)
+    for i = 1, #panEvents do
+        local event = panEvents[i]
+        if type(event.params) == "number" then
+            self.curCameraTarget = event.params
+        else
+            self.curCameraTarget = event.params.char
+        end
+    end
 
     -- scroll speed stuff
     local scrollSpeed = self.currentChart.meta.scrollSpeed
@@ -210,6 +230,20 @@ function Gameplay:init()
     self.hudLayer:add(self.comboPopups)
 end
 
+---
+--- @param  event  funkin.backend.song.chart.EventData
+---
+function Gameplay:executeEvent(event)
+    if event.type == "Camera Pan" then
+        if type(event.params) == "number" then
+            self.curCameraTarget = event.params
+        else
+            self.curCameraTarget = event.params.char
+        end
+        print(self.curCameraTarget)
+    end
+end
+
 function Gameplay:update(dt)
     local mainConductor = self.mainConductor
     if self.startingSong then
@@ -248,6 +282,22 @@ function Gameplay:update(dt)
     self.camera:setZoom(lerp(self.camera:getZoom(), self.stage.zoom, dt * 3.0))
     self.hudLayer:setZoom(lerp(self.hudLayer:getZoom(), 1.0, dt * 3.0))
 
+    local chart = self.currentChart
+    while self._currentEvent < #chart.events and self.mainConductor:getTime() >= chart.events[self._currentEvent].time do
+        self:executeEvent(chart.events[self._currentEvent])
+        self._currentEvent = self._currentEvent + 1
+    end
+    local focusedCharacter = self.opponentCharacter
+    if self.curCameraTarget == 1 then
+        focusedCharacter = self.playerCharacter
+    
+    elseif self.curCameraTarget == 2 then
+        focusedCharacter = self.spectatorCharacter
+    end
+    self.camera:setPosition(
+        lerp(self.camera:getX(), focusedCharacter:getCameraX(), dt * 2.4),
+        lerp(self.camera:getY(), focusedCharacter:getCameraY(), dt * 2.4)
+    )
     self:updateIconPositions()
     Gameplay.super.update(self, dt)
 end

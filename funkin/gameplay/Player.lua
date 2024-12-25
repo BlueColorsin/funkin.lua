@@ -16,6 +16,8 @@
 
 ---@diagnostic disable: invisible
 
+local dirs = {"left", "down", "up", "right"}
+
 local max = math.max
 
 local Scoring = require("funkin.gameplay.scoring.Scoring") --- @type funkin.gameplay.scoring.Scoring
@@ -91,11 +93,16 @@ function Player:missNote(note)
     local holdCover = holdCoverMembers[note:getLaneID() + 1] --- @type funkin.gameplay.HoldCover
     holdCover:kill()
 
+    -- TODO: make a signal that gameplay hooks to instead
+    local game = Gameplay.instance --- @type funkin.scenes.Gameplay
+    if self.cpu then
+        game.opponentCharacter:sing(dirs[note:getLaneID() + 1], true)
+    else
+        game.playerCharacter:sing(dirs[note:getLaneID() + 1], true)
+    end
     if self.cpu then
         return
     end
-    -- TODO: make a signal that gameplay hooks to instead
-    local game = Gameplay.instance --- @type funkin.scenes.Gameplay
     if not Options.comboStacking then
         game.comboPopups:killAllSprites()
     end
@@ -134,11 +141,16 @@ function Player:hitNote(note)
         local holdCover = holdCoverMembers[lane + 1] --- @type funkin.gameplay.HoldCover
         holdCover:setup(strumLine, lane, note:getSkin())
     end
+    -- TODO: make a signal that gameplay hooks to instead
+    local game = Gameplay.instance --- @type funkin.scenes.Gameplay
+    if self.cpu then
+        game.opponentCharacter:sing(dirs[note:getLaneID() + 1], false, note:getLength())
+    else
+        game.playerCharacter:sing(dirs[note:getLaneID() + 1], false, note:getLength())
+    end
     if self.cpu then
         return
     end
-    -- TODO: make a signal that gameplay hooks to instead
-    local game = Gameplay.instance --- @type funkin.scenes.Gameplay
     if not Options.comboStacking then
         game.comboPopups:killAllSprites()
     end

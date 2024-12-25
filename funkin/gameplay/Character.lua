@@ -66,7 +66,19 @@ function Character:constructor(x, y, characterID, isPlayer)
         -- TODO
     end
     self:dance(true)
-    self.offset:set(self:getWidth() * 0.5, self:getHeight())
+
+    local offset = json.position or {x = 0, y = 0}
+    self.offset:set((self:getWidth() * 0.5) + offset.x, self:getHeight() + offset.y)
+
+    ---
+    --- @protected
+    ---
+    self._initialWidth = self:getFrameWidth()
+
+    ---
+    --- @protected
+    ---
+    self._initialHeight = self:getFrameHeight()
 
     self.flipX = json.flip.x
     self.flipY = json.flip.y
@@ -83,7 +95,7 @@ function Character:constructor(x, y, characterID, isPlayer)
     ---
     --- @protected
     ---
-    self._flipped = false
+    self._lastSongPos = -math.huge
 end
 
 function Character:getConfig()
@@ -100,11 +112,41 @@ function Character:dance(force)
     self._curDanceStep = math.wrap(self._curDanceStep + 1, 1, #danceSteps)
 end
 
+---
+--- @param  direction       "left"|"down"|"up"|"right"
+--- @param  miss?           boolean
+--- @param  durationOffset? number
+---
+function Character:sing(direction, miss, durationOffset)
+    self._lastSongPos = Conductor.instance:getTime() - (durationOffset or 0.0)
+    self.animation:play("sing" .. direction:upper() .. (miss and "miss" or ""), true)
+end
+
 function Character:beatHit(beat)
-    local danceFrequency = self._config.danceFrequency
-    if beat % danceFrequency == 0 then
+    local mainConductor = Conductor.instance
+
+    local danceFrequency = self._config.danceFrequency or 2
+    local singDuration = self._config.singDuration or 4.0
+
+    local pressed = Controls.pressed
+    local notesHeld = pressed.NOTE_LEFT or pressed.NOTE_DOWN or pressed.NOTE_UP or pressed.NOTE_RIGHT
+
+    local sang = mainConductor:getTime() > self._lastSongPos + (mainConductor:getStepCrotchet() * singDuration) and ((not self._isPlayer) or (self._isPlayer and not notesHeld))
+    if (sang or not self.animation:getCurrentAnimationName():startsWith("sing")) and beat % danceFrequency == 0 then
         self:dance(true)
     end
+end
+
+function Character:getCameraX()
+    local offset = self._config.position or {x = 0, y = 0}
+    local camera = self._config.camera or {x = 0, y = 0}
+    return (self:getX() + (self._isPlayer and -100.0 or 150.0)) + camera.x + offset.x
+end
+
+function Character:getCameraY()
+    local offset = self._config.position or {x = 0, y = 0}
+    local camera = self._config.camera or {x = 0, y = 0}
+    return ((self:getY() - (self._initialHeight * 0.5)) - 100) + camera.y + offset.x
 end
 
 function Character:draw()
