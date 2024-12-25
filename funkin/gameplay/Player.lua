@@ -80,12 +80,13 @@ end
 function Player:missNote(note)
     note:miss()
 
-    self.stats:resetCombo()
-    self.stats:increaseMissCombo()
-    self.stats:increaseMisses()
+    local stats = self.stats
+    stats:resetCombo()
+    stats:increaseMissCombo()
+    stats:increaseMisses()
 
-    self.stats:increaseScore(-10)
-    self.stats:increaseHealth(-(0.0475 + math.min(note:getLength() * 0.001, 0.25)))
+    stats:increaseScore(-10)
+    stats:increaseHealth(-(0.0475 + math.min(note:getLength() * 0.001, 0.25)))
 
     local strumLine = note:getStrumLine() --- @type funkin.gameplay.StrumLine
     local holdCoverMembers = strumLine.holdCovers:getMembers() --- @type table<funkin.gameplay.HoldCover>
@@ -121,12 +122,17 @@ function Player:hitNote(note)
     local accScore = Scoring.getAccuracyScore(judgement)
     
     local stats = self.stats
+    if Scoring.breaksCombo(judgement) then
+        stats:resetCombo()
+        stats:increaseMissCombo()
+        stats:increaseMisses()
+    end
     stats:resetMissCombo()
     stats:increaseCombo()
     
     local score = Scoring.scoreNote(note, songPos)
     stats:increaseScore(score)
-    stats:increaseHealth(0.023)
+    stats:increaseHealth(0.023 * Scoring.getHealthGainMultiplier(judgement))
 
     stats:increaseTotalNotesHit()
     stats:increaseAccuracyScore(accScore)

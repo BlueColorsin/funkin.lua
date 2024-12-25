@@ -95,7 +95,21 @@ function Character:constructor(x, y, characterID, isPlayer)
     ---
     --- @protected
     ---
-    self._lastSongPos = -math.huge
+    self._lastSongPos = math.huge
+end
+
+function Character:update(dt)
+    local mainConductor = Conductor.instance
+    local singDuration = self._config.singDuration or 4.0
+
+    local pressed = Controls.pressed
+    local notesHeld = pressed.NOTE_LEFT or pressed.NOTE_DOWN or pressed.NOTE_UP or pressed.NOTE_RIGHT
+
+    if mainConductor:getTime() > self._lastSongPos + (mainConductor:getStepCrotchet() * singDuration) and ((not self._isPlayer) or (self._isPlayer and not notesHeld)) then
+        self:dance(true)
+        self._lastSongPos = math.huge
+    end
+    Character.super.update(self, dt)
 end
 
 function Character:getConfig()
@@ -118,22 +132,14 @@ end
 --- @param  durationOffset? number
 ---
 function Character:sing(direction, miss, durationOffset)
-    self._lastSongPos = Conductor.instance:getTime() - (durationOffset or 0.0)
+    self._lastSongPos = Conductor.instance:getTime() + (durationOffset or 0.0)
     self.animation:play("sing" .. direction:upper() .. (miss and "miss" or ""), true)
 end
 
 function Character:beatHit(beat)
-    local mainConductor = Conductor.instance
-
     local danceFrequency = self._config.danceFrequency or 2
-    local singDuration = self._config.singDuration or 4.0
-
-    local pressed = Controls.pressed
-    local notesHeld = pressed.NOTE_LEFT or pressed.NOTE_DOWN or pressed.NOTE_UP or pressed.NOTE_RIGHT
-
-    local sang = mainConductor:getTime() > self._lastSongPos + (mainConductor:getStepCrotchet() * singDuration) and ((not self._isPlayer) or (self._isPlayer and not notesHeld))
-    if (sang or not self.animation:getCurrentAnimationName():startsWith("sing")) and beat % danceFrequency == 0 then
-        self:dance(true)
+    if beat % danceFrequency == 0 and not self.animation:getCurrentAnimationName():startsWith("sing") then
+        self:dance()
     end
 end
 

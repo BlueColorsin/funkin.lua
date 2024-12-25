@@ -99,6 +99,30 @@ function Scoring.splashAllowed(judgement)
 end
 
 ---
+--- Returns whether or not your combo should be broken for a given judgement.
+---
+--- @param  judgement  string  The judgement to get the result from.
+--- 
+--- @return boolean
+---
+function Scoring.breaksCombo(judgement)
+    local system = Scoring.currentSystem
+    return system:breaksCombo(judgement)
+end
+
+---
+--- Returns the health gain multiplier for a given judgement.
+---
+--- @param  judgement  string  The judgement to get the result from.
+--- 
+--- @return number
+---
+function Scoring.getHealthGainMultiplier(judgement)
+    local system = Scoring.currentSystem
+    return system:getHealthGainMultiplier(judgement)
+end
+
+---
 --- Returns the rank of a given accuracy.
 ---
 --- @param  accuracy  number  The accuracy to get the rank of.

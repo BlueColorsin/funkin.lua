@@ -151,6 +151,34 @@ function PBotSystem:splashAllowed(judgement)
 end
 
 ---
+--- Returns whether or not your combo should be broken for a given judgement.
+---
+--- @param  judgement  string  The judgement to get the result from.
+--- 
+--- @return boolean
+---
+function PBotSystem:breaksCombo(judgement)
+    if judgement == "shit" or judgement == "bad" then
+        return true
+    end
+    return false
+end
+
+---
+--- Returns the health gain multiplier for a given judgement.
+---
+--- @param  judgement  string  The judgement to get the result from.
+--- 
+--- @return number
+---
+function PBotSystem:getHealthGainMultiplier(judgement)
+    if judgement == "shit" or judgement == "bad" then
+        return -2.15
+    end
+    return 1.0
+end
+
+---
 --- Returns the rank of a given accuracy.
 ---
 --- @param  accuracy  number  The accuracy to get the rank of.

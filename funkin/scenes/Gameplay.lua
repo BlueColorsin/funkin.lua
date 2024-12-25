@@ -240,7 +240,6 @@ function Gameplay:executeEvent(event)
         else
             self.curCameraTarget = event.params.char
         end
-        print(self.curCameraTarget)
     end
 end
 
