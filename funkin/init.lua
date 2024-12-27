@@ -18,6 +18,7 @@ Constants = require("funkin.backend.utils.Constants")
 CoolUtil = require("funkin.backend.utils.CoolUtil")
 
 Cache = require("funkin.backend.Cache")
+Mods = require("funkin.backend.Mods")
 Paths = require("funkin.backend.Paths")
 
 Controls = require("funkin.backend.input.Controls")

@@ -1,0 +1,28 @@
+{
+	"title": "Funky-Intruder",
+
+	"icon": "bf",
+	"album": "vol1",
+
+	"variants": [],
+	"difficulties": ["hard"],
+
+	"bpm": 145,
+	"timeSignature": "4/4",
+
+	"artist": "Unknown",
+	"charter": "Unknown",
+
+	"characters": {
+		"opponent": "danny",
+		"spectator": "gf",
+		"player": "bf"
+	},
+
+	"scrollSpeed": {
+		"default": 3.3
+	},
+
+	"stage": "Funky",
+	"uiSkin": "default"
+}

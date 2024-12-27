@@ -1,0 +1,12 @@
+[
+	{
+		"mode": "append",
+		"key": "levels",
+		"value": "sigma"
+	},
+	{
+		"mode": "remove",
+		"key": "levels",
+		"value": "week1"
+	}
+]

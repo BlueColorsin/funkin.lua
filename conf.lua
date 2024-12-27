@@ -1,9 +1,7 @@
 function love.conf(t)
     t.identity = "funkin.lua"
     t.version = "12.0"
-    t.console = false
-
-    t.gammacorrect = false
+    t.console = true
 
     t.highdpi = false
     t.usedpiscale = false
@@ -19,5 +17,6 @@ function love.conf(t)
     t.window.resizable = true
     t.window.vsync = false
 
-    t.renderers = {"metal", "opengl"} -- NOTE: vulkan instantly crashes, so do NOT use it!!
+    t.graphics.renderers = {"metal", "opengl"} -- NOTE: vulkan instantly crashes, so do NOT use it!!
+    t.graphics.gammacorrect = false
 end

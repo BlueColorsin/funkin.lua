@@ -47,11 +47,12 @@ function FreeplayMenu:init()
 
     -- TODO: modding support for levelList
     local failedSongs = {} --- @type table<string, boolean>
-    local levelList = Json.parse(File.read(Paths.json("levelList")))
+    local levelList = Mods.jsonCompound("levelList")
 
     for i = 1, #levelList.levels do
         -- go through each level
         local levelID = levelList.levels[i] --- @type string
+        print(levelID)
         if not File.exists(Paths.json(levelID, "data/levels")) then
             -- if it doesn't exist, skip
             goto levelContinue

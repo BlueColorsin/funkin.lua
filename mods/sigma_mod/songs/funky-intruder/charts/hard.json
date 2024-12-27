@@ -1,0 +1,427 @@
+{"notes": [{"time": 413.793103448276,"lane": 6,"length": 0,"type": "Default"},{"time": 620.689655172414,"lane": 5,"length": 0,"type": "Default"},{"time": 827.586206896552,"lane": 4,"length": 0,"type": "Default"},{"time": 1034.48275862069,"lane": 5,"length": 0,"type": "Default"},{"time": 1241.37931034483,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 1448.27586206897,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 1655.1724137931,"lane": 5,"length": 0,"type": "Default"},{"time": 1862.06896551724,"lane": 6,"length": 0,"type": "Default"},{"time": 1965.51724137931,"lane": 7,"length": 0,"type": "Default"},{"time": 2068.96551724138,"lane": 4,"length": 0,"type": "Default"},{"time": 2068.96551724138,"lane": 5,"length": 0,"type": "Default"},{"time": 2275.86206896552,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 2482.75862068966,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 2689.65517241379,"lane": 6,"length": 0,"type": "Default"},{"time": 2896.55172413793,"lane": 5,"length": 0,"type": "Default"},{"time": 3103.44827586207,"lane": 7,"length": 0,"type": "Default"},{"time": 3206.89655172414,"lane": 7,"length": 0,"type": "Default"},{"time": 3310.34482758621,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 3517.24137931035,"lane": 6,"length": 0,"type": "Default"},{"time": 3724.13793103448,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 3931.03448275862,"lane": 6,"length": 0,"type": "Default"},{"time": 4137.93103448276,"lane": 5,"length": 0,"type": "Default"},{"time": 4241.37931034483,"lane": 6,"length": 0,"type": "Default"},{"time": 4344.8275862069,"lane": 7,"length": 0,"type": "Default"},{"time": 4551.72413793103,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 4758.62068965517,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 4965.51724137931,"lane": 7,"length": 0,"type": "Default"},{"time": 5172.41379310345,"lane": 7,"length": 0,"type": "Default"},{"time": 5275.86206896552,"lane": 4,"length": 0,"type": "Default"},{"time": 5379.31034482759,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 5586.20689655172,"lane": 5,"length": 0,"type": "Default"},{"time": 5793.10344827586,"lane": 7,"length": 0,"type": "Default"},{"time": 5896.55172413793,"lane": 5,"length": 0,"type": "Default"},{"time": 6000,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 6206.89655172414,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 6413.79310344828,"lane": 7,"length": 0,"type": "Default"},{"time": 6620.68965517241,"lane": 6,"length": 1144.44827586207,"type": "Default"},{"time": 7034.48275862069,"lane": 2,"length": 0,"type": "Default"},{"time": 7189.65517241379,"lane": 1,"length": 0,"type": "Default"},{"time": 7448.27586206897,"lane": 0,"length": 259.172413793103,"type": "Default"},{"time": 7706.89655172414,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 7939.65517241379,"lane": 1,"length": 0,"type": "Default"},{"time": 8043.10344827586,"lane": 3,"length": 0,"type": "Default"},{"time": 8146.55172413793,"lane": 0,"length": 0,"type": "Default"},{"time": 8250,"lane": 1,"length": 0,"type": "Default"},{"time": 8405.17241379311,"lane": 3,"length": 0,"type": "Default"},{"time": 8482.75862068966,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 8689.65517241379,"lane": 1,"length": 415.448275862069,"type": "Default"},{"time": 9724.13793103448,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 9931.03448275862,"lane": 0,"length": 0,"type": "Default"},{"time": 10103.4482758621,"lane": 2,"length": 0,"type": "Default"},{"time": 10241.3793103448,"lane": 1,"length": 0,"type": "Default"},{"time": 10551.724137931,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 10862.0689655172,"lane": 0,"length": 0,"type": "Default"},{"time": 11000,"lane": 1,"length": 0,"type": "Default"},{"time": 11586.2068965517,"lane": 5,"length": 0,"type": "Default"},{"time": 11793.1034482759,"lane": 5,"length": 0,"type": "Default"},{"time": 11896.5517241379,"lane": 7,"length": 0,"type": "Default"},{"time": 12000,"lane": 6,"length": 208.448275862069,"type": "Default"},{"time": 12206.8965517241,"lane": 5,"length": 0,"type": "Default"},{"time": 12413.7931034483,"lane": 4,"length": 0,"type": "Default"},{"time": 12517.2413793103,"lane": 5,"length": 0,"type": "Default"},{"time": 12620.6896551724,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 12827.5862068966,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 13034.4827586207,"lane": 5,"length": 0,"type": "Default"},{"time": 13655.1724137931,"lane": 2,"length": 0,"type": "Default"},{"time": 13862.0689655172,"lane": 3,"length": 0,"type": "Default"},{"time": 13965.5172413793,"lane": 1,"length": 0,"type": "Default"},{"time": 14068.9655172414,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 14275.8620689655,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 14482.7586206897,"lane": 0,"length": 0,"type": "Default"},{"time": 14586.2068965517,"lane": 1,"length": 0,"type": "Default"},{"time": 14689.6551724138,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 14896.5517241379,"lane": 1,"length": 0,"type": "Default"},{"time": 15103.4482758621,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 15310.3448275862,"lane": 1,"length": 0,"type": "Default"},{"time": 15517.2413793103,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 15724.1379310345,"lane": 1,"length": 0,"type": "Default"},{"time": 15931.0344827586,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 16137.9310344828,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 16344.8275862069,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 16551.724137931,"lane": 2,"length": 631.448275862069,"type": "Default"},{"time": 16965.5172413793,"lane": 6,"length": 0,"type": "Default"},{"time": 17172.4137931034,"lane": 7,"length": 0,"type": "Default"},{"time": 17275.8620689655,"lane": 5,"length": 0,"type": "Default"},{"time": 17379.3103448276,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 17586.2068965517,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 17793.1034482759,"lane": 4,"length": 0,"type": "Default"},{"time": 17896.5517241379,"lane": 5,"length": 0,"type": "Default"},{"time": 18000,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 18206.8965517241,"lane": 5,"length": 0,"type": "Default"},{"time": 18413.7931034483,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 18620.6896551724,"lane": 5,"length": 0,"type": "Default"},{"time": 18827.5862068966,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 19034.4827586207,"lane": 5,"length": 0,"type": "Default"},{"time": 19241.3793103448,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 19448.275862069,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 19655.1724137931,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 19862.0689655172,"lane": 6,"length": 623.448275862069,"type": "Default"},{"time": 20068.9655172414,"lane": 2,"length": 0,"type": "Default"},{"time": 20172.4137931035,"lane": 1,"length": 0,"type": "Default"},{"time": 20275.8620689655,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 20482.7586206897,"lane": 1,"length": 0,"type": "Default"},{"time": 20586.2068965517,"lane": 3,"length": 0,"type": "Default"},{"time": 20689.6551724138,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 20896.5517241379,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 21103.4482758621,"lane": 0,"length": 0,"type": "Default"},{"time": 21206.8965517241,"lane": 2,"length": 0,"type": "Default"},{"time": 21310.3448275862,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 21517.2413793104,"lane": 1,"length": 0,"type": "Default"},{"time": 21620.6896551724,"lane": 1,"length": 0,"type": "Default"},{"time": 21724.1379310345,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 21931.0344827586,"lane": 3,"length": 0,"type": "Default"},{"time": 22034.4827586207,"lane": 3,"length": 0,"type": "Default"},{"time": 22137.9310344828,"lane": 0,"length": 0,"type": "Default"},{"time": 22241.3793103448,"lane": 0,"length": 0,"type": "Default"},{"time": 22344.8275862069,"lane": 1,"length": 0,"type": "Default"},{"time": 22551.724137931,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 22758.6206896552,"lane": 3,"length": 0,"type": "Default"},{"time": 22862.0689655172,"lane": 3,"length": 0,"type": "Default"},{"time": 22965.5172413793,"lane": 1,"length": 0,"type": "Default"},{"time": 23068.9655172414,"lane": 1,"length": 0,"type": "Default"},{"time": 23172.4137931035,"lane": 2,"length": 624.448275862069,"type": "Default"},{"time": 23172.4137931035,"lane": 2,"length": 623.448275862069,"type": "Default"},{"time": 23379.3103448276,"lane": 6,"length": 0,"type": "Default"},{"time": 23482.7586206897,"lane": 5,"length": 0,"type": "Default"},{"time": 23586.2068965517,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 23793.1034482759,"lane": 5,"length": 0,"type": "Default"},{"time": 23896.5517241379,"lane": 7,"length": 0,"type": "Default"},{"time": 24000,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 24206.8965517241,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 24413.7931034483,"lane": 4,"length": 0,"type": "Default"},{"time": 24517.2413793103,"lane": 6,"length": 0,"type": "Default"},{"time": 24620.6896551724,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 24827.5862068966,"lane": 5,"length": 0,"type": "Default"},{"time": 24931.0344827586,"lane": 5,"length": 0,"type": "Default"},{"time": 25034.4827586207,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 25241.3793103448,"lane": 7,"length": 0,"type": "Default"},{"time": 25344.8275862069,"lane": 7,"length": 0,"type": "Default"},{"time": 25448.275862069,"lane": 4,"length": 0,"type": "Default"},{"time": 25551.724137931,"lane": 4,"length": 0,"type": "Default"},{"time": 25655.1724137931,"lane": 5,"length": 0,"type": "Default"},{"time": 25862.0689655172,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 26068.9655172414,"lane": 7,"length": 0,"type": "Default"},{"time": 26172.4137931035,"lane": 7,"length": 0,"type": "Default"},{"time": 26275.8620689655,"lane": 5,"length": 0,"type": "Default"},{"time": 26379.3103448276,"lane": 5,"length": 0,"type": "Default"},{"time": 26482.7586206897,"lane": 6,"length": 623.448275862069,"type": "Default"},{"time": 26689.6551724138,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 26896.5517241379,"lane": 3,"length": 0,"type": "Default"},{"time": 27103.4482758621,"lane": 1,"length": 0,"type": "Default"},{"time": 27206.8965517241,"lane": 3,"length": 0,"type": "Default"},{"time": 27310.3448275862,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 27517.2413793104,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 27724.1379310345,"lane": 0,"length": 0,"type": "Default"},{"time": 27931.0344827586,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 28137.9310344828,"lane": 2,"length": 0,"type": "Default"},{"time": 28344.8275862069,"lane": 3,"length": 0,"type": "Default"},{"time": 28448.275862069,"lane": 3,"length": 0,"type": "Default"},{"time": 28551.724137931,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 28758.6206896552,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 28965.5172413793,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 29172.4137931035,"lane": 2,"length": 0,"type": "Default"},{"time": 29379.3103448276,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 29586.2068965517,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 29793.1034482759,"lane": 2,"length": 623.448275862069,"type": "Default"},{"time": 29793.1034482759,"lane": 2,"length": 623.448275862069,"type": "Default"},{"time": 30000,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 30206.8965517241,"lane": 7,"length": 0,"type": "Default"},{"time": 30413.7931034483,"lane": 5,"length": 0,"type": "Default"},{"time": 30517.2413793104,"lane": 7,"length": 0,"type": "Default"},{"time": 30620.6896551724,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 30827.5862068966,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 31034.4827586207,"lane": 4,"length": 0,"type": "Default"},{"time": 31241.3793103448,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 31448.275862069,"lane": 6,"length": 0,"type": "Default"},{"time": 31655.1724137931,"lane": 7,"length": 0,"type": "Default"},{"time": 31758.6206896552,"lane": 7,"length": 0,"type": "Default"},{"time": 31862.0689655173,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 32068.9655172414,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 32275.8620689655,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 32482.7586206897,"lane": 6,"length": 0,"type": "Default"},{"time": 32689.6551724138,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 32896.5517241379,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 33103.4482758621,"lane": 6,"length": 623.448275862069,"type": "Default"},{"time": 33103.4482758621,"lane": 6,"length": 623.448275862069,"type": "Default"},{"time": 33103.4482758621,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 33517.2413793104,"lane": 2,"length": 0,"type": "Default"},{"time": 33620.6896551724,"lane": 3,"length": 0,"type": "Default"},{"time": 33724.1379310345,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 33931.0344827586,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 34137.9310344828,"lane": 3,"length": 0,"type": "Default"},{"time": 34241.3793103448,"lane": 1,"length": 0,"type": "Default"},{"time": 34344.8275862069,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 34551.7241379311,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 34758.6206896552,"lane": 1,"length": 0,"type": "Default"},{"time": 34965.5172413793,"lane": 1,"length": 0,"type": "Default"},{"time": 35068.9655172414,"lane": 2,"length": 0,"type": "Default"},{"time": 35172.4137931035,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 35379.3103448276,"lane": 2,"length": 0,"type": "Default"},{"time": 35586.2068965517,"lane": 3,"length": 0,"type": "Default"},{"time": 35689.6551724138,"lane": 3,"length": 0,"type": "Default"},{"time": 35793.1034482759,"lane": 1,"length": 0,"type": "Default"},{"time": 36000,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 36206.8965517242,"lane": 3,"length": 0,"type": "Default"},{"time": 36413.7931034483,"lane": 2,"length": 624.448275862069,"type": "Default"},{"time": 36413.7931034483,"lane": 2,"length": 623.448275862069,"type": "Default"},{"time": 36413.7931034483,"lane": 2,"length": 623.448275862069,"type": "Default"},{"time": 36413.7931034483,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 36827.5862068966,"lane": 6,"length": 0,"type": "Default"},{"time": 36931.0344827586,"lane": 7,"length": 0,"type": "Default"},{"time": 37034.4827586207,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 37241.3793103448,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 37448.275862069,"lane": 7,"length": 0,"type": "Default"},{"time": 37551.7241379311,"lane": 5,"length": 0,"type": "Default"},{"time": 37655.1724137931,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 37862.0689655173,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 38068.9655172414,"lane": 5,"length": 0,"type": "Default"},{"time": 38068.9655172414,"lane": 0,"length": 0,"type": "Default"},{"time": 38275.8620689655,"lane": 5,"length": 0,"type": "Default"},{"time": 38379.3103448276,"lane": 6,"length": 0,"type": "Default"},{"time": 38482.7586206897,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 38482.7586206897,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 38689.6551724138,"lane": 6,"length": 0,"type": "Default"},{"time": 38896.5517241379,"lane": 7,"length": 0,"type": "Default"},{"time": 38896.5517241379,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 39000,"lane": 7,"length": 0,"type": "Default"},{"time": 39103.4482758621,"lane": 5,"length": 0,"type": "Default"},{"time": 39103.4482758621,"lane": 1,"length": 0,"type": "Default"},{"time": 39310.3448275862,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 39517.2413793104,"lane": 7,"length": 0,"type": "Default"},{"time": 39724.1379310345,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 39724.1379310345,"lane": 5,"length": 521.448275862069,"type": "Default"},{"time": 40137.9310344828,"lane": 1,"length": 0,"type": "Default"},{"time": 40344.8275862069,"lane": 0,"length": 0,"type": "Default"},{"time": 40551.724137931,"lane": 0,"length": 0,"type": "Default"},{"time": 40758.6206896552,"lane": 1,"length": 0,"type": "Default"},{"time": 40965.5172413793,"lane": 3,"length": 311.448275862069,"type": "Default"},{"time": 41379.3103448276,"lane": 2,"length": 0,"type": "Default"},{"time": 41482.7586206897,"lane": 0,"length": 0,"type": "Default"},{"time": 41586.2068965517,"lane": 1,"length": 0,"type": "Default"},{"time": 41793.1034482759,"lane": 2,"length": 0,"type": "Default"},{"time": 42000,"lane": 1,"length": 0,"type": "Default"},{"time": 42206.8965517241,"lane": 3,"length": 0,"type": "Default"},{"time": 42310.3448275862,"lane": 2,"length": 0,"type": "Default"},{"time": 42413.7931034483,"lane": 1,"length": 0,"type": "Default"},{"time": 42620.6896551724,"lane": 0,"length": 0,"type": "Default"},{"time": 42672.4137931035,"lane": 1,"length": 0,"type": "Default"},{"time": 42827.5862068966,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 43034.4827586207,"lane": 1,"length": 0,"type": "Default"},{"time": 43448.275862069,"lane": 2,"length": 0,"type": "Default"},{"time": 43758.6206896552,"lane": 3,"length": 0,"type": "Default"},{"time": 43862.0689655172,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 44068.9655172414,"lane": 1,"length": 0,"type": "Default"},{"time": 44275.8620689655,"lane": 0,"length": 0,"type": "Default"},{"time": 44482.7586206897,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 44689.6551724138,"lane": 1,"length": 0,"type": "Default"},{"time": 44793.1034482759,"lane": 1,"length": 0,"type": "Default"},{"time": 44896.5517241379,"lane": 0,"length": 0,"type": "Default"},{"time": 45103.4482758621,"lane": 2,"length": 0,"type": "Default"},{"time": 45310.3448275862,"lane": 3,"length": 0,"type": "Default"},{"time": 45517.2413793103,"lane": 0,"length": 0,"type": "Default"},{"time": 45724.1379310345,"lane": 1,"length": 0,"type": "Default"},{"time": 45827.5862068966,"lane": 1,"length": 0,"type": "Default"},{"time": 45931.0344827586,"lane": 2,"length": 0,"type": "Default"},{"time": 46034.4827586207,"lane": 2,"length": 0,"type": "Default"},{"time": 46137.9310344828,"lane": 3,"length": 0,"type": "Default"},{"time": 46344.8275862069,"lane": 4,"length": 0,"type": "Default"},{"time": 46344.8275862069,"lane": 5,"length": 0,"type": "Default"},{"time": 46551.724137931,"lane": 6,"length": 0,"type": "Default"},{"time": 46655.1724137931,"lane": 7,"length": 0,"type": "Default"},{"time": 46758.6206896552,"lane": 4,"length": 0,"type": "Default"},{"time": 46758.6206896552,"lane": 5,"length": 0,"type": "Default"},{"time": 46965.5172413793,"lane": 6,"length": 0,"type": "Default"},{"time": 47172.4137931034,"lane": 4,"length": 0,"type": "Default"},{"time": 47379.3103448276,"lane": 7,"length": 0,"type": "Default"},{"time": 47379.3103448276,"lane": 6,"length": 0,"type": "Default"},{"time": 47482.7586206897,"lane": 5,"length": 0,"type": "Default"},{"time": 47586.2068965517,"lane": 7,"length": 0,"type": "Default"},{"time": 47586.2068965517,"lane": 6,"length": 0,"type": "Default"},{"time": 47793.1034482759,"lane": 4,"length": 0,"type": "Default"},{"time": 48000,"lane": 6,"length": 0,"type": "Default"},{"time": 48310.3448275862,"lane": 7,"length": 0,"type": "Default"},{"time": 48620.6896551724,"lane": 6,"length": 0,"type": "Default"},{"time": 48620.6896551724,"lane": 5,"length": 0,"type": "Default"},{"time": 48724.1379310345,"lane": 4,"length": 0,"type": "Default"},{"time": 48827.5862068966,"lane": 5,"length": 0,"type": "Default"},{"time": 48827.5862068966,"lane": 6,"length": 0,"type": "Default"},{"time": 49034.4827586207,"lane": 5,"length": 0,"type": "Default"},{"time": 49241.3793103448,"lane": 7,"length": 0,"type": "Default"},{"time": 49241.3793103448,"lane": 6,"length": 0,"type": "Default"},{"time": 49448.275862069,"lane": 4,"length": 0,"type": "Default"},{"time": 49655.1724137931,"lane": 6,"length": 0,"type": "Default"},{"time": 49862.0689655172,"lane": 5,"length": 0,"type": "Default"},{"time": 49862.0689655172,"lane": 4,"length": 0,"type": "Default"},{"time": 50068.9655172414,"lane": 6,"length": 0,"type": "Default"},{"time": 50275.8620689655,"lane": 7,"length": 0,"type": "Default"},{"time": 50275.8620689655,"lane": 6,"length": 0,"type": "Default"},{"time": 50482.7586206897,"lane": 4,"length": 0,"type": "Default"},{"time": 50689.6551724138,"lane": 5,"length": 0,"type": "Default"},{"time": 50689.6551724138,"lane": 6,"length": 0,"type": "Default"},{"time": 50793.1034482759,"lane": 7,"length": 0,"type": "Default"},{"time": 50896.5517241379,"lane": 5,"length": 0,"type": "Default"},{"time": 50896.5517241379,"lane": 6,"length": 0,"type": "Default"},{"time": 51103.4482758621,"lane": 4,"length": 0,"type": "Default"},{"time": 51310.3448275862,"lane": 6,"length": 0,"type": "Default"},{"time": 51517.2413793103,"lane": 6,"length": 0,"type": "Default"},{"time": 51620.6896551724,"lane": 5,"length": 0,"type": "Default"},{"time": 51620.6896551724,"lane": 4,"length": 0,"type": "Default"},{"time": 51724.1379310345,"lane": 6,"length": 0,"type": "Default"},{"time": 51931.0344827586,"lane": 5,"length": 0,"type": "Default"},{"time": 51931.0344827586,"lane": 7,"length": 0,"type": "Default"},{"time": 52137.9310344828,"lane": 6,"length": 0,"type": "Default"},{"time": 52344.8275862069,"lane": 5,"length": 0,"type": "Default"},{"time": 52344.8275862069,"lane": 4,"length": 0,"type": "Default"},{"time": 52551.724137931,"lane": 6,"length": 0,"type": "Default"},{"time": 52551.724137931,"lane": 4,"length": 0,"type": "Default"},{"time": 52758.6206896552,"lane": 5,"length": 0,"type": "Default"},{"time": 52965.5172413793,"lane": 6,"length": 415.448275862069,"type": "Default"},{"time": 53379.3103448276,"lane": 1,"length": 0,"type": "Default"},{"time": 53586.2068965517,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 53793.1034482759,"lane": 3,"length": 0,"type": "Default"},{"time": 54000,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 54206.8965517241,"lane": 0,"length": 0,"type": "Default"},{"time": 54413.7931034483,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 54620.6896551724,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 54827.5862068965,"lane": 3,"length": 0,"type": "Default"},{"time": 54931.0344827586,"lane": 3,"length": 0,"type": "Default"},{"time": 55034.4827586207,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 55241.3793103448,"lane": 0,"length": 0,"type": "Default"},{"time": 55448.275862069,"lane": 2,"length": 415.448275862069,"type": "Default"},{"time": 55862.0689655172,"lane": 3,"length": 415.448275862069,"type": "Default"},{"time": 56482.7586206896,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 56689.6551724138,"lane": 0,"length": 0,"type": "Default"},{"time": 56793.1034482759,"lane": 3,"length": 0,"type": "Default"},{"time": 56896.5517241379,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 57103.4482758621,"lane": 1,"length": 415.448275862069,"type": "Default"},{"time": 57517.2413793103,"lane": 2,"length": 415.448275862069,"type": "Default"},{"time": 57931.0344827586,"lane": 1,"length": 0,"type": "Default"},{"time": 58137.9310344827,"lane": 2,"length": 0,"type": "Default"},{"time": 58241.3793103448,"lane": 3,"length": 0,"type": "Default"},{"time": 58344.8275862069,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 58551.724137931,"lane": 2,"length": 0,"type": "Default"},{"time": 58655.1724137931,"lane": 3,"length": 0,"type": "Default"},{"time": 58758.6206896552,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 58965.5172413793,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 59172.4137931034,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 59379.3103448276,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 60000,"lane": 5,"length": 0,"type": "Default"},{"time": 60206.8965517241,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 60413.7931034483,"lane": 7,"length": 0,"type": "Default"},{"time": 60620.6896551724,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 60827.5862068965,"lane": 4,"length": 0,"type": "Default"},{"time": 61034.4827586207,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 61241.3793103448,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 61448.275862069,"lane": 7,"length": 0,"type": "Default"},{"time": 61551.724137931,"lane": 7,"length": 0,"type": "Default"},{"time": 61655.1724137931,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 61862.0689655172,"lane": 4,"length": 0,"type": "Default"},{"time": 62068.9655172414,"lane": 6,"length": 415.448275862069,"type": "Default"},{"time": 62482.7586206896,"lane": 7,"length": 415.448275862069,"type": "Default"},{"time": 63103.4482758621,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 63310.3448275862,"lane": 4,"length": 0,"type": "Default"},{"time": 63413.7931034483,"lane": 7,"length": 0,"type": "Default"},{"time": 63413.7931034483,"lane": 2,"length": 0,"type": "Default"},{"time": 63517.2413793103,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 63724.1379310345,"lane": 5,"length": 415.448275862069,"type": "Default"},{"time": 63827.5862068965,"lane": 0,"length": 0,"type": "Default"},{"time": 64137.9310344827,"lane": 6,"length": 415.448275862069,"type": "Default"},{"time": 64137.9310344827,"lane": 1,"length": 0,"type": "Default"},{"time": 64551.724137931,"lane": 5,"length": 833.448275862069,"type": "Default"},{"time": 66620.6896551724,"lane": 6,"length": 0,"type": "Default"},{"time": 66827.5862068966,"lane": 5,"length": 0,"type": "Default"},{"time": 67034.4827586207,"lane": 4,"length": 0,"type": "Default"},{"time": 67241.3793103448,"lane": 5,"length": 0,"type": "Default"},{"time": 67448.275862069,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 67655.1724137931,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 67862.0689655172,"lane": 5,"length": 0,"type": "Default"},{"time": 68068.9655172414,"lane": 6,"length": 0,"type": "Default"},{"time": 68172.4137931034,"lane": 7,"length": 0,"type": "Default"},{"time": 68275.8620689655,"lane": 4,"length": 0,"type": "Default"},{"time": 68275.8620689655,"lane": 5,"length": 0,"type": "Default"},{"time": 68482.7586206897,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 68689.6551724138,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 68896.5517241379,"lane": 6,"length": 0,"type": "Default"},{"time": 69103.4482758621,"lane": 5,"length": 0,"type": "Default"},{"time": 69310.3448275862,"lane": 7,"length": 0,"type": "Default"},{"time": 69413.7931034483,"lane": 7,"length": 0,"type": "Default"},{"time": 69517.2413793103,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 69724.1379310345,"lane": 6,"length": 0,"type": "Default"},{"time": 69931.0344827586,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 70137.9310344828,"lane": 6,"length": 0,"type": "Default"},{"time": 70344.8275862069,"lane": 5,"length": 0,"type": "Default"},{"time": 70448.275862069,"lane": 6,"length": 0,"type": "Default"},{"time": 70551.724137931,"lane": 7,"length": 0,"type": "Default"},{"time": 70758.6206896552,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 70965.5172413793,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 71172.4137931034,"lane": 7,"length": 0,"type": "Default"},{"time": 71379.3103448276,"lane": 7,"length": 0,"type": "Default"},{"time": 71482.7586206896,"lane": 5,"length": 0,"type": "Default"},{"time": 71586.2068965517,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 71793.1034482759,"lane": 5,"length": 0,"type": "Default"},{"time": 72000,"lane": 7,"length": 0,"type": "Default"},{"time": 72103.4482758621,"lane": 5,"length": 0,"type": "Default"},{"time": 72206.8965517241,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 72413.7931034483,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 72620.6896551724,"lane": 7,"length": 0,"type": "Default"},{"time": 72827.5862068966,"lane": 6,"length": 1144.44827586207,"type": "Default"},{"time": 73241.3793103448,"lane": 2,"length": 0,"type": "Default"},{"time": 73448.275862069,"lane": 1,"length": 0,"type": "Default"},{"time": 73655.1724137931,"lane": 0,"length": 0,"type": "Default"},{"time": 73862.0689655173,"lane": 1,"length": 0,"type": "Default"},{"time": 74068.9655172414,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 74275.8620689655,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 74482.7586206897,"lane": 1,"length": 0,"type": "Default"},{"time": 74689.6551724138,"lane": 2,"length": 0,"type": "Default"},{"time": 74793.1034482759,"lane": 3,"length": 0,"type": "Default"},{"time": 74896.5517241379,"lane": 0,"length": 0,"type": "Default"},{"time": 74896.5517241379,"lane": 1,"length": 0,"type": "Default"},{"time": 75103.4482758621,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 75310.3448275862,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 75517.2413793104,"lane": 2,"length": 0,"type": "Default"},{"time": 75724.1379310345,"lane": 1,"length": 0,"type": "Default"},{"time": 75931.0344827586,"lane": 3,"length": 0,"type": "Default"},{"time": 76034.4827586207,"lane": 3,"length": 0,"type": "Default"},{"time": 76137.9310344828,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 76344.8275862069,"lane": 2,"length": 0,"type": "Default"},{"time": 76551.724137931,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 76758.6206896552,"lane": 2,"length": 0,"type": "Default"},{"time": 76965.5172413793,"lane": 1,"length": 0,"type": "Default"},{"time": 77068.9655172414,"lane": 2,"length": 0,"type": "Default"},{"time": 77172.4137931035,"lane": 3,"length": 0,"type": "Default"},{"time": 77379.3103448276,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 77586.2068965517,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 77793.1034482759,"lane": 3,"length": 0,"type": "Default"},{"time": 78000,"lane": 3,"length": 0,"type": "Default"},{"time": 78103.448275862,"lane": 1,"length": 0,"type": "Default"},{"time": 78206.8965517242,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 78413.7931034483,"lane": 1,"length": 0,"type": "Default"},{"time": 78620.6896551724,"lane": 3,"length": 0,"type": "Default"},{"time": 78724.1379310345,"lane": 1,"length": 0,"type": "Default"},{"time": 78827.5862068966,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 79034.4827586207,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 79241.3793103448,"lane": 3,"length": 0,"type": "Default"},{"time": 79862.0689655172,"lane": 2,"length": 0,"type": "Default"},{"time": 80068.9655172414,"lane": 3,"length": 0,"type": "Default"},{"time": 80172.4137931034,"lane": 1,"length": 0,"type": "Default"},{"time": 80275.8620689655,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 80482.7586206897,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 80689.6551724138,"lane": 0,"length": 0,"type": "Default"},{"time": 80793.1034482759,"lane": 1,"length": 0,"type": "Default"},{"time": 80896.5517241379,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 81103.4482758621,"lane": 1,"length": 0,"type": "Default"},{"time": 81310.3448275862,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 81517.2413793103,"lane": 1,"length": 0,"type": "Default"},{"time": 81724.1379310345,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 81931.0344827586,"lane": 1,"length": 0,"type": "Default"},{"time": 82137.9310344828,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 82344.8275862069,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 82551.724137931,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 82758.6206896552,"lane": 2,"length": 631.448275862069,"type": "Default"},{"time": 83172.4137931034,"lane": 6,"length": 0,"type": "Default"},{"time": 83379.3103448276,"lane": 7,"length": 0,"type": "Default"},{"time": 83482.7586206897,"lane": 5,"length": 0,"type": "Default"},{"time": 83586.2068965517,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 83793.1034482759,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 84000,"lane": 4,"length": 0,"type": "Default"},{"time": 84103.4482758621,"lane": 5,"length": 0,"type": "Default"},{"time": 84206.8965517241,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 84413.7931034483,"lane": 5,"length": 0,"type": "Default"},{"time": 84620.6896551724,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 84827.5862068966,"lane": 5,"length": 0,"type": "Default"},{"time": 85034.4827586207,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 85241.3793103448,"lane": 5,"length": 0,"type": "Default"},{"time": 85448.275862069,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 85655.1724137931,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 85862.0689655172,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 86068.9655172414,"lane": 6,"length": 623.448275862069,"type": "Default"},{"time": 86275.8620689655,"lane": 2,"length": 0,"type": "Default"},{"time": 86379.3103448276,"lane": 1,"length": 0,"type": "Default"},{"time": 86482.7586206897,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 86689.6551724138,"lane": 1,"length": 0,"type": "Default"},{"time": 86793.1034482759,"lane": 3,"length": 0,"type": "Default"},{"time": 86896.5517241379,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 87103.4482758621,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 87310.3448275862,"lane": 0,"length": 0,"type": "Default"},{"time": 87413.7931034483,"lane": 2,"length": 0,"type": "Default"},{"time": 87517.2413793103,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 87724.1379310345,"lane": 1,"length": 0,"type": "Default"},{"time": 87827.5862068966,"lane": 1,"length": 0,"type": "Default"},{"time": 87931.0344827586,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 88137.9310344828,"lane": 3,"length": 0,"type": "Default"},{"time": 88241.3793103448,"lane": 3,"length": 0,"type": "Default"},{"time": 88344.8275862069,"lane": 0,"length": 0,"type": "Default"},{"time": 88448.275862069,"lane": 0,"length": 0,"type": "Default"},{"time": 88551.724137931,"lane": 1,"length": 0,"type": "Default"},{"time": 88758.6206896552,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 88965.5172413793,"lane": 3,"length": 0,"type": "Default"},{"time": 89068.9655172414,"lane": 3,"length": 0,"type": "Default"},{"time": 89172.4137931035,"lane": 1,"length": 0,"type": "Default"},{"time": 89275.8620689655,"lane": 1,"length": 0,"type": "Default"},{"time": 89379.3103448276,"lane": 2,"length": 624.448275862069,"type": "Default"},{"time": 89379.3103448276,"lane": 2,"length": 623.448275862069,"type": "Default"},{"time": 89586.2068965517,"lane": 6,"length": 0,"type": "Default"},{"time": 89689.6551724138,"lane": 5,"length": 0,"type": "Default"},{"time": 89793.1034482759,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 90000,"lane": 5,"length": 0,"type": "Default"},{"time": 90103.4482758621,"lane": 7,"length": 0,"type": "Default"},{"time": 90206.8965517241,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 90413.7931034483,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 90620.6896551724,"lane": 4,"length": 0,"type": "Default"},{"time": 90724.1379310345,"lane": 6,"length": 0,"type": "Default"},{"time": 90827.5862068966,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 91034.4827586207,"lane": 5,"length": 0,"type": "Default"},{"time": 91137.9310344828,"lane": 5,"length": 0,"type": "Default"},{"time": 91241.3793103448,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 91448.275862069,"lane": 7,"length": 0,"type": "Default"},{"time": 91551.724137931,"lane": 7,"length": 0,"type": "Default"},{"time": 91655.1724137931,"lane": 4,"length": 0,"type": "Default"},{"time": 91758.6206896552,"lane": 4,"length": 0,"type": "Default"},{"time": 91862.0689655172,"lane": 5,"length": 0,"type": "Default"},{"time": 92068.9655172414,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 92275.8620689655,"lane": 7,"length": 0,"type": "Default"},{"time": 92379.3103448276,"lane": 7,"length": 0,"type": "Default"},{"time": 92482.7586206897,"lane": 5,"length": 0,"type": "Default"},{"time": 92586.2068965517,"lane": 5,"length": 0,"type": "Default"},{"time": 92689.6551724138,"lane": 6,"length": 623.448275862069,"type": "Default"},{"time": 92896.5517241379,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 93103.4482758621,"lane": 3,"length": 0,"type": "Default"},{"time": 93310.3448275862,"lane": 1,"length": 0,"type": "Default"},{"time": 93413.7931034483,"lane": 3,"length": 0,"type": "Default"},{"time": 93517.2413793104,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 93724.1379310345,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 93931.0344827586,"lane": 0,"length": 0,"type": "Default"},{"time": 94137.9310344828,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 94344.8275862069,"lane": 2,"length": 0,"type": "Default"},{"time": 94551.7241379311,"lane": 3,"length": 0,"type": "Default"},{"time": 94655.1724137931,"lane": 3,"length": 0,"type": "Default"},{"time": 94758.6206896552,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 94965.5172413793,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 95172.4137931035,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 95379.3103448276,"lane": 2,"length": 0,"type": "Default"},{"time": 95586.2068965517,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 95793.1034482759,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 96000,"lane": 2,"length": 623.448275862069,"type": "Default"},{"time": 96000,"lane": 2,"length": 623.448275862069,"type": "Default"},{"time": 96206.8965517242,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 96413.7931034483,"lane": 7,"length": 0,"type": "Default"},{"time": 96620.6896551724,"lane": 5,"length": 0,"type": "Default"},{"time": 96724.1379310345,"lane": 7,"length": 0,"type": "Default"},{"time": 96827.5862068966,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 97034.4827586207,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 97241.3793103448,"lane": 4,"length": 0,"type": "Default"},{"time": 97448.275862069,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 97655.1724137931,"lane": 6,"length": 0,"type": "Default"},{"time": 97862.0689655173,"lane": 7,"length": 0,"type": "Default"},{"time": 97965.5172413793,"lane": 7,"length": 0,"type": "Default"},{"time": 98068.9655172414,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 98275.8620689655,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 98482.7586206897,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 98689.6551724138,"lane": 6,"length": 0,"type": "Default"},{"time": 98896.5517241379,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 99103.4482758621,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 99310.3448275862,"lane": 6,"length": 623.448275862069,"type": "Default"},{"time": 99310.3448275862,"lane": 6,"length": 623.448275862069,"type": "Default"},{"time": 99310.3448275862,"lane": 1,"length": 207.448275862069,"type": "Default"},{"time": 99724.1379310345,"lane": 2,"length": 0,"type": "Default"},{"time": 99827.5862068966,"lane": 3,"length": 0,"type": "Default"},{"time": 99931.0344827586,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 100137.931034483,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 100344.827586207,"lane": 3,"length": 0,"type": "Default"},{"time": 100448.275862069,"lane": 1,"length": 0,"type": "Default"},{"time": 100551.724137931,"lane": 3,"length": 207.448275862069,"type": "Default"},{"time": 100758.620689655,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 100965.517241379,"lane": 1,"length": 0,"type": "Default"},{"time": 101172.413793103,"lane": 1,"length": 0,"type": "Default"},{"time": 101275.862068966,"lane": 2,"length": 0,"type": "Default"},{"time": 101379.310344828,"lane": 0,"length": 207.448275862069,"type": "Default"},{"time": 101586.206896552,"lane": 2,"length": 0,"type": "Default"},{"time": 101793.103448276,"lane": 3,"length": 0,"type": "Default"},{"time": 101896.551724138,"lane": 3,"length": 0,"type": "Default"},{"time": 102000,"lane": 1,"length": 0,"type": "Default"},{"time": 102206.896551724,"lane": 2,"length": 207.448275862069,"type": "Default"},{"time": 102413.793103448,"lane": 3,"length": 0,"type": "Default"},{"time": 102620.689655172,"lane": 2,"length": 624.448275862069,"type": "Default"},{"time": 102620.689655172,"lane": 2,"length": 623.448275862069,"type": "Default"},{"time": 102620.689655172,"lane": 2,"length": 623.448275862069,"type": "Default"},{"time": 102620.689655172,"lane": 5,"length": 207.448275862069,"type": "Default"},{"time": 103034.482758621,"lane": 6,"length": 0,"type": "Default"},{"time": 103137.931034483,"lane": 7,"length": 0,"type": "Default"},{"time": 103241.379310345,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 103448.275862069,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 103655.172413793,"lane": 7,"length": 0,"type": "Default"},{"time": 103758.620689655,"lane": 5,"length": 0,"type": "Default"},{"time": 103862.068965517,"lane": 7,"length": 207.448275862069,"type": "Default"},{"time": 104068.965517241,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 104275.862068966,"lane": 5,"length": 0,"type": "Default"},{"time": 104482.75862069,"lane": 5,"length": 0,"type": "Default"},{"time": 104586.206896552,"lane": 6,"length": 0,"type": "Default"},{"time": 104689.655172414,"lane": 4,"length": 207.448275862069,"type": "Default"},{"time": 104896.551724138,"lane": 6,"length": 0,"type": "Default"},{"time": 105103.448275862,"lane": 7,"length": 0,"type": "Default"},{"time": 105206.896551724,"lane": 7,"length": 0,"type": "Default"},{"time": 105310.344827586,"lane": 5,"length": 0,"type": "Default"},{"time": 105517.24137931,"lane": 6,"length": 207.448275862069,"type": "Default"},{"time": 105724.137931035,"lane": 7,"length": 0,"type": "Default"},{"time": 105931.034482759,"lane": 2,"length": 727.448275862069,"type": "Default"},{"time": 105931.034482759,"lane": 6,"length": 727.448275862069,"type": "Default"}],"events": [{"time": 6620.68965517241,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 7034.48275862069,"params": {
+	"VALUE_1": "what",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 7034.48275862069,"params": {
+	"VALUE_1": "what",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 7189.65517241379,"params": {
+	"VALUE_1": "what the",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 7189.65517241379,"params": {
+	"VALUE_1": "what the",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 7448.27586206897,"params": {
+	"VALUE_1": "what the he-",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 7448.27586206897,"params": {
+	"VALUE_1": "what the he-",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 7706.89655172414,"params": {
+	"VALUE_1": "what the hell",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 7706.89655172414,"params": {
+	"VALUE_1": "what the hell",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 7939.65517241379,"params": {
+	"VALUE_1": "what the hell are",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 7939.65517241379,"params": {
+	"VALUE_1": "what the hell are",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8043.10344827586,"params": {
+	"VALUE_1": "what the hell are you",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8043.10344827586,"params": {
+	"VALUE_1": "what the hell are you",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8146.55172413793,"params": {
+	"VALUE_1": "what the hell are you do",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8146.55172413793,"params": {
+	"VALUE_1": "what the hell are you do",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8250,"params": {
+	"VALUE_1": "what the hell are you doing",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8250,"params": {
+	"VALUE_1": "what the hell are you doing",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8405.17241379311,"params": {
+	"VALUE_1": "what the hell are you doing in",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8405.17241379311,"params": {
+	"VALUE_1": "what the hell are you doing in",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8482.75862068966,"params": {
+	"VALUE_1": "what the hell are you doing in my",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8482.75862068966,"params": {
+	"VALUE_1": "what the hell are you doing in my",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8689.65517241379,"params": {
+	"VALUE_1": "what the hell are you doing in my house?",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 8689.65517241379,"params": {
+	"VALUE_1": "what the hell are you doing in my house?",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 9517.24137931035,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 9517.24137931035,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 9724.13793103448,"params": {
+	"VALUE_1": "h",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 9724.13793103448,"params": {
+	"VALUE_1": "h",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 9931.03448275862,"params": {
+	"VALUE_1": "how",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 9931.03448275862,"params": {
+	"VALUE_1": "how",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 10103.4482758621,"params": {
+	"VALUE_1": "how did",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 10103.4482758621,"params": {
+	"VALUE_1": "how did",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 10241.3793103448,"params": {
+	"VALUE_1": "how did you",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 10241.3793103448,"params": {
+	"VALUE_1": "how did you",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 10551.724137931,"params": {
+	"VALUE_1": "how did you GET",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 10551.724137931,"params": {
+	"VALUE_1": "how did you GET",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 10862.0689655172,"params": {
+	"VALUE_1": "how did you GET here?",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 10862.0689655172,"params": {
+	"VALUE_1": "how did you GET here?",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 11586.2068965517,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 11586.2068965517,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 11586.2068965517,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 13241.3793103448,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 16551.724137931,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 19862.0689655172,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 23172.4137931035,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 26482.7586206897,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 29793.1034482759,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 33103.4482758621,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 36413.7931034483,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 38068.9655172414,"params": {
+	"VALUE_1": "what",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 38068.9655172414,"params": {
+	"VALUE_1": "what",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 38482.7586206897,"params": {
+	"VALUE_1": "what the",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 38482.7586206897,"params": {
+	"VALUE_1": "what the",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 38896.5517241379,"params": {
+	"VALUE_1": "what the HELL",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 38896.5517241379,"params": {
+	"VALUE_1": "what the HELL",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 39310.3448275862,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 39310.3448275862,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 39724.1379310345,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 39724.1379310345,"params": {
+	"VALUE_1": "BI",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 39724.1379310345,"params": {
+	"VALUE_1": "BI",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 40137.9310344828,"params": {
+	"VALUE_1": "uhh",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 40137.9310344828,"params": {
+	"VALUE_1": "uhh",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 40344.8275862069,"params": {
+	"VALUE_1": "wh-",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 40344.8275862069,"params": {
+	"VALUE_1": "wh-",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 40551.724137931,"params": {
+	"VALUE_1": "what",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 40551.724137931,"params": {
+	"VALUE_1": "what",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 40758.6206896552,"params": {
+	"VALUE_1": "what the",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 40758.6206896552,"params": {
+	"VALUE_1": "what the",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 40965.5172413793,"params": {
+	"VALUE_1": "what the hell?",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 40965.5172413793,"params": {
+	"VALUE_1": "what the hell?",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 41379.3103448276,"params": {
+	"VALUE_1": "E",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 41379.3103448276,"params": {
+	"VALUE_1": "E",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 41482.7586206897,"params": {
+	"VALUE_1": "EE",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 41482.7586206897,"params": {
+	"VALUE_1": "EE",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 41586.2068965517,"params": {
+	"VALUE_1": "EEUH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 41586.2068965517,"params": {
+	"VALUE_1": "EEUH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 41793.1034482759,"params": {
+	"VALUE_1": "U",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 41793.1034482759,"params": {
+	"VALUE_1": "U",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42000,"params": {
+	"VALUE_1": "UH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42000,"params": {
+	"VALUE_1": "UH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42206.8965517241,"params": {
+	"VALUE_1": "E",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42206.8965517241,"params": {
+	"VALUE_1": "E",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42310.3448275862,"params": {
+	"VALUE_1": "EAH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42310.3448275862,"params": {
+	"VALUE_1": "EAH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42413.7931034483,"params": {
+	"VALUE_1": "U",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42413.7931034483,"params": {
+	"VALUE_1": "U",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42620.6896551724,"params": {
+	"VALUE_1": "E",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42620.6896551724,"params": {
+	"VALUE_1": "E",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42672.4137931035,"params": {
+	"VALUE_1": "EW",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42672.4137931035,"params": {
+	"VALUE_1": "EW",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42827.5862068966,"params": {
+	"VALUE_1": "EWUH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 42827.5862068966,"params": {
+	"VALUE_1": "EWUH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 43034.4827586207,"params": {
+	"VALUE_1": "BAH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 43034.4827586207,"params": {
+	"VALUE_1": "BAH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 43448.275862069,"params": {
+	"VALUE_1": "excuse",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 43448.275862069,"params": {
+	"VALUE_1": "excuse",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 43758.6206896552,"params": {
+	"VALUE_1": "excuse m",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 43758.6206896552,"params": {
+	"VALUE_1": "excuse m",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 43862.0689655172,"params": {
+	"VALUE_1": "DA",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 43862.0689655172,"params": {
+	"VALUE_1": "DA",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44068.9655172414,"params": {
+	"VALUE_1": "DANNY",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44068.9655172414,"params": {
+	"VALUE_1": "DANNY",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44275.8620689655,"params": {
+	"VALUE_1": "F",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44275.8620689655,"params": {
+	"VALUE_1": "F",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44482.7586206897,"params": {
+	"VALUE_1": "wow",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44482.7586206897,"params": {
+	"VALUE_1": "wow",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44689.6551724138,"params": {
+	"VALUE_1": "E",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44689.6551724138,"params": {
+	"VALUE_1": "E",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44793.1034482759,"params": {
+	"VALUE_1": "EE",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44793.1034482759,"params": {
+	"VALUE_1": "EE",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44896.5517241379,"params": {
+	"VALUE_1": "EENNY",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 44896.5517241379,"params": {
+	"VALUE_1": "EENNY",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45103.4482758621,"params": {
+	"VALUE_1": "DA",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45103.4482758621,"params": {
+	"VALUE_1": "DA",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45310.3448275862,"params": {
+	"VALUE_1": "*ahe*",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45310.3448275862,"params": {
+	"VALUE_1": "*ahe*",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45517.2413793103,"params": {
+	"VALUE_1": "F",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45517.2413793103,"params": {
+	"VALUE_1": "F",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45724.1379310345,"params": {
+	"VALUE_1": "D",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45724.1379310345,"params": {
+	"VALUE_1": "D",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45827.5862068966,"params": {
+	"VALUE_1": "DD",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45827.5862068966,"params": {
+	"VALUE_1": "DD",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45931.0344827586,"params": {
+	"VALUE_1": "DDU",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 45931.0344827586,"params": {
+	"VALUE_1": "DDU",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 46034.4827586207,"params": {
+	"VALUE_1": "DDUU",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 46034.4827586207,"params": {
+	"VALUE_1": "DDUU",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 46137.9310344828,"params": {
+	"VALUE_1": "DDUUAH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 46137.9310344828,"params": {
+	"VALUE_1": "DDUUAH",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 46344.8275862069,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 46344.8275862069,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 46344.8275862069,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 52965.5172413793,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 59586.2068965517,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 62896.5517241379,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 63413.7931034483,"params": {
+	"VALUE_1": "heh",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 63413.7931034483,"params": {
+	"VALUE_1": "heh",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 63827.5862068965,"params": {
+	"VALUE_1": "you're",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 63827.5862068965,"params": {
+	"VALUE_1": "you're",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 64137.9310344827,"params": {
+	"VALUE_1": "you're short",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 64137.9310344827,"params": {
+	"VALUE_1": "you're short",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 64551.724137931,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 64551.724137931,"params": {
+	"VALUE_1": "",
+	"VALUE_2": ""
+},"type": "Subtitles"},{"time": 64551.724137931,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 72827.5862068965,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 82758.6206896551,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 86068.9655172413,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 89379.3103448275,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 92689.6551724137,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 95999.9999999999,"params": {
+	"char": 1
+},"type": "Camera Pan"},{"time": 99310.3448275861,"params": {
+	"char": 0
+},"type": "Camera Pan"},{"time": 102620.689655172,"params": {
+	"char": 1
+},"type": "Camera Pan"}]}

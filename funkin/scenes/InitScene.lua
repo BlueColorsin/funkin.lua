@@ -61,6 +61,8 @@ function InitScene:init()
     Conductor.instance = Conductor:new()
     Engine.plugins:add(Conductor.instance)
 
+    Mods.reloadMods()
+
     Engine.preSceneSwitch:connect(function()
         Cache.clear()
     end)

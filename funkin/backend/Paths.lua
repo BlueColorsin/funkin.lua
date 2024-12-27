@@ -21,52 +21,95 @@ local AtlasFrames = crequire("animation.frames.AtlasFrames") --- @type chip.anim
 ---
 local Paths = {}
 
-function Paths.getPath(key)
-    return "assets/" .. key
+---@type string
+---## IDEA
+---the global redirect for EVERY asset gotten with Paths.get   
+---allows you to do similar stuff to lime asset libraries without the need for   
+---checks if said prefixed path exists before returning it
+---
+---example:   
+---```lua
+---local path = Paths.get("BOYFRIEND") -- return is "assets/BOYFRIEND"
+---
+---Paths.globalRedirect = "weeks/week1" -- sets the redirect
+---local new_path = Paths.get("BOYFRIEND") -- return is "assets/weeks/week1/BOYFRIEND" if the file exists or fallback to "assets/BOYFRIEND"
+---```
+Paths.globalRedirect = ""
+
+---fancy string prefixer that accounts for mods
+---@param key string the name of the asset
+---@param subfolder? string the folder that the asset is in
+---@param mods? boolean if you want to check if it is in the mod folders as well
+---@return string assetpath 
+function Paths.get(key, subfolder, mods)
+    local filepath = (subfolder and subfolder .. "/" or "") .. key
+
+    if (mods or true) then
+        local path = Paths.mods(key, subfolder)
+        if love.filesystem.getInfo(path, "file") then return path end
+    end
+
+    return "assets/" .. filepath
 end
 
-function Paths.image(key, dir)
-    return Paths.getPath((dir or "images") .. "/" .. key .. "." .. Constants.IMAGE_EXT)
+---basically just scans the global and current mods to find any files
+---@param key string
+---@param subfolder? string
+---@return string
+function Paths.mods(key, subfolder)
+    local filepath = (subfolder and subfolder .. "/" or "") .. key
+
+    for _, mod in ipairs(Mods.modsList) do
+        path = "mods/" .. mod .. "/" .. filepath
+        if love.filesystem.getInfo(path, "file") then return path end
+    end
+
+    return "mods/" .. filepath
 end
 
-function Paths.xml(key, dir)
-    return Paths.getPath((dir or "data") .. "/" .. key .. ".xml")
+function Paths.image(key, subfolder)
+    return Paths.get(key .. "." .. Constants.IMAGE_EXT, (subfolder or "images"))
 end
 
-function Paths.json(key, dir)
-    return Paths.getPath((dir or "data") .. "/" .. key .. ".json")
+function Paths.xml(key, subfolder)
+    return Paths.get(key .. ".xml", (subfolder or "data"))
 end
 
-function Paths.csv(key, dir)
-    return Paths.getPath((dir or "data") .. "/" .. key .. ".csv")
+function Paths.json(key, subfolder)
+    print(Paths.get(key .. ".json", (subfolder or "data")))
+    return Paths.get(key .. ".json", (subfolder or "data"))
 end
 
-function Paths.music(key, dir)
-    return Paths.getPath((dir or "music") .. "/" .. key .. "/music." .. Constants.SOUND_EXT)
+function Paths.csv(key, subfolder)
+    return Paths.get(key .. ".csv", (subfolder or "data"))
 end
 
-function Paths.sound(key, dir)
-    return Paths.getPath((dir or "sounds") .. "/" .. key .. "." .. Constants.SOUND_EXT)
+function Paths.music(key, subfolder)
+    return Paths.get(key .. "/music." .. Constants.SOUND_EXT, (subfolder or "music"))
 end
 
-function Paths.inst(song, dir)
-    return Paths.getPath((dir or "songs") .. "/" .. song:lower() .. "/song/Inst." .. Constants.SOUND_EXT)
+function Paths.sound(key, subfolder)
+    return Paths.get(key .. "." .. Constants.SOUND_EXT, (subfolder or "sounds"))
 end
 
-function Paths.voices(song, character, dir)
-    return Paths.getPath((dir or "songs") .. "/" .. song:lower() .. "/song/Voices" .. ((character and #character > 0) and ("-" .. character) or "") .. "." .. Constants.SOUND_EXT)
+function Paths.inst(song, subfolder)
+    return Paths.get(song:lower() .. "/song/Inst." .. Constants.SOUND_EXT, (subfolder or "songs"))
 end
 
-function Paths.chart(song, difficulty, dir)
-    return Paths.getPath((dir or "songs") .. "/" .. song:lower() .. "/charts/" .. difficulty:lower() .. ".json")
+function Paths.voices(song, character, subfolder)
+    return Paths.get(song:lower() .. "/song/Voices" .. ((character and #character > 0) and ("-" .. character) or "") .. "." .. Constants.SOUND_EXT, (subfolder or "songs"))
 end
 
-function Paths.songMeta(song, dir)
-    return Paths.getPath((dir or "songs") .. "/" .. song:lower() .. "/meta.json")
+function Paths.chart(song, difficulty, subfolder)
+    return Paths.get(song:lower() .. "/charts/" .. difficulty:lower() .. ".json", (subfolder or "songs"))
 end
 
-function Paths.font(key, dir)
-    return Paths.getPath((dir or "fonts") .. "/" .. key)
+function Paths.songMeta(song, subfolder)
+    return Paths.get(song:lower() .. "/meta.json", (subfolder or "songs"))
+end
+
+function Paths.font(key, subfolder)
+    return Paths.get(key, (subfolder or "fonts"))
 end
 
 function Paths.getSparrowAtlas(key, dir)
